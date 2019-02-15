@@ -27,7 +27,7 @@ Run `maven site`
 ![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
 ### Personal Development Plan
 
-The most relevant strong    I have is that I am very driven to reach my goal.<br/>
+The most relevant **EDIT**    I have is that I am very driven to reach my goal.<br/>
 If I try to achieve something with coding I will do everything it takes to make it work.<br/>
 This of course can be troublesome because there might be a simpler solution to it.<br/>
 I wouldn't call myself a perfectionist, not at all. I just want to achieve.<br/>

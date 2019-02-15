@@ -2,7 +2,7 @@
 > Quoted text will give you extra pointers to how an agenda should look like
 
 ## Opening
-> Here you check if everyone is present
+> Here you check if everyone is present :heavy_check_mark:
 
 ## Approval of the agenda
 > Make sure everything that needs to be discussed is in the agenda or add it if something is missing.
