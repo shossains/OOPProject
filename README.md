@@ -27,25 +27,25 @@ Run `maven site`
 ![Shaan Hossain](https://lh3.googleusercontent.com/F5hhz2boXXY4e9PSUTkVLlaBLswFUdcCgQWAl1R9HPAwxtTGYgTwrqKOTiWuUzVbZ85I0xTY4H0V1lLPdg9D=w1920-h937-rw)
 ## Personal Development Plan
 
-The most relevant strong I have is that I am very driven to reach my goal<br/>
-If I try to achieve something with coding I will do everything it takes to make it work<br/>
-This of course can be troublesome because there might be a simpler solution to it<br/>
+The most relevant strong I have is that I am very driven to reach my goal.<br/>
+If I try to achieve something with coding I will do everything it takes to make it work.<br/>
+This of course can be troublesome because there might be a simpler solution to it.<br/>
 I wouldn't call myself a perfectionist, not at all. I just want to achieve.<br/>
 
-I have worked on (small) computer science projects in high school (mostly HTML, PHP and SQL)<br/>
-In these projects I often took charge, because I was the most experienced in coding<br/>
-It is only after I started CSE that I realized that my knowledge of coding and computer science is just the bare minimum of what there is out there to learn<br/>
-Having worked in project before makes me experienced in group project<br/>
-I even have worked with Scrum before, which was quite a success<br/>
+I have worked on (small) computer science projects in high school (mostly HTML, PHP and SQL).<br/>
+In these projects I often took charge, because I was the most experienced in coding.<br/>
+It is only after I started CSE that I realized that my knowledge of coding and computer science is just the bare minimum of what there is out there to learn.<br/>
+Having worked in project before makes me experienced in group project.<br/>
+I even have worked with Scrum before, which was quite a success.<br/>
 
-My biggest pitfall might be that I tend to take too much **hooi op m'n vork**
-What might just look like simple challenges tend to turn out into the impossible quite often
-Only after (too) many tries I eventually give up and try to look for an alternative solution
+My biggest pitfall might be that I tend to take too much **hooi op m'n vork**.<br/>
+What might just look like simple challenges tend to turn out into the impossible quite often.<br/>
+Only after (too) many tries I eventually give up and try to look for an alternative solution.<br/>
 
-*G*
-*R*
-*O*
-*W*
+*G*<br/>
+*R*<br/>
+*O*<br/>
+*W*<br/>
 
 Alex's test commit
 <picture>
