@@ -23,11 +23,7 @@ Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getti
 Run `maven site`
 
 
-Shaan Hossain
-Alex's test commit
-<picture>
-<personal dev plan> //Test
+Sami Farahi<br/>
+netID: s.farahi@tudelft.nl<br/>
+![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)<br/>
 
-Sami Farahi
-netID: s.farahi@tudelft.nl
-![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)
