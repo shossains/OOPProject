@@ -64,7 +64,7 @@ W - Will (Motivation, plan of action)
 1.	I am going to try my best during this course to become a better programmer. Ask things when I don’t know something, look up thing on the internet. 
 2.	I will express my opinions whenever I need to, even though it could be wrong, because that is when I learn the most out of it. 
 -	What is the first concrete step you can take RIGHT NOW?
--	The concrete step I can take right now, is to start right now. With both programming more and expressing my opinion more.
+	The concrete step I can take right now, is to start right now. With both programming more and expressing my opinion more.
 -	How can your teammates help you achieve this goal?
 1.	By becoming a better programmer, my teammates can maybe help me by letting me know how they think about certain things when they are programming. Or when I have a question help me out.
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion
