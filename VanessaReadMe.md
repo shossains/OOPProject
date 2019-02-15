@@ -1,4 +1,5 @@
 Name: Vanessa Timmer
+NetID: v.timmer@student.tudelft.nl
 
 Picture link: https://i.imgur.com/pr9o1rL.jpg
 
