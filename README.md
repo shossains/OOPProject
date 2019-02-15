@@ -24,6 +24,13 @@ Run `maven site`
 
 
 Shaan Hossain
-Alex's test commit
 <picture>
 <personal dev plan> //Test
+
+##Alex Shulzycki's PDP
+#Goal
+- Learn how to develop in a team and gather experience
+  - I have never done this before and I want to get the most out of it
+  - I will succeed if I manage to pass this course
+#Reality
+- 
