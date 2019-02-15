@@ -22,7 +22,9 @@ Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getti
 **Checkstyle**:  
 Run `maven site`
 
+-
 Shaan Hossain
+-Alex's test commit
 <picture>
 <personal dev plan> //Test
 
