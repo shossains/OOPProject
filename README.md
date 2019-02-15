@@ -38,15 +38,11 @@ It is only after I started CSE that I realized that my knowledge of coding and c
 Having worked in project before makes me experienced in group project.<br/>
 I even have worked with Scrum before, which was quite a success.<br/>
 
-My biggest pitfall might be that I tend to take too much **hooi op m'n vork**.<br/>
+My biggest pitfall might be that I tend to take too much *hooi op m'n vork*.<br/>
 What might just look like simple challenges tend to turn out into the impossible quite often.<br/>
 Only after (too) many tries I eventually give up and try to look for an alternative solution.<br/>
 
-*G*<br/>
-*R*<br/>
-*O*<br/>
-*W*<br/>
-
-Alex's test commit
-<picture>
-<personal dev plan> //Test
+**G**<br/>
+**R**<br/>
+**O**<br/>
+**W**<br/>
