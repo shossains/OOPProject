@@ -65,9 +65,7 @@ Good commucation between the devs and the client is key.</br>
 I have failed 2 courses in Q2, so that's my biggest motivation to pass this course as well as the other courses in Q3.</br>
 My colleagues might be having the problem, so with that thought in mind I don't want them to fail to.</br>
 According to the rubric, good communication may give you a positive grade already.</br>
-<<<<<<< .merge_file_a09868
-So that's what I am going to focus on.<br/>
-=======
+
 So that's what I am going to focus on.<br/>
 
 Sami Farahi<br/>
@@ -115,4 +113,3 @@ W - Will (Motivation, plan of action)
 -	How can your teammates help you achieve this goal?
 1.	By becoming a better programmer, my teammates can maybe help me by letting me know how they think about certain things when they are programming. Or when I have a question help me out.
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
->>>>>>> .merge_file_a18844
