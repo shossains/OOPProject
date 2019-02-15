@@ -40,8 +40,8 @@ Develop a Goal
 Create plan to achieve your goal
 G - Goal
 -	What is your learning goal during this course?
-1.	 My learning goal is to become a better programmer, not just programming itself, but programming in a team. This is important to me, because in the future I could come up with the same kind of project/task like this where we need to create something in a group of people who I don’t know. I hope I will achieve this goal when we are done with our project and created something where we are proud of.
-2.	2.Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad. 
+1.	My learning goal is to become a better programmer, not just programming itself, but programming in a team. This is important to me, because in the future I could come up with the same kind of project/task like this where we need to create something in a group of people who I don’t know. I hope I will achieve this goal when we are done with our project and created something where we are proud of.
+2.	Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad. 
 
 R - Reality (Your current situation)
 -	Are you actively working on your goal?
