@@ -27,3 +27,7 @@ Shaan Hossain
 Alex's test commit
 <picture>
 <personal dev plan> //Test
+
+Sami Farahi
+netID: s.farahi@tudelft.nl
+![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)
