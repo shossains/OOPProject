@@ -3,7 +3,7 @@ NetID: v.timmer@student.tudelft.nl
 
 Picture link: https://i.imgur.com/pr9o1rL.jpg
 
-###Personal Development Plan:
+Personal Development Plan:
 During this project, I'd like to improve my group-based communication skills. The communication aspect of group projects
 has always been a weak point of mine, since I am very introverted and thus prefer to work on my own. 
 For projects and jobs, however, a certain degree of concession is needed as a lack of communication will negatively impact the end product.
