@@ -50,19 +50,19 @@ Exchanging while after done editing, and sending uploaden duplicate files to ser
 Now whe are using Git(lab) I hope problem won't occur.<br/>
 
 * Dev-Client experience
-I think this part is very useful for my possible future jobs and projects I will attend to
-The interaction and communication between the client and the developer is a crucial part of the project which I would love to get more experience on
+I think this part is very useful for my possible future jobs and projects I will attend to.</br>
+The interaction and communication between the client and the developer is a crucial part of the project which I would love to get more experience on.</br>
 
 **R**<br/>
-Well since we just started on this project, no progress has really occured.
-Thus no real statement can be made here
+Well since we just started on this project, no progress has really occured.</br>
+Thus no real statement can be made here.</br>
 
 **O**<br/>
-Working hard is the only option right here.
-Good commucation between the devs and the client is key.
+Working hard is the only option right here.</br>
+Good commucation between the devs and the client is key.</br>
 
 **W**<br/>
-I have failed 2 courses in Q2, so that's my biggest motivation to pass this course as well as the other courses in Q3.
-My colleagues might be having the problem, so with that thought in mind I don't want them to fail to.
-According to the rubric, good communication may give you a positive grade already.
+I have failed 2 courses in Q2, so that's my biggest motivation to pass this course as well as the other courses in Q3.</br>
+My colleagues might be having the problem, so with that thought in mind I don't want them to fail to.</br>
+According to the rubric, good communication may give you a positive grade already.</br>
 So that's what I am going to focus on.
