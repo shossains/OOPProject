@@ -24,7 +24,7 @@ Run `maven site`
 
 
 # Shaan Hossain
-![Shaan Hossain](https://lh3.googleusercontent.com/F5hhz2boXXY4e9PSUTkVLlaBLswFUdcCgQWAl1R9HPAwxtTGYgTwrqKOTiWuUzVbZ85I0xTY4H0V1lLPdg9D=w1920-h937-rw)
+![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg)
 ## Personal Development Plan
 
 The most relevant strong I have is that I am very driven to reach my goal.<br/>
