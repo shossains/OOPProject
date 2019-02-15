@@ -43,13 +43,13 @@ What might just look like simple challenges tend to turn out into the impossible
 Only after (too) many tries I eventually give up and try to look for an alternative solution.<br/>
 
 **G**<br/>
-* Teamwork
+* Teamwork<br/>
 Working in a team is something I have done quite often, but it never went smoothly.<br/>
 Biggest bottleneck was communication.<br/>
 Exchanging while after done editing, and sending uploaden duplicate files to server.<br/>
 Now whe are using Git(lab) I hope problem won't occur.<br/>
 
-* Dev-Client experience
+* Dev-Client experience<br/>
 I think this part is very useful for my possible future jobs and projects I will attend to.</br>
 The interaction and communication between the client and the developer is a crucial part of the project which I would love to get more experience on.</br>
 
@@ -65,4 +65,4 @@ Good commucation between the devs and the client is key.</br>
 I have failed 2 courses in Q2, so that's my biggest motivation to pass this course as well as the other courses in Q3.</br>
 My colleagues might be having the problem, so with that thought in mind I don't want them to fail to.</br>
 According to the rubric, good communication may give you a positive grade already.</br>
-So that's what I am going to focus on.
+So that's what I am going to focus on.<br/>
