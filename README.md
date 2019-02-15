@@ -24,6 +24,22 @@ Run `maven site`
 
 
 Shaan Hossain
-Alex's test commit
 <picture>
 <personal dev plan> //Test
+
+# Alex Shulzycki's PDP
+### Goal
+- Learn how to develop in a team and gather experience
+  - I have never done this before and I want to get the most out of it
+  - I will succeed if I manage to pass this course
+### Reality
+- I am actively pursuing my goal by practicing using version control with others
+- It is going well so far
+### Options
+  - I have the option to put in a lot of work into this project and learn a lot
+  - There is the option to put my skills to the test and see how they work in a collaborative environment
+- Nothing is stopping me so far.
+### Will
+- I am going to work until I pass the course
+- This is going to happen in the next few weeks
+- I also need those 5 EC
