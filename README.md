@@ -27,15 +27,15 @@ Run `maven site`
 ![Shaan Hossain](https://lh3.googleusercontent.com/F5hhz2boXXY4e9PSUTkVLlaBLswFUdcCgQWAl1R9HPAwxtTGYgTwrqKOTiWuUzVbZ85I0xTY4H0V1lLPdg9D=w1920-h937-rw)
 ## Personal Development Plan
 
-The most relevant strong I have is that I am very driven to reach my goal
-If I try to achieve something with coding I will do everything it takes to make it work
-This of course can be troublesome because there might be a simpler solution to it
-I wouldn't call myself a perfectionist, not at all. I just want to achieve.
+The most relevant strong I have is that I am very driven to reach my goal__
+If I try to achieve something with coding I will do everything it takes to make it work__
+This of course can be troublesome because there might be a simpler solution to it__
+I wouldn't call myself a perfectionist, not at all. I just want to achieve.__
 
-I have worked on (small) computer science projects in high school (mostly HTML, PHP and SQL)
-In these projects I often took charge, because I was the most experienced in coding
-It is only after I started CSE that I realized that my knowledge of coding and computer science is just the bare minimum of what there is out there to learn
-Having worked in project before makes me experienced in group project
+I have worked on (small) computer science projects in high school (mostly HTML, PHP and SQL)__
+In these projects I often took charge, because I was the most experienced in coding__
+It is only after I started CSE that I realized that my knowledge of coding and computer science is just the bare minimum of what there is out there to learn__
+Having worked in project before makes me experienced in group project__
 I even have worked with Scrum before, which was quite a success
 
 My biggest pitfall might be that I tend to take too much **hooi op m'n vork**
