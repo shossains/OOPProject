@@ -28,6 +28,7 @@ Shaan Hossain
 <personal dev plan> //Test
 
 # Alex Shulzycki's PDP
+![my face](src/alex-face.jpg "Alexander Shulzycki")
 ### Goal
 - Learn how to develop in a team and gather experience
   - I have never done this before and I want to get the most out of it
