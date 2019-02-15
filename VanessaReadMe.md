@@ -1,13 +1,16 @@
-Name: Vanessa Timmer
+**Vanessa Timmer**
+
+<a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
+
 NetID: v.timmer@student.tudelft.nl
 
-Picture link: https://i.imgur.com/pr9o1rL.jpg
 
-Personal Development Plan:
+**Personal Development Plan:**
+
 During this project, I'd like to improve my group-based communication skills. The communication aspect of group projects
 has always been a weak point of mine, since I am very introverted and thus prefer to work on my own. 
 For projects and jobs, however, a certain degree of concession is needed as a lack of communication will negatively impact the end product.
-I think this project will be a good opportunity to work on this weak point of mine. I plan to achieving my goal by, obviously, doing
+I think this project will be a good opportunity to work on this weak point of mine. I plan to achieve my goal by, obviously, doing
 my part and by keeping my teammates up to date on what I'm doing and any potential difficulties I run into. I will also inquire about
 what my teammates are working on, to get an idea of how the whole project is coming along. 
 
