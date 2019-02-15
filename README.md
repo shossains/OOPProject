@@ -1,51 +1,3 @@
-# CSE1105 Template Repository
-
-This a template repository to help you get started on making the best project possible!
-
-You can download the latest version [here](https://github.com/SERG-Delft/TI1216/releases)
-
-http://stackoverflow.com/a/6466993
-
-## How to import into your IDE
-
-Eclipse:
-[http://javapapers.com/java/import-maven-project-into-eclipse/](http://javapapers.com/java/import-maven-project-into-eclipse/)
-
-Intellij:  
-[https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html](https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html)
-
-## Getting your weekly reports
-
-**Jacoco**:  
-Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getting-started-with-maven.html#execute_maven_goal)/[Eclipse](http://imgur.com/a/6q7pV))
-
-**Checkstyle**:  
-Run `maven site`
-
--
-Shaan Hossain
--Alex's test commit
-<picture>
-<personal dev plan> //Test
-
-# Alex Shulzycki's PDP
-![my face](src/alex-face.jpg "Alexander Shulzycki")
-### Goal
-- Learn how to develop in a team and gather experience
-  - I have never done this before and I want to get the most out of it
-  - I will succeed if I manage to pass this course
-### Reality
-- I am actively pursuing my goal by practicing using version control with others
-- It is going well so far
-### Options
-  - I have the option to put in a lot of work into this project and learn a lot
-  - There is the option to put my skills to the test and see how they work in a collaborative environment
-- Nothing is stopping me so far.
-### Will
-- I am going to work until I pass the course
-- This is going to happen in the next few weeks
-- I also need those 5 EC
-
 Sami Farahi<br/>
 netID: s.farahi@tudelft.nl<br/>
 ![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)<br/>
@@ -90,6 +42,4 @@ W - Will (Motivation, plan of action)
 1.	The concrete step I can take right now, is to start right now. With both programming more and expressing my opinion more.
 -	How can your teammates help you achieve this goal?
 1.	By becoming a better programmer, my teammates can maybe help me by letting me know how they think about certain things when they are programming. Or when I have a question help me out.
-2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion
-
-
+2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
