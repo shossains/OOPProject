@@ -68,11 +68,11 @@ According to the rubric, good communication may give you a positive grade alread
 
 So that's what I am going to focus on.<br/>
 
-#Sami Farahi<br/>
+# Sami Farahi<br/>
 netID: s.farahi@tudelft.nl<br/>
 ![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)<br/>
 
-###Personal Development Plan
+### Personal Development Plan
 Develop a Goal
 -	What are two of your strong points?
 1.	A strong point of myself is that I can work well in a group. I can communicate well with others, even though I don’t know them. This I learned in my early years when I played football, I switched multiple times from clubs, which lead to meeting new team members over and over again. And the only way to play good together is playing as a team together.
@@ -114,14 +114,14 @@ W - Will (Motivation, plan of action)
 1.	By becoming a better programmer, my teammates can maybe help me by letting me know how they think about certain things when they are programming. Or when I have a question help me out.
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
 
-#Vanessa Timmer
+# Vanessa Timmer
 
 <a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
 
 NetID: v.timmer@student.tudelft.nl
 
 
-###Personal Development Plan:
+### Personal Development Plan:
 
 During this project, I'd like to improve my group-based communication skills. The communication aspect of group projects
 has always been a weak point of mine, since I am very introverted and thus prefer to work on my own.
