@@ -76,7 +76,7 @@ Personal Development Plan
 Develop a Goal
 -	What are two of your strong points?
 1.	A strong point of myself is that I can work well in a group. I can communicate well with others, even though I don’t know them. This I learned in my early years when I played football, I switched multiple times from clubs, which lead to meeting new team members over and over again. And the only way to play good together is playing as a team together.
-2.	Another strong point of myself is that I am always willing to help others. Whenever someone has a question about something, or do need my help with something, I am always willing to do my best to help them. This is a good aspect in a team because whenever someone is stuck with something, and I do know how to solve it, I could help that person. 
+2.	Another strong point of myself is that I am always willing to help others. Whenever someone has a question about something, or do need my help with something, I am always willing to do my best to help them. This is a good aspect in a team because whenever someone is stuck with something, and I do know how to solve it, I could help that person.
 
 -	What are two of your weaker points?
 1.	A weaker point of myself is that I am a shy/quiet person. I don’t really speak up when I don’t need to. For example when I am with a group of people and they start to discuss whatever we would do, I won’t be the person who speaks up, and be the first person to say something or come up with something. This is could be a problem in a team, because everyone’s way of thinking is unique and if I don’t say what is on my mind then my team members also don’t know what my thoughts are about something. I don’t think I could make a core quadrant of this, because when I need to speak up, I will eventually do that.
@@ -86,7 +86,7 @@ Create plan to achieve your goal
 G - Goal
 -	What is your learning goal during this course?
 1.	My learning goal is to become a better programmer, not just programming itself, but programming in a team. This is important to me, because in the future I could come up with the same kind of project/task like this where we need to create something in a group of people who I don’t know. I hope I will achieve this goal when we are done with our project and created something where we are proud of.
-2.	Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad. 
+2.	Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad.
 
 R - Reality (Your current situation)
 -	Are you actively working on your goal?
@@ -95,7 +95,7 @@ R - Reality (Your current situation)
 
 O - Options (Look at possible options)
 -	What are options you have to achieve your goal?
-1.	Options I have are just keep programming make mistakes and learn from them. Another option is to ask other people how they would program something. And the internet is always useful. 
+1.	Options I have are just keep programming make mistakes and learn from them. Another option is to ask other people how they would program something. And the internet is always useful.
 2.	I don’t really have options to achieve this goal, because it is just something I face mostly every day, and the thing I need to do is just expressing my opinion.
 
 -	Which option do you want to use the most?
@@ -106,8 +106,8 @@ O - Options (Look at possible options)
 
 W - Will (Motivation, plan of action)
 -	What are you going to do to reach your goal?
-1.	I am going to try my best during this course to become a better programmer. Ask things when I don’t know something, look up thing on the internet. 
-2.	I will express my opinions whenever I need to, even though it could be wrong, because that is when I learn the most out of it. 
+1.	I am going to try my best during this course to become a better programmer. Ask things when I don’t know something, look up thing on the internet.
+2.	I will express my opinions whenever I need to, even though it could be wrong, because that is when I learn the most out of it.
 -	What is the first concrete step you can take RIGHT NOW?
 1.	The concrete step I can take right now, is to start right now. With both programming more and expressing my opinion more.
 -	How can your teammates help you achieve this goal?
@@ -124,19 +124,19 @@ NetID: v.timmer@student.tudelft.nl
 **Personal Development Plan:**
 
 During this project, I'd like to improve my group-based communication skills. The communication aspect of group projects
-has always been a weak point of mine, since I am very introverted and thus prefer to work on my own. 
+has always been a weak point of mine, since I am very introverted and thus prefer to work on my own.
 For projects and jobs, however, a certain degree of concession is needed as a lack of communication will negatively impact the end product.
 I think this project will be a good opportunity to work on this weak point of mine. I plan to achieve my goal by, obviously, doing
 my part and by keeping my teammates up to date on what I'm doing and any potential difficulties I run into. I will also inquire about
-what my teammates are working on, to get an idea of how the whole project is coming along. 
+what my teammates are working on, to get an idea of how the whole project is coming along.
 
 Another goal of mine is to learn how to use Git effectively. Coming into this project, this wasn't on my mind at all but after
 using it for a bit it has become clear it's something I will have to invest time in. Git is a mandatory part of the project, so
-hopefully my understanding of it will improve as the project goes on. 
+hopefully my understanding of it will improve as the project goes on.
 
-Finally, I'd like to gain experience in working on developing a larger program. In the future most projects I'll be working on will 
+Finally, I'd like to gain experience in working on developing a larger program. In the future most projects I'll be working on will
 most likely consist of many lines of code. This project will be a valuable learning experience in terms of learning how to plan
-such an undertaking. Scrum especially will be helpful with organizing everything. 
+such an undertaking. Scrum especially will be helpful with organizing everything.
 
 ## Lucas van de Geer
 NetID: lvandegeer  
