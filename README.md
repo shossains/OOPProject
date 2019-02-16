@@ -145,14 +145,36 @@ NetID: lvandegeer
 ### Personal Development Plan:  
 **Goal**  
 My learning goal during this projects is to get better at working/programming with a large team. Subsequently, I’d like to get better at communicating with such a team. This is important to me because in the future, I probably will have to work a lot with larger teams as well, which is why learning how to do it well early in my study/career is beneficial. I also think that if I get better at communicating in a large team, I’ll also get better at communicating in general, which is important to me since I’m not really good at that. I think I’ll have accomplished my goal when at the end of the project, we’ll have made a good product together, because for the product to be good, the process also has to be good, which means that we’ll have had to work together and communicate very well.  
-  
+
 **Reality**  
 I am definitely currently working on my goal, since I really want to do my best in this project. So far communications are going okay, since we set up a communications channel through “Whatsapp”. Though it could go better, since I could perhaps speak up some more, especially when I have some ideas that might help.  
-  
+
 **Options**  
 There are not that many options when it comes to achieving my goal. In general I just have to be willing to listen to my teammates and willing to speak up and I also just have to do my job well. Another thing that could work is that I help people out when they’re struggling. I think the using all of these options will be the best way to achieve my goal, since they’re all vital in good teamwork. What’s stopping me from reaching my goal is probably my personality, since I much prefer to work alone, or experience, since I’ve never really worked in a group this large before.  
-  
+
 **Will**  
 To reach my goal I’m going to try to adapt an open and active attitude, which means I’ll listen to my teammate’s ideas and thoughts and it also means that I’m going to try to come forward with my own input. I think the best thing to do is to start doing this from the beginning, so that we’ll have a good foundation communications-wise, which will also lead to better team work. What I can do right now is to just prepare myself for this project as best as I can and maybe come up with some ideas, so I can share them. My teammates can help out by taking on the same attitude as I, so that way we’ll all be able to communicate and work together well.
 
+## Alexandr Shulzycki
+NetID: ashulzycki
 
+![my face](src/alex-face.jpg "Alexander Shulzycki")
+
+### Goal
+- Learn how to develop in a team and gather experience
+  - I have never done this before and I want to get the most out of it
+  - I will succeed if I manage to pass this course
+  
+### Reality
+- I am actively pursuing my goal by practicing using version control with others
+- It is going well so far
+
+### Options
+  - I have the option to put in a lot of work into this project and learn a lot
+  - There is the option to put my skills to the test and see how they work in a collaborative environment
+- Nothing is stopping me so far.
+
+### Will
+- I am going to work until I pass the course
+- This is going to happen in the next few weeks
+- I also need those 5 EC
