@@ -2,7 +2,7 @@
 - [Sami Farahi](#sami-farahi)<br/>
 - [Vanessa Timmer](#vanessa-timmer)<br/>
 - [Lucas van de Geer](#lucas-van-de-geer)<br/>
-- [Alex](#alex-shulzycki)<br/><br/>
+- [Alex Shulzycki](#alex-shulzycki)<br/><br/>
 
 ﻿# CSE1105 Template Repository
 
