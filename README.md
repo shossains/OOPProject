@@ -25,9 +25,9 @@ Run `maven site`
 
 # Shaan Hossain
 ![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
-### Personal Development Plan
 
-The most relevant **EDIT**    I have is that I am very driven to reach my goal.<br/>
+### Personal Development Plan
+My best quality is that I am very driven to reach my goal.<br/>
 If I try to achieve something with coding I will do everything it takes to make it work.<br/>
 This of course can be troublesome because there might be a simpler solution to it.<br/>
 I wouldn't call myself a perfectionist, not at all. I just want to achieve.<br/>
@@ -68,11 +68,11 @@ According to the rubric, good communication may give you a positive grade alread
 
 So that's what I am going to focus on.<br/>
 
-Sami Farahi<br/>
+#Sami Farahi<br/>
 netID: s.farahi@tudelft.nl<br/>
 ![SAMI](https://drive.google.com/uc?id=1dfAEofy5oaEObztlSw17Op1P6nqxO62h)<br/>
 
-Personal Development Plan
+###Personal Development Plan
 Develop a Goal
 -	What are two of your strong points?
 1.	A strong point of myself is that I can work well in a group. I can communicate well with others, even though I don’t know them. This I learned in my early years when I played football, I switched multiple times from clubs, which lead to meeting new team members over and over again. And the only way to play good together is playing as a team together.
@@ -114,14 +114,14 @@ W - Will (Motivation, plan of action)
 1.	By becoming a better programmer, my teammates can maybe help me by letting me know how they think about certain things when they are programming. Or when I have a question help me out.
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
 
-**Vanessa Timmer**
+#Vanessa Timmer
 
 <a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
 
 NetID: v.timmer@student.tudelft.nl
 
 
-**Personal Development Plan:**
+###Personal Development Plan:
 
 During this project, I'd like to improve my group-based communication skills. The communication aspect of group projects
 has always been a weak point of mine, since I am very introverted and thus prefer to work on my own.
@@ -138,7 +138,7 @@ Finally, I'd like to gain experience in working on developing a larger program. 
 most likely consist of many lines of code. This project will be a valuable learning experience in terms of learning how to plan
 such an undertaking. Scrum especially will be helpful with organizing everything.
 
-## Lucas van de Geer
+# Lucas van de Geer
 NetID: lvandegeer  
 ![Picture](https://ibin.co/4X7a0O5oQCHa.jpg)
 
@@ -155,7 +155,7 @@ There are not that many options when it comes to achieving my goal. In general I
 **Will**  
 To reach my goal I’m going to try to adapt an open and active attitude, which means I’ll listen to my teammate’s ideas and thoughts and it also means that I’m going to try to come forward with my own input. I think the best thing to do is to start doing this from the beginning, so that we’ll have a good foundation communications-wise, which will also lead to better team work. What I can do right now is to just prepare myself for this project as best as I can and maybe come up with some ideas, so I can share them. My teammates can help out by taking on the same attitude as I, so that way we’ll all be able to communicate and work together well.
 
-## Alexandr Shulzycki
+# Alexandr Shulzycki
 NetID: ashulzycki
 
 ![my face](src/alex-face.jpg "Alexander Shulzycki")
