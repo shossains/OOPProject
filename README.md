@@ -1,4 +1,8 @@
-[Shaan Hossain](#shaan-hossain)
+-[Shaan Hossain](#shaan-hossain)
+-[Sami Farahi](#sami-farahi)
+-[Vanessa Timmer](#vanessa-timmer)
+-[Lucas van de Geer](#lucas-van-de-geer)
+-[Alex](#alex-shulzycki)
 
 ﻿# CSE1105 Template Repository
 
