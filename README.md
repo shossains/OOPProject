@@ -1,4 +1,4 @@
-# Our team
+﻿# Our team
 - [Shaan Hossain](#shaan-hossain)<br/>
 - [Sami Farahi](#sami-farahi)<br/>
 - [Vanessa Timmer](#vanessa-timmer)<br/>
@@ -79,7 +79,7 @@ So that's what I am going to focus on.<br/>
 
 ## Sami Farahi<br/>
 netID: s.farahi@tudelft.nl<br/>
-![SAMI](https://imgur.com/a/cIi9Ovn)<br/>
+![SAMI](https://imgur.com/a/cIi9Ovn.jpg)<br/>
 
 ### Personal Development Plan
 Develop a Goal
