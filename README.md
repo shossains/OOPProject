@@ -79,7 +79,7 @@ So that's what I am going to focus on.<br/>
 
 ## Sami Farahi<br/>
 netID: s.farahi@tudelft.nl<br/>
-![Sami](https://imgur.com/a/ypZduDf) <br/>
+![Sami](https://imgur.com/a/ypZduDf/to/img.png) <br/>
 
 ### Personal Development Plan
 Develop a Goal
