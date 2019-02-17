@@ -55,8 +55,8 @@ Only after (too) many tries I eventually give up and try to look for an alternat
 * Teamwork<br/>
 Working in a team is something I have done quite often, but it never went smoothly.<br/>
 Biggest bottleneck was communication.<br/>
-Exchanging while after done editing, and sending uploaden duplicate files to server.<br/>
-Now whe are using Git(lab) I hope problem won't occur.<br/>
+Exchanging files after done editing, and sending/uploading duplicate files to server.<br/>
+Now we are using Git(lab) I hope problem won't occur.<br/>
 
 * Dev-Client experience<br/>
 I think this part is very useful for my possible future jobs and projects I will attend to.</br>
@@ -68,7 +68,7 @@ Thus no real statement can be made here.</br>
 
 **O**<br/>
 Working hard is the only option right here.</br>
-Good commucation between the devs and the client is key.</br>
+Good communication between the devs and the client is key.</br>
 
 **W**<br/>
 I have failed 2 courses in Q2, so that's my biggest motivation to pass this course as well as the other courses in Q3.</br>
