@@ -164,6 +164,7 @@ NetID: ashulzycki
 
 ![my face](src/alex-face.jpg "Alexander Shulzycki")
 
+### Personal Development Plan:  
 **G**
 - Learn how to develop in a team and gather experience
   - I have never done this before and I want to get the most out of it
