@@ -91,17 +91,17 @@ netID: s.farahi@tudelft.nl<br/>
 1.	A weaker point of myself is that I am a shy/quiet person. I don’t really speak up when I don’t need to. For example when I am with a group of people and they start to discuss whatever we would do, I won’t be the person who speaks up, and be the first person to say something or come up with something. This is could be a problem in a team, because everyone’s way of thinking is unique and if I don’t say what is on my mind then my team members also don’t know what my thoughts are about something. I don’t think I could make a core quadrant of this, because when I need to speak up, I will eventually do that.
 2.	Another weaker point of myself is that I don't always express my opinion on things even though I personally believe it could have an added effect. This is mainly because I have an introvert personality. I could make a core quadrant of this, because sometimes my opinion could be the good one, and if I don’t tell it, it could lead to misunderstanding.
 
-**G**<br/>
+**G**
 -	What is your learning goal during this course?
 1.	My learning goal is to become a better programmer, not just programming itself, but programming in a team. This is important to me, because in the future I could come up with the same kind of project/task like this where we need to create something in a group of people who I don’t know. I hope I will achieve this goal when we are done with our project and created something where we are proud of.
 2.	Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad.
 
-**R**<br/>
+**R**
 -	Are you actively working on your goal?
 1.	I am actively working on becoming a better programmer. I am trying to program as much as possible. The thing that is going well, is that I finally kind of understand Java and know how to use it. Things that could use improve are that I could improve my codes, I could write a code in a much simpler way or faster way.
 2.	With expressing my opinions I just try to do that every day when I can. Sometimes it goes well, and I realize that my opinion can be helpful. There is still a lot of improvement possible, I could do it way more often, and I should not be afraid to make mistakes/give my opinion even though it is not good.
 
-**O**<br/>
+**O**
 -	What are options you have to achieve your goal?
 1.	Options I have are just keep programming make mistakes and learn from them. Another option is to ask other people how they would program something. And the internet is always useful.
 2.	I don’t really have options to achieve this goal, because it is just something I face mostly every day, and the thing I need to do is just expressing my opinion.
@@ -112,7 +112,7 @@ netID: s.farahi@tudelft.nl<br/>
 -	What is stopping you reaching your goal?
 1.	At the moment it is time what is stopping me to reach my goal, because there are also a lot of other courses which I need to learn at the moment and not just programming.
 
-**W**<br/>
+**W**
 -	What are you going to do to reach your goal?
 1.	I am going to try my best during this course to become a better programmer. Ask things when I don’t know something, look up thing on the internet.
 2.	I will express my opinions whenever I need to, even though it could be wrong, because that is when I learn the most out of it.
@@ -168,20 +168,21 @@ NetID: ashulzycki
 
 ![my face](src/alex-face.jpg "Alexander Shulzycki")
 
-**G**<br/>
+**G**
 - Learn how to develop in a team and gather experience
   - I have never done this before and I want to get the most out of it
   - I will succeed if I manage to pass this course
   
-**R**<br/>
+**R**
 - I am actively pursuing my goal by practicing using version control with others
 - It is going well so far
 
-**O**<br/>  - I have the option to put in a lot of work into this project and learn a lot
+**O**'
+- I have the option to put in a lot of work into this project and learn a lot
   - There is the option to put my skills to the test and see how they work in a collaborative environment
 - Nothing is stopping me so far.
 
-**w**<br/>
+**w**
 - I am going to work until I pass the course
 - This is going to happen in the next few weeks
 - I also need those 5 EC
