@@ -1,4 +1,4 @@
-﻿# Our team
+# Our team
 - [Shaan Hossain](#shaan-hossain)<br/>
 - [Sami Farahi](#sami-farahi)<br/>
 - [Vanessa Timmer](#vanessa-timmer)<br/>
@@ -83,7 +83,6 @@ netID: s.farahi@tudelft.nl<br/>
 
 
 ### Personal Development Plan
-Develop a Goal
 -	What are two of your strong points?
 1.	A strong point of myself is that I can work well in a group. I can communicate well with others, even though I don’t know them. This I learned in my early years when I played football, I switched multiple times from clubs, which lead to meeting new team members over and over again. And the only way to play good together is playing as a team together.
 2.	Another strong point of myself is that I am always willing to help others. Whenever someone has a question about something, or do need my help with something, I am always willing to do my best to help them. This is a good aspect in a team because whenever someone is stuck with something, and I do know how to solve it, I could help that person.
@@ -92,18 +91,17 @@ Develop a Goal
 1.	A weaker point of myself is that I am a shy/quiet person. I don’t really speak up when I don’t need to. For example when I am with a group of people and they start to discuss whatever we would do, I won’t be the person who speaks up, and be the first person to say something or come up with something. This is could be a problem in a team, because everyone’s way of thinking is unique and if I don’t say what is on my mind then my team members also don’t know what my thoughts are about something. I don’t think I could make a core quadrant of this, because when I need to speak up, I will eventually do that.
 2.	Another weaker point of myself is that I don't always express my opinion on things even though I personally believe it could have an added effect. This is mainly because I have an introvert personality. I could make a core quadrant of this, because sometimes my opinion could be the good one, and if I don’t tell it, it could lead to misunderstanding.
 
-Create plan to achieve your goal
-G - Goal
+**G**<br/>
 -	What is your learning goal during this course?
 1.	My learning goal is to become a better programmer, not just programming itself, but programming in a team. This is important to me, because in the future I could come up with the same kind of project/task like this where we need to create something in a group of people who I don’t know. I hope I will achieve this goal when we are done with our project and created something where we are proud of.
 2.	Another learning goal to try to express my opinions in the group whenever it is good or bad, because that would be the only way to learn from it. This is important to me because, this is something I have been struggling a while on, and it would be nice when I eventually will just express my opinions without being afraid whether it is good or bad.
 
-R - Reality (Your current situation)
+**R**<br/>
 -	Are you actively working on your goal?
 1.	I am actively working on becoming a better programmer. I am trying to program as much as possible. The thing that is going well, is that I finally kind of understand Java and know how to use it. Things that could use improve are that I could improve my codes, I could write a code in a much simpler way or faster way.
 2.	With expressing my opinions I just try to do that every day when I can. Sometimes it goes well, and I realize that my opinion can be helpful. There is still a lot of improvement possible, I could do it way more often, and I should not be afraid to make mistakes/give my opinion even though it is not good.
 
-O - Options (Look at possible options)
+**O**<br/>
 -	What are options you have to achieve your goal?
 1.	Options I have are just keep programming make mistakes and learn from them. Another option is to ask other people how they would program something. And the internet is always useful.
 2.	I don’t really have options to achieve this goal, because it is just something I face mostly every day, and the thing I need to do is just expressing my opinion.
@@ -114,7 +112,7 @@ O - Options (Look at possible options)
 -	What is stopping you reaching your goal?
 1.	At the moment it is time what is stopping me to reach my goal, because there are also a lot of other courses which I need to learn at the moment and not just programming.
 
-W - Will (Motivation, plan of action)
+**W**<br/>
 -	What are you going to do to reach your goal?
 1.	I am going to try my best during this course to become a better programmer. Ask things when I don’t know something, look up thing on the internet.
 2.	I will express my opinions whenever I need to, even though it could be wrong, because that is when I learn the most out of it.
@@ -153,16 +151,16 @@ NetID: lvandegeer
 ![Picture](https://ibin.co/4X7a0O5oQCHa.jpg)
 
 ### Personal Development Plan:  
-**Goal**  
+**G**  
 My learning goal during this projects is to get better at working/programming with a large team. Subsequently, I’d like to get better at communicating with such a team. This is important to me because in the future, I probably will have to work a lot with larger teams as well, which is why learning how to do it well early in my study/career is beneficial. I also think that if I get better at communicating in a large team, I’ll also get better at communicating in general, which is important to me since I’m not really good at that. I think I’ll have accomplished my goal when at the end of the project, we’ll have made a good product together, because for the product to be good, the process also has to be good, which means that we’ll have had to work together and communicate very well.  
 
-**Reality**  
+**R**  
 I am definitely currently working on my goal, since I really want to do my best in this project. So far communications are going okay, since we set up a communications channel through “Whatsapp”. Though it could go better, since I could perhaps speak up some more, especially when I have some ideas that might help.  
 
-**Options**  
+**O**  
 There are not that many options when it comes to achieving my goal. In general I just have to be willing to listen to my teammates and willing to speak up and I also just have to do my job well. Another thing that could work is that I help people out when they’re struggling. I think the using all of these options will be the best way to achieve my goal, since they’re all vital in good teamwork. What’s stopping me from reaching my goal is probably my personality, since I much prefer to work alone, or experience, since I’ve never really worked in a group this large before.  
 
-**Will**  
+**W**  
 To reach my goal I’m going to try to adapt an open and active attitude, which means I’ll listen to my teammate’s ideas and thoughts and it also means that I’m going to try to come forward with my own input. I think the best thing to do is to start doing this from the beginning, so that we’ll have a good foundation communications-wise, which will also lead to better team work. What I can do right now is to just prepare myself for this project as best as I can and maybe come up with some ideas, so I can share them. My teammates can help out by taking on the same attitude as I, so that way we’ll all be able to communicate and work together well.
 
 ## Alexandr Shulzycki
@@ -170,21 +168,20 @@ NetID: ashulzycki
 
 ![my face](src/alex-face.jpg "Alexander Shulzycki")
 
-### Goal
+**G**<br/>
 - Learn how to develop in a team and gather experience
   - I have never done this before and I want to get the most out of it
   - I will succeed if I manage to pass this course
   
-### Reality
+**R**<br/>
 - I am actively pursuing my goal by practicing using version control with others
 - It is going well so far
 
-### Options
-  - I have the option to put in a lot of work into this project and learn a lot
+**O**<br/>  - I have the option to put in a lot of work into this project and learn a lot
   - There is the option to put my skills to the test and see how they work in a collaborative environment
 - Nothing is stopping me so far.
 
-### Will
+**w**<br/>
 - I am going to work until I pass the course
 - This is going to happen in the next few weeks
 - I also need those 5 EC
