@@ -5,7 +5,7 @@
 - [Lucas van de Geer](#lucas-van-de-geer)<br/>
 - [Alex Shulzycki](#alex-shulzycki)<br/><br/>
 
-﻿# CSE1105 Template Repository
+## CSE1105 Template Repository
 
 This a template repository to help you get started on making the best project possible!
 
@@ -31,9 +31,8 @@ Run `maven site`
 
 
 ## Shaan Hossain
-![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
 NetID: shossain
-
+![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
 
 ### Personal Development Plan
 My best quality is that I am very driven to reach my goal.<br/>
@@ -78,7 +77,7 @@ According to the rubric, good communication may give you a positive grade alread
 So that's what I am going to focus on.<br/>
 
 ## Sami Farahi<br/>
-netID: s.farahi@tudelft.nl<br/>
+NetID: s.farahi@tudelft.nl<br/>
 ![Sami](https://i.gyazo.com/4d54a54b5afb1235d52ec3b2ed9bcdc0.png)<br/>
 
 
@@ -123,11 +122,8 @@ netID: s.farahi@tudelft.nl<br/>
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
 
 ## Vanessa Timmer
-
-<a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
-
 NetID: v.timmer@student.tudelft.nl
-
+<a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
 
 ### Personal Development Plan:
 
@@ -182,7 +178,7 @@ NetID: ashulzycki
   - There is the option to put my skills to the test and see how they work in a collaborative environment
 - Nothing is stopping me so far.
 
-**w**
+**W**
 - I am going to work until I pass the course
 - This is going to happen in the next few weeks
 - I also need those 5 EC
