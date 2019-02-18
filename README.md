@@ -77,7 +77,7 @@ According to the rubric, good communication may give you a positive grade alread
 So that's what I am going to focus on.<br/>
 
 ## Sami Farahi<br/>
-NetID: s.farahi@tudelft.nl<br/>
+NetID: sfarahi<br/>
 ![Sami](https://i.gyazo.com/4d54a54b5afb1235d52ec3b2ed9bcdc0.png)<br/>
 
 
@@ -122,7 +122,7 @@ NetID: s.farahi@tudelft.nl<br/>
 2.	My teammates could help me achieve expressing my opinion more, by willing to listen to my opinion even though it is bad or good. So I can also know that I don’t have to be afraid to just express my opinion.
 
 ## Vanessa Timmer
-NetID: v.timmer@student.tudelft.nl
+NetID: v.timmer@student.tudelft.nl<br/>
 <a href="https://imgur.com/pr9o1rL"><img src="https://i.imgur.com/pr9o1rLm.jpg" title="source: imgur.com" /></a>
 
 ### Personal Development Plan:
