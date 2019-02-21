@@ -19,29 +19,29 @@ public class ServerThread implements Runnable {
 
     @Override
     public void run() {
-            System.out.println("Server starting..");
-            alive = true;
+        System.out.println("Server starting..");
+        alive = true;
 
-            try {
-                ss = new ServerSocket(port);
-                while (alive) {
-                    try {
-                        System.out.println("Server active on "+port+" , waiting for connections.");
-                        Socket clientSocket = ss.accept();
-                        Thread serverInstance = new Thread( new ServerInstance(clientSocket));
-                        serverInstance.start();
-                    } catch (IOException e) {
-                        //catches exception, determines whether
-                        //its for normal reasons.
-                        e.printStackTrace();
-                        if (!alive) {
-                            System.out.println("Server has been stopped");
-                        }
+        try {
+            ss = new ServerSocket(port);
+            while (alive) {
+                try {
+                    System.out.println("Server active on " + port + " , waiting for connections.");
+                    Socket clientSocket = ss.accept();
+                    Thread serverInstance = new Thread(new ServerInstance(clientSocket));
+                    serverInstance.start();
+                } catch (IOException e) {
+                    //catches exception, determines whether
+                    //its for normal reasons.
+                    e.printStackTrace();
+                    if (!alive) {
+                        System.out.println("Server has been stopped");
                     }
-
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
