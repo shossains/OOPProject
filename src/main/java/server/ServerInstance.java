@@ -8,7 +8,7 @@ import java.net.Socket;
  */
 public class ServerInstance implements Runnable {
     private Socket clientSocket;
-    private OutputStreamWriter writer;
+    private PrintWriter writer;
 
     public ServerInstance(Socket socket) {
         clientSocket = socket;
@@ -22,7 +22,7 @@ public class ServerInstance implements Runnable {
             // set up the streams
             InputStream inputStream = clientSocket.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-            writer = new OutputStreamWriter(clientSocket.getOutputStream());
+            writer = new PrintWriter(clientSocket.getOutputStream());
 
             //call the function to handle the data
             read(in);
