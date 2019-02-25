@@ -49,7 +49,10 @@ public class ServerInstance implements Runnable {
         System.out.println(in.readLine());
 
         //respond
-        writer.write("Hello");
+        writer.println("HTTP/1.1 200 OK");
+        writer.println("Content-length: 12");
+        writer.println("");
+        writer.println("Hello World!");
         writer.flush();
     }
 }
