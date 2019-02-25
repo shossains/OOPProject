@@ -55,4 +55,7 @@ public class ServerInstance implements Runnable {
         writer.println("Hello World!");
         writer.flush();
     }
+    public boolean isTrue() {
+        return true;
+    }
 }
