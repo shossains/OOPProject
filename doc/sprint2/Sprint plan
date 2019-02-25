@@ -1,6 +1,6 @@
 | Name | Task |
 | --- | --- |
-| Shaan | •	Fixing the issue with connecting JavaFX to our project in intelliJ
+| Shaan | •	Fixing the issue with connecting JavaFX to our project in intelliJ |
 |         |  •	Trying to connect the database (SQL) to server/client |
 | Alex | •	Make server instances more functional and future-proof |
 |       |  •	Add HTTP protocol handling to the socket server/client |
