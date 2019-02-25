@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Query extends Adapter {
 
     public void insertClient(int id, String first_name,
-                             String last_name, String email, int phone, String password) {
+                             String last_name, String email, String phone, String password) {
         System.out.println("INSERT " + id + " $" + first_name + " $"
                 + last_name + " $" + email + " $" + phone + " $" + password);
         try {
@@ -29,7 +29,7 @@ public class Query extends Adapter {
             st.setString(2, first_name);
             st.setString(3, last_name);
             st.setString(4, email);
-            st.setInt(5, phone);
+            st.setString(5, phone);
             st.setString(6, password);
             st.executeUpdate();
             st.close();
