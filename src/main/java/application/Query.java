@@ -6,16 +6,17 @@ import java.sql.SQLException;
 
 public class Query extends Adapter {
 
-    public void insertClient(int id, String first_name,
+    public void insertClient(String first_name,
                              String last_name, String email, String phone, String password) {
-        System.out.println("INSERT " + id + " $" + first_name + " $"
+        String newID = newId();
+        System.out.println("INSERT " + newID + " $" + first_name + " $"
                 + last_name + " $" + email + " $" + phone + " $" + password);
         try {
             PreparedStatement lt = conn.prepareStatement(
                     "INSERT INTO points "
                             + "(id, points) "
                             + "VALUES(?,?)");
-            lt.setInt(1,id);
+            lt.setString(1, newID);
             lt.setInt(2,0);
             lt.executeUpdate();
             lt.close();
@@ -25,7 +26,7 @@ public class Query extends Adapter {
                             + "(id, first_name, last_name, email, phone, password) "
                             + "VALUES(?,?,?,?,?,?)");
 
-            st.setInt(1, id);
+            st.setString(1, newID);
             st.setString(2, first_name);
             st.setString(3, last_name);
             st.setString(4, email);
@@ -53,24 +54,36 @@ public class Query extends Adapter {
         }
     }
 
-    public String select(String query){
-        System.out.println(query);
+    public String selectId(String id){
+        System.out.println("SELECT id FROM client WHERE id = '" + id + "'");
         try {
             PreparedStatement st = conn.prepareStatement(
-                    query);
+                    "SELECT id FROM client WHERE id = '" + id + "'");
 
             //System.out.println("SQL = " + st.toString());
             ResultSet rs = st.executeQuery();
             while (rs.next()){
                 String res = rs.getString(1);
                 System.out.println(res);
+
+                if(res.equals(id)) {
+                    newId();
+                }
             }
+
             rs.close();
             st.close();
-            return "\nDone!";
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Nothing found!";
+        return "/nDone";
+    }
+
+    public String newId() {
+        int random = (int)(Math.random() * 999 + 1);
+        String check = random + "";
+        selectId(check);
+
+        return random + "";
     }
 }
