@@ -14,7 +14,6 @@ public class Controller {
     public Label status;
 
     public void button(ActionEvent actionEvent) {
-
         Query db = new Query();
         db.connect();
 
