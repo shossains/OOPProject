@@ -1,0 +1,13 @@
+<h1>Sprint plan</h1>
+
+| Name | Task |
+| --- | --- |
+| Shaan | Fixing the issue with connecting JavaFX to our project in intelliJ |
+|         |  Trying to connect the database (SQL) to server/client |
+| Alex | Make server instances more functional and future-proof |
+|       |  Add HTTP protocol handling to the socket server/client |
+| Lucas | Improving the logic of the client, with regard to the feature ‘Eating a vegetarian meal’|
+| Vanessa | Improving the GUI |
+|        |  Make some sketches of how it will look like (Application based/Android) |
+| Sami | Do some more research the API, try to implement one. |
+|      | Sprint review |
