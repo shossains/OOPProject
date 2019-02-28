@@ -21,8 +21,7 @@ public class Controller {
         Query db = new Query();
         db.connect();
 
-        db.insertClient(firstName.getText(),lastName.getText(),
-                email.getText(),phone.getText(), pass.getText());
+        db.insertClient(firstName.getText(),lastName.getText(),email.getText(),phone.getText(), pass.getText());
         Main.statusText = "Registration Success!";
         status.setText(Main.statusText);
 
