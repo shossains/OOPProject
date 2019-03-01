@@ -12,8 +12,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <PasswordField fx:id="pass" layoutX="186.0" layoutY="263.0" />
-      <TextField fx:id="first_name" layoutX="186.0" layoutY="48.0" styleClass="sdgh" />
-      <TextField fx:id="last_name" layoutX="186.0" layoutY="99.0" />
+      <TextField fx:id="firstName" layoutX="186.0" layoutY="48.0"/>
+      <TextField fx:id="lastName" layoutX="186.0" layoutY="99.0" />
       <TextField fx:id="email" layoutX="186.0" layoutY="155.0" />
       <TextField fx:id="phone" layoutX="186.0" layoutY="209.0" />
       <Button layoutX="196.0" layoutY="328.0" mnemonicParsing="false" onAction="#button" prefHeight="48.0" prefWidth="129.0" text="Register">

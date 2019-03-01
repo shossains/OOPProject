@@ -6,16 +6,18 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 The #GoGreen project is a java application that stimulates its users to go greener. By asking the user questions about their lifestyle, the application is able to determine how much CO2 they emit. By comparing the user's score to others', as well as rewarding the user with achievements, the application stimulates the user to become "greener", which brings us closer to our end goal, namely reducing our carbon footprint.  
 
 ## Technologies used
-- Java  
-- Java libraries  
-- Heroku  
+- Java
+- PostgreSQL
+- Java libraries
+    - JavaFX
+    - PostgreSQL
 
 ## Our team
 - [Shaan Hossain](#shaan-hossain)<br/>
 - [Sami Farahi](#sami-farahi)<br/>
 - [Vanessa Timmer](#vanessa-timmer)<br/>
 - [Lucas van de Geer](#lucas-van-de-geer)<br/>
-- [Alex Shulzycki](#alex-shulzycki)<br/><br/>
+- [Alex Shulzycki](#alexandr-shulzycki)<br/><br/>
 
 
 ## Shaan Hossain
@@ -50,7 +52,7 @@ I think this part is very useful for my possible future jobs and projects I will
 The interaction and communication between the client and the developer is a crucial part of the project which I would love to get more experience on.</br>
 
 **R**<br/>
-Well since we just started on this project, no progress has really occured.</br>
+Well since we just started on this project, no progress has really occurred.</br>
 Thus no real statement can be made here.</br>
 
 **O**<br/>
