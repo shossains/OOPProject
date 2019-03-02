@@ -43,11 +43,14 @@ public class ClientSocket {
      */
     public void handshake() throws IOException {
         System.out.println("Sending handshake");
-        out.println("Greetings");
+        out.println("GET / HTTP/1.1");
         out.println("This is the elaborate handshake\n");
+        out.println("");
+        out.println("");
         out.flush();
 
-        System.out.print(in.readLine() + ", the server hath responded");
+
+        System.out.println("Server response: "+in.readLine());
 
         //flush and exit
         out.flush();
