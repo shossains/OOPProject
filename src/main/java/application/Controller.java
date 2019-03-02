@@ -35,6 +35,10 @@ public class Controller {
         db.disconnect();
     }
     
+    /**
+     * Takes you to the Vegetarian Meal Scene after clicking the Register button.
+     * @param vmevent: Clicking the Register button
+     * /
      public void toVegMeal(ActionEvent vmevent) throws IOException {
         Parent vmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
         Scene vmScene = new Scene(vmParent);
