@@ -1,28 +1,42 @@
 package server;
 
 
+import client.ClientNetworking;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import static org.junit.Assert.assertTrue;
 
 public class ServerTest {
 
     private static Server server;
     private static final String serverpassword = "password";
+    private static ClientNetworking cn;
 
 
     @BeforeClass
     public static void init() {
+        //setup server
         server = new Server(3000, serverpassword.toCharArray());
+
+        //setup client
+        try {
+            cn = new ClientNetworking(new URL("https://localhost:3000"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Test
-    public void properRequest(){
-
+    public void testResponse(){
+        Assert.assertEquals("yeeteroli", cn.sendRequest("yeeteroli"));
     }
 
 
@@ -35,7 +49,7 @@ public class ServerTest {
     public void after(){
         try {
             //giving thread sleep time so i can manually test it using external tools
-            Thread.sleep(5000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

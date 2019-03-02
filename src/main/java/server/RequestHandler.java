@@ -38,17 +38,10 @@ public class RequestHandler implements HttpHandler {
         System.out.println("Received string: "+requestString);
 
         //building request object with Gson
-/*
+        //Request request = buildGson(requestString);
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
-
-        request = gson.fromJson(requestString, Request.class);
-        System.out.println(request.getRequest());
-*/
-
-        //response
-        String response = "Yeet";
+        //response, for now just replies with what it got
+        String response = requestString;
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
@@ -56,6 +49,16 @@ public class RequestHandler implements HttpHandler {
     }
 
     public Request getRequest() {
+        return request;
+    }
+
+    public Request buildGson(String string){
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+
+        request = gson.fromJson(string, Request.class);
+        System.out.println(request.getRequest());
         return request;
     }
 }
