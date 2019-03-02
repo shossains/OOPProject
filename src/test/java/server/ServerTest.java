@@ -1,12 +1,11 @@
 package server;
 
-import client.ClientSocket;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.Socket;
@@ -17,24 +16,13 @@ import static org.junit.Assert.assertTrue;
 public class ServerTest {
 
     private static Server server;
+    private static final String serverpassword = "password";
 
 
     @BeforeClass
     public static void init() {
-        System.out.println("Hello World");
-        server = new Server(3000);
-        /*try {
-            ClientSocket client = new ClientSocket("127.0.0.1", 3000);
-            Thread.sleep(200);
-            client.handshake();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-*/
+        server = new Server(3000, serverpassword.toCharArray());
+        
     }
 
     @Test
@@ -44,13 +32,14 @@ public class ServerTest {
 
 
     @Test
-    public void testJazz(){
-        assertEquals("1", "1");
+    public void keyStoreExists(){
+        assertTrue(new File("testkey.jks").exists());
     }
 
     @After
     public void after(){
         try {
+            //giving thread sleep time so i can manually test it using external tools
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
