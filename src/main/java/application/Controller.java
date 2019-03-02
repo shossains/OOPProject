@@ -1,9 +1,16 @@
 package application;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Controller {
     public TextField firstName;
@@ -26,5 +33,15 @@ public class Controller {
         status.setText(Main.statusText);
 
         db.disconnect();
+    }
+    
+     public void toVegMeal(ActionEvent vmevent) throws IOException {
+        Parent vmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
+        Scene vmScene = new Scene(vmParent);
+
+        Stage window = (Stage) ((Node)vmevent.getSource()).getScene().getWindow();
+        window.setScene(vmScene);
+        window.setResizable(false);
+        window.show();
     }
 }
