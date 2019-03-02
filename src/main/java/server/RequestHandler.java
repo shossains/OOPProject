@@ -32,6 +32,7 @@ public class RequestHandler implements HttpHandler {
         //grabbing string format of result, using a stupid scanner trick.
         Scanner s = new Scanner(is).useDelimiter("\\A");
         String requestString = s.hasNext() ? s.next() : "";
+
         //String requestString = new BufferedReader(new InputStreamReader(is)).readLine();
 
         System.out.println("Received string: "+requestString);

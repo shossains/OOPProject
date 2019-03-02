@@ -6,11 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.Socket;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ServerTest {
@@ -22,7 +17,7 @@ public class ServerTest {
     @BeforeClass
     public static void init() {
         server = new Server(3000, serverpassword.toCharArray());
-        
+
     }
 
     @Test
