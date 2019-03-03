@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    public static String statusText;
     public Stage primaryStage;
 
     @Override
@@ -19,7 +18,8 @@ public class Main extends Application {
             primaryStage = x;
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
             Scene scene = new Scene(root,400,400);
-            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+//            scene.getStylesheets().add("/application.css");
+            x.setTitle("#GoGreen");
             x.setScene(scene);
             x.show();
         } catch (Exception e) {

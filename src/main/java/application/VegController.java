@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,15 +26,19 @@ public class VegController {
 //
 //        db.disconnect();
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
+        GridPane grid = new GridPane();
+        Label test = new Label("testerdietets");
+        grid.add(test,0,0) ;
 
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(tableViewScene);
-        window.show();
+//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
+//        Scene tableViewScene = new Scene(tableViewParent);
+//
+//        //This line gets the Stage information
+//        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+//
+//        window.setScene(tableViewScene);
+//        window.show();
 
-        System.out.println("test");
     }
 }
