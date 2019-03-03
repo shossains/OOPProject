@@ -6,16 +6,16 @@ package server;
 public class Request {
 
 
-    private String request;
+    private String type;
 
     public Request(){}
 
 
-    public String getRequest() {
-        return request;
+    public String getType() {
+        return type;
     }
 
-    public void setRequest(String request) {
-        this.request = request;
+    public void setType(String type) {
+        this.type = type;
     }
 }
