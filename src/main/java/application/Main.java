@@ -10,18 +10,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    public static String statusText;
     public Stage primaryStage;
 
     @Override
-    public void start(Stage x) {
+    public void start(Stage stage) {
         try {
-            primaryStage = x;
+            primaryStage = stage;
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
             Scene scene = new Scene(root,400,400);
-//            scene.getStylesheets().add("/application.css");
-            x.setTitle("#GoGreen");
-            x.setScene(scene);
-            x.show();
+            stage.setTitle("#GoGreen");
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class Main extends Application {
 
     /**
      * Takes you to the Vegetarian Meal Scene after clicking the Register button.
-     * @param vmevent: Clicking the Register button
+     * @param vmevent Clicking the Register button
      */
     public void toVegMeal(ActionEvent vmevent) throws IOException {
         Parent vmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));

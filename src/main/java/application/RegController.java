@@ -25,11 +25,12 @@ public class RegController {
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException {
+        if (isInt(phone.getText())) {
+
 //        Query db = new Query();
 //        db.connect();
 //
-//        db.insertClient(firstName.getText(),lastName.getText(),
-//                email.getText(),phone.getText(), pass.getText());
+//        db.insertClient(firstName.getText(), lastName.getText(), email.getText(), phone.getText(), pass.getText());
 //        Main.statusText = "Registration Success!";
 //        status.setText(Main.statusText);
 //
@@ -39,9 +40,24 @@ public class RegController {
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
+    }
+        else {
+            System.out.println("Please fix errors above");
+        }
+    }
+
+    public boolean isInt(String input){
+        try {
+            int check = Integer.parseInt(input);
+            return true;
+        }
+        catch(NumberFormatException e) {
+            System.out.println(input + " is not a number");
+            return false;
+        }
     }
 }
