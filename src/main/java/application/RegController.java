@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+public class RegController {
     public TextField firstName;
     public TextField lastName;
     public TextField email;
