@@ -18,7 +18,7 @@ public class Main extends Application {
         try {
             primaryStage = stage;
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
-            Scene scene = new Scene(root,400,400);
+            Scene scene = new Scene(root,720,480);
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
             stage.show();

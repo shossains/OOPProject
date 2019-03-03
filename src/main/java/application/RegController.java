@@ -19,45 +19,80 @@ public class RegController {
     public TextField phone;
     public PasswordField pass;
     public Label status;
+    public Label invalidPhone;
 
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException {
-        if (isInt(phone.getText())) {
+        if (proceed() == 1) {
+            Query db = new Query();
+            db.connect();
 
-//        Query db = new Query();
-//        db.connect();
-//
-//        db.insertClient(firstName.getText(), lastName.getText(), email.getText(), phone.getText(), pass.getText());
-//        Main.statusText = "Registration Success!";
-//        status.setText(Main.statusText);
-//
-//        db.disconnect();
+            db.insertClient(firstName.getText(), lastName.getText(),
+                    email.getText(), phone.getText(), pass.getText());
+            Main.statusText = "Registration Success!";
+            status.setText(Main.statusText);
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
+            db.disconnect();
 
-        //This line gets the Stage information
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Parent tableViewParent = FXMLLoader.load(
+                    getClass().getResource("/fxml/VegMealV1.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
 
-        window.setScene(tableViewScene);
-        window.show();
-    }
+            //This line gets the Stage information
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(tableViewScene);
+            window.show();
+        }
+
         else {
-            System.out.println("Please fix errors above");
+            status.setText(Main.statusText);
+            status.setStyle("-fx-text-fill: #a12020;");
         }
     }
 
-    public boolean isInt(String input){
+    /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public boolean isInt(String input) {
         try {
-            int check = Integer.parseInt(input);
+            Integer.parseInt(input);
             return true;
         }
-        catch(NumberFormatException e) {
-            System.out.println(input + " is not a number");
+        catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    /**
+     * Check all input validation at once and check if account already exist.
+     * @return return -1 is one of the constraints are not met, else return 1
+     */
+    public int proceed() {
+        Query db = new Query();
+        db.connect();
+
+        if (db.checkExistence(email.getText())) {
+            Main.statusText = "Account already exists";
+            db.disconnect();
+            return -1;
+        }
+
+        if (!isInt(phone.getText())) {
+            db.disconnect();
+            invalidPhone.setText("Invalid phone number!");
+            Main.statusText = "Registration failed!";
+            return -1;
+        }
+
+        else {
+            db.disconnect();
+            return 1;
         }
     }
 }

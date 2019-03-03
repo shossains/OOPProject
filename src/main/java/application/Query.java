@@ -77,7 +77,6 @@ public class Query extends Adapter {
             PreparedStatement st = conn.prepareStatement(
                     "SELECT id FROM client WHERE id = '" + id + "'");
 
-            //System.out.println("SQL = " + st.toString());
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String res = rs.getString(1);
@@ -105,5 +104,29 @@ public class Query extends Adapter {
         selectId(check);
 
         return random + "";
+    }
+
+    public boolean checkExistence(String email) {
+        System.out.println("SELECT email FROM client WHERE email = '" + email + "'");
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "SELECT id FROM client WHERE id = '" + email + "'");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String res = rs.getString(1);
+                System.out.println(res);
+
+                if (res.equals(email)) {
+                    return true;
+                }
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
