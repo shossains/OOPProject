@@ -19,37 +19,37 @@ public class RegController {
     public TextField phone;
     public PasswordField pass;
     public Label status;
+    public Label invalidFirstName;
+    public Label invalidLastName;
+    public Label invalidEmail;
     public Label invalidPhone;
+    public Label invalidPass;
+    public String statusText;
 
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException {
-        if (proceed() == 1) {
-            Query db = new Query();
-            db.connect();
-
-            db.insertClient(firstName.getText(), lastName.getText(),
-                    email.getText(), phone.getText(), pass.getText());
-            Main.statusText = "Registration Success!";
-            status.setText(Main.statusText);
-
-            db.disconnect();
-
+        if (proceed()) {
+//            Query db = new Query();
+//            db.connect();
+//            db.insertClient(firstName.getText(), lastName.getText(),
+//                    email.getText(), phone.getText(), pass.getText());
+//            Main.statusText = "Registration Success!";
+//            status.setText(Main.statusText);
+//            db.disconnect();
+//
             Parent tableViewParent = FXMLLoader.load(
                     getClass().getResource("/fxml/VegMealV1.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
-
-            //This line gets the Stage information
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
             window.setScene(tableViewScene);
             window.show();
         }
 
         else {
-            status.setText(Main.statusText);
+            status.setText(statusText);
             status.setStyle("-fx-text-fill: #a12020;");
         }
     }
@@ -69,30 +69,97 @@ public class RegController {
         }
     }
 
-    /**
-     * Check all input validation at once and check if account already exist.
-     * @return return -1 is one of the constraints are not met, else return 1
-     */
-    public int proceed() {
+    public boolean proceed() {
+        if (!emptyFirstName() && !emptyLastName() && !emptyEmail() &&
+                !invalidPhone() && !checkAccount() && !emptyPass()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public boolean emptyFirstName() {
+        if (firstName.getText().equals("")) {
+            invalidFirstName.setText("First name can't be empty");
+            return true;
+        }
+
+        else {
+            invalidFirstName.setText("");
+            return false;
+        }
+    }
+
+    public boolean emptyLastName() {
+        if (lastName.getText().equals("")) {
+            invalidLastName.setText("Last name can't be empty");
+            return true;
+        }
+
+        else {
+            invalidLastName.setText("");
+            return false;
+        }
+    }
+
+    public boolean emptyEmail() {
+        if (email.getText().equals("")) {
+            invalidEmail.setText("Email can't be empty");
+            return true;
+        }
+
+        else {
+            invalidEmail.setText("");
+            return false;
+        }
+    }
+
+    public boolean invalidPhone(){
+        if (phone.getText().equals("")) {
+            invalidPhone.setText("Phone can't be empty");
+            return true;
+
+        }
+
+        if (!isInt(phone.getText())) {
+            invalidPhone.setText("Invalid phone number!");
+            return true;
+        }
+
+        else {
+            invalidPhone.setText("");
+            return false;
+        }
+    }
+
+    public boolean emptyPass(){
+        if (pass.getText().equals("")) {
+            invalidPass.setText("Email can't be empty");
+            return true;
+        }
+
+        else {
+            invalidPass.setText("");
+            return false;
+        }
+    }
+
+    public boolean checkAccount() {
         Query db = new Query();
         db.connect();
 
         if (db.checkExistence(email.getText())) {
-            Main.statusText = "Account already exists";
+            statusText = "Account already exists";
             db.disconnect();
-            return -1;
-        }
-
-        if (!isInt(phone.getText())) {
-            db.disconnect();
-            invalidPhone.setText("Invalid phone number!");
-            Main.statusText = "Registration failed!";
-            return -1;
+            return true;
         }
 
         else {
+            status.setText("");
             db.disconnect();
-            return 1;
+            return false;
         }
     }
 }

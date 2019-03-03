@@ -23,6 +23,9 @@
          <effect>
             <Blend mode="MULTIPLY" />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label layoutX="128.0" layoutY="80.0" text="First Name:" />
       <Label layoutX="128.0" layoutY="241.0" text="Phone Number:" />
@@ -31,8 +34,12 @@
       <Label layoutX="128.0" layoutY="295.0" text="Password:" />
       <Label fx:id="status" layoutX="264.0" layoutY="324.0" prefHeight="17.0" prefWidth="118.0" textAlignment="CENTER" textFill="#1fa125" />
       <Label fx:id="invalidPhone" layoutX="400.0" layoutY="241.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
+      <Label fx:id="invalidFirstName" layoutX="400.0" layoutY="80.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
+      <Label fx:id="invalidLastName" layoutX="400.0" layoutY="131.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
+      <Label fx:id="invalidEmail" layoutX="400.0" layoutY="187.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
+      <Label fx:id="invalidPass" layoutX="400.0" layoutY="295.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
    </children>
    <cursor>
-      <Cursor fx:constant="HAND" />
+      <Cursor fx:constant="DEFAULT" />
    </cursor>
 </AnchorPane>

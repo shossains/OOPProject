@@ -110,7 +110,7 @@ public class Query extends Adapter {
         System.out.println("SELECT email FROM client WHERE email = '" + email + "'");
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "SELECT id FROM client WHERE id = '" + email + "'");
+                    "SELECT email FROM client WHERE email = '" + email + "'");
 
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
