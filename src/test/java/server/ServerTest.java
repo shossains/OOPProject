@@ -1,44 +1,58 @@
 package server;
 
-import client.ClientSocket;
 
-import org.junit.Before;
+import client.ClientNetworking;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.io.File;
 import java.net.MalformedURLException;
-import java.net.Socket;
+import java.net.URL;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ServerTest {
-//    @Before
-//    public static void main() {
-//        System.out.println("Hello World");
-//        ServerThread serverEntry = new ServerThread(3000);
-//        Thread sThread = new Thread(serverEntry);
-//        sThread.start();
-//        try {
-//            ClientSocket client = new ClientSocket("127.0.0.1", 3000);
-//            Thread.sleep(200);
-//            client.handshake();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-    @Test
-    public void test() {
-        assertTrue(new ServerInstance(new Socket()).isTrue());
+
+    private static Server server;
+    private static final String serverpassword = "password";
+    private static ClientNetworking cn;
+
+
+    @BeforeClass
+    public static void init() {
+        //setup server
+        server = new Server(3000, serverpassword.toCharArray());
+
+        //setup client
+        try {
+            cn = new ClientNetworking(new URL("https://localhost:3000"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
     }
+
     @Test
-    public void testJazz(){
-        assertEquals("1", "1");
+    public void testResponse(){
+        Assert.assertEquals("TestRequest", cn.sendRequest("{'type':'TestRequest'}"));
+    }
+
+
+    @Test
+    public void keyStoreExists(){
+        assertTrue(new File("testkey.jks").exists());
+    }
+
+    @After
+    public void after(){
+        try {
+            //giving thread sleep time so i can manually test it using external tools
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
