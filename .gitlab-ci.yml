@@ -1,9 +1,5 @@
 image: maven:3-jdk-10
 
-variables:
-  ## 'clean' is necessary for JaCoCo aggregate report
-  ## --batch-mode will avoid asking input in the terminal
-  MAVEN_CFG: "clean --batch-mode"
 
 ## The lifecycle of the the pipeline
 stages:
@@ -12,6 +8,10 @@ stages:
   - coverage
   - checkstyle
 
+variables:
+  ## 'clean' is necessary for JaCoCo aggregate report
+  ## --batch-mode will avoid asking input in the terminal
+  MAVEN_CFG: "clean --batch-mode"
 
 ## This stage will compile the source code in the project
 ## If the project doesn't compile then the stage fails
