@@ -9,13 +9,18 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
 
-import javax.net.ssl.*;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class ClientNetworking {
     private URL serverURL;
     private SSLContext sslContext;
 
-    public ClientNetworking(URL url){
+    public ClientNetworking(URL url) {
         serverURL = url;
 
         //let the connection trust all certificates so we can actually work with our server
@@ -23,7 +28,7 @@ public class ClientNetworking {
         trustfulHostnames();
     }
 
-    public String sendRequest(String request){
+    public String sendRequest(String request) {
         try {
             URLConnection URLcon = serverURL.openConnection();
             HttpsURLConnection httpsConn = (HttpsURLConnection) URLcon;
@@ -49,7 +54,7 @@ public class ClientNetworking {
         }
     }
 
-    private void trustfulContext(){
+    private void trustfulContext() {
         TrustManager[] trustAllCerts = new TrustManager[]{
                 new X509TrustManager() {
                     public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -78,7 +83,7 @@ public class ClientNetworking {
 
     }
 
-    private void trustfulHostnames(){
+    private void trustfulHostnames() {
         HostnameVerifier trustAllHostnames = new HostnameVerifier() {
             @Override
             public boolean verify(String hostname, SSLSession session) {

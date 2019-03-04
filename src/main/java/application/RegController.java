@@ -64,6 +64,7 @@ public class RegController {
             Integer.parseInt(input);
             return true;
         }
+
         catch (NumberFormatException e) {
             return false;
         }
@@ -79,9 +80,8 @@ public class RegController {
         boolean email = emptyEmail();
         boolean phone = invalidPhone();
         boolean pass = emptyPass();
-        boolean account = checkAccount();
 
-        return !firstName && !lastName && !email && !phone && !pass && !account;
+        return !firstName && !lastName && !email && !phone && !pass;
     }
 
     /**
@@ -137,7 +137,7 @@ public class RegController {
      * Check whether Phone textField are integers only or empty.
      * @return true if empty or invalid
      */
-    public boolean invalidPhone(){
+    public boolean invalidPhone() {
         if (phone.getText().equals("")) {
             invalidPhone.setText("Phone can't be empty");
             return true;
@@ -159,9 +159,9 @@ public class RegController {
      * Check whether Password textField is not empty.
      * @return true if empty
      */
-    public boolean emptyPass(){
+    public boolean emptyPass() {
         if (pass.getText().equals("")) {
-            invalidPass.setText("Email can't be empty");
+            invalidPass.setText("Password can't be empty");
             return true;
         }
 

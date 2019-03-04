@@ -106,6 +106,11 @@ public class Query extends Adapter {
         return random + "";
     }
 
+    /**
+     * Method that checks if the given email already exists in the database
+     * @param email the email that you want to check
+     * @return true is it exists in the database
+     */
     public boolean checkExistence(String email) {
         try {
             PreparedStatement st = conn.prepareStatement(

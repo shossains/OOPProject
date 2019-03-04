@@ -1,16 +1,24 @@
 package server;
 
-import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsParameters;
 import com.sun.net.httpserver.HttpsServer;
 
-import javax.net.ssl.*;
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import java.net.InetSocketAddress;
-import java.security.*;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLEngine;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.TrustManagerFactory;
 
 public class Server {
     private final int port;
@@ -26,9 +34,9 @@ public class Server {
         password = pass;
         try {
             runServer();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch (NoSuchAlgorithmException e){
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (CertificateException e) {
             e.printStackTrace();
@@ -41,7 +49,8 @@ public class Server {
         }
     }
 
-    public void runServer() throws IOException, NoSuchAlgorithmException, CertificateException, UnrecoverableKeyException, KeyStoreException, KeyManagementException {
+    public void runServer() throws IOException, NoSuchAlgorithmException, CertificateException,
+            UnrecoverableKeyException, KeyStoreException, KeyManagementException {
         System.out.println("Server starting..");
         //setup server http
         httpsServer = HttpsServer.create(new InetSocketAddress(port), 0);
@@ -64,10 +73,11 @@ public class Server {
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("SunX509");
         trustManagerFactory.init(keyStore);
 
-        sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null);
+        sslContext.init(keyManagerFactory.getKeyManagers(),
+                trustManagerFactory.getTrustManagers(), null);
 
-        httpsServer.setHttpsConfigurator(new HttpsConfigurator(sslContext){
-            public void configure(HttpsParameters params){
+        httpsServer.setHttpsConfigurator(new HttpsConfigurator(sslContext) {
+            public void configure(HttpsParameters params) {
 
                 SSLContext c = getSSLContext();
                 SSLParameters sslParameters = c.getDefaultSSLParameters();
