@@ -1,18 +1,16 @@
 package client;
 
-import jdk.nashorn.internal.parser.JSONParser;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import server.ServerTest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ClientTest {
 
-    static  private  ClientNetworking cn;
+    static  private SecureClientNetworking cn;
 
     @BeforeClass
     public static void setup(){
@@ -23,7 +21,7 @@ public class ClientTest {
     public void httpbinPost(){
         //setup test
         try {
-            cn = new ClientNetworking(new URL("https://httpbin.org/post"));
+            cn = new SecureClientNetworking(new URL("https://httpbin.org/post"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

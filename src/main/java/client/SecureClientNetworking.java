@@ -11,12 +11,11 @@ import java.util.Scanner;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 
-public class ClientNetworking {
+public class SecureClientNetworking {
     private final URL serverUrl;
     private SSLContext sslContext;
 
@@ -25,7 +24,7 @@ public class ClientNetworking {
      *
      * @param url Url to connect to
      */
-    public ClientNetworking(URL url) {
+    public SecureClientNetworking(URL url) {
         serverUrl = url;
 
         //let the connection trust all certificates so we can actually work with our server

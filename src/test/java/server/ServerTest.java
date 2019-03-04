@@ -1,7 +1,7 @@
 package server;
 
 
-import client.ClientNetworking;
+import client.SecureClientNetworking;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -19,7 +19,7 @@ public class ServerTest {
 
     private static Server server;
     private static final String serverpassword = "password";
-    private static ClientNetworking cn;
+    private static SecureClientNetworking cn;
 
 
     @BeforeClass
@@ -33,7 +33,7 @@ public class ServerTest {
 
         //setup client
         try {
-            cn = new ClientNetworking(new URL("https://localhost:3000"));
+            cn = new SecureClientNetworking(new URL("https://localhost:3000"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

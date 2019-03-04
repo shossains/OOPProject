@@ -9,7 +9,8 @@ public class Request {
 
 
     private String type;
-    private String response;
+    private String username;
+    private String password;
 
     public Request() {
     }
@@ -27,7 +28,7 @@ public class Request {
     }
 
     /**
-     * Test function to test ability to execute a test funtion on the server and return JSON.
+     * Test function to test ability to execute a test function on the server and return JSON.
      *
      * @return Test string from test classes
      */
