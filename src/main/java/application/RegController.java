@@ -13,12 +13,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegController {
+    public TextField username;
     public TextField firstName;
     public TextField lastName;
     public TextField email;
     public TextField phone;
     public PasswordField pass;
     public Label status;
+    public Label invalidUsername;
     public Label invalidFirstName;
     public Label invalidLastName;
     public Label invalidEmail;
@@ -34,7 +36,7 @@ public class RegController {
         if (proceed()) {
             Query db = new Query();
             db.connect();
-            db.insertClient(firstName.getText(), lastName.getText(),
+            db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
                     email.getText(), phone.getText(), pass.getText());
             statusText = "Registration Success!";
             status.setText(statusText);
@@ -71,17 +73,36 @@ public class RegController {
     }
 
     /**
-     * Do all input validation at once.
+     * Do all input validation at once and finally check if username is taken
      * @return return true if all holds else return false
      */
     public boolean proceed() {
+        boolean username = emptyUsername();
         boolean firstName = emptyFirstName();
         boolean lastName = emptyLastName();
         boolean email = emptyEmail();
         boolean phone = invalidPhone();
         boolean pass = emptyPass();
 
-        return !firstName && !lastName && !email && !phone && !pass;
+        if (!username && !firstName && !lastName && !email && !phone && !pass) {
+            return !checkAccount();
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public boolean emptyUsername() {
+        if (username.getText().equals("")) {
+            invalidUsername.setText("Username can't be empty");
+            return true;
+        }
+
+        else {
+            invalidUsername.setText("");
+            return false;
+        }
     }
 
     /**
@@ -127,7 +148,6 @@ public class RegController {
         }
 
         else {
-            checkAccount();
             invalidEmail.setText("");
             return false;
         }
@@ -171,16 +191,12 @@ public class RegController {
         }
     }
 
-    /**
-     * Check whether the email is already used in the database.
-     * @return true if empty or if email is already used
-     */
     public boolean checkAccount() {
         Query db = new Query();
         db.connect();
 
-        if (db.checkExistence(email.getText())) {
-            statusText = "Account already exists";
+        if (db.checkExistence(username.getText())) {
+            statusText = "Username is already taken";
             db.disconnect();
             return true;
         }
