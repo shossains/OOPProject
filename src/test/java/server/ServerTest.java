@@ -8,6 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -23,7 +25,11 @@ public class ServerTest {
     @BeforeClass
     public static void init() {
         //setup server
-        server = new Server(3000, serverpassword.toCharArray());
+        try {
+            server = new Server(3000, new FileInputStream("testkey.jks"), serverpassword.toCharArray());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         //setup client
         try {

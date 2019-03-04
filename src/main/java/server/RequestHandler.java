@@ -2,10 +2,13 @@ package server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Scanner;
 
 public class RequestHandler implements HttpHandler {
@@ -30,8 +33,8 @@ public class RequestHandler implements HttpHandler {
         InputStream is = exchange.getRequestBody();
 
         //grabbing string format of result, using a stupid scanner trick.
-        Scanner s = new Scanner(is).useDelimiter("\\A");
-        String requestString = s.hasNext() ? s.next() : "";
+        Scanner scanner = new Scanner(is).useDelimiter("\\A");
+        String requestString = scanner.hasNext() ? scanner.next() : "";
 
         //String requestString = new BufferedReader(new InputStreamReader(is)).readLine();
 
@@ -50,7 +53,12 @@ public class RequestHandler implements HttpHandler {
         return request;
     }
 
-    public Request buildGson(String string){
+    /**
+     * This function uses Gson to parse the JSON into a Java Request class.
+     * @param string Raw request string
+     * @return Parsed Request object
+     */
+    public Request buildGson(String string) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
