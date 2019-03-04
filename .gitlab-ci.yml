@@ -17,7 +17,7 @@ stages:
 build:
  stage: build
   script:
-  - mvn $MAVEN_CFG compile
+   - mvn $MAVEN_CFG compile
 
 	
 ## this stage will run all tests in the project
