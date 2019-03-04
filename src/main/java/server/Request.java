@@ -3,7 +3,6 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import server.queries.Register;
 
 import java.lang.reflect.Type;
 
@@ -30,7 +29,6 @@ public class Request {
     /**
      * Executes the request, returning the response in JSON.
      * Avaliable requests:
-     *
      *  register - Register a new user. Provided username and password will be used.
      *  TestRequest - For testing purposes
      */
@@ -76,6 +74,13 @@ public class Request {
     public void setType(String type) {
         this.type = type;
     }
+
+    /**Builds specified object from JSON (WIP, almost certainly doesn't work).
+     * @param string String to be parsed
+     * @param queryClass The class to parse too
+     * @param <T> class to parse to
+     * @return
+     */
     public <T> T buildGson(String string, T queryClass) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();

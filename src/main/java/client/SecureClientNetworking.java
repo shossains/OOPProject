@@ -34,6 +34,7 @@ public class SecureClientNetworking {
 
     /**
      * Opens a connection and sends a request to the server set up previously.
+     *
      * @param request The String request to send to the URL via POST
      * @return Response from the server.
      */
@@ -63,9 +64,15 @@ public class SecureClientNetworking {
         }
     }
 
-    public String sendGetRequest(String query){
+    /**
+     * Sends a https get request to the url.
+     * @param query The string in the get request that goes right after the ? in the url.
+     *              This method doesn't validate, so you will have to do it yourself.
+     * @return The String response from the server.
+     */
+    public String sendGetRequest(String query) {
         try {
-            URL queryUrl = new URL(serverUrl.toString()+"?"+query);
+            URL queryUrl = new URL(serverUrl.toString() + "?" + query);
             URLConnection urlConnection = queryUrl.openConnection();
             HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
             httpsConn.setRequestMethod("GET");
