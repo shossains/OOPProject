@@ -8,7 +8,7 @@ The #GoGreen project is a java application that stimulates its users to go green
 ## Technologies used
 - Java  
 - Java libraries  
-- Heroku  
+- Heroku
 
 ## Our team
 - [Shaan Hossain](#shaan-hossain)<br/>

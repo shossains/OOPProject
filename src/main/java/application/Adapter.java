@@ -1,6 +1,10 @@
 package application;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Adapter {
 
@@ -19,7 +23,7 @@ public class Adapter {
     }
 
     /**
-     * Connect to a database
+     *  Connect to the database.
      */
     public void connect() {
         try {
@@ -35,7 +39,7 @@ public class Adapter {
     } // connect
 
     /**
-     * Disconnect from database
+     * Disconnect from database.
      */
     public void disconnect() {
         try {
