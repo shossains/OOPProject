@@ -1,7 +1,5 @@
 package server;
 
-
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 /**
@@ -28,10 +26,15 @@ public class Request {
         }
     }
 
-    private String testExecute(){
+    /**
+     * Test function to test ability to execute a test funtion on the server and return JSON.
+     *
+     * @return Test string from test classes
+     */
+    private String testExecute() {
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("TestRequest","TestRequest");
+        jsonObject.addProperty("TestRequest", "TestRequest");
         return jsonObject.toString();
 
     }
