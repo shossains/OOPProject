@@ -1,6 +1,10 @@
 image: maven:3-jdk-10
 
-
+variables:
+  ## 'clean' is necessary for JaCoCo aggregate report
+  ## --batch-mode will avoid asking input in the terminal
+  MAVEN_CFG: "clean --batch-mode"
+  
 ## The lifecycle of the the pipeline
 stages:
   - build
@@ -8,23 +12,16 @@ stages:
   - coverage
   - checkstyle
 
-variables:
-  ## 'clean' is necessary for JaCoCo aggregate report
-  ## --batch-mode will avoid asking input in the terminal
-  MAVEN_CFG: "clean --batch-mode"
-
 ## This stage will compile the source code in the project
 ## If the project doesn't compile then the stage fails
-build:
-  stage: build
+stage: build
   script:
     - mvn $MAVEN_CFG compile
 
 	
 ## this stage will run all tests in the project
 ## stage fails when one or more tests are failing
-test:
-  stage: test
+stage: test
   ## make the code coverage reports created in this stage available to further stages
   artifacts:
     untracked: true
@@ -35,8 +32,7 @@ test:
 ## this stage will output the code coverage in the terminal
 ## it does so by reading in 'jacoco.csv' and pretty printing it
 ## stage always succeeds
-coverage:
-  stage: coverage
+stage: coverage
   ## get the code coverage reports generated in the previous stage
   dependencies:
     - test
@@ -50,8 +46,7 @@ coverage:
 ## this stage will output any CheckStyle warnings in the terminal
 ## it does so by reading in 'checkstyle-aggregate.html' and pretty printing it
 ## stage always succeeds
-checkstyle:
-  stage: checkstyle
+stage: checkstyle
   script:
     - mvn $MAVEN_CFG site
     - files=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
