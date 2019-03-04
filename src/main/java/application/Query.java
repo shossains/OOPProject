@@ -107,7 +107,6 @@ public class Query extends Adapter {
     }
 
     public boolean checkExistence(String email) {
-        System.out.println("SELECT email FROM client WHERE email = '" + email + "'");
         try {
             PreparedStatement st = conn.prepareStatement(
                     "SELECT email FROM client WHERE email = '" + email + "'");
@@ -115,7 +114,6 @@ public class Query extends Adapter {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String res = rs.getString(1);
-                System.out.println(res);
 
                 if (res.equals(email)) {
                     return true;
