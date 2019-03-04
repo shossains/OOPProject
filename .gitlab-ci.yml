@@ -9,13 +9,13 @@ stages:
 variables:
   ## 'clean' is necessary for JaCoCo aggregate report
   ## --batch-mode will avoid asking input in the terminal
-  MAVEN_CFG: "clean --batch-mode"
+  MAVEN: "clean --batch-mode"
 
 ##Stage will fail if it doesn't compile
 build:
   stage: build
   script:
-    - mvn $MAVEN_CFG compile
+    - mvn $MAVEN compile
 
 ##If >1 test fails than stage fails
 test:
@@ -24,7 +24,7 @@ test:
   artifacts:
     untracked: true
   script:
-    - mvn $MAVEN_CFG test jacoco:report jacoco:report-aggregate
+    - mvn $MAVEN test jacoco:report jacoco:report-aggregate
 
 ##
 coverage:
