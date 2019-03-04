@@ -1,8 +1,5 @@
 package client;
 
-
-
-import javax.net.ssl.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
@@ -11,6 +8,8 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
+
+import javax.net.ssl.*;
 
 public class ClientNetworking {
     private URL serverURL;
