@@ -1,6 +1,11 @@
 package server;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import server.queries.Register;
+
+import java.lang.reflect.Type;
 
 /**
  * Class for parsing requests using Gson.
@@ -70,5 +75,13 @@ public class Request {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public <T> T buildGson(String string, T queryClass) {
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+
+        T request = gson.fromJson(string, (Type) queryClass);
+        return request;
     }
 }

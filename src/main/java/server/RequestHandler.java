@@ -59,7 +59,7 @@ public class RequestHandler implements HttpHandler {
      * @param string Raw request string
      * @return Parsed Request object
      */
-    public Request buildGson(String string) {
+    private Request buildGson(String string) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();

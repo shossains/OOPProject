@@ -31,7 +31,19 @@ public class ClientTest {
                 "  \"data\": \"\", \n" +
                 "  \"files\": {}, \n" +
                 "  \"form\": {\n" +
-                "    \"hello world\"",cn.sendRequest("hello world").substring(0,77));
+                "    \"hello world\"",cn.sendPostRequest("hello world").substring(0,77));
+    }
+
+    @Test
+    public void getTest(){
+        try {
+            cn = new SecureClientNetworking(new URL("https://httpbin.org/get"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals("{\n" +
+                "  \"args\": {\n" +
+                "    \"Hello\": \"World\"", cn.sendGetRequest("Hello=World").substring(0,34));
     }
 
     @AfterClass

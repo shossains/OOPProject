@@ -42,7 +42,7 @@ public class ServerTest {
 
     @Test
     public void testResponse(){
-        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendRequest("{'type':'TestRequest'}"));
+        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendPostRequest("{'type':'TestRequest'}"));
     }
 
 

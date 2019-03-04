@@ -37,7 +37,7 @@ public class SecureClientNetworking {
      * @param request The String request to send to the URL via POST
      * @return Response from the server.
      */
-    public String sendRequest(String request) {
+    public String sendPostRequest(String request) {
         try {
             URLConnection urlConnection = serverUrl.openConnection();
             HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
@@ -49,6 +49,27 @@ public class SecureClientNetworking {
             //write to stream
             OutputStream os = httpsConn.getOutputStream();
             os.write(request.getBytes());
+
+            //response
+            Scanner scanner = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
+            String responseString = scanner.hasNext() ? scanner.next() : "";
+
+            return responseString;
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String sendGetRequest(String query){
+        try {
+            URL queryUrl = new URL(serverUrl.toString()+"?"+query);
+            URLConnection urlConnection = queryUrl.openConnection();
+            HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
+            httpsConn.setRequestMethod("GET");
+            httpsConn.connect();
 
             //response
             Scanner scanner = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
