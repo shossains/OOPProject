@@ -42,10 +42,10 @@ public class RequestHandler implements HttpHandler {
         Request request = buildGson(requestString);
 
         //response, for now just replies with what it got
-        String response = requestString;
+        String response = request.execute();
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
-        os.write(request.getType().getBytes());
+        os.write(response.getBytes());
         os.close();
     }
 
@@ -55,6 +55,7 @@ public class RequestHandler implements HttpHandler {
 
     /**
      * This function uses Gson to parse the JSON into a Java Request class.
+     *
      * @param string Raw request string
      * @return Parsed Request object
      */

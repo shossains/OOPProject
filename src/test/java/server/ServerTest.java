@@ -42,7 +42,7 @@ public class ServerTest {
 
     @Test
     public void testResponse(){
-        Assert.assertEquals("TestRequest", cn.sendRequest("{'type':'TestRequest'}"));
+        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendRequest("{'type':'TestRequest'}"));
     }
 
 
@@ -55,7 +55,7 @@ public class ServerTest {
     public void after(){
         try {
             //giving thread sleep time so i can manually test it using external tools
-            Thread.sleep(100);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
