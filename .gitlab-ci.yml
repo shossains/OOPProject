@@ -15,8 +15,8 @@ stages:
 ## This stage will compile the source code in the project
 ## If the project doesn't compile then the stage fails
 stage: build
-  script:
-    - mvn $MAVEN_CFG compile
+ script:
+ - mvn $MAVEN_CFG compile
 
 	
 ## this stage will run all tests in the project
