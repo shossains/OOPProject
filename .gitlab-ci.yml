@@ -33,10 +33,10 @@ coverage:
   dependencies:
     - test
   script:
-#     - client=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- CLIENT COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' client/target/site/jacoco/jacoco.csv)
-#     - server=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- SERVER COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' server/target/site/jacoco/jacoco.csv)
-#     - total=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- TOTAL COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' tests/target/site/jacoco-aggregate/jacoco.csv)
-#     - printf "$client\n$server\n$total\n\n"
+    - client=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- CLIENT COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' client/target/site/jacoco/jacoco.csv)
+    - server=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- SERVER COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' server/target/site/jacoco/jacoco.csv)
+    - total=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- TOTAL COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' tests/target/site/jacoco-aggregate/jacoco.csv)
+    - printf "$client\n$server\n$total\n\n"
 
 checkstyle:
   stage: checkstyle
