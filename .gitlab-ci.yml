@@ -41,7 +41,7 @@ coverage:
 checkstyle:
   stage: checkstyle
   script:
-    - mvn $MAVEN_CFG site
+    - mvn $MAVEN site
 #     - files=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
 #     - warnings=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
 #     - errors=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
