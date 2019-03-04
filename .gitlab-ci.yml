@@ -6,16 +6,12 @@ stages:
   - coverage
   - checkstyle
 
-variables:
-  ## 'clean' is necessary for JaCoCo aggregate report
-  ## --batch-mode will avoid asking input in the terminal
-  MAVEN: "clean --batch-mode"
 
 ##Stage will fail if it doesn't compile
 build:
   stage: build
   script:
-    - mvn $MAVEN compile
+    - mvn compile
 
 ##If >1 test fails than stage fails
 test:
@@ -24,7 +20,7 @@ test:
   artifacts:
     untracked: true
   script:
-    - mvn $MAVEN test jacoco:report jacoco:report-aggregate
+    - mvn test jacoco:report jacoco:report-aggregate
 
 ##
 coverage:
@@ -41,7 +37,7 @@ coverage:
 checkstyle:
   stage: checkstyle
   script:
-    - mvn $MAVEN site
+    - mvn site
 #     - files=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
 #     - warnings=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
 #     - errors=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
