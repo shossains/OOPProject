@@ -1,5 +1,9 @@
 package server.DB;
 
+/**
+ * The class that authenticates and stores data about the user. This is the main class
+ * to use when dealing with and updating user data.
+ */
 public class User {
     private String username;
     private String password;
@@ -17,6 +21,6 @@ public class User {
      * fetches user data from database
      */
     public void fetchDB(){
-
+        //TODO fetching user data from the database
     }
 }
