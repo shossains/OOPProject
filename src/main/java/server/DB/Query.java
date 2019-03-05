@@ -8,33 +8,33 @@ public class Query extends Adapter {
 
     /**
      * Send the query to the sql db to insert a new client from reg form.
+     * @param username the username of the client
      * @param firstName the first name of the client
      * @param lastName the last name of the client
      * @param email the email address of the client
      * @param phone the phone number of the client (not required)
      * @param password the password of the client
      */
-    public void insertClient(String firstName,
+    public void insertClient(String username, String firstName,
                              String lastName, String email, String phone, String password) {
-        String newID = newId();
-        System.out.println("INSERT " + newID + " $" + firstName + " $"
+        System.out.println("INSERT "+ username + " $" + firstName + " $"
                 + lastName + " $" + email + " $" + phone + " $" + password);
         try {
             PreparedStatement lt = conn.prepareStatement(
                     "INSERT INTO points "
-                            + "(id, points) "
+                            + "(username, points) "
                             + "VALUES(?,?)");
-            lt.setString(1, newID);
+            lt.setString(1, username);
             lt.setInt(2,0);
             lt.executeUpdate();
             lt.close();
 
             PreparedStatement st = conn.prepareStatement(
                     "INSERT INTO client "
-                            + "(id, first_name, last_name, email, phone, password) "
+                            + "(username, first_name, last_name, email, phone, password) "
                             + "VALUES(?,?,?,?,?,?)");
 
-            st.setString(1, newID);
+            st.setString(1, username);
             st.setString(2, firstName);
             st.setString(3, lastName);
             st.setString(4, email);
@@ -46,7 +46,7 @@ public class Query extends Adapter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    } // insertClient
+    }
 
     /**
      * Execute any given query.
@@ -67,24 +67,21 @@ public class Query extends Adapter {
     }
 
     /**
-     * Checks whether the id already exists in the database.
-     * @param id id that needs to be checked for ambiguity
-     * @return
+     * Method that checks if the given email already exists in the database
+     * @param username the email that you want to check
+     * @return true is it exists in the database
      */
-    public void selectId(String id) {
-        System.out.println("SELECT id FROM client WHERE id = '" + id + "'");
+    public boolean checkExistence(String username) {
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "SELECT id FROM client WHERE id = '" + id + "'");
+                    "SELECT username FROM client WHERE username = '" + username + "'");
 
-            //System.out.println("SQL = " + st.toString());
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String res = rs.getString(1);
-                System.out.println(res);
 
-                if (res.equals(id)) {
-                    newId();
+                if (res.equals(username)) {
+                    return true;
                 }
             }
 
@@ -93,17 +90,6 @@ public class Query extends Adapter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Generates new random number and checks immediately for ambiguity.
-     * @return the unique number
-     */
-    public String newId() {
-        int random = (int)(Math.random() * 999 + 1);
-        String check = random + "";
-        selectId(check);
-
-        return random + "";
+        return false;
     }
 }
