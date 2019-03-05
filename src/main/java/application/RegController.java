@@ -49,9 +49,7 @@ public class RegController {
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.show();
-        }
-
-        else {
+        } else {
             status.setText(statusText);
             status.setStyle("-fx-text-fill: #a12020;");
         }
@@ -66,15 +64,13 @@ public class RegController {
         try {
             Integer.parseInt(input);
             return true;
-        }
-
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
 
     /**
-     * Do all input validation at once and finally check if username is taken
+     * Do all input validation at once and finally check if username is taken.
      * @return return true if all holds else return false
      */
     public boolean proceed() {
@@ -87,20 +83,20 @@ public class RegController {
 
         if (!username && !firstName && !lastName && !email && !phone && !pass) {
             return !checkAccount();
-        }
-
-        else {
+        } else {
             return false;
         }
     }
 
+    /**
+     * Check whether Username textField is not empty.
+     * @return true if empty
+     */
     public boolean emptyUsername() {
         if (username.getText().equals("")) {
             invalidUsername.setText("Username can't be empty");
             return true;
-        }
-
-        else {
+        } else {
             invalidUsername.setText("");
             return false;
         }
@@ -114,9 +110,7 @@ public class RegController {
         if (firstName.getText().equals("")) {
             invalidFirstName.setText("First name can't be empty");
             return true;
-        }
-
-        else {
+        } else {
             invalidFirstName.setText("");
             return false;
         }
@@ -130,9 +124,7 @@ public class RegController {
         if (lastName.getText().equals("")) {
             invalidLastName.setText("Last name can't be empty");
             return true;
-        }
-
-        else {
+        } else {
             invalidLastName.setText("");
             return false;
         }
@@ -146,9 +138,7 @@ public class RegController {
         if (email.getText().equals("")) {
             invalidEmail.setText("Email can't be empty");
             return true;
-        }
-
-        else {
+        } else {
             invalidEmail.setText("");
             return false;
         }
@@ -168,9 +158,7 @@ public class RegController {
         if (!isInt(phone.getText())) {
             invalidPhone.setText("Invalid phone number!");
             return true;
-        }
-
-        else {
+        } else {
             invalidPhone.setText("");
             return false;
         }
@@ -184,14 +172,16 @@ public class RegController {
         if (pass.getText().equals("")) {
             invalidPass.setText("Password can't be empty");
             return true;
-        }
-
-        else {
+        } else {
             invalidPass.setText("");
             return false;
         }
     }
 
+    /**
+     * Check whether username is already used in database.
+     * @return true is username is already used
+     */
     public boolean checkAccount() {
         Query db = new Query();
         db.connect();
@@ -200,9 +190,7 @@ public class RegController {
             statusText = "Username is already taken";
             db.disconnect();
             return true;
-        }
-
-        else {
+        } else {
             statusText = "";
             db.disconnect();
             return false;

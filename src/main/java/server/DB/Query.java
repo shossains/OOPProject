@@ -17,7 +17,7 @@ public class Query extends Adapter {
      */
     public void insertClient(String username, String firstName,
                              String lastName, String email, String phone, String password) {
-        System.out.println("INSERT "+ username + " $" + firstName + " $"
+        System.out.println("INSERT " + username + " $" + firstName + " $"
                 + lastName + " $" + email + " $" + phone + " $" + password);
         try {
             PreparedStatement lt = conn.prepareStatement(
@@ -67,7 +67,7 @@ public class Query extends Adapter {
     }
 
     /**
-     * Method that checks if the given email already exists in the database
+     * Method that checks if the given email already exists in the database.
      * @param username the email that you want to check
      * @return true is it exists in the database
      */
