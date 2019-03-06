@@ -18,6 +18,28 @@ public class ClientTest {
     }
 
     @Test
+    public void badGetUrl() {
+        try {
+            cn = new SecureClientNetworking(new URL("https://localhost"));
+        } catch (MalformedURLException e) {
+
+        }
+        Assert.assertEquals(null, cn.sendGetRequest("whatever"));
+    }
+
+    @Test
+    public void badPostUrl(){
+        //setup test
+        try {
+            cn = new SecureClientNetworking(new URL("https://localhost"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        //make sure it works
+        Assert.assertEquals(null ,cn.sendPostRequest("hello world"));
+    }
+
+    @Test
     public void httpbinPost(){
         //setup test
         try {

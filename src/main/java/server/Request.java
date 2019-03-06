@@ -4,10 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import java.lang.reflect.Type;
+import server.queries.RegisterQuery;
+import server.queries.TestQuery;
 
 /**
  * Class for parsing requests using Gson.
+ * Must give raw string used to instantiate the object via setRaw(),
+ * otherwise the queries won't work.
  */
 public class Request {
 
@@ -18,24 +21,31 @@ public class Request {
 
 
     /**
-     * Request query contains an object with a specific query for the server,
-     * to allow for flexibility.
+     * Raw query, which can then be used to finally manipulate all
+     * the data within it, not just the three variables above.
      */
-    private String requestQuery;
+    private String rawQuery;
 
-    public Request() {
+    /**
+     * MUST bet set before running execute, as queries
+     * depend on having access to the full query string.
+     *
+     * @param raw Raw string used to set up this object
+     */
+    public void setRaw(String raw) {
+        rawQuery = raw;
     }
 
     /**
      * Executes the request, returning the response in JSON.
      * Avaliable requests:
-     *  register - Register a new user. Provided username and password will be used.
-     *  TestRequest - For testing purposes
+     * register - Register a new user. Provided username and password will be used.
+     * TestRequest - For testing purposes
      */
     public String execute() {
         switch (type) {
             case "TestRequest":
-                return testExecute();
+                return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
             default:
@@ -45,12 +55,12 @@ public class Request {
 
     /**
      * Registers the user given username and password on the database.
+     *
      * @return Either true or false on success, and gives reason for failure;
      */
     private String registerUser() {
-
-
-        return null;
+        RegisterQuery regQuery = buildGson(rawQuery, RegisterQuery.class);
+        return regQuery.runQuery();
     }
 
     /**
@@ -75,18 +85,19 @@ public class Request {
         this.type = type;
     }
 
-    /**Builds specified object from JSON (WIP, almost certainly doesn't work).
-     * @param string String to be parsed
-     * @param queryClass The class to parse too
-     * @param <T> class to parse to
-     * @return
+    /**
+     * Builds specified object with Gson from specified string.
+     *
+     * @param string String to parse
+     * @param tclass Class to parse to
+     * @param <T>    Class which is returned (the same as tclass)
+     * @return Parsed tClass object
      */
-    public <T> T buildGson(String string, T queryClass) {
+    public <T> T buildGson(String string, Class<T> tclass) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
-
-        T request = gson.fromJson(string, (Type) queryClass);
+        T request = gson.fromJson(string, tclass);
         return request;
     }
 }
