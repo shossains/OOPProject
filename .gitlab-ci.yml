@@ -1,5 +1,3 @@
-image: maven:3-jdk-11
-
 stages:
   - build
 #   - test
@@ -11,6 +9,7 @@ stages:
 build:
   stage: build
   script:
+    - mvn clean
     - mvn compile
 
 # ##If >1 test fails than stage fails
