@@ -40,9 +40,15 @@ public class ServerTest {
 
     }
 
+    /**
+     * Sends a test request and listens for a response. This is effectively a test of the whole server, from receiving,
+     * to processing, up until response.
+     */
     @Test
     public void testResponse(){
-        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendPostRequest("{'type':'TestRequest'}"));
+        Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": false," +
+                " \"username\":\"alexshulzycki\"}", cn.sendPostRequest("{'type':'TestRequest'," +
+                " 'extraData':'Irrelevant Data'}"));
     }
 
 
