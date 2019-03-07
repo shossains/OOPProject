@@ -11,7 +11,7 @@ stages:
 build:
   stage: build
   script:
-    - mvn install
+    - mvn compile
 
 # ##If >1 test fails than stage fails
 # test:
