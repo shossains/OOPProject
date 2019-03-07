@@ -1,5 +1,8 @@
 image: maven:3.6.0-jdk-10
 
+variables:
+  MAVEN_CUST: "clean --batch-mode"
+
 stages:
   - build
 #   - test
@@ -11,7 +14,7 @@ stages:
 build:
   stage: build
   script:
-    - mvn compile
+    - mvn $MAVEN_CUST compile
 
 # ##If >1 test fails than stage fails
 # test:
