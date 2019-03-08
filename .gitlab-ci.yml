@@ -50,22 +50,12 @@ cache:
 # Validate merge requests using JDK7
 validate:jdk7:
   <<: *validate
-  image: maven:3.3.9-jdk-7
-
-# Validate merge requests using JDK8
-validate:jdk8:
-  <<: *validate
-  image: maven:3.3.9-jdk-8
-
-# Verify merge requests using JDK7
-verify:jdk7:
-  <<: *verify
-  image: maven:3.3.9-jdk-7
+  image: maven:3.6.0-jdk-10
 
 # Verify merge requests using JDK8
 verify:jdk8:
   <<: *verify
-  image: maven:3.3.9-jdk-8
+  image: maven:3.6.0-jdk-10
 
 
 # For `master` branch run `mvn deploy` automatically.
@@ -73,7 +63,7 @@ verify:jdk8:
 # To get this working you need to define a volume while configuring your gitlab-ci-multi-runner.
 # Mount your `settings.xml` as `/root/.m2/settings.xml` which holds your secrets.
 # See https://maven.apache.org/settings.html
-deploy:jdk8:
+deploy:jdk10:
   # Use stage test here, so the pages job may later pickup the created site.
   stage: test
   script:
@@ -84,7 +74,7 @@ deploy:jdk8:
   artifacts:
     paths:
     - target/staging
-  image: maven:3.3.9-jdk-8
+  image: maven:3.6.0-jdk-10
 
 
 pages:
@@ -95,7 +85,7 @@ pages:
     # you might need to use `mv target/staging/YOUR_ARTIFACT_ID public` instead.
     - mv target/staging public
   dependencies:
-    - deploy:jdk8
+    - deploy:jdk10
   artifacts:
     paths:
     - public
