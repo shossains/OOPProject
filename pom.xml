@@ -8,7 +8,41 @@
     <artifactId>OOP-Project</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <name>#GoGreen</name>
+    <description>
+        The #GoGreen project is a java application that stimulates its users to go greener.
+        By asking the user questions about their lifestyle,the application is able to determine how much CO2 they emit.
+        By comparing the user's score to others', as well as rewarding the user with achievements,
+        the application stimulates the user to become "greener", which brings us closer to our end goal, namely reducing our carbon footprint.
+    </description>
+    <url>https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>ashulzycki</id>
+            <name>Alex Shulzycki</name>
+        </developer>
+        <developer>
+            <id>lvandegeer</id>
+            <name>Lucas van de Geer</name>
+        </developer>
+        <developer>
+            <id>sfarahi</id>
+            <name>Sami Farahi</name>
+            <properties>
+            </properties>
+        </developer>
+        <developer>
+            <id>shossain</id>
+            <name>Shaan Hossain</name>
+        </developer>
+        <developer>
+            <id>vtimmer</id>
+            <name>Vanessa Timmer</name>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>10</maven.compiler.source>
@@ -86,9 +120,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
+                    <release>10</release>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <release>10</release>
                 </configuration>
             </plugin>
 
@@ -96,6 +130,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
+                <configuration>
+                    <locales>en,nl</locales>
+                    <port>9000</port>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -123,6 +161,14 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>check</report>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
 
     </plugins>
