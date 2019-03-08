@@ -75,8 +75,8 @@ public class RegController {
      */
     public boolean proceed() {
         boolean username = emptyUsername();
-        boolean firstName = emptyFirstName();
-        boolean lastName = emptyLastName();
+        boolean firstName = invalidFirstName();
+        boolean lastName = invalidLastName();
         boolean email = emptyEmail();
         boolean phone = invalidPhone();
         boolean pass = emptyPass();
@@ -103,30 +103,40 @@ public class RegController {
     }
 
     /**
-     * Check whether FirstName textField is not empty.
-     * @return true if empty
+     * Check whether FirstName textField is not empty or contains other character than letters.
+     * @return true if it does not violate constraints
      */
-    public boolean emptyFirstName() {
+    public boolean invalidFirstName() {
         if (firstName.getText().equals("")) {
             invalidFirstName.setText("First name can't be empty");
             return true;
         } else {
-            invalidFirstName.setText("");
-            return false;
+            if (!isLetters(firstName.getText())) {
+                invalidFirstName.setText("Invalid field!");
+                return true;
+            } else {
+                invalidFirstName.setText("");
+                return false;
+            }
         }
     }
 
     /**
-     * Check whether LastName textField is not empty.
-     * @return true if empty
+     * Check whether LastName textField is not empty or contains other character than letters.
+     * @return true if it does not violate constraints
      */
-    public boolean emptyLastName() {
+    public boolean invalidLastName() {
         if (lastName.getText().equals("")) {
             invalidLastName.setText("Last name can't be empty");
             return true;
         } else {
-            invalidLastName.setText("");
-            return false;
+            if (!isLetters(lastName.getText())) {
+                invalidLastName.setText("Invalid field!");
+                return true;
+            } else {
+                invalidLastName.setText("");
+                return false;
+            }
         }
     }
 
@@ -195,5 +205,21 @@ public class RegController {
             db.disconnect();
             return false;
         }
+    }
+
+    /**
+     * Check is input contains only letters.
+     * @param string input that needs to be checked
+     * @return true is input contains only letters
+     */
+    public boolean isLetters(String string) {
+        char[] chars = string.toCharArray();
+
+        for (char c : chars) {
+            if (!Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
