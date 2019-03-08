@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             primaryStage = stage;
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
             Scene scene = new Scene(root,720,480);
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
@@ -24,17 +24,6 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Takes you to the Vegetarian Meal Scene after clicking the Register button.
-     * @param vmevent Clicking the Register button
-     */
-    public void toVegMeal(ActionEvent vmevent) throws IOException {
-        Parent vmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
-        Scene vmScene = new Scene(vmParent);
-        primaryStage.setScene(vmScene);
-        primaryStage.show();
     }
 
     public static void main(String[] args) {

@@ -8,8 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -25,11 +23,7 @@ public class ServerTest {
     @BeforeClass
     public static void init() {
         //setup server
-        try {
-            server = new Server(3000, new FileInputStream("testkey.jks"), serverpassword.toCharArray());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        server = new Server(3000, serverpassword.toCharArray());
 
         //setup client
         try {
@@ -42,7 +36,7 @@ public class ServerTest {
 
     @Test
     public void testResponse(){
-        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendRequest("{'type':'TestRequest'}"));
+        Assert.assertEquals("TestRequest", cn.sendRequest("{'type':'TestRequest'}"));
     }
 
 
@@ -55,7 +49,7 @@ public class ServerTest {
     public void after(){
         try {
             //giving thread sleep time so i can manually test it using external tools
-            Thread.sleep(0);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

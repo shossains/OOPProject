@@ -8,6 +8,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -15,35 +16,22 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-
-import javax.net.ssl.*;
-
 public class ClientNetworking {
-    private final URL serverUrl;
+    private URL serverURL;
     private SSLContext sslContext;
 
-    /**
-     * Sets up the client networking by setting up ssl and private variables.
-     *
-     * @param url Url to connect to
-     */
     public ClientNetworking(URL url) {
-        serverUrl = url;
+        serverURL = url;
 
         //let the connection trust all certificates so we can actually work with our server
         trustfulContext();
         trustfulHostnames();
     }
 
-    /**
-     * Opens a connection and sends a request to the server set up previously.
-     * @param request The String request to send to the URL via POST
-     * @return Response from the server.
-     */
     public String sendRequest(String request) {
         try {
-            URLConnection urlConnection = serverUrl.openConnection();
-            HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
+            URLConnection URLcon = serverURL.openConnection();
+            HttpsURLConnection httpsConn = (HttpsURLConnection) URLcon;
             httpsConn.setRequestMethod("POST");
             httpsConn.setChunkedStreamingMode(8);
             httpsConn.setDoOutput(true);
@@ -54,8 +42,8 @@ public class ClientNetworking {
             os.write(request.getBytes());
 
             //response
-            Scanner scanner = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
-            String responseString = scanner.hasNext() ? scanner.next() : "";
+            Scanner s = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
+            String responseString = s.hasNext() ? s.next() : "";
 
             return responseString;
 
@@ -66,24 +54,19 @@ public class ClientNetworking {
         }
     }
 
-    /**
-     * Lets the server use self-signed certificates.
-     */
     private void trustfulContext() {
         TrustManager[] trustAllCerts = new TrustManager[]{
-            new X509TrustManager() {
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                    return null;
+                new X509TrustManager() {
+                    public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                        return null;
+                    }
+                    public void checkClientTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
+                    public void checkServerTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
                 }
-
-                public void checkClientTrusted(
-                        java.security.cert.X509Certificate[] certs, String authType) {
-                }
-
-                public void checkServerTrusted(
-                        java.security.cert.X509Certificate[] certs, String authType) {
-                }
-            }
         };
 
         try {
@@ -100,17 +83,17 @@ public class ClientNetworking {
 
     }
 
-    /**
-     * Lets the server use self-signed certificates, by allowing all hostnames.
-     */
     private void trustfulHostnames() {
-        HostnameVerifier trustAllHostnames = (hostname, session) -> {
-            return true; // Just allow them all.
+        HostnameVerifier trustAllHostnames = new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true; // Just allow them all.
+            }
         };
 
 
-        //System.setProperty("jsse.enableSNIExtension", "false");
-        HttpsURLConnection.setDefaultHostnameVerifier(trustAllHostnames);
+            //System.setProperty("jsse.enableSNIExtension", "false");
+            HttpsURLConnection.setDefaultHostnameVerifier(trustAllHostnames);
 
 
     }

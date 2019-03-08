@@ -26,7 +26,7 @@ public class VegController {
         grid.add(test,0,0) ;
 
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/RegisterForm.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information
