@@ -1,7 +1,7 @@
 package server;
 
 
-import client.ClientNetworking;
+import client.SecureClientNetworking;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -19,9 +19,13 @@ public class ServerTest {
 
     private static Server server;
     private static final String serverpassword = "password";
-    private static ClientNetworking cn;
+    private static SecureClientNetworking httpsCon;
+    private static SecureClientNetworking httpCon;
 
 
+    /**
+     * Sets up the server as well as http and https urls
+     */
     @BeforeClass
     public static void init() {
         //setup server
@@ -33,19 +37,38 @@ public class ServerTest {
 
         //setup client
         try {
-            cn = new ClientNetworking(new URL("https://localhost:3000"));
+            httpsCon = new SecureClientNetworking(new URL("https://localhost:3000"));
+            httpCon = new SecureClientNetworking(new URL("http://localhost:3000"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
     }
 
+    /**
+     * Sends a test request and listens for a response. This is effectively a test of the whole server, from receiving,
+     * to processing, up until response.
+     */
     @Test
-    public void testResponse(){
-        Assert.assertEquals("{\"TestRequest\":\"TestRequest\"}", cn.sendRequest("{'type':'TestRequest'}"));
+    public void fullHttpsRequestResponse(){
+        Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": false," +
+                " \"username\":\"alexshulzycki\"}", httpsCon.sendPostRequest("{'type':'TestRequest'," +
+                " 'extraData':'Irrelevant Data'}"));
+    }
+
+    /**
+     * This test is supposed to successfully fail, as the server shouldn't accept any unencrypted requests.
+     */
+    @Test
+    public void insecureRequestTest(){
+        Assert.assertEquals(null, httpCon.sendPostRequest("{'type':'TestRequest'," +
+                " 'extraData':'Irrelevant Data'}"));
     }
 
 
+    /**
+     * Makes sure the testkey keystore actually exists, might be handy for debugging later on.
+     */
     @Test
     public void keyStoreExists(){
         assertTrue(new File("testkey.jks").exists());
@@ -54,7 +77,7 @@ public class ServerTest {
     @After
     public void after(){
         try {
-            //giving thread sleep time so i can manually test it using external tools
+            //giving thread some well-deserved sleep time so you can manually test the server using external tools
             Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();

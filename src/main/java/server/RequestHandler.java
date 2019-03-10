@@ -39,7 +39,7 @@ public class RequestHandler implements HttpHandler {
         //String requestString = new BufferedReader(new InputStreamReader(is)).readLine();
 
         //building request object with Gson
-        Request request = buildGson(requestString);
+        Request request = buildGsonRequest(requestString);
 
         //response, for now just replies with what it got
         String response = request.execute();
@@ -59,13 +59,14 @@ public class RequestHandler implements HttpHandler {
      * @param string Raw request string
      * @return Parsed Request object
      */
-    public Request buildGson(String string) {
-
+    private Request buildGsonRequest(String string) {
+        //Set up Gson
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
 
+        //Creates request object via Gson, then gives it the raw JSON string (crucial!)
         request = gson.fromJson(string, Request.class);
-        System.out.println(request.getType());
+        request.setRaw(string);
         return request;
     }
 }
