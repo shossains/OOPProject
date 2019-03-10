@@ -37,7 +37,7 @@ checkstyle:
   stage: checkstyle
   script:
     - mvn site
-     - files=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-     - warnings=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-     - errors=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-     - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"
+    - files=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - warnings=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - errors=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"
