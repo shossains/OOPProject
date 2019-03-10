@@ -19,11 +19,12 @@ public class RequestTest {
 
     @BeforeClass
     public static void before() {
-        //test request for testing of the actual Request class
+
+//test request for testing of the actual Request class
         gsonTestRequest = new Request();
         gsonTestRequest.setRaw(stringquery);
 
-        //setup gson for testing json classes
+//setup gson for testing json classes
         gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         stringquery = "{'type':'TestRequest', 'isTest': true, 'username':'alexshulzycki'}";
@@ -34,12 +35,12 @@ public class RequestTest {
      * It tests parsing of the ServerQuery superclass, as well as the TestQuery.
      */
     @Test
-    public void gsonTestQuery(){
-        //test the superclass ServerQuery
+    public void gsonTestQuery() {
+//test the superclass ServerQuery
         ServerQuery serverQuery = gsonTestRequest.buildGson(stringquery, ServerQuery.class);
-        Assert.assertEquals("ServerQuery","alexshulzycki", serverQuery.getUsername());
+        Assert.assertEquals("ServerQuery", "alexshulzycki", serverQuery.getUsername());
 
-        //test functions
+//test functions
         TestQuery testQuery = gsonTestRequest.buildGson(stringquery, TestQuery.class);
         Assert.assertEquals("Test TestQuery query", "{\"success\":\"who knows\", \"isTest\": true," +
                 " \"username\":\"alexshulzycki\"}", testQuery.runQuery());
@@ -61,5 +62,4 @@ public class RequestTest {
         Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": true," +
                 " \"username\":\"alexshulzycki\"}", testRequest.execute());
     }
-
 }

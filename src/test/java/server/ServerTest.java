@@ -28,21 +28,20 @@ public class ServerTest {
      */
     @BeforeClass
     public static void init() {
-        //setup server
+//setup server
         try {
             server = new Server(3000, new FileInputStream("testkey.jks"), serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        //setup client
+//setup client
         try {
             httpsCon = new SecureClientNetworking(new URL("https://localhost:3000"));
             httpCon = new SecureClientNetworking(new URL("http://localhost:3000"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -50,7 +49,7 @@ public class ServerTest {
      * to processing, up until response.
      */
     @Test
-    public void fullHttpsRequestResponse(){
+    public void fullHttpsRequestResponse() {
         Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": false," +
                 " \"username\":\"alexshulzycki\"}", httpsCon.sendPostRequest("{'type':'TestRequest'," +
                 " 'extraData':'Irrelevant Data'}"));
@@ -60,7 +59,7 @@ public class ServerTest {
      * This test is supposed to successfully fail, as the server shouldn't accept any unencrypted requests.
      */
     @Test
-    public void insecureRequestTest(){
+    public void insecureRequestTest() {
         Assert.assertEquals(null, httpCon.sendPostRequest("{'type':'TestRequest'," +
                 " 'extraData':'Irrelevant Data'}"));
     }
@@ -70,18 +69,17 @@ public class ServerTest {
      * Makes sure the testkey keystore actually exists, might be handy for debugging later on.
      */
     @Test
-    public void keyStoreExists(){
+    public void keyStoreExists() {
         assertTrue(new File("testkey.jks").exists());
     }
 
     @After
-    public void after(){
+    public void after() {
         try {
-            //giving thread some well-deserved sleep time so you can manually test the server using external tools
+//giving thread some well-deserved sleep time so you can manually test the server using external tools
             Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
 }

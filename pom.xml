@@ -106,9 +106,6 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>application.Main</exclude>
-                        <exclude>grade.ProjectGrade</exclude>
-                        <exclude>grade.ProjectGradeTest</exclude>
                     </excludes>
                 </configuration>
                 <executions>
