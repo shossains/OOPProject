@@ -20,4 +20,13 @@ public class HomeController {
         window.show();
     }
 
+    public void toRegister(ActionEvent event) throws IOException {
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/RegisterForm.fxml"));
+        Scene hmScene = new Scene(hmParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(hmScene);
+        window.show();
+    }
+
 }

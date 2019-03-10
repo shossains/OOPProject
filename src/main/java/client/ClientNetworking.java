@@ -90,11 +90,7 @@ public class ClientNetworking {
                 return true; // Just allow them all.
             }
         };
-
-
             //System.setProperty("jsse.enableSNIExtension", "false");
             HttpsURLConnection.setDefaultHostnameVerifier(trustAllHostnames);
-
-
     }
 }
