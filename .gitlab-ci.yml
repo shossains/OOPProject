@@ -6,17 +6,16 @@ stages:
   - coverage
   - checkstyle
 
-
 ##Stage will fail if it doesn't compile
 build:
   stage: build
   script:
     - mvn clean validate compile
 
-##If >1 test fails than stage fails
+##If more than 1 test fails, the whole pipeline fails
 test:
   stage: test
-  ## make the code coverage reports created in this stage available to further stages
+  ## create this report and make it available for the coverage and checkstyle report after this one
   artifacts:
     untracked: true
   script:
@@ -25,7 +24,7 @@ test:
 ##
 coverage:
   stage: coverage
-  ## get the code coverage reports generated in the previous stage
+  ## use the previous report
   dependencies:
     - test
   script:
@@ -38,7 +37,7 @@ checkstyle:
   stage: checkstyle
   script:
     - mvn site
-#     - files=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-#     - warnings=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-#     - errors=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-#     - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"
+     - files=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+     - warnings=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+     - errors=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+     - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"
