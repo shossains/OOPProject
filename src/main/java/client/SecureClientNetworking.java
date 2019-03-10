@@ -2,6 +2,7 @@ package client;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.KeyManagementException;
@@ -41,18 +42,23 @@ public class SecureClientNetworking {
     public String sendPostRequest(String request) {
         try {
             URLConnection urlConnection = serverUrl.openConnection();
-            HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
-            httpsConn.setRequestMethod("POST");
-            httpsConn.setChunkedStreamingMode(8);
-            httpsConn.setDoOutput(true);
-            httpsConn.connect();
+            HttpURLConnection httpConn;
+            if (serverUrl.getProtocol().equals("https")) {
+                httpConn = (HttpsURLConnection) urlConnection;
+            } else {
+                httpConn = (HttpURLConnection) urlConnection;
+            }
+            httpConn.setRequestMethod("POST");
+            httpConn.setChunkedStreamingMode(8);
+            httpConn.setDoOutput(true);
+            httpConn.connect();
 
             //write to stream
-            OutputStream os = httpsConn.getOutputStream();
+            OutputStream os = httpConn.getOutputStream();
             os.write(request.getBytes());
 
             //response
-            Scanner scanner = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
+            Scanner scanner = new Scanner(httpConn.getInputStream()).useDelimiter("\\A");
             String responseString = scanner.hasNext() ? scanner.next() : "";
 
             return responseString;
@@ -66,6 +72,7 @@ public class SecureClientNetworking {
 
     /**
      * Sends a https get request to the url.
+     *
      * @param query The string in the get request that goes right after the ? in the url.
      *              This method doesn't validate, so you will have to do it yourself.
      * @return The String response from the server.
@@ -73,13 +80,19 @@ public class SecureClientNetworking {
     public String sendGetRequest(String query) {
         try {
             URL queryUrl = new URL(serverUrl.toString() + "?" + query);
-            URLConnection urlConnection = queryUrl.openConnection();
-            HttpsURLConnection httpsConn = (HttpsURLConnection) urlConnection;
-            httpsConn.setRequestMethod("GET");
-            httpsConn.connect();
+            HttpURLConnection httpConn;
+            if (queryUrl.getProtocol().equals("https")) {
+                URLConnection urlConnection = queryUrl.openConnection();
+                httpConn = (HttpsURLConnection) urlConnection;
+            } else {
+                URLConnection urlConnection = queryUrl.openConnection();
+                httpConn = (HttpURLConnection) urlConnection;
+            }
+            httpConn.setRequestMethod("GET");
+            httpConn.connect();
 
             //response
-            Scanner scanner = new Scanner(httpsConn.getInputStream()).useDelimiter("\\A");
+            Scanner scanner = new Scanner(httpConn.getInputStream()).useDelimiter("\\A");
             String responseString = scanner.hasNext() ? scanner.next() : "";
 
             return responseString;

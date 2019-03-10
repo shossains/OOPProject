@@ -39,6 +39,9 @@ public class ClientTest {
         Assert.assertEquals(null ,cn.sendPostRequest("hello world"));
     }
 
+    /**
+     * Test https POST with httpbin
+     */
     @Test
     public void httpbinPost(){
         //setup test
@@ -56,10 +59,42 @@ public class ClientTest {
                 "    \"hello world\"",cn.sendPostRequest("hello world").substring(0,77));
     }
 
+    /**
+     * Tests unsecured POST with http using httpbin
+     */
+    @Test
+    public void httpbinPostUnsecured(){
+        try {
+            cn = new SecureClientNetworking(new URL("http://httpbin.org/post"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        //make sure it works
+        Assert.assertEquals("{\n" +
+                "  \"args\": {}, \n" +
+                "  \"data\": \"\", \n" +
+                "  \"files\": {}, \n" +
+                "  \"form\": {\n" +
+                "    \"hello world\"",cn.sendPostRequest("hello world").substring(0,77));
+    }
+
+
     @Test
     public void getTest(){
         try {
             cn = new SecureClientNetworking(new URL("https://httpbin.org/get"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals("{\n" +
+                "  \"args\": {\n" +
+                "    \"Hello\": \"World\"", cn.sendGetRequest("Hello=World").substring(0,34));
+    }
+
+    @Test
+    public void getNonSecureTest(){
+        try {
+            cn = new SecureClientNetworking(new URL("http://httpbin.org/get"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
