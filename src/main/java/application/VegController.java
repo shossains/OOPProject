@@ -21,19 +21,6 @@ public class VegController {
      * @throws IOException Throw exception
      */
     public void add(ActionEvent actionEvent) throws IOException {
-        GridPane grid = new GridPane();
-        Label test = new Label("testerdietets");
-        grid.add(test,0,0) ;
-
-
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(tableViewScene);
-        window.show();
-
+        System.out.println("If you're reading this it's too late.");
     }
 }

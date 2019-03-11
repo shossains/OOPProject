@@ -6,6 +6,7 @@ import com.sun.net.httpserver.HttpsServer;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import java.net.InetSocketAddress;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -19,27 +20,18 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.TrustManagerFactory;
 
-/**
- * Server class which runs a HTTPS server, which handles request using the RequestHandler.
- */
 public class Server {
     private final int port;
-    private final char[] password;
-    private final FileInputStream keyStream;
     private HttpsServer httpsServer;
+    private char[] password;
 
     /**
      * The main entry point for the server, start an instance of this
      * object and the threads and request handling will all be done on their own.
-     *
-     * @param serverPort The port on which the server listens
-     * @param keystream    The FileInputStream for the keystore
-     * @param pass       The password to the keystore
      */
-    public Server(int serverPort, FileInputStream keystream, char[] pass) {
+    public Server(int serverPort, char[] pass) {
         port = serverPort;
         password = pass;
-        keyStream = keystream;
         try {
             runServer();
         } catch (IOException e) {
@@ -57,18 +49,6 @@ public class Server {
         }
     }
 
-    /**
-     * Runs the server, and throws all the exceptions which could happen when trying to run it.
-     *
-     * @throws IOException Thrown when there's an issue creating the https server, usually
-     *                      due to the port being taken.
-     * @throws NoSuchAlgorithmException Thrown when there's a typo when writing the
-     *                      encryption type, but since its hardcoded, shouldnt't be a problem.
-     * @throws CertificateException Issue with keystore/protocol.
-     * @throws UnrecoverableKeyException Issue with keystore.
-     * @throws KeyStoreException Issue with keystore.
-     * @throws KeyManagementException Issue with keystore.
-     */
     public void runServer() throws IOException, NoSuchAlgorithmException, CertificateException,
             UnrecoverableKeyException, KeyStoreException, KeyManagementException {
         System.out.println("Server starting..");
@@ -77,8 +57,12 @@ public class Server {
         httpsServer.createContext("/", new RequestHandler());
         httpsServer.setExecutor(null);
 
+        //setup server encryption
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+
         //keystore
         KeyStore keyStore = KeyStore.getInstance("JKS");
+        FileInputStream keyStream = new FileInputStream("testkey.jks");
         keyStore.load(keyStream, password);
 
         //key manager
@@ -89,36 +73,26 @@ public class Server {
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("SunX509");
         trustManagerFactory.init(keyStore);
 
-        //setup server encryption
-        SSLContext sslContext = SSLContext.getInstance("TLS");
         sslContext.init(keyManagerFactory.getKeyManagers(),
                 trustManagerFactory.getTrustManagers(), null);
 
-        httpsServer.setHttpsConfigurator(getConfigurator(sslContext));
-
-
-        httpsServer.start();
-    }
-
-    /**
-     * Returns HTTPS configuration for the server.
-     * @param sslContext The SSL context to be used
-     * @return HttpsConfigurator to be used by the server
-     */
-    private HttpsConfigurator getConfigurator(SSLContext sslContext) {
-        return new HttpsConfigurator(sslContext) {
+        httpsServer.setHttpsConfigurator(new HttpsConfigurator(sslContext) {
             public void configure(HttpsParameters params) {
 
-                SSLContext context = getSSLContext();
-                SSLParameters sslParameters = context.getDefaultSSLParameters();
+                SSLContext c = getSSLContext();
+                SSLParameters sslParameters = c.getDefaultSSLParameters();
                 params.setSSLParameters(sslParameters);
-                SSLEngine engine = context.createSSLEngine();
-                params.setNeedClientAuth(true);
+                SSLEngine engine = c.createSSLEngine();
+                //params.setNeedClientAuth(true);
                 params.setCipherSuites(engine.getEnabledCipherSuites());
                 params.setProtocols(engine.getEnabledProtocols());
 
 
             }
-        };
+        });
+
+
+
+        httpsServer.start();
     }
 }
