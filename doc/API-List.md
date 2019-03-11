@@ -19,17 +19,20 @@ If the server experiences an error, with the database, query, invalid data or ot
 
 ## VegMeal
 
-To add a vegetarian meal to the person's account. Returns information about the persons vegetarian meals.
+To add a vegetarian meal to the person's account. Returns the amount of points.
+It will always return the amount of points, whether or not you have added a vegetarian meal, so you get immediate feedback.
 
 ### Request:
 * *type*: VegMeal
 * *addMeal*: Boolean, if you want to indicate that you have added a meal, use true, if you just want to retrieve information, give it false.
 
 ### Response
-* *points*: Integer, The current total of points the user has
-* *added*, Boolean, confirms that the meal has been added.
+* *points*: Integer, The current total of points the user has.
+* *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
 
 ### Example
 {"type" : "VegMeal", "username" : "mike", "password" : "hunter2", "addMeal", "false"}
 
+Response:
 
+{"points" : "42"}
