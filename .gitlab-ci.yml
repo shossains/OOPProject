@@ -28,8 +28,8 @@ coverage:
   dependencies:
     - test
   script:
-    - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' target/site/jacoco/jacoco.csv)
-    - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- AGGREGATE COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
+    - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nCOVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' target/site/jacoco/jacoco.csv)
+    - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nAGGREGATE COVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
     - printf "$coverage\n$aggregate\n\n"
 
 checkstyle:
