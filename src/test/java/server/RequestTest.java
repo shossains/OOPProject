@@ -1,3 +1,4 @@
+/*
 package server;
 
 import com.google.gson.Gson;
@@ -5,11 +6,9 @@ import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import server.queries.RegisterQuery;
 import server.queries.ServerQuery;
 import server.queries.TestQuery;
 
-import static org.junit.Assert.*;
 
 public class RequestTest {
     static private GsonBuilder gsonBuilder;
@@ -29,17 +28,20 @@ public class RequestTest {
         stringquery = "{'type':'TestRequest', 'isTest': true, 'username':'alexshulzycki'}";
     }
 
-    /**
+    */
+/**
      * Tests the ability of Gson to parse queries.
      * It tests parsing of the ServerQuery superclass, as well as the TestQuery.
-     */
-    @Test
-    public void gsonTestQuery(){
-        //test the superclass ServerQuery
-        ServerQuery serverQuery = gsonTestRequest.buildGson(stringquery, ServerQuery.class);
-        Assert.assertEquals("ServerQuery","alexshulzycki", serverQuery.getUsername());
+     *//*
 
-        //test functions
+
+    @Test
+    public void gsonTestQuery() {
+//test the superclass ServerQuery
+        ServerQuery serverQuery = gsonTestRequest.buildGson(stringquery, ServerQuery.class);
+        Assert.assertEquals("ServerQuery", "alexshulzycki", serverQuery.getUsername());
+
+//test functions
         TestQuery testQuery = gsonTestRequest.buildGson(stringquery, TestQuery.class);
         Assert.assertEquals("Test TestQuery query", "{\"success\":\"who knows\", \"isTest\": true," +
                 " \"username\":\"alexshulzycki\"}", testQuery.runQuery());
@@ -51,9 +53,11 @@ public class RequestTest {
         Assert.assertEquals("TestType", gsonTestRequest.getType());
     }
 
-    /**
+    */
+/**
      * Tests the full handling and running of a test request with the Request object.
-     */
+     *//*
+
     @Test
     public void gsonTestQueryFull() {
         Request testRequest = gson.fromJson(stringquery, Request.class);
@@ -63,3 +67,5 @@ public class RequestTest {
     }
 
 }
+
+*/

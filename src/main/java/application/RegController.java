@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import server.DB.Query;
+import server.db.Query;
 
 import java.io.IOException;
 
@@ -52,20 +52,6 @@ public class RegController {
         } else {
             status.setText(statusText);
             status.setStyle("-fx-text-fill: #a12020;");
-        }
-    }
-
-    /**
-     * Check whether input is an integer.
-     * @param input the input that needs to be checked
-     * @return True or false
-     */
-    public boolean isInt(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
         }
     }
 
@@ -208,11 +194,25 @@ public class RegController {
     }
 
     /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
      * Check is input contains only letters.
      * @param string input that needs to be checked
      * @return true is input contains only letters
      */
-    public boolean isLetters(String string) {
+    public static boolean isLetters(String string) {
         char[] chars = string.toCharArray();
 
         for (char c : chars) {

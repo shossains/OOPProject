@@ -65,7 +65,7 @@ public class SecureClientNetworking {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Java IO exception");
             return null;
         }
     }
@@ -99,7 +99,7 @@ public class SecureClientNetworking {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Java IO exception");
             return null;
         }
     }
@@ -130,9 +130,9 @@ public class SecureClientNetworking {
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
             return;
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            System.out.println("NoSuchAlgorithmException");
         } catch (KeyManagementException e) {
-            e.printStackTrace();
+            System.out.println("KeyManagementException");
         }
         System.out.println("Failed to allow untrusted certificates");
 

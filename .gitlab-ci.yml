@@ -2,10 +2,9 @@ image: maven:3.6.0-jdk-10
 
 stages:
   - build
-#   - test
-#   - coverage
-#   - checkstyle
-
+  - test
+  - coverage
+  - checkstyle
 
 ##Stage will fail if it doesn't compile
 build:
@@ -13,32 +12,31 @@ build:
   script:
     - mvn clean validate compile
 
-# ##If >1 test fails than stage fails
-# test:
-#   stage: test
-#   ## make the code coverage reports created in this stage available to further stages
-#   artifacts:
-#     untracked: true
-#   script:
-#     - mvn test jacoco:report jacoco:report-aggregate
+##If more than 1 test fails, the whole pipeline fails
+test:
+  stage: test
+  ## create this report and make it available for the coverage and checkstyle report after this one
+  artifacts:
+    untracked: true
+  script:
+    - mvn test jacoco:report jacoco:report-aggregate
 
-# ##
-# coverage:
-#   stage: coverage
-#   ## get the code coverage reports generated in the previous stage
-#   dependencies:
-#     - test
-#   script:
-#     - client=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- CLIENT COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' client/target/site/jacoco/jacoco.csv)
-#     - server=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- SERVER COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' server/target/site/jacoco/jacoco.csv)
-#     - total=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\n-- TOTAL COVERAGE REPORT --"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' tests/target/site/jacoco-aggregate/jacoco.csv)
-#     - printf "$client\n$server\n$total\n\n"
+##
+coverage:
+  stage: coverage
+  ## use the previous report
+  dependencies:
+    - test
+  script:
+    - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nCOVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' target/site/jacoco/jacoco.csv)
+    - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nAGGREGATE COVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
+    - printf "$coverage\n$aggregate\n\n"
 
-# checkstyle:
-#   stage: checkstyle
-#   script:
-#     - mvn site
-# #     - files=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-# #     - warnings=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-# #     - errors=$(cat target/site/checkstyle-aggregate.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
-# #     - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"
+checkstyle:
+  stage: checkstyle
+  script:
+    - mvn site
+    - files=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 2 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - warnings=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 4 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - errors=$(cat target/site/checkstyle.html | grep -A4 "<tr class=\"b\">" | head -n 5 | tail -n 1 | grep -o '<td>.*</td>' | sed -e 's/<td>\(.*\)<\/td>/\1/')
+    - printf "\n-- CHECKSTYLE REPORT --\n$files files\n$errors errors\n$warnings warnings\n-----------------------\n\n"

@@ -1,3 +1,4 @@
+/*
 package server;
 
 
@@ -12,7 +13,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import static org.junit.Assert.assertTrue;
 
 public class ServerTest {
@@ -23,9 +23,11 @@ public class ServerTest {
     private static SecureClientNetworking httpCon;
 
 
-    /**
+    */
+/**
      * Sets up the server as well as http and https urls
-     */
+     *//*
+
     @BeforeClass
     public static void init() {
         //setup server
@@ -42,46 +44,50 @@ public class ServerTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
 
-    /**
+    */
+/**
      * Sends a test request and listens for a response. This is effectively a test of the whole server, from receiving,
      * to processing, up until response.
-     */
+     *//*
+
     @Test
-    public void fullHttpsRequestResponse(){
+    public void fullHttpsRequestResponse() {
         Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": false," +
                 " \"username\":\"alexshulzycki\"}", httpsCon.sendPostRequest("{'type':'TestRequest'," +
                 " 'extraData':'Irrelevant Data'}"));
     }
 
-    /**
+    */
+/**
      * This test is supposed to successfully fail, as the server shouldn't accept any unencrypted requests.
-     */
+     *//*
+
     @Test
-    public void insecureRequestTest(){
+    public void insecureRequestTest() {
         Assert.assertEquals(null, httpCon.sendPostRequest("{'type':'TestRequest'," +
                 " 'extraData':'Irrelevant Data'}"));
     }
 
 
-    /**
+    */
+/**
      * Makes sure the testkey keystore actually exists, might be handy for debugging later on.
-     */
+     *//*
+
     @Test
-    public void keyStoreExists(){
+    public void keyStoreExists() {
         assertTrue(new File("testkey.jks").exists());
     }
 
     @After
-    public void after(){
+    public void after() {
         try {
-            //giving thread some well-deserved sleep time so you can manually test the server using external tools
+//giving thread some well-deserved sleep time so you can manually test the server using external tools
             Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-}
+}*/
