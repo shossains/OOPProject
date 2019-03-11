@@ -5,11 +5,9 @@ import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import server.queries.RegisterQuery;
 import server.queries.ServerQuery;
 import server.queries.TestQuery;
 
-import static org.junit.Assert.*;
 
 public class RequestTest {
     static private GsonBuilder gsonBuilder;
@@ -19,11 +17,11 @@ public class RequestTest {
 
     @BeforeClass
     public static void before() {
-//test request for testing of the actual Request class
+        //test request for testing of the actual Request class
         gsonTestRequest = new Request();
         gsonTestRequest.setRaw(stringquery);
 
-//setup gson for testing json classes
+        //setup gson for testing json classes
         gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         stringquery = "{'type':'TestRequest', 'isTest': true, 'username':'alexshulzycki'}";
