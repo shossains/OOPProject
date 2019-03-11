@@ -12,7 +12,7 @@
  | Worked on input validation for the GUI | Shaan | - | -  | - | - |
  | GUI switches scenes | Shaan  | - | -  | - | - |
  | Design VegMeal GUI  | Vanessa | - | -  | - | - |
- | Did research on the API for the calculator  | Sami  | 4 | 8  | No | - |
+ | Research on the API for the calculator  | Sami  | 4 | 8  | No | - |
  | Worked on the logic for transportation  | Lucas  | - | -  | - | - |
  | Redesigned server + added SSL/GSON  | Alex  | - | -  | - | - |
  
