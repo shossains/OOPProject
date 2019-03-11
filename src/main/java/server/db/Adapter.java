@@ -1,4 +1,4 @@
-package server.Db;
+package server.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

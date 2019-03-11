@@ -1,4 +1,4 @@
-package server.Db;
+package server.db;
 
 /**
  * The class that authenticates and stores data about the user. This is the main class
@@ -10,8 +10,8 @@ public class User {
 
     /**
      * Username and password that is needed to log in to the database.
-     * @param username Username in the DB
-     * @param password  Password in the DB
+     * @param username Username in the db
+     * @param password  Password in the db
      */
     public User(String username, String password) {
         this.username = username;
