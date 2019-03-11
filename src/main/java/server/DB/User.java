@@ -1,4 +1,4 @@
-package server.DB;
+package server.Db;
 
 /**
  * The class that authenticates and stores data about the user. This is the main class
