@@ -9,8 +9,8 @@
 ### Sprint Retrospective
  | Task  | Assigned to | Estimated Effort (in hours per person) | Actual Effort | Done | Notes |
  | ------------- | ------------- | ------------ | ------------- | ------------ | -------- |
- | Worked on input validation for the GUI | Shaan | - | -  | - | - |
- | GUI switches scenes | Shaan  | - | -  | - | - |
+ | Worked on input validation for the GUI | Shaan | 2 | 3 | - | - |
+ | Implement CI Pipeline | Shaan  | 2 | 5 | Yes | - |
  | Design VegMeal GUI  | Vanessa | - | -  | - | - |
  | Research on the API for the calculator  | Sami  | 4 | 8  | No | - |
  | Worked on the logic for transportation  | Lucas  | - | -  | - | - |
