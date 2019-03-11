@@ -1,4 +1,3 @@
-
 package server;
 
 
@@ -43,7 +42,6 @@ public class ServerTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -84,6 +82,4 @@ public class ServerTest {
             e.printStackTrace();
         }
     }
-
 }
-
