@@ -14,6 +14,7 @@ public class RegisterQuery extends  ServerQuery {
      * @return result of registration.
      */
     public String runQuery() {
+        // Logic for actually running the query
 
         //testing for now, so false
         return "{\"success\":\"false\"}";
