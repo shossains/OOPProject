@@ -56,20 +56,6 @@ public class RegController {
     }
 
     /**
-     * Check whether input is an integer.
-     * @param input the input that needs to be checked
-     * @return True or false
-     */
-    public boolean isInt(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    /**
      * Do all input validation at once and finally check if username is taken.
      * @return return true if all holds else return false
      */
@@ -208,11 +194,25 @@ public class RegController {
     }
 
     /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
      * Check is input contains only letters.
      * @param string input that needs to be checked
      * @return true is input contains only letters
      */
-    public boolean isLetters(String string) {
+    public static boolean isLetters(String string) {
         char[] chars = string.toCharArray();
 
         for (char c : chars) {
