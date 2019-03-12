@@ -10,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import server.db.Query;
+import server.queries.ServerQuery;
+import server.queries.VegMealQuery;
 
 import java.io.IOException;
 import java.net.URL;

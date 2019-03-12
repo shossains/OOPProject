@@ -52,8 +52,10 @@ public class Query extends Adapter {
      * Execute any given query.
      * @param query The query given as string to be executed
      */
-    public void query(String query) {
+    public static void query(String query) {
         System.out.println(query);
+        Query db= new Query();
+        db.connect();
 
         try {
             PreparedStatement st = conn.prepareStatement(query);
@@ -64,6 +66,8 @@ public class Query extends Adapter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        db.disconnect();
     }
 
     /**
@@ -91,5 +95,29 @@ public class Query extends Adapter {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String eaten(String username) {
+        Query db = new Query();
+        db.connect();
+
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "SELECT points FROM points WHERE username = '" + username + "'");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int res = rs.getInt(1);
+                db.disconnect();
+                return "{\"points\" : \"" + res + "\"}";
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        return null;
     }
 }

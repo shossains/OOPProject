@@ -14,7 +14,7 @@ public class Adapter {
     String password = "cf35c72e380b460c7285d053492f81f4097474fced4342d73e163e228a32e2d3";
 
     /* 02 Database variables ------------------------------- */
-    Connection conn = null;
+    static Connection conn = null;
     Statement stmt = null;
     ResultSet rs = null;
 
