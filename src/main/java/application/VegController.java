@@ -26,9 +26,11 @@ public class VegController {
      * @throws IOException Throw exception
      */
     public void add(ActionEvent actionEvent) throws IOException {
+        String username =  server.queries.ServerQuery.getUsername();
+        String password=  server.queries.ServerQuery.getPassword();
         //send json request
         SecureClientNetworking scn = new SecureClientNetworking(new URL("https://localhost:3000"));
-        String request = "put json here";
+        String request = "{\"type\" : \"VegMeal\", \"username\" : \"" + username + "\", \"password\" : \"" + password + "\", \"addMeal\", \"false\"}";
         String response = scn.sendPostRequest(request);
         //de-Json the response and update the amount of points.
 

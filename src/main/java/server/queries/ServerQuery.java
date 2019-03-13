@@ -1,14 +1,14 @@
 package server.queries;
 
 public class ServerQuery {
-    protected String username;
-    protected String password;
+    protected static String username;
+    protected static String password;
 
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
