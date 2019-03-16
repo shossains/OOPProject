@@ -46,7 +46,7 @@ public class VegController implements Initializable {
     }
 
     /**
-     * Adds the date of when a vegatarian meal was eaten
+     * Adds the date of when a vegetarian meal was eaten
      * and the number of points gained when clicking the button
      * @param tableEvent
      */
