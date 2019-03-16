@@ -97,11 +97,36 @@ public class Query extends Adapter {
         return false;
     }
 
-    /** TODO: Please add this javadoc, checkstyle is not happy.
-     * @param username to do
-     * @return to do
+    /**
+     * Checks the amount of points a user has right now
+     * @param username the user that you want to check
+     * @return the amount of points in JSON format
      */
     public static String eaten(String username) {
+        Query db = new Query();
+        db.connect();
+
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "SELECT points FROM points WHERE username = '" + username + "'");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int res = rs.getInt(1);
+                db.disconnect();
+                return "{\"points\" : \"" + res + "\"}";
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        return null;
+    }
+
+    public static String checkPoints(String username) {
         Query db = new Query();
         db.connect();
 

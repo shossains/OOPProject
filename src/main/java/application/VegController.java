@@ -28,7 +28,7 @@ public class VegController {
 
         String request = "{\"type\" : \"VegMeal\", \"username\" : \""
                 + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", \"false\"}";
+                + User.getPassword() + "\", \"addMeal\", \"true\"}";
 
         String response = scn.sendPostRequest(request);
 
@@ -63,5 +63,17 @@ public class VegController {
             System.out.println("error parsing json");
             return -1;
         }
+    }
+
+    public void returnPoints(ActionEvent actionEvent) {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
+                + User.getUsername() + "\", \"password\" : \""
+                + User.getPassword() + "\", \"addMeal\", \"false\"}";
+
+        String response = scn.sendPostRequest(request);
+
+        System.out.println(parsePoints(response));
     }
 }
