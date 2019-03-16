@@ -21,8 +21,8 @@ public class VegController {
     public void add(ActionEvent actionEvent) {
         // Gets username and password to send via json to the server
         // Which uses the CLIENT stored vars.
-        //Dont use any server queries on the gosh darned client, thats only for the server
-        //And please for the love of god dont just change server code vars to static just
+        //Don't use any server queries on the gosh darned client, that's only for the server
+        //And please for the love of God don't just change server code vars to static just
         // to make it compile
 
 
