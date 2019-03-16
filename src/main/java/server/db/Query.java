@@ -98,7 +98,7 @@ public class Query extends Adapter {
     }
 
     /**
-     * Checks the amount of points a user has right now
+     * Checks the amount of points a user has right now.
      * @param username the user that you want to check
      * @return the amount of points in JSON format
      */
@@ -114,7 +114,7 @@ public class Query extends Adapter {
             while (rs.next()) {
                 int res = rs.getInt(1);
                 db.disconnect();
-                return "{\"points\" : \"" + res + "\"}";
+                return "{\"points\" : " + res + "}";
             }
 
             rs.close();
@@ -138,7 +138,7 @@ public class Query extends Adapter {
             while (rs.next()) {
                 int res = rs.getInt(1);
                 db.disconnect();
-                return "{\"points\" : \"" + res + "\"}";
+                return "{\"points\" : " + res + "}";
             }
 
             rs.close();

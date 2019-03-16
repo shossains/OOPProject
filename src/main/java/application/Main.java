@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import server.Server;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Main extends Application {
     public Stage primaryStage;
@@ -26,7 +30,21 @@ public class Main extends Application {
         }
     }
 
+    /**Main entry point for the application. Currently launches both server and client for demos.
+     * @param args system args
+     */
     public static void main(String[] args) {
+
+        //setup server
+        Server server;
+        String serverpassword = "password";
+        try {
+            server = new Server(3000, new FileInputStream("testkey.jks"),
+                    serverpassword.toCharArray());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         launch(args);
     }
 
@@ -37,7 +55,7 @@ public class Main extends Application {
         } else {
             System.out.println("URL invalid");
         }
-        User.setUsername("Andy");
+        User.setUsername("shossain");
         User.setPassword("hunter2");
     }
 }

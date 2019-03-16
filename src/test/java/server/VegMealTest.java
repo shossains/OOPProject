@@ -57,10 +57,10 @@ public class VegMealTest {
      */
     @Test
     public void vegMealQueryJson(){
-        String testString = "{'type':'VegMeal','username':"+ testUserRow +"}";
+        String testString = "{'type':'VegMeal','username': '"+ testUserRow +"' }";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{\"points\" : \"1\"}", request.execute());
+        Assert.assertEquals("{\"points\" : 1}", request.execute());
     }
 
 

@@ -26,9 +26,8 @@ public class VegController {
         //send json request
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
-                + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", \"true\"}";
+        String request = "{'type' : 'VegMeal', 'username' : '"
+                + User.getUsername() + "', 'password':'" + User.getPassword() + "'}";
 
         String response = scn.sendPostRequest(request);
 
@@ -56,11 +55,12 @@ public class VegController {
             try {
                 points = Integer.parseInt(json.get("points").toString());
             } catch (NumberFormatException e) {
+                System.out.println(responseJson);
                 System.out.println("Bad json format returned");
             }
             return points;
         } else {
-            System.out.println("error parsing json");
+            System.out.println("Null JSON returned");
             return -1;
         }
     }
@@ -70,7 +70,7 @@ public class VegController {
 
         String request = "{\"type\" : \"VegMeal\", \"username\" : \""
                 + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", \"false\"}";
+                + User.getPassword() + "\", \"addMeal\", false}";
 
         String response = scn.sendPostRequest(request);
 

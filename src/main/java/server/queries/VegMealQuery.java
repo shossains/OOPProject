@@ -1,7 +1,7 @@
 package server.queries;
 
 public class VegMealQuery extends ServerQuery {
-    private String addMeal;
+    private boolean addMeal;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
