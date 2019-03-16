@@ -9,9 +9,15 @@ import server.queries.VegMealQuery;
 
 public class VegMealTest {
 
+    /**
+     * as in VegController, not vietcong
+     */
     static private VegController vc;
 
 
+    /**
+     * initializes variables
+     */
     @BeforeClass
     public static void init(){
         vc = new VegController();
@@ -27,13 +33,15 @@ public class VegMealTest {
     }
 
     /**
-     * Testing responses for a bad json response
+     * Testing reaction to a bad json response
      */
     @Test
     public void BadJsonParsing(){
         int points = vc.parsePoints("{'points': '43'}");
         Assert.assertEquals(-1, points);
         points = vc.parsePoints("{'points': false}");
+        Assert.assertEquals(-1, points);
+        points = vc.parsePoints("what");
         Assert.assertEquals(-1, points);
     }
 

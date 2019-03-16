@@ -38,13 +38,20 @@ public class VegController {
 
     /**
      * Helper function to parse response json.
+     *
      * @param responseJson The raw json response from the server
      * @return The current amount of points.
      */
     public int parsePoints(String responseJson) {
         if (responseJson != null) {
             //de-Json the response and update the amount of points.
-            JsonObject json = new JsonParser().parse(responseJson).getAsJsonObject();
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
             int points = -1;
             try {
                 points = Integer.parseInt(json.get("points").toString());
