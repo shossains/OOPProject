@@ -1,9 +1,11 @@
 package server;
 
 import application.VegController;
+import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import server.queries.VegMealQuery;
 
 public class VegMealTest {
 
@@ -33,6 +35,17 @@ public class VegMealTest {
         Assert.assertEquals(-1, points);
         points = vc.parsePoints("{'points': false}");
         Assert.assertEquals(-1, points);
+    }
+
+    /**
+     * Tests whether the database returns the correct json via the VegMealQuery class.
+     */
+    @Test
+    public void vegMealQueryJson(){
+        String testString = "{'type':'VegMeal','username':'shossain'}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        Assert.assertEquals("", request.execute());
     }
 
 

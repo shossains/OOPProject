@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import server.queries.RegisterQuery;
 import server.queries.TestQuery;
+import server.queries.VegMealQuery;
 
 /**
  * Class for parsing requests using Gson.
@@ -43,11 +44,17 @@ public class Request {
      * TestRequest - For testing purposes
      */
     public String execute() {
+        if(rawQuery == null){
+            System.out.println("You forgot to set the rawQuery Einstein");
+        }
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
+
+            case "VegMeal":
+                return vegMeal();
             default:
                 return null;
         }
@@ -63,17 +70,9 @@ public class Request {
         return regQuery.runQuery();
     }
 
-    /**
-     * Test function to test ability to execute a test function on the server and return JSON.
-     *
-     * @return Test string from test classes
-     */
-    private String testExecute() {
-
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("TestRequest", "TestRequest");
-        return jsonObject.toString();
-
+    private String vegMeal(){
+        VegMealQuery vegMealQuery = buildGson(rawQuery, VegMealQuery.class);
+        return vegMealQuery.runQuery();
     }
 
 
