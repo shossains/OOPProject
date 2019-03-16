@@ -23,6 +23,10 @@ public class VegMealTest {
         int points = vc.parsePoints("{'points': 43}");
         Assert.assertEquals(43, points);
     }
+
+    /**
+     * Testing responses for a bad json response
+     */
     @Test
     public void BadJsonParsing(){
         int points = vc.parsePoints("{'points': '43'}");
@@ -30,4 +34,6 @@ public class VegMealTest {
         points = vc.parsePoints("{'points': false}");
         Assert.assertEquals(-1, points);
     }
+
+
 }

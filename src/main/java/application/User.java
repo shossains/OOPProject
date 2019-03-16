@@ -8,8 +8,6 @@ import java.net.URL;
  * to use when dealing with and updating user data.
  * This should also be the class that serves to save user data on the client side for
  * e.g. automatic logins, and local storage of said logins.
- *
- *
  * Also, contains the server URL, as it is a convenient place to store it.
  */
 public class User {
@@ -18,7 +16,7 @@ public class User {
     private static URL serverURL;
 
 
-    public static URL getServerURL() {
+    public static URL getServerUrl() {
         return serverURL;
     }
 
@@ -28,7 +26,7 @@ public class User {
      * @param url string version of the url
      * @return true if successful, false if not
      */
-    public static boolean setServerURL(String url) {
+    public static boolean setServerUrl(String url) {
         try {
             serverURL = new URL(url);
             return true;

@@ -1,13 +1,12 @@
 package application;
 
-import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
-
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -16,25 +15,23 @@ public class VegController {
 
     /**
      * Searches for a meal that matches the input.
+     *
      * @param actionEvent The click of the button
      */
-    public void add(ActionEvent actionEvent){
+    public void add(ActionEvent actionEvent) {
         // Gets username and password to send via json to the server
         // Which uses the CLIENT stored vars.
         //Dont use any server queries on the gosh darned client, thats only for the server
-        //And please for the love of god dont just change server code vars to static just to make it compile
+        //And please for the love of god dont just change server code vars to static just
+        // to make it compile
 
 
         //send json request
-        SecureClientNetworking scn = null;
-        try {
-            scn = new SecureClientNetworking(new URL("https://localhost:3000"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        String request = "{\"type\" : \"VegMeal\", \"username\" : \"" + User.getUsername() +
-                "\", \"password\" : \"" +
-                User.getPassword() + "\", \"addMeal\", \"false\"}";
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
+                + User.getUsername() + "\", \"password\" : \""
+                + User.getPassword() + "\", \"addMeal\", \"false\"}";
 
         String response = scn.sendPostRequest(request);
 
@@ -42,6 +39,11 @@ public class VegController {
 
     }
 
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points.
+     */
     public int parsePoints(String responseJson) {
         if (responseJson != null) {
             //de-Json the response and update the amount of points.
@@ -49,7 +51,7 @@ public class VegController {
             int points = -1;
             try {
                 points = Integer.parseInt(json.get("points").toString());
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Bad json format returned");
             }
             return points;

@@ -1,13 +1,10 @@
 package application;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
     public Stage primaryStage;
@@ -20,11 +17,11 @@ public class Main extends Application {
         try {
             primaryStage = stage;
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
-            Scene scene = new Scene(root,720,480);
+            Scene scene = new Scene(root, 720, 480);
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
+        } catch (Exception e) { //for the love of god, dont do that
             e.printStackTrace();
         }
     }
@@ -34,10 +31,10 @@ public class Main extends Application {
     }
 
 
-    private void setupUser(){
-        if(User.setServerURL("https://localhost:3000")){
+    private void setupUser() {
+        if (User.setServerUrl("https://localhost:3000")) {
             System.out.println("URL valid");
-        }else{
+        } else {
             System.out.println("URL invalid");
         }
         User.setUsername("Andy");
