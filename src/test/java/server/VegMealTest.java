@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import server.db.Query;
 import server.queries.VegMealQuery;
 
 public class VegMealTest {
@@ -13,14 +14,20 @@ public class VegMealTest {
      * as in VegController, not vietcong
      */
     static private VegController vc;
+    static final String testUserRow = "testUser";
 
 
     /**
-     * initializes variables
+     * initializes variables, clean up test entry in users
      */
     @BeforeClass
     public static void init(){
         vc = new VegController();
+
+        //set the score to 0 on the test row
+        Query.query("UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow +"'");
+
     }
 
     /**
@@ -50,10 +57,10 @@ public class VegMealTest {
      */
     @Test
     public void vegMealQueryJson(){
-        String testString = "{'type':'VegMeal','username':'shossain'}";
+        String testString = "{'type':'VegMeal','username':"+ testUserRow +"}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("", request.execute());
+        Assert.assertEquals("{\"points\" : \"1\"}", request.execute());
     }
 
 
