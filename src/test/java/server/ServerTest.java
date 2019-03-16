@@ -1,4 +1,3 @@
-/*
 package server;
 
 
@@ -23,10 +22,9 @@ public class ServerTest {
     private static SecureClientNetworking httpCon;
 
 
-    */
 /**
      * Sets up the server as well as http and https urls
-     *//*
+     */
 
     @BeforeClass
     public static void init() {
@@ -46,11 +44,10 @@ public class ServerTest {
         }
     }
 
-    */
 /**
      * Sends a test request and listens for a response. This is effectively a test of the whole server, from receiving,
      * to processing, up until response.
-     *//*
+     */
 
     @Test
     public void fullHttpsRequestResponse() {
@@ -59,10 +56,9 @@ public class ServerTest {
                 " 'extraData':'Irrelevant Data'}"));
     }
 
-    */
 /**
      * This test is supposed to successfully fail, as the server shouldn't accept any unencrypted requests.
-     *//*
+     */
 
     @Test
     public void insecureRequestTest() {
@@ -71,10 +67,9 @@ public class ServerTest {
     }
 
 
-    */
 /**
      * Makes sure the testkey keystore actually exists, might be handy for debugging later on.
-     *//*
+     */
 
     @Test
     public void keyStoreExists() {
@@ -90,4 +85,4 @@ public class ServerTest {
             e.printStackTrace();
         }
     }
-}*/
+}

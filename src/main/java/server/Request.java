@@ -81,9 +81,6 @@ public class Request {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
     /**
      * Builds specified object with Gson from specified string.

@@ -1,8 +1,10 @@
-package server.db;
+package application;
 
 /**
  * The class that authenticates and stores data about the user. This is the main class
  * to use when dealing with and updating user data.
+ * This should also be the class that serves to save user data on the client side for
+ * e.g. automatic logins, and local storage of said logins.
  */
 public class User {
     private String username;
@@ -18,10 +20,5 @@ public class User {
         this.password = password;
     }
 
-    /**
-     * fetches user data from database.
-     */
-    public void fetchDB(){
-        //TODO fetching user data from the database
-    }
+
 }
