@@ -1,6 +1,5 @@
 package server;
 
-
 import client.SecureClientNetworking;
 import org.junit.After;
 import org.junit.Assert;
