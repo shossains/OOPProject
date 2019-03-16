@@ -28,7 +28,7 @@ public class VegController {
 
         String request = "{\"type\" : \"VegMeal\", \"username\" : \""
                 + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", \"true\"}";
+                + User.getPassword() + "\", \"addMeal\": \"true\"}";
 
         String response = scn.sendPostRequest(request);
 
@@ -70,7 +70,7 @@ public class VegController {
 
         String request = "{\"type\" : \"VegMeal\", \"username\" : \""
                 + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", \"false\"}";
+                + User.getPassword() + "\", \"addMeal\": \"false\"}";
 
         String response = scn.sendPostRequest(request);
 

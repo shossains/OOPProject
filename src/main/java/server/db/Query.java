@@ -132,13 +132,13 @@ public class Query extends Adapter {
 
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "SELECT points FROM points WHERE username = '" + username + "'");
+                    "SELECT points, last_updated FROM points WHERE username = '" + username + "'");
 
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int res = rs.getInt(1);
                 db.disconnect();
-                return "{\"points\" : \"" + res + "\"}";
+                return "{\"points\" : \"" + res + "date: " +"\"}";
             }
 
             rs.close();
