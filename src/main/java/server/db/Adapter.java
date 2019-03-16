@@ -57,7 +57,7 @@ public class Adapter {
             // Print connected
             System.out.println("DbAdapter: Connection to database closed");
 
-        } catch (Exception e) {
+        } catch (Exception e) { //TODO: please don't catch with Exception
             e.printStackTrace();
         }
     } // disconnect

@@ -21,7 +21,7 @@ public class Main extends Application {
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) { //for the love of god, dont do that
+        } catch (Exception e) { // TODO: don't catch like that, andy will crucify us
             e.printStackTrace();
         }
     }

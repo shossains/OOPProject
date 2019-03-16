@@ -54,7 +54,7 @@ public class Query extends Adapter {
      */
     public static void query(String query) {
         System.out.println(query);
-        Query db= new Query();
+        Query db = new Query();
         db.connect();
 
         try {
@@ -97,6 +97,10 @@ public class Query extends Adapter {
         return false;
     }
 
+    /** TODO: Please add this javadoc, checkstyle is not happy.
+     * @param username to do
+     * @return to do
+     */
     public static String eaten(String username) {
         Query db = new Query();
         db.connect();

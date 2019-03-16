@@ -7,9 +7,6 @@ import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class VegController {
     public TextField insert;
 

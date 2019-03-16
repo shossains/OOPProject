@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class HomeController {
 
+    //TODO: Add javadocs, asap.
+
     public void toMainMenu(ActionEvent event) throws IOException {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
         Scene hmScene = new Scene(hmParent);
