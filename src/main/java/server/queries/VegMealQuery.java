@@ -11,5 +11,6 @@ public class VegMealQuery extends ServerQuery {
         server.db.Query.query("UPDATE points SET points = points + 1 WHERE username = '"
                 + username + "'");
         return server.db.Query.eaten(username);
+
     }
 }
