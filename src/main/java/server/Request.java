@@ -2,8 +2,6 @@ package server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-
 import server.queries.RegisterQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
@@ -44,7 +42,7 @@ public class Request {
      * TestRequest - For testing purposes
      */
     public String execute() {
-        if(rawQuery == null){
+        if (rawQuery == null) {
             System.out.println("You forgot to set the rawQuery Einstein");
         }
         switch (type) {
@@ -70,7 +68,7 @@ public class Request {
         return regQuery.runQuery();
     }
 
-    private String vegMeal(){
+    private String vegMeal() {
         VegMealQuery vegMealQuery = buildGson(rawQuery, VegMealQuery.class);
         return vegMealQuery.runQuery();
     }
