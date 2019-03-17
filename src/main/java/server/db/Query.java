@@ -126,6 +126,11 @@ public class Query extends Adapter {
         return null;
     }
 
+    /**
+     * Method looks up in the database how many points someone has.
+     * @param username The person you want to retrieve the information from
+     * @return the amount of points
+     */
     public static String checkPoints(String username) {
         Query db = new Query();
         db.connect();

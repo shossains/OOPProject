@@ -15,9 +15,7 @@ public class VegMealQuery extends ServerQuery {
             server.db.Query.query("INSERT INTO log (username, type, points, dateTime) values"
                     + " ('" + username + "','vegMeal',150,CURRENT_TIMESTAMP(0))");
             return server.db.Query.eaten(username);
-        }
-
-        else {
+        } else {
             //TODO
             return null;
         }
