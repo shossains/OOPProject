@@ -11,8 +11,11 @@ import java.io.IOException;
 
 public class HomeController {
 
-    //TODO: Add javadocs, asap.
-
+    /**
+     * This method brings you to the vegatarian meal screen.
+     * @param event The mouseclick
+     * @throws IOException
+     */
     public void toMainMenu(ActionEvent event) throws IOException {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
         Scene hmScene = new Scene(hmParent);
@@ -22,6 +25,11 @@ public class HomeController {
         window.show();
     }
 
+    /**
+     * This method brings you to the register form screen.
+     * @param event the mouseclick
+     * @throws IOException
+     */
     public void toRegister(ActionEvent event) throws IOException {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/RegisterForm.fxml"));
         Scene hmScene = new Scene(hmParent);
