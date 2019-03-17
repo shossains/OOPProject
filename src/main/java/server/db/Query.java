@@ -132,13 +132,15 @@ public class Query extends Adapter {
 
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "SELECT points FROM points WHERE username = '" + username + "'");
+                    "SELECT datetime, points FROM log WHERE username = '" + username + "'");
 
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                int res = rs.getInt(1);
+                String date = rs.getString(1);
+                int points = rs.getInt(2);
+                String res = "Timestamp: " + date + "\t Points: " + points;
                 db.disconnect();
-                return "{\"points\" : " + res + "}";
+                return res;
             }
 
             rs.close();
