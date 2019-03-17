@@ -48,8 +48,5 @@ public class VegController implements Initializable {
      */
     public void addToTable(ActionEvent tableEvent){
         tableView.setItems(getContent());
-
     }
-
-
 }
