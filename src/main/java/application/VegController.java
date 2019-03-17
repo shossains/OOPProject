@@ -27,7 +27,8 @@ public class VegController {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'VegMeal', 'username' : '"
-                + User.getUsername() + "', 'password':'" + User.getPassword() + "'}";
+                + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
+                + "'addMeal':true}";
 
         String response = scn.sendPostRequest(request);
 
