@@ -1,8 +1,5 @@
 package application;
 
-import client.SecureClientNetworking;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,8 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -39,8 +34,9 @@ public class VegController implements Initializable {
      * returns an OberservableList of Content objects(date and point)
      */
     public ObservableList<TableContents> getContent(){
+        TableContents data = new TableContents(50, LocalDate.now());
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50, LocalDate.now()));
+        content.add(data);
 
         return content;
     }
