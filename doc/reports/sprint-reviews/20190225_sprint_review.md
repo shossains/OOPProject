@@ -18,7 +18,7 @@
  | Information about API (Libraries etc.)  | Sami  | 3 | 5  | No | - |
  | Research Scrum boards, make a product backlog, complete the README  | Lucas  | 3 | 5  | Yes | - |
  | Get server and client up and running  | Alex  | 2-3 | 3  | Yes | Threading done nicely, however not http compliant yet. |
- | Getting maven to work and build properly  | 15 min  | 3, 2 TAs | No  | Content cell | - |
+ | Getting maven to work and build properly  | Alex | 15 min | 3, 2 TAs | No | - |
  
 ### Adjustments for next sprint
  - There are not really adjustments for the next sprint because we thought as a group that we did pretty good the first week. We hope we can keep this up!
