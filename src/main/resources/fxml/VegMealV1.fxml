@@ -5,8 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -71,22 +70,15 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="152.0" layoutY="154.0" mnemonicParsing="false" onAction="#add" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="I ate a vegetarian meal!" textFill="WHITE">
+                <Button layoutX="153.0" layoutY="155.0" mnemonicParsing="false" onAction="#add" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="I ate a vegetarian meal!" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-                <TableView fx:id="tableView" layoutX="108.0" layoutY="275.0" prefHeight="113.0" prefWidth="258.0">
-                    <columns>
-                        <TableColumn prefWidth="176.9739227294922" text="Date" />
-                        <TableColumn prefWidth="80.13912362745924" text="Points" />
-                    </columns>
-                </TableView>
             <Label alignment="CENTER" layoutX="59.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when vegetarian meal was added and points awarded" textFill="#0000007b" />
-            <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-            <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
+            <TextField fx:id="log" editable="false" layoutX="114.0" layoutY="270.0" prefHeight="127.0" prefWidth="247.0" />
             </children>
         </AnchorPane>
     </children>

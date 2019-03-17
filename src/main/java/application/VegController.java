@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
+import server.db.Query;
 
 public class VegController {
     public TextField insert;
@@ -22,7 +23,6 @@ public class VegController {
         //And please for the love of God don't just change server code vars to static just
         // to make it compile
 
-
         //send json request
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
@@ -32,7 +32,7 @@ public class VegController {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-
+        System.out.println(Query.checkPoints(User.getUsername()));
     }
 
     /**
