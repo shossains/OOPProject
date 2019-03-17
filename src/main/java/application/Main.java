@@ -56,6 +56,6 @@ public class Main extends Application {
             System.out.println("URL invalid");
         }
         User.setUsername("shossain");
-        User.setPassword("hunter2");
+        User.setPassword("test123");
     }
 }
