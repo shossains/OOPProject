@@ -12,9 +12,9 @@ import java.io.IOException;
 public class HomeController {
 
     /**
-     * This method brings you to the vegatarian meal screen.
+     * This method brings you to the vegetarian meal screen.
      * @param event The mouseclick
-     * @throws IOException
+     * @throws IOException Throw exception if file is not found or corrupted
      */
     public void toMainMenu(ActionEvent event) throws IOException {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMealV1.fxml"));
@@ -27,8 +27,8 @@ public class HomeController {
 
     /**
      * This method brings you to the register form screen.
-     * @param event the mouseclick
-     * @throws IOException
+     * @param event The mouseclick
+     * @throws IOException Throw exception if file is not found or corrupted
      */
     public void toRegister(ActionEvent event) throws IOException {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/RegisterForm.fxml"));

@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Adapter {
-
-    /* 01 Variables ---------------------------------------- */
-    String jdbcUrl = "jdbc:postgresql://ec2-54-227-246-152.compute-1.amazonaws.com:5432/dfetsmpdvou85t";
-    String username = "ycqmkoaijmholl";
-    String password = "cf35c72e380b460c7285d053492f81f4097474fced4342d73e163e228a32e2d3";
-
-    /* 02 Database variables ------------------------------- */
+    /* 01 Database variables ------------------------------- */
     static Connection conn = null;
     Statement stmt = null;
     ResultSet rs = null;
+
+    /* 02 Variables ---------------------------------------- */
+    String jdbcUrl = "jdbc:postgresql://ec2-54-227-246-152.compute-1.amazonaws.com"
+            + ":5432/dfetsmpdvou85t";
+    String username = "ycqmkoaijmholl";
+    String password = "cf35c72e380b460c7285d053492f81f4097474fced4342d73e163e228a32e2d3";
 
     /* 03 Constructor for DbAdapter ------------------------ */
     public Adapter() {
