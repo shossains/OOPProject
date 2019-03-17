@@ -65,6 +65,10 @@ public class VegController {
         }
     }
 
+    /**
+     * This method create the request for only points.
+     * @param actionEvent opening a scene or clicking any given button
+     */
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
