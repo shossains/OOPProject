@@ -155,4 +155,12 @@ public class Query extends Adapter {
         db.disconnect();
         return null;
     }
+
+    /**Verifies whether the username and password match
+     * @return whether or no the user is authenticated
+     */
+    private boolean authenticate(){
+
+        return false;
+    }
 }
