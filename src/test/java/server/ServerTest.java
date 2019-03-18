@@ -75,6 +75,11 @@ public class ServerTest {
         assertTrue(new File("testkey.jks").exists());
     }
 
+    @Test
+    public void keyStoreIsReadable() {
+        assertTrue(new File("testkey.jks").canRead());
+    }
+
     @After
     public void after() {
         try {
