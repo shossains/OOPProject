@@ -73,4 +73,12 @@ public class Query extends Adapter {
     private String hashFunction(String password, String salt) {
         return password;
     }
+
+    /**Verifies whether the username and password match
+     * @return whether or no the user is authenticated
+     */
+    private boolean authenticate(){
+
+        return false;
+    }
 }
