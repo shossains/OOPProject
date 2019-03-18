@@ -33,7 +33,6 @@ public class VegController {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-        System.out.println(Query.checkPoints(User.getUsername()));
     }
 
     /**
