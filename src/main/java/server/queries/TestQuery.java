@@ -6,7 +6,7 @@ public class TestQuery extends ServerQuery {
     /**
      * Test Query run, probably to be expanded in the future.
      *
-     * @return Test String containing the isTest variable.
+     * @return Test String in JSON format containing the isTest variable.
      */
     public String runQuery() {
 

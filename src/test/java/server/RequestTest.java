@@ -12,13 +12,12 @@ import server.queries.TestQuery;
 public class RequestTest {
     static private GsonBuilder gsonBuilder;
     static private Gson gson;
-    static private String stringquery;
+    static private final String stringquery = "{'type':'TestRequest', 'isTest': true, 'username':'alexshulzycki'}";
     static private Request gsonTestRequest;
 
     @BeforeClass
     public static void before() {
         //test request for testing of the actual Request class
-        stringquery = "{'type':'TestRequest', 'isTest': true, 'username':'alexshulzycki'}";
         gsonTestRequest = new Request();
         gsonTestRequest.setRaw(stringquery);
 
@@ -65,6 +64,28 @@ public class RequestTest {
         testRequest.setRaw(stringquery);
         Assert.assertEquals("{\"success\":\"who knows\", \"isTest\": true," +
                 " \"username\":\"alexshulzycki\"}", testRequest.execute());
+    }
+
+    @Test
+    public void noRawQuery(){
+        Request noRawRequest = gson.fromJson(stringquery, Request.class);
+        Assert.assertEquals("You forgot to set the rawQuery Einstein", noRawRequest.execute());
+    }
+
+    @Test
+    public void wrongType(){
+        String queryString = "{'type': 'yeet', 'isTest': true, 'username':'alexshulzycki'}";
+        Request badTypeRequest = gson.fromJson(queryString, Request.class);
+        badTypeRequest.setRaw(queryString);
+        Assert.assertEquals("{'error' : true, 'reason' : 'Unknown type'}", badTypeRequest.execute());
+    }
+
+    @Test
+    public void noType(){
+        String queryString = "{ 'isTest': true, 'username':'alexshulzycki'}";
+        Request noTypeRequest = gson.fromJson(queryString, Request.class);
+        noTypeRequest.setRaw(queryString);
+        Assert.assertEquals("{'error' : true, 'reason' : 'No type given'}", noTypeRequest.execute());
     }
 
 }
