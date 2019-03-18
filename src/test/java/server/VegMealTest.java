@@ -25,8 +25,10 @@ public class VegMealTest {
         vc = new VegController();
 
         //set the score to 0 on the test row
-        Query.query("UPDATE points \n SET points = 0\n WHERE username = '"
-                + testUserRow +"'");
+        String[] queries = new String[1];
+        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow +"'";
+        Query.query(queries);
 
     }
 

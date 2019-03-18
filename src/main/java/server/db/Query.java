@@ -52,21 +52,22 @@ public class Query extends Adapter {
      * Execute any given query.
      * @param query The query given as string to be executed
      */
-    public static void query(String query) {
-        System.out.println(query);
+    public static void query(String query[]) {
         Query db = new Query();
         db.connect();
 
-        try {
-            PreparedStatement st = conn.prepareStatement(query);
+        for (int i = 0; i < query.length; i++) {
+            System.out.println(query[i]);
+            try {
+                PreparedStatement st = conn.prepareStatement(query[i]);
 
-            st.executeUpdate();
-            st.close();
+                st.executeUpdate();
+                st.close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
         db.disconnect();
     }
 
@@ -137,15 +138,13 @@ public class Query extends Adapter {
 
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "SELECT datetime, points FROM log WHERE username = '" + username + "'");
+                    "SELECT points FROM points WHERE username = '" + username + "'");
 
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                String date = rs.getString(1);
-                int points = rs.getInt(2);
-                String res = "Timestamp: " + date + "\t Points: " + points;
+                int res = rs.getInt(1);
                 db.disconnect();
-                return res;
+                return res+"";
             }
 
             rs.close();

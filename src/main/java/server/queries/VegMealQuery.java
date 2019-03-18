@@ -16,11 +16,10 @@ public class VegMealQuery extends ServerQuery {
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
             queries[1] = "INSERT INTO log (username, type, points, dateTime) values"
-                    + " ('" + username + "','vegMeal',150,CURRENT_TIMESTAMP(0))";
+                    + " ('" + username + "','vegMeal',000,CURRENT_TIMESTAMP(0))";
 
             //should be one function
-            Query.query(queries[0]);
-            Query.query(queries[1]);
+            Query.query(queries);
 
             return server.db.Query.eaten(username);
         } else {
