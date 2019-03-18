@@ -76,6 +76,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>12-ea+14</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,8 +88,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
                 <configuration>
-                    <useSystemClassLoader>false</useSystemClassLoader>
+                    <useSystemClassLoader>true</useSystemClassLoader>
                 </configuration>
             </plugin>
             <plugin>

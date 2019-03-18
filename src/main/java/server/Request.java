@@ -2,10 +2,10 @@ package server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 
 import server.queries.RegisterQuery;
 import server.queries.TestQuery;
+import server.queries.VegMealQuery;
 
 /**
  * Class for parsing requests using Gson.
@@ -43,13 +43,26 @@ public class Request {
      * TestRequest - For testing purposes
      */
     public String execute() {
+        if (rawQuery == null) {
+            String einstein = "You forgot to set the rawQuery Einstein";
+            System.out.println(einstein);
+            return einstein;
+        }
+
+        if (type == null) {
+            return "{'error' : true, 'reason' : 'No type given'}";
+        }
+
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
+
+            case "VegMeal":
+                return vegMeal();
             default:
-                return null;
+                return "{'error' : true, 'reason' : 'Unknown type'}";
         }
     }
 
@@ -63,27 +76,12 @@ public class Request {
         return regQuery.runQuery();
     }
 
-    /**
-     * Test function to test ability to execute a test function on the server and return JSON.
-     *
-     * @return Test string from test classes
-     */
-    private String testExecute() {
-
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("TestRequest", "TestRequest");
-        return jsonObject.toString();
-
+    private String vegMeal() {
+        VegMealQuery vegMealQuery = buildGson(rawQuery, VegMealQuery.class);
+        return vegMealQuery.runQuery();
     }
 
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     /**
      * Builds specified object with Gson from specified string.

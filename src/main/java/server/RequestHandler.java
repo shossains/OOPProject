@@ -29,14 +29,13 @@ public class RequestHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("Handling request");
+
         //grab inputstream, do reading stuff etc
         InputStream is = exchange.getRequestBody();
 
         //grabbing string format of result, using a stupid scanner trick.
         Scanner scanner = new Scanner(is).useDelimiter("\\A");
         String requestString = scanner.hasNext() ? scanner.next() : "";
-
-        //String requestString = new BufferedReader(new InputStreamReader(is)).readLine();
 
         //building request object with Gson
         Request request = buildGsonRequest(requestString);
@@ -47,10 +46,6 @@ public class RequestHandler implements HttpHandler {
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
-    }
-
-    public Request getRequest() {
-        return request;
     }
 
     /**

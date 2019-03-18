@@ -52,18 +52,23 @@ public class Query extends Adapter {
      * Execute any given query.
      * @param query The query given as string to be executed
      */
-    public void query(String query) {
-        System.out.println(query);
+    public static void query(String query[]) {
+        Query db = new Query();
+        db.connect();
 
-        try {
-            PreparedStatement st = conn.prepareStatement(query);
+        for (int i = 0; i < query.length; i++) {
+            System.out.println(query[i]);
+            try {
+                PreparedStatement st = conn.prepareStatement(query[i]);
 
-            st.executeUpdate();
-            st.close();
+                st.executeUpdate();
+                st.close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        db.disconnect();
     }
 
     /**
@@ -91,5 +96,63 @@ public class Query extends Adapter {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * Checks the amount of points a user has right now.
+     * @param username the user that you want to check
+     * @return the amount of points in JSON format
+     */
+    public static String eaten(String username) {
+        Query db = new Query();
+        db.connect();
+
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "SELECT points FROM points WHERE username = '" + username + "'");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int res = rs.getInt(1);
+                db.disconnect();
+                return "{\"points\" : " + res + "}";
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        return null;
+    }
+
+    /**
+     * Method looks up in the database how many points someone has.
+     * @param username The person you want to retrieve the information from
+     * @return the amount of points
+     */
+    public static String checkPoints(String username) {
+        Query db = new Query();
+        db.connect();
+
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "SELECT points FROM points WHERE username = '" + username + "'");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int res = rs.getInt(1);
+                db.disconnect();
+                return res+"";
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        return null;
     }
 }
