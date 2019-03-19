@@ -42,6 +42,7 @@ public class Query extends Adapter {
                     //Not a SELECT query, so it can be safely added to the batch.
                     try {
                         stmnt.addBatch(query[i]);
+                        stmnt.executeUpdate(query[i]);
 
                     } catch (SQLException e) {
                         e.printStackTrace();
