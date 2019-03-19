@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,11 +23,11 @@ public class Main extends Application {
         try {
             primaryStage = stage;
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
-            Scene scene = new Scene(root, 720, 480);
+            Scene scene = new Scene(root,720,480);
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) { // TODO: don't catch like that, andy will crucify us
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
