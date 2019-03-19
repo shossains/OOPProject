@@ -10,6 +10,7 @@ public class VegMealQuery extends ServerQuery {
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
+     * TODO: Cleanup, add helper functions to make it more readable.
      *
      * @return json-format string of the amount of points of the username
      */
@@ -25,7 +26,7 @@ public class VegMealQuery extends ServerQuery {
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
 
             //should be one function
-            ResultSet[] rsArray = Query.query(queries);
+            ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
 
             try {
