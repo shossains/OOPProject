@@ -68,7 +68,8 @@ public class RegController {
         boolean pass = emptyPass();
 
         if (!username && !firstName && !lastName && !email && !phone && !pass) {
-            return !checkAccount();
+            return false;
+            //return !checkAccount();
         } else {
             return false;
         }
@@ -177,8 +178,9 @@ public class RegController {
     /**
      * Check whether username is already used in database.
      * @return true is username is already used
+     * SOON TO BE DEPRECATED
      */
-    public boolean checkAccount() {
+    /*public boolean checkAccount() {
         Query db = new Query();
         db.connect();
 
@@ -191,7 +193,7 @@ public class RegController {
             db.disconnect();
             return false;
         }
-    }
+    }*/
 
     /**
      * Check whether input is an integer.
