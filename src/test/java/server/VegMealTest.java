@@ -14,7 +14,7 @@ public class VegMealTest {
      * as in VegController, not vietcong
      */
     static private VegController vc;
-    static final String testUserRow = "testUser";
+    static final String testUser = "testUser";
 
 
     /**
@@ -27,7 +27,7 @@ public class VegMealTest {
         //set the score to 0 on the test row
         String[] queries = new String[1];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
-                + testUserRow +"'";
+                + testUser +"'";
         Query.query(queries);
 
     }
@@ -58,11 +58,21 @@ public class VegMealTest {
      * Tests whether the database returns the correct json via the VegMealQuery class.
      */
     @Test
-    public void vegMealQueryJson(){
-        String testString = "{'type':'VegMeal','username': '"+ testUserRow +"', 'addMeal': true }";
+    public void vegMealQueryJsonResponse(){
+        String testString = "{'type':'VegMeal','username': '"+ testUser +"', 'addMeal': true }";
+        VegMealQuery request = new GsonBuilder().create().fromJson(testString, VegMealQuery.class);
+        Assert.assertEquals("{\"points\" : 50}", request.runQuery());
+    }
+
+    /**
+     * Tests whether the database returns the correct json via the Request class.
+     */
+    @Test
+    public void vegMealQueryJsonResponseFull(){
+        String testString = "{'type':'VegMeal','username': '"+ testUser +"', 'addMeal': true }";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{\"points\" : 50}", request.execute());
+        Assert.assertEquals("{\"points\" : 100}", request.execute());
     }
 
 
