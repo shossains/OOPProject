@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import server.db.Query;
-import server.queries.VegMealQuery;
 
 public class VegMealTest {
 
@@ -28,7 +27,7 @@ public class VegMealTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
                 + testUserRow +"'";
-        Query.query(queries);
+        Query.runQueries(queries);
 
     }
 

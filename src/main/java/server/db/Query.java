@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class Query extends Adapter {
 
     /**
-     * Execute any given query.
+     * Execute any given query, SELECT or otherwise. Returns a ResultSet array for results
+     * from any SELECT queries that were passed.
      *
      * @param query The queries given as string to be executed
      * @return a ResultSet array of SELECT query results, in order corresponding to that
@@ -17,7 +18,7 @@ public class Query extends Adapter {
      *         I.E.: the first select query appears in the return array first, the second second.
      *         Returns an empty array if no SELECT queries were specified.
      */
-    public static ResultSet[] query(String query[]) {
+    public static ResultSet[] runQueries(String query[]) {
         Query db = new Query();
         db.connect();
         try {
@@ -38,7 +39,7 @@ public class Query extends Adapter {
                     }
 
                 } else {
-                    //add to batch
+                    //Not a SELECT query, so it can be safely added to the batch.
                     try {
                         stmnt.addBatch(query[i]);
 
