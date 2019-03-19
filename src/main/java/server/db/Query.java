@@ -144,7 +144,7 @@ public class Query extends Adapter {
             while (rs.next()) {
                 int res = rs.getInt(1);
                 db.disconnect();
-                return res+"";
+                return res + "";
             }
 
             rs.close();
