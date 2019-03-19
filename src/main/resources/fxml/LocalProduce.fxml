@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -71,13 +72,6 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="152.0" layoutY="154.0" mnemonicParsing="false" onAction="#add" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="I bought local produce!" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font></Button>
                 <TableView layoutX="108.0" layoutY="275.0" prefHeight="113.0" prefWidth="258.0">
                     <columns>
                         <TableColumn prefWidth="176.9739227294922" text="Date" />
@@ -87,6 +81,16 @@
                 <Label alignment="CENTER" layoutX="59.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when local produce was added and points awarded" textFill="#0000007b" />
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
+            <Button fx:id="tableVie1" layoutX="254.0" layoutY="125.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="99.0" prefWidth="161.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="122.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of kilogram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
+            <TextField layoutX="79.0" layoutY="189.0" />
             </children>
         </AnchorPane>
     </children>

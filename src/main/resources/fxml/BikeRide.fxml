@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -65,19 +66,12 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by using the bike" wrappingWidth="168.70703125" />
+                <Text layoutX="496.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Show how the amount of co2 is calculated and maybe give some fun fact" wrappingWidth="168.70703125" />
                 <Label layoutX="41.0" layoutY="66.0" text="Bike Ride">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="114.0" layoutY="154.0" mnemonicParsing="false" onAction="#add" prefHeight="29.0" prefWidth="245.0" stylesheets="@../CSS/LoginButton.css" text="I used the bike instead of the car!" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font></Button>
                 <TableView layoutX="108.0" layoutY="275.0" prefHeight="113.0" prefWidth="258.0">
                     <columns>
                         <TableColumn prefWidth="176.9739227294922" text="Date" />
@@ -87,6 +81,16 @@
                 <Label alignment="CENTER" layoutX="59.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when a bike ride was added and points awarded" textFill="#0000007b" />
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
+            <Label alignment="CENTER" layoutX="88.0" layoutY="138.0" prefHeight="49.0" prefWidth="149.0" text="Enter the distance your covered by bike" textFill="#0000007b" wrapText="true" />
+            <Button fx:id="tableVie1" layoutX="260.0" layoutY="122.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="99.0" prefWidth="161.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <TextField layoutX="78.0" layoutY="189.0" />
             </children>
         </AnchorPane>
     </children>
