@@ -1,74 +1,45 @@
 package server.db;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Query extends Adapter {
 
     /**
-     * Send the query to the sql db to insert a new client from reg form.
-     * @param username the username of the client
-     * @param firstName the first name of the client
-     * @param lastName the last name of the client
-     * @param email the email address of the client
-     * @param phone the phone number of the client (not required)
-     * @param password the password of the client
-     */
-    public void insertClient(String username, String firstName,
-                             String lastName, String email, String phone, String password) {
-        System.out.println("INSERT " + username + " $" + firstName + " $"
-                + lastName + " $" + email + " $" + phone + " $" + password);
-        try {
-            PreparedStatement lt = conn.prepareStatement(
-                    "INSERT INTO points "
-                            + "(username, points) "
-                            + "VALUES(?,?)");
-            lt.setString(1, username);
-            lt.setInt(2,0);
-            lt.executeUpdate();
-            lt.close();
-
-            PreparedStatement st = conn.prepareStatement(
-                    "INSERT INTO client "
-                            + "(username, first_name, last_name, email, phone, password) "
-                            + "VALUES(?,?,?,?,?,?)");
-
-            st.setString(1, username);
-            st.setString(2, firstName);
-            st.setString(3, lastName);
-            st.setString(4, email);
-            st.setString(5, phone);
-            st.setString(6, password);
-            st.executeUpdate();
-            st.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Execute any given query.
-     * @param query The query given as string to be executed
+     * Execute any given query, as long as it is not a select query.
+     * @param query The queries given as string to be executed
      */
     public static void query(String query[]) {
         Query db = new Query();
         db.connect();
+        try {
+            Statement stmnt = conn.createStatement();
+            conn.setAutoCommit(false);
+            ArrayList<ResultSet> resultSets = new ArrayList<>();
 
-        for (int i = 0; i < query.length; i++) {
-            System.out.println(query[i]);
-            try {
-                PreparedStatement st = conn.prepareStatement(query[i]);
+            for (int i = 0; i < query.length; i++) {
+                if(query[i].contains("SELECT")){
+                    //select query, save for later
 
-                st.executeUpdate();
-                st.close();
+                }else {
+                    //add to batch
+                    try {
+                        stmnt.addBatch(query[i]);
 
-            } catch (SQLException e) {
-                e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
+            conn.commit();
+            db.disconnect();
+        }catch(Exception e){ //dont fucking do this
+            e.printStackTrace();
         }
-        db.disconnect();
     }
 
     /**

@@ -37,9 +37,9 @@ public class RegController {
         if (proceed()) {
             Query db = new Query();
             db.connect();
-            db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
-                    email.getText(), phone.getText(), pass.getText());
-            statusText = "Registration Success!";
+            /*db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
+                    email.getText(), phone.getText(), pass.getText());*/
+            statusText = "To be implemented... soon ish";
             status.setText(statusText);
             db.disconnect();
 
