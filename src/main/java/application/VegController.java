@@ -114,8 +114,10 @@ public class VegController implements Initializable {
 
         System.out.println(parsePoints(response));
     }
-    public void addToTable(ActionEvent tableEvent){
-        tableView.setItems(getContent());
 
+    public void addToTable(ActionEvent tableEvent){
+
+        TableContents tablecontent = new TableContents(50, LocalDate.now());
+        tableView.getItems().add(tablecontent);
     }
 }
