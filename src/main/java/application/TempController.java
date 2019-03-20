@@ -33,19 +33,24 @@ public class TempController {
         //send json request
         if(RegController.isInt(input.getText())) {
             inputTemp = Integer.parseInt(input.getText());
-            SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-            String request = "{'type' : 'TempAdj', 'username' : '"
-                    + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                    + "'addTemp': true" + "', 'temp':'" + inputTemp + "'}'";
-
-            String response = scn.sendPostRequest(request);
-
-            System.out.println(parsePoints(response));
+            request(true, inputTemp);
         } else {
-
+            //TODO: send a message to the user saying "this is not a valid input"
+            return;
         }
 
+    }
+
+    public void request(boolean added, int inputTemp) {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{'type' : 'TempAdj', 'username' : '"
+                + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
+                + "'addTemp':" + added + "', 'temp':'" + inputTemp + "'}'";
+
+        String response = scn.sendPostRequest(request);
+
+        System.out.println(parsePoints(response));
     }
 
     /**
