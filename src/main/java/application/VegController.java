@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -115,9 +116,22 @@ public class VegController implements Initializable {
         System.out.println(parsePoints(response));
     }
 
+    /**
+     * when the vegetarian button is clicked, a date and points are added to the table
+     * @param tableEvent
+     */
     public void addToTable(ActionEvent tableEvent){
 
         TableContents tablecontent = new TableContents(50, LocalDate.now());
+        tableView.getItems().add(tablecontent);
+    }
+
+    /**
+     * when the vegan button is clicked, a date and points are added to the table
+     * @param vegantable
+     */
+    public void VeganAdd(ActionEvent vegantable){
+        TableContents tablecontent = new TableContents(60, LocalDate.now());
         tableView.getItems().add(tablecontent);
     }
 }
