@@ -8,13 +8,14 @@ import java.util.Scanner;
 
 public class TemperatureCalculator {
 
-    public static void temp() throws Exception {
+    public static void temp(int input) throws Exception {
 
 
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
 
         System.out.println("Temperature: ");
-        int tHigh = input.nextInt();
+        //int tHigh = input.nextInt();
+        int tHigh = input;
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
