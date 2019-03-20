@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class TemperatureCalculator {
 
-    public static void temp(int input) throws Exception {
+    public static double temp(int input) throws Exception {
 
 
         //Scanner input = new Scanner(System.in);
@@ -45,6 +45,7 @@ public class TemperatureCalculator {
         double co2 = test3.getFloat("value");
         co2 = Math.round(co2 *10.0)/10.0;
         System.out.println(co2);
+        return(co2);
 
     }
 
