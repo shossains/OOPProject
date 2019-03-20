@@ -13,12 +13,11 @@ import javafx.scene.control.TextField;
 
 public class TempController {
     public TextField insert;
-    public int temp;
+    public int inputTemp;
     @FXML
     TextField input;
 
     /**
-     * Searches for a meal that matches the input.
      *
      * @param actionEvent The click of the button
      */
@@ -28,7 +27,6 @@ public class TempController {
         //Don't use any server queries on the gosh darned client, that's only for the server
         //And please for the love of God don't just change server code vars to static just
         // to make it compile
-        int inputTemp;
 
         //send json request
         if(RegController.isInt(input.getText())) {
@@ -41,6 +39,10 @@ public class TempController {
 
     }
 
+    /**
+     * This method creates the request for just points.
+     * @param actionEvent opening a scene or clicking any given button
+     */
     public void getTotal(ActionEvent actionEvent) {
         request(false, 0);
     }
@@ -85,21 +87,5 @@ public class TempController {
             System.out.println("Null JSON returned");
             return -1;
         }
-    }
-
-    /**
-     * This method create the request for only points.
-     * @param actionEvent opening a scene or clicking any given button
-     */
-    public void returnPoints(ActionEvent actionEvent) {
-        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
-                + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", false}";
-
-        String response = scn.sendPostRequest(request);
-
-        System.out.println(parsePoints(response));
     }
 }
