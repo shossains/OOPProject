@@ -1,15 +1,11 @@
 package application;
 
+import calculator.TemperatureCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import server.Server;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class Main extends Application {
     public Stage primaryStage;
@@ -17,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         //setup the user class, for now just from string, in the future ideally from local storage
-        setupUser();
+//        setupUser();
 
         try {
             primaryStage = stage;
@@ -37,25 +33,33 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         //setup server
-        Server server;
-        String serverpassword = "password";
+//        Server server;
+//        String serverpassword = "password";
+//        try {
+//            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
+//                    serverpassword.toCharArray());
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        launch(args);
+
         try {
-            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
-                    serverpassword.toCharArray());
-        } catch (FileNotFoundException e) {
+            TemperatureCalculator.temp();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        launch(args);
+
+
     }
 
 
-    private void setupUser() {
-        if (User.setServerUrl("https://localhost:3000")) {
-            System.out.println("URL valid");
-        } else {
-            System.out.println("URL invalid");
-        }
-        User.setUsername("shossain");
-        User.setPassword("test123");
-    }
+//    private void setupUser() {
+//        if (User.setServerUrl("https://localhost:3000")) {
+//            System.out.println("URL valid");
+//        } else {
+//            System.out.println("URL invalid");
+//        }
+//        User.setUsername("shossain");
+//        User.setPassword("test123");
+//    }
 }
