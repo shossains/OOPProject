@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
     private String mealType;
-    private int addPoints;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
@@ -18,6 +17,11 @@ public class VegMealQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
+        int addPoints;
+        if((mealType == null)){
+            return "{'error' : true, 'reason' : 'mealType not given'}";
+        }
+
         if (mealType.equals("vegan")) {
             addPoints = 60;
         } else {
