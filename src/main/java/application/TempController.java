@@ -1,11 +1,10 @@
 package application;
 
-import calculator.TemperatureCalculator;
 import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 //TODO
@@ -14,8 +13,8 @@ import javafx.scene.control.TextField;
 public class TempController {
     public TextField insert;
     public int inputTemp;
-    @FXML
-    TextField input;
+    public TextField input;
+    public Label message;
 
     /**
      *
@@ -30,10 +29,12 @@ public class TempController {
 
         //send json request
         if(RegController.isInt(input.getText())) {
+            message.setText("");
             inputTemp = Integer.parseInt(input.getText());
             request(true, inputTemp);
         } else {
             //TODO: send a message to the user saying "this is not a valid input"
+            message.setText("This is not a valid input!");
             return;
         }
 
