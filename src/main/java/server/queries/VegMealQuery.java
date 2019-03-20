@@ -11,6 +11,8 @@ public class VegMealQuery extends ServerQuery {
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
      * TODO: Cleanup, add helper functions to make it more readable.
+     * TODO: Make a logic for vegan/vegetarian type
+     * TODO: Figure out how new points can be queried in log
      *
      * @return json-format string of the amount of points of the username
      */
@@ -20,8 +22,8 @@ public class VegMealQuery extends ServerQuery {
             queries[0] = "UPDATE points SET points = points + 50, last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO log (username, type, points, dateTime) values"
-                    + " ('" + username + "','vegMeal',000,CURRENT_TIMESTAMP(0))";
+            queries[1] = "INSERT INTO vegetarian (username, points, type, dateTime) values"
+                    + " ('" + username + "','type',000,CURRENT_TIMESTAMP(0))";
 
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
 
