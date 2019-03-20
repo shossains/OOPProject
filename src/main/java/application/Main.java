@@ -45,7 +45,6 @@ public class Main extends Application {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         launch(args);
     }
 
