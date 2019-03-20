@@ -67,26 +67,29 @@
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
                 <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by using solar panels" wrappingWidth="168.70703125" />
-                <TextField layoutX="122.0" layoutY="153.0" prefHeight="27.0" prefWidth="182.0" promptText="Insert name of product" />
+                <TextField layoutX="122.0" layoutY="153.0" prefHeight="27.0" prefWidth="182.0" promptText="Insert output in kwh" />
                 <Label layoutX="41.0" layoutY="66.0" text="Solar Panels">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="322.0" layoutY="153.0" mnemonicParsing="false" onAction="#add" prefHeight="27.0" prefWidth="46.0" text="Add">
+                <Button layoutX="322.0" layoutY="153.0" mnemonicParsing="false" onAction="#add" prefHeight="28.0" prefWidth="60.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor></Button>
+                    </cursor>
+               <font>
+                  <Font name="System Bold" size="11.686956405639648" />
+               </font></Button>
                 <TableView layoutX="110.0" layoutY="311.0" prefHeight="113.0" prefWidth="258.0">
                     <columns>
-                        <TableColumn prefWidth="23.3739013671875" text="Nr." />
-                        <TableColumn prefWidth="176.9739227294922" text="Product Name" />
-                        <TableColumn prefWidth="56.76519775390625" text="Points" />
+                        <TableColumn prefWidth="116.03485107421875" text="Date" />
+                        <TableColumn prefWidth="87.65208435058594" text="Output in kwh" />
+                        <TableColumn prefWidth="54.26088876417799" text="Points" />
                     </columns>
                 </TableView>
-                <Label alignment="CENTER" layoutX="108.0" layoutY="283.0" prefHeight="18.0" prefWidth="259.0" text="Shows products added" textFill="#0000007b" />
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
+            <Label layoutX="123.0" layoutY="135.0" text="Solar Panel Output:" />
             </children>
         </AnchorPane>
     </children>
