@@ -178,7 +178,7 @@ public class RegController {
     /**
      * Check whether username is already used in database.
      * @return true is username is already used
-     * SOON TO BE DEPRECATED
+     * DEPRECATED - TODO: Rewrite with the new DB query system
      */
     /*public boolean checkAccount() {
         Query db = new Query();
