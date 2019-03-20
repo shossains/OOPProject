@@ -1,18 +1,12 @@
 package application;
 
 import calculator.TemperatureCalculator;
-import application.RegController;
 import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import javax.xml.soap.Text;
 
 //TODO
 //Change all the VegMeal things into temperature things
