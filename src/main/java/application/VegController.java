@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class VegController implements Initializable {
     public TextField insert;
+    public static String type;
 
     //configure the table
     @FXML private TableView<TableContents> tableView;
@@ -41,6 +42,16 @@ public class VegController implements Initializable {
         content.add(new TableContents(50, LocalDate.now()));
 
         return content;
+    }
+
+    public void vegan(ActionEvent actionEvent) {
+        type = "vegan";
+        add(actionEvent);
+    }
+
+    public void vegetarian(ActionEvent actionEvent) {
+        type = "vegetarian";
+        add(actionEvent);
     }
 
     /**
