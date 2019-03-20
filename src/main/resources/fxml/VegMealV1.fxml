@@ -87,7 +87,7 @@
                 <Label alignment="CENTER" layoutX="60.0" layoutY="240.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when vegetarian meal was added and points awarded" textFill="#0000007b" />
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-            <Button fx:id="tableVie1" layoutX="244.0" layoutY="115.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="99.0" prefWidth="161.0" stylesheets="@../CSS/RegisterButton.css" text="Vegan" textFill="WHITE">
+            <Button fx:id="tableVie1" layoutX="244.0" layoutY="115.0" mnemonicParsing="false" onAction="#VeganAdd" prefHeight="99.0" prefWidth="161.0" stylesheets="@../CSS/RegisterButton.css" text="Vegan" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
