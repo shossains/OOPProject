@@ -18,12 +18,20 @@ public class VegMealQuery extends ServerQuery {
      */
     public String runQuery() {
         if (addMeal) {
+            String type =  application.VegController.type;
+            int add;
+            if (type.equals("vegetarian")) {
+                add = 50;
+            } else {
+                add = 60;
+            }
+
             String[] queries = new String[3];
-            queries[0] = "UPDATE points SET points = points + 50, last_updated = "
+            queries[0] = "UPDATE points SET points = points + " + add + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO vegetarian (username, points, type, dateTime) values"
-                    + " ('" + username + "','type',000,CURRENT_TIMESTAMP(0))";
+            queries[1] = "INSERT INTO vegetarian (username, points, type, datetime) values"
+                    + " ('" + username + "',000,'" + type + "',CURRENT_TIMESTAMP(0))";
 
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
 
