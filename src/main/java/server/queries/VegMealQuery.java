@@ -7,23 +7,31 @@ import java.sql.SQLException;
 
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
+    private String mealType;
+    private int addPoints;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
      * TODO: Cleanup, add helper functions to make it more readable.
-     * TODO: Make a logic for vegan/vegetarian type
      * TODO: Figure out how new points can be queried in log
      *
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
+        if (mealType.equals("vegan")) {
+            addPoints = 60;
+        } else {
+            addPoints = 50;
+        }
+
+
         if (addMeal) {
             String[] queries = new String[3];
-            queries[0] = "UPDATE points SET points = points + 50, last_updated = "
+            queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
             queries[1] = "INSERT INTO vegetarian (username, points, type, datetime) values"
-                    + " ('" + username + "',000,'idktbh',CURRENT_TIMESTAMP(0))";
+                    + " ('" + username + "',000,'" + mealType + "',CURRENT_TIMESTAMP(0))";
 
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
 
