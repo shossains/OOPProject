@@ -31,7 +31,7 @@ It will always return the amount of points, whether or not you have added a vege
 * *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
 
 ### Example
-{"type" : "VegMeal", "username" : "mike", "password" : "hunter2", "addMeal", "false"}
+{"type" : "vegetarian", "username" : "mike", "password" : "hunter2", "addMeal", "false"}
 
 Response:
 
