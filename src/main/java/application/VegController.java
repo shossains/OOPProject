@@ -4,44 +4,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import client.SecureClientNetworking;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
-public class VegController implements Initializable {
+public class VegController {
     public TextField insert;
-
-    //configure the table
-    @FXML private TableView<TableContents> tableView;
-    @FXML private TableColumn<TableContents, LocalDate> dateColumn;
-    @FXML private TableColumn<TableContents, Integer> pointsColumn;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-        //sets up columns of the table
-        dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"));
-    }
-
-    /**
-     * returns an OberservableList of Content objects(date and point)
-     */
-    public ObservableList<TableContents> getContent(){
-        ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50, LocalDate.now()));
-
-        return content;
-    }
 
     /**
      * Searches for a meal that matches the input.
@@ -56,8 +23,6 @@ public class VegController implements Initializable {
         // to make it compile
 
         //send json request
-
-        System.out.println("running add");
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'VegMeal', 'username' : '"
@@ -113,9 +78,5 @@ public class VegController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-    }
-    public void addToTable(ActionEvent tableEvent){
-        tableView.setItems(getContent());
-
     }
 }

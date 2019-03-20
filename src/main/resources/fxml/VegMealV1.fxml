@@ -5,8 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,52 +17,52 @@
     <children>
         <AnchorPane prefHeight="480.0" prefWidth="720.0" stylesheets="@../css/application.css">
             <children>
-                <ToolBar prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
-                    <items>
-                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="Name of Program" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Personal Settings" />
-                                <MenuItem mnemonicParsing="false" text="Stats" />
-                                <MenuItem mnemonicParsing="false" text="Friend List" />
-                            </items>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </MenuButton>
-                        <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Add a Vegetarian Meal" />
-                                <MenuItem mnemonicParsing="false" text="Add Local Produce" />
-                            </items>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </MenuButton>
-                        <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Add Bike Ride" />
-                                <MenuItem mnemonicParsing="false" text="Add Public Transport Ride" />
-                            </items>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </MenuButton>
-                        <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Add Temperature Adjustment" />
-                                <MenuItem mnemonicParsing="false" text="Add Solar Panels" />
-                            </items>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </MenuButton>
-                    </items>
-                </ToolBar>
+            <ToolBar prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
+               <items>
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="Name of Program" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Personal Settings" />
+                        <MenuItem mnemonicParsing="false" text="Stats" />
+                        <MenuItem mnemonicParsing="false" text="Friend List" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add a Vegetarian Meal" />
+                        <MenuItem mnemonicParsing="false" text="Add Local Produce" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add Bike Ride" />
+                        <MenuItem mnemonicParsing="false" text="Add Public Transport Ride" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add Temperature Adjustment" />
+                        <MenuItem mnemonicParsing="false" text="Add Solar Panels" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+               </items>
+            </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
                 <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by eating vegetarian meal" wrappingWidth="168.70703125" />
                 <Label layoutX="41.0" layoutY="66.0" text="Add a vegetarian meal">
@@ -71,22 +70,15 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="tableVie" layoutX="152.0" layoutY="154.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="I ate a vegetarian meal!" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font></Button>
-                <TableView fx:id="tableView" layoutX="108.0" layoutY="275.0" prefHeight="113.0" prefWidth="258.0">
-                    <columns>
-                        <TableColumn fx:id="dateColumn" prefWidth="176.9739227294922" text="Date" />
-                        <TableColumn fx:id="pointsColumn" prefWidth="80.13912362745924" text="Points" />
-                    </columns>
-                </TableView>
-                <Label alignment="CENTER" layoutX="59.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when vegetarian meal was added and points awarded" textFill="#0000007b" />
-                <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-                <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
+                <Button layoutX="153.0" layoutY="155.0" mnemonicParsing="false" onAction="#add" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="I ate a vegetarian meal!" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="59.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when vegetarian meal was added and points awarded" textFill="#0000007b" />
+            <TextField fx:id="log" editable="false" layoutX="114.0" layoutY="270.0" prefHeight="127.0" prefWidth="247.0" />
             </children>
         </AnchorPane>
     </children>
