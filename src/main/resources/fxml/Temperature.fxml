@@ -93,6 +93,13 @@
                     <Font name="System Bold" size="30.0" />
                 </font>
                 </Button>
+                <Button layoutX="260" layoutY="200" mnemonicParsing="false" onAction="#getTotal" prefHeight="28.0" prefWidth="169.0" stylesheets="@../CSS/LoginButton.css" text="Get total points from temperature adjustments" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font></Button>
             </children>
         </AnchorPane>
     </children>
