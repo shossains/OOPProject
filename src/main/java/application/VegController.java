@@ -38,7 +38,7 @@ public class VegController {
 
         String request = "{'type' : 'VegMeal', 'username' : '"
                 + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                + "'addMeal':true, 'mealType' : '" + mealType + "'}";
+                + "'addMeal': true, 'mealType' : '" + mealType + "'}";
 
         String response = scn.sendPostRequest(request);
 
@@ -79,15 +79,15 @@ public class VegController {
      * This method create the request for only points.
      * @param actionEvent opening a scene or clicking any given button
      */
-    public void returnPoints(ActionEvent actionEvent) {
+    public int returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
-                + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", false";
+        String request = "{'type' : 'VegMeal', 'username' : '"
+                + User.getUsername() + "', 'password' : '"
+                + User.getPassword() + "', 'addMeal' : false";
 
         String response = scn.sendPostRequest(request);
 
-        System.out.println(parsePoints(response));
+        return parsePoints(response);
     }
 }
