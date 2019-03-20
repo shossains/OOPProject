@@ -9,6 +9,17 @@ import javafx.scene.control.TextField;
 
 public class VegController {
     public TextField insert;
+    public String mealType;
+
+    public void vegan(ActionEvent actionEvent) {
+        mealType = "vegan";
+        add(actionEvent);
+    }
+
+    public void vegetarian(ActionEvent actionEvent) {
+        mealType = "vegetarian";
+        add(actionEvent);
+    }
 
     /**
      * Searches for a meal that matches the input.
@@ -27,7 +38,7 @@ public class VegController {
 
         String request = "{'type' : 'VegMeal', 'username' : '"
                 + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                + "'addMeal':true}";
+                + "'addMeal':true, 'mealType' : '" + mealType + "'}";
 
         String response = scn.sendPostRequest(request);
 
@@ -73,7 +84,7 @@ public class VegController {
 
         String request = "{\"type\" : \"VegMeal\", \"username\" : \""
                 + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", false}";
+                + User.getPassword() + "\", \"addMeal\", false";
 
         String response = scn.sendPostRequest(request);
 
