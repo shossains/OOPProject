@@ -57,11 +57,11 @@ public class VegMealTest {
      * Tests whether the database returns the correct json via the VegMealQuery class.
      */
     @Test
-    public void vegMealQueryJson(){
+    public void vegMealQueryBadJson(){
         String testString = "{'type':'VegMeal','username': '"+ testUserRow +"', 'addMeal': true}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{\"points\" : 50}", request.execute());
+        Assert.assertEquals("{'error' : true, 'reason' : 'mealType not given'}", request.execute());
     }
 
 
