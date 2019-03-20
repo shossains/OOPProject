@@ -31,24 +31,19 @@ public class TempController {
 
         //send json request
         if(RegController.isInt(input.getText())) {
-            try {
-                TemperatureCalculator.temp(temp);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+            String request = "{'type' : 'Temperature', 'username' : '"
+                    + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
+                    + "'addTemp':true" + "','" + "'temp': input.getText()}";
+
+            String response = scn.sendPostRequest(request);
+
+            System.out.println(parsePoints(response));
         } else {
             return;
         }
 
-        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-        String request = "{'type' : 'VegMeal', 'username' : '"
-                + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                + "'addMeal':true}";
-
-        String response = scn.sendPostRequest(request);
-
-        System.out.println(parsePoints(response));
     }
 
     /**
