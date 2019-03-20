@@ -1,6 +1,7 @@
 package application;
 
 import calculator.TemperatureCalculator;
+import application.RegController;
 import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -35,15 +36,14 @@ public class TempController {
         // to make it compile
 
         //send json request
-        try{
-            temp = Integer.parseInt(input.getText());
-        }catch (NumberFormatException ex) {
-            //handle exception here
-        }
-        try {
-            TemperatureCalculator.temp(temp);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(RegController.isInt(input.getText())) {
+            try {
+                TemperatureCalculator.temp(temp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            return;
         }
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
