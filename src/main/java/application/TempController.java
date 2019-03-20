@@ -28,14 +28,16 @@ public class TempController {
         //Don't use any server queries on the gosh darned client, that's only for the server
         //And please for the love of God don't just change server code vars to static just
         // to make it compile
+        int inputTemp;
 
         //send json request
         if(RegController.isInt(input.getText())) {
+            inputTemp = Integer.parseInt(input.getText());
             SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
             String request = "{'type' : 'Temperature', 'username' : '"
                     + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                    + "'addTemp':true" + "','" + "'temp': input.getText()}";
+                    + "'addTemp':true" + "','" + "'temp': inputTemp}";
 
             String response = scn.sendPostRequest(request);
 
