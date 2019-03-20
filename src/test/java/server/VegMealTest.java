@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import server.db.Query;
 
+import java.util.Arrays;
+
 public class VegMealTest {
 
     /**
@@ -64,5 +66,34 @@ public class VegMealTest {
         Assert.assertEquals("{\"points\" : 50}", request.execute());
     }
 
+    /**
+     * Test wheter the array is not messing up the queries
+     */
+    @Test
+    public void testOneQuery(){
+        String[] queries = new String[1];
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
+                + testUserRow +"'";
 
+        Assert.assertEquals("[UPDATE points SET points = 0 WHERE username = 'testUser']", Arrays.toString(queries));
+    }
+
+    /**
+     * Test if the order is not messed up in the array
+     */
+    @Test
+    public void testTwoQueries(){
+        String[] queries = new String[2];
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
+                + testUserRow +"'";
+        queries[1] = "SELECT * FROM points WHERE username = '"
+                + testUserRow +"'";
+
+        Assert.assertEquals("SELECT * FROM points WHERE username = 'testUser'", queries[1].toString());
+    }
+
+    @Test
+    public void testQueryReturn(){
+        //TODO
+    }
 }
