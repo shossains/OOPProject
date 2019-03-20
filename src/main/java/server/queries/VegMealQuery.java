@@ -24,7 +24,6 @@ public class VegMealQuery extends ServerQuery {
             addPoints = 50;
         }
 
-
         if (addMeal) {
             String[] queries = new String[3];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
@@ -52,7 +51,6 @@ public class VegMealQuery extends ServerQuery {
             }
 
         } else {
-            //TODO
             return null;
         }
     }
