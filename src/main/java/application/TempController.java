@@ -35,15 +35,15 @@ public class TempController {
             inputTemp = Integer.parseInt(input.getText());
             SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-            String request = "{'type' : 'Temperature', 'username' : '"
+            String request = "{'type' : 'TempAdj', 'username' : '"
                     + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                    + "'addTemp':true" + "','" + "'temp': inputTemp}";
+                    + "'addTemp': true" + "', 'temp':'" + inputTemp + "'}'";
 
             String response = scn.sendPostRequest(request);
 
             System.out.println(parsePoints(response));
         } else {
-            return;
+
         }
 
     }
