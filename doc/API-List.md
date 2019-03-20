@@ -36,3 +36,23 @@ It will always return the amount of points, whether or not you have added a vege
 Response:
 
 {"points" : "42"}
+
+## Temperature Adjustment
+
+To add the temperature adjustment to the person's account. Returns the amount of points.
+For now it will return only when the input is valid (an integer).
+
+### Request:
+* *type*: TempAdj
+* *addTemp*: Boolean, if you want to indicate that you have added a temperature, use true.
+* *temp*: Integer, the temperature that was put in by the user.
+
+### Response:
+* *points*: Integer, the current total of points the user has.
+
+### Example
+{"type" : "TempAdj", "username" : "mike", "password" : "hunter2", "addTemp", "true"}
+
+Response:
+
+{"points" : "200"}
