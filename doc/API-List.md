@@ -23,7 +23,7 @@ To add a vegetarian meal to the person's account. Returns the amount of points.
 It will always return the amount of points, whether or not you have added a vegetarian meal, so you get immediate feedback.
 
 ### Request:
-* *type*: VegMeal
+* *type*: vegetarian `or` vegan
 * *addMeal*: Boolean, if you want to indicate that you have added a meal, use true, if you just want to retrieve information, give it false.
 
 ### Response
