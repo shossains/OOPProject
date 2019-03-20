@@ -6,7 +6,6 @@ import com.google.gson.JsonParser;
 import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
-import server.db.Query;
 
 public class VegController {
     public TextField insert;

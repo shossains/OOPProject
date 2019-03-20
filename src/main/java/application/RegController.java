@@ -55,6 +55,15 @@ public class RegController {
         }
     }
 
+    public void back(ActionEvent actionEvent) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(
+                getClass().getResource("/fxml/HomeScreen.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
     /**
      * Do all input validation at once and finally check if username is taken.
      * @return return true if all holds else return false
