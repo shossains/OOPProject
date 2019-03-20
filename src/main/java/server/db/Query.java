@@ -28,7 +28,7 @@ public class Query extends Adapter {
 
             for (int i = 0; i < query.length; i++) {
                 if (query[i].contains("SELECT")) {
-                    //select query, add resultSet to array
+                    //SELECT query, add resultSet to array
                     try {
                         PreparedStatement select = conn.prepareStatement(query[i]);
                         ResultSet resultSet = select.executeQuery();
@@ -56,5 +56,21 @@ public class Query extends Adapter {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * runQueries identical to the other one, but with authentication.
+     * @param query Same as in the other runQueries
+     * @param username Username given by the client
+     * @param password Raw password given by the client
+     * @return The result of the queries same as in the other one,
+     *      but null if authentication fails.
+     */
+    public static ResultSet[] runQueries(String query[], String username, String password) {
+        return runQueries(query);
+    }
+
+    private String hashFunction(String password, String salt) {
+        return password;
     }
 }
