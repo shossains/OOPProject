@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
+    private String type;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
@@ -18,7 +19,6 @@ public class VegMealQuery extends ServerQuery {
      */
     public String runQuery() {
         if (addMeal) {
-            String type =  application.VegController.type;
             int add;
             if (type.equals("vegetarian")) {
                 add = 50;
