@@ -41,6 +41,10 @@ public class TempController {
 
     }
 
+    public void getTotal(ActionEvent actionEvent) {
+        request(false, 0);
+    }
+
     public void request(boolean added, int inputTemp) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
