@@ -29,6 +29,15 @@ public class RegController {
     public Label invalidPass;
     public String statusText = "";
 
+    public void back(ActionEvent actionEvent) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(
+                getClass().getResource("/fxml/HomeScreen.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      * @param actionEvent The click of the button

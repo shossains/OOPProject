@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -30,12 +30,23 @@
       <Label fx:id="invalidPhone" layoutX="412.0" layoutY="266.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
       <Label fx:id="invalidPass" layoutX="412.0" layoutY="320.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
       <Label fx:id="status" layoutX="261.0" layoutY="349.0" prefHeight="17.0" prefWidth="165.0" textAlignment="CENTER" textFill="#1fa125" />
-      <Button layoutX="265.0" layoutY="381.0" mnemonicParsing="false" onAction="#button" prefHeight="48.0" prefWidth="129.0" text="Register">
+      <Button cache="true" layoutX="337.0" layoutY="382.0" mnemonicParsing="false" onAction="#button" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="REGISTER" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="Arial Bold" size="16.0" />
          </font>
          <effect>
-            <Blend mode="MULTIPLY" />
+            <DropShadow color="#00000078" height="17.0" offsetX="3.0" offsetY="2.0" radius="7.75" width="16.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button cache="true" layoutX="202.0" layoutY="382.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/RegisterButton.css" text="&lt; GO BACK" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <effect>
+            <DropShadow color="#00000078" height="17.0" offsetX="3.0" offsetY="2.0" radius="7.75" width="16.0" />
          </effect>
          <cursor>
             <Cursor fx:constant="HAND" />
