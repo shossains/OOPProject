@@ -11,8 +11,8 @@
  - Reaction: Vanessa will look further into it. 
 
 ### Sprint Retrospective
- | Task | Assigned to | Estimated Effort (in hours per person) | Actual Effort | Done | Notes
- | ---------- |
+ | Task | Assigned to | Estimated Effort (in hours per person) | Actual Effort | Done | Notes |
+ | ---- | ----------- | -------------------------------------- | ------------- | ---- | ----- |
  | Workflow Vegetarian Meal | Shaan | 2 | 3 | Yes | - |
  | Exclude package for jacoco | Shaan | 0.5 | 2 | Yes | - |
  | Connect database with server | Shaan | 2 | 4 | Yes | - | 
@@ -20,6 +20,6 @@
  | Make the API work | Sami | ? | ? | Yes | - | 
  | Worked on the logic for transportation | Lucas | 3 | 0 | No | Couldn't work on project due to illness | 
  | Implement communication | Alex | 3 | 5-6 | Yes | - |
-
+ 
 ### Adjustments for next sprint
  - We need to make more tests 
