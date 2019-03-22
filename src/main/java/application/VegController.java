@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 
 
 public class VegController implements Initializable {
-    public TextField insert;
     public String mealType;
 
 
