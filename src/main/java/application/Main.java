@@ -1,6 +1,6 @@
 package application;
 
-import calculator.LocalProduceCalculator;
+import calculator.BusCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,13 +43,13 @@ public class Main extends Application {
 //        }
 //        launch(args);
 
-//        try {
-//            TemperatureCalculator.temp();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            BusCalculator.bus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        LocalProduceCalculator.produce();
+
 
 
 
