@@ -11,7 +11,6 @@ public class TemperatureCalculator {
 
     public static void temp() throws Exception {
 
-
         Scanner input = new Scanner(System.in);
 
         System.out.println("Temperature right now: ");
@@ -23,7 +22,7 @@ public class TemperatureCalculator {
         int temperature = 1006 * 256 * tHigh;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
-        URL url= new URL(urlString);
+        URL url = new URL(urlString);
         SecureClientNetworking scn = new SecureClientNetworking(url);
 
         //send post request
@@ -32,23 +31,23 @@ public class TemperatureCalculator {
         //Read JSON response and print
         JSONObject myResponse = new JSONObject(response);
 
-        JSONObject test1 = myResponse.getJSONObject("decisions");
+        JSONObject first = myResponse.getJSONObject("decisions");
 
-        JSONObject test2 = test1.getJSONObject("carbon");
+        JSONObject second = first.getJSONObject("carbon");
 
-        JSONObject test3 = test2.getJSONObject("object");
+        JSONObject third = second.getJSONObject("object");
 
-        double co2 = test3.getFloat("value");
-        co2 = Math.round(co2 *100.00)/100.00;
-        System.out.println(co2 + " kg CO2");
+        double co2tHigh = third.getFloat("value");
+        co2tHigh = Math.round(co2tHigh * 100.00) / 100.00;
+        System.out.println(co2tHigh + " kg CO2");
 
         TemperatureCalculator testCalc = new TemperatureCalculator();
 
-        testCalc.tempCalc(co2);
+        testCalc.tempCalc(co2tHigh);
 
     }
 
-    public void tempCalc(double x) throws MalformedURLException {
+    public void tempCalc(double tempHigh) throws MalformedURLException {
 
         Scanner input = new Scanner(System.in);
 
@@ -61,7 +60,7 @@ public class TemperatureCalculator {
         int temperature = 1006 * 256 * tLow;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
-        URL url= new URL(urlString);
+        URL url = new URL(urlString);
         SecureClientNetworking scn = new SecureClientNetworking(url);
 
         //send post request
@@ -70,18 +69,19 @@ public class TemperatureCalculator {
         //Read JSON response and print
         JSONObject myResponse = new JSONObject(response);
 
-        JSONObject test1 = myResponse.getJSONObject("decisions");
+        JSONObject first = myResponse.getJSONObject("decisions");
 
-        JSONObject test2 = test1.getJSONObject("carbon");
+        JSONObject second = first.getJSONObject("carbon");
 
-        JSONObject test3 = test2.getJSONObject("object");
+        JSONObject third = second.getJSONObject("object");
 
-        double co3 = test3.getFloat("value");
-        co3 = Math.round(co3 *100.00)/100.00;
-        System.out.println(co3 + " kg CO2");
+        double co2tLow = third.getFloat("value");
+        co2tLow = Math.round(co2tLow * 100.00) / 100.00;
+        System.out.println(co2tLow + " kg CO2");
 
-        double result = x - co3;
-        result = Math.round(result *100.00)/100.00;
+        //Calculate amount of kg CO2 saved.
+        double result = tempHigh - co2tLow;
+        result = Math.round(result * 100.00) / 100.00;
         System.out.println("Amount CO2 saved= " + result + " kg CO2");
 
     }
