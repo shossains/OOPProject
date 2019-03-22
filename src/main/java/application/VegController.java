@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,29 +18,66 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+
 public class VegController implements Initializable {
     public TextField insert;
+    public String mealType;
+
 
     //configure the table
     @FXML private TableView<TableContents> tableView;
     @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
+    @FXML private TableColumn<TableContents, String> typeColumn;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         //sets up columns of the table
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<TableContents, String>("type"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
+                ;
     }
 
     /**
-     * returns an OberservableList of Content objects(date and point)
+     * returns an OberservableList of Content objects(date and points).
      */
-    public ObservableList<TableContents> getContent(){
+    public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50, LocalDate.now()));
+        content.add(new TableContents(50,mealType));
 
         return content;
+    }
+
+    /**
+     * After clicking vegan button client will receive 60 points.
+     * @param actionEvent Click of the button
+     */
+    public void vegan(ActionEvent actionEvent) {
+        mealType = "vegan";
+
+        TableContents tablecontent = new TableContents(60, mealType);
+        tableView.getItems().add(tablecontent);
+
+        add(actionEvent);
+    }
+
+    /**
+     * After clicking vegetarian button client will receive 50 points.
+     * @param actionEvent Click of the button
+     */
+    public void vegetarian(ActionEvent actionEvent) {
+        mealType = "vegetarian";
+
+        TableContents tablecontent = new TableContents(50,mealType);
+        tableView.getItems().add(tablecontent);
+
+        add(actionEvent);
+    }
+
+    public void addToTable(int points, String type) {
+        TableContents tablecontent = new TableContents(points,type);
+        tableView.getItems().add(tablecontent);
     }
 
     /**
@@ -58,15 +94,14 @@ public class VegController implements Initializable {
 
         //send json request
 
-        System.out.println("running add");
+        System.out.println("Running add");
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'VegMeal', 'username' : '"
-                + User.getUsername() + "', 'password':'" + User.getPassword() + "',"
-                + "'addMeal':true}";
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
+                + "'addMeal': true, 'mealType' : '" + mealType + "'}";
 
         String response = scn.sendPostRequest(request);
-
         System.out.println(parsePoints(response));
     }
 
@@ -107,31 +142,12 @@ public class VegController implements Initializable {
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{\"type\" : \"VegMeal\", \"username\" : \""
-                + User.getUsername() + "\", \"password\" : \""
-                + User.getPassword() + "\", \"addMeal\", false}";
+        String request = "{'type' : 'VegMeal', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
+                + "'addMeal': false, 'mealType' : '" + mealType + "'}";
 
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-    }
-
-    /**
-     * when the vegetarian button is clicked, a date and points are added to the table
-     * @param tableEvent
-     */
-    public void addToTable(ActionEvent tableEvent){
-
-        TableContents tablecontent = new TableContents(50, LocalDate.now());
-        tableView.getItems().add(tablecontent);
-    }
-
-    /**
-     * when the vegan button is clicked, a date and points are added to the table
-     * @param vegantable
-     */
-    public void VeganAdd(ActionEvent vegantable){
-        TableContents tablecontent = new TableContents(60, LocalDate.now());
-        tableView.getItems().add(tablecontent);
     }
 }

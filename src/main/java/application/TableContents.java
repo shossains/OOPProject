@@ -2,16 +2,25 @@ package application;
 
 import javafx.beans.property.SimpleIntegerProperty;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TableContents {
 
     private SimpleIntegerProperty points;
-    private LocalDate date;
+    private String date;
+    private String type;
 
-    public TableContents(int points, LocalDate date) {
+    /**
+     * Constructor for the data of the table.
+     * @param points data of amount of points that will be projected
+     * @param type of the meal that will be projected
+     */
+    public TableContents(int points, String type) {
         this.points = new SimpleIntegerProperty(points);
-        this.date = date;
+        this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                .format(Calendar.getInstance().getTime());
+        this.type = type;
     }
 
     public int getPoints() {
@@ -26,11 +35,19 @@ public class TableContents {
         this.points.set(points);
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

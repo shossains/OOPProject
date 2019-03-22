@@ -29,15 +29,6 @@ public class RegController {
     public Label invalidPass;
     public String statusText = "";
 
-    public void back(ActionEvent actionEvent) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(
-                getClass().getResource("/fxml/HomeScreen.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
-    }
-
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      * @param actionEvent The click of the button
@@ -46,9 +37,9 @@ public class RegController {
         if (proceed()) {
             Query db = new Query();
             db.connect();
-            db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
-                    email.getText(), phone.getText(), pass.getText());
-            statusText = "Registration Success!";
+            /*db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
+                    email.getText(), phone.getText(), pass.getText());*/
+            statusText = "To be implemented... soon ish";
             status.setText(statusText);
             db.disconnect();
 
@@ -77,7 +68,8 @@ public class RegController {
         boolean pass = emptyPass();
 
         if (!username && !firstName && !lastName && !email && !phone && !pass) {
-            return !checkAccount();
+            return false;
+            //return !checkAccount();
         } else {
             return false;
         }
@@ -186,8 +178,9 @@ public class RegController {
     /**
      * Check whether username is already used in database.
      * @return true is username is already used
+     * DEPRECATED - TODO: Rewrite with the new DB query system
      */
-    public boolean checkAccount() {
+    /*public boolean checkAccount() {
         Query db = new Query();
         db.connect();
 
@@ -200,7 +193,7 @@ public class RegController {
             db.disconnect();
             return false;
         }
-    }
+    }*/
 
     /**
      * Check whether input is an integer.
@@ -230,5 +223,19 @@ public class RegController {
             }
         }
         return true;
+    }
+
+    /**
+     * Goes back to the homescreen.
+     * @param actionEvent The click of the button
+     * @throws IOException If the fxml is invalid or corrupted throw this
+     */
+    public void back(ActionEvent actionEvent) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(
+                getClass().getResource("/fxml/HomeScreen.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 }

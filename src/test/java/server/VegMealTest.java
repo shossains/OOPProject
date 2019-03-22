@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import server.db.Query;
-import server.queries.VegMealQuery;
 
 public class VegMealTest {
 
@@ -25,8 +24,10 @@ public class VegMealTest {
         vc = new VegController();
 
         //set the score to 0 on the test row
-        Query.query("UPDATE points \n SET points = 0\n WHERE username = '"
-                + testUserRow +"'");
+        String[] queries = new String[1];
+        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow +"'";
+        Query.runQueries(queries);
 
     }
 
@@ -56,11 +57,11 @@ public class VegMealTest {
      * Tests whether the database returns the correct json via the VegMealQuery class.
      */
     @Test
-    public void vegMealQueryJson(){
-        String testString = "{'type':'VegMeal','username': '"+ testUserRow +"', 'addMeal': true }";
+    public void vegMealQueryBadJson(){
+        String testString = "{'type':'VegMeal','username': '"+ testUserRow +"', 'addMeal': true}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{\"points\" : 50}", request.execute());
+        Assert.assertEquals("{'error' : true, 'reason' : 'mealType not given'}", request.execute());
     }
 
 
