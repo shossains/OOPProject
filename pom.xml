@@ -93,6 +93,7 @@
                     <useSystemClassLoader>true</useSystemClassLoader>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -137,7 +138,7 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>application/**</exclude>>
+                        <exclude>application/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
