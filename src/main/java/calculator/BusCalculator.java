@@ -32,18 +32,18 @@ public class BusCalculator {
         JSONObject myResponse = new JSONObject(response);
 
         JSONObject test1 = myResponse.getJSONObject("decisions");
-        System.out.println(test1);
 
         JSONObject test2 = test1.getJSONObject("carbon");
-        System.out.println(test2);
-        System.out.println("Description: " + test2.getString("description"));
+
 
         JSONObject test3 = test2.getJSONObject("object");
-        System.out.println("Value: " + test3.getFloat("value"));
 
         double co2 = test3.getFloat("value");
-        co2 = Math.round(co2 *10.0)/10.0;
+        co2 = Math.round(co2 *100.00)/100.00;
         System.out.println(co2);
+
+        CarCalculator carCalculator = new CarCalculator();
+        carCalculator.carBus(number, co2);
 
     }
 }
