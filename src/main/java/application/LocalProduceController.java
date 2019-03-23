@@ -106,7 +106,6 @@ public class LocalProduceController implements Initializable {
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
                 + "'addLocal' : true, 'weight' : " + weightInt + "}";
 
-        System.out.println(request);
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
     }
