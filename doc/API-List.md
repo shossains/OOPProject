@@ -1,6 +1,16 @@
 # API List
 
 *For all your API needs!*
+## Our team
+- [Basics](#basics)
+- [Vegetarian Meal](#vegmeal)
+- [Local Produce](#localproduce)
+- [Bike ride](#)
+- [Public Transport](#)
+- [Temperature Adjustment](#)
+- [Solar Panels](#)
+
+
 
 ## Basics
 All requests are defined by a *type*, to denote what kind of request it is. Dont even think of sending one without it.
@@ -26,15 +36,16 @@ It will always return the amount of points, whether or not you have added a vege
 
 ### Request:
 * *type*: VegMeal
-* *addMeal*: Boolean, if you want to indicate that you have added a meal, use true, if you just want to retrieve information, give it false.
+* *addMeal*: `Boolean` if you want to indicate that you have added a meal, use true, if you just want to retrieve information, give it false.
+* *mealType*: `String` Indicate wether the meal was 'vegetarian' or 'vegan'
 
 ### Response
-* *points*: Integer, The current total of points the user has.
-* *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
+* *points*: `Integer` The current total of points the user has.
+* *added*: `Boolean` Confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
 
 ### Example
 ```
-{'type' : 'VegMeal', 'username' : 'mike', 'password' : 'hunter2', 'addMeal': false}
+{'type' : 'VegMeal', 'username' : 'mike', 'password' : 'izan123','addMeal': true, 'mealType' : 'vegan'}
 ```
 
 Response:
@@ -50,11 +61,11 @@ It will always return the amount of points, whether or not you have added a vege
 
 ### Request:
 * *type*: LocalProduce
-* *addMeal*: Boolean, if you want to indicate that the client bought local produce, use true, if you just want to retrieve information, give it false.
+* *addLocal*:`Boolean` If you want to indicate that the client bought local produce, use true, if you just want to retrieve information, give it false.
 
 ### Response
-* *points*: Integer, The current total of points the user has.
-* *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addLocal to false.
+* *points*: `Integer` The current total of points the user has.
+* *added*: `Boolean` confirms that the meal has been added. Doesnt get returned if you set addLocal to false.
 
 ### Example
 ```
