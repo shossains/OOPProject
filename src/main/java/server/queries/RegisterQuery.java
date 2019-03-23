@@ -1,5 +1,10 @@
 package server.queries;
 
+import server.db.Query;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Fields needed for registration of a new user.
  */
@@ -11,15 +16,43 @@ public class RegisterQuery extends  ServerQuery {
 
 
     /**Runs the actual registration process.
+     *       Logic for actually running the query:
+     *         1: Make sure that the username doesn't already exist
+     *         2: Construct the database query string, creating rows for each table
+     *         3: Run it
+     *         4: Make sure it successfully registered a new user and its tables
      * @return result of registration.
      */
     public String runQuery() {
-        // Logic for actually running the query
-        //1: make sure that the username doesnt exist already
-        //2: construct the database query string
-        //3: run it
-        //4: make sure it successufully registered a new user, or assume it has
-        //5: write appropriate API docs on the API list if you add/change anything with the protocol
+
         return "{'error': true, 'reason' : 'not implemented yet'}";
+    }
+
+    private String[] getQueries(){
+        String[] queries = new String[0];
+        //check if username exists
+        queries[0] = "SELECT username FROM client WHERE username = '"+ username +"'";
+
+
+
+        return queries;
+    }
+
+    public boolean usernameExists(){
+        String[] queries = {"SELECT username FROM client WHERE username = '"+ username +"'"};
+        ResultSet rs = Query.runQueries(queries)[0];
+        try {
+            if(rs.next()){
+                return true;
+            } else{
+                return false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return true;
     }
 }

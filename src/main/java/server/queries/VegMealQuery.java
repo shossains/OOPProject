@@ -68,6 +68,6 @@ public class VegMealQuery extends ServerQuery {
         queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
 
         //should be one function
-        return Query.runQueries(queries);
+        return Query.runQueries(queries, username, password);
     }
 }

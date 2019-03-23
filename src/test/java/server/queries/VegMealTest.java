@@ -1,10 +1,11 @@
-package server;
+package server.queries;
 
 import application.VegController;
 import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import server.Request;
 import server.db.Query;
 
 public class VegMealTest {
@@ -14,6 +15,7 @@ public class VegMealTest {
      */
     static private VegController vc;
     static final String testUserRow = "testUser";
+    static final String testUserPass = "hunter2";
 
 
     /**
@@ -27,7 +29,7 @@ public class VegMealTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
                 + testUserRow +"'";
-        Query.runQueries(queries);
+        Query.runQueries(queries, testUserRow, testUserPass);
 
     }
 
