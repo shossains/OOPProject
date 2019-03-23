@@ -33,15 +33,28 @@ public class AuthenticationTest {
 
     @Test
     public void queryAuthTest(){
-        String[] query = {"UPDATE client \n SET phone = '123456' \n" +
-                " WHERE username = '"+testUserRow+"'"};
+        String[] query = new String[2];
+        query[0] = "UPDATE client \n SET phone = '123456' \n" +
+                " WHERE username = '"+testUserRow+"'";
+        query[1] = "SELECT phone FROM client WHERE username = 'testUser'";
 
         try {
             ResultSet resquery = Query.runQueries(query, testUserRow, "hunter2")[0];
             resquery.next();
-            System.out.println(resquery.getString("phone"));
+            Assert.assertTrue(resquery.getString("phone").equals("123456"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void wrongPasswordTest(){
+        String[] query = new String[2];
+        query[0] = "UPDATE client \n SET phone = '654321' \n" +
+                " WHERE username = '"+testUserRow+"'";
+        query[1] = "SELECT phone FROM client WHERE username = 'testUser'";
+
+            ResultSet[] resquery = Query.runQueries(query, testUserRow, "hunter3");
+            Assert.assertTrue(resquery == null);
     }
 }

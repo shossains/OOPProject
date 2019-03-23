@@ -25,8 +25,8 @@ public class Query extends Adapter {
     public static ResultSet[] runQueries(String query[], Query db) {
         if (db == null) {
             db = new Query();
+            db.connect();
         }
-        db.connect();
 
         try {
             Statement stmnt = conn.createStatement();
