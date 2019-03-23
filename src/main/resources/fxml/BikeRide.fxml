@@ -82,7 +82,7 @@
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
             <Label alignment="CENTER" layoutX="88.0" layoutY="138.0" prefHeight="49.0" prefWidth="149.0" text="Enter the distance your covered by bike" textFill="#0000007b" wrapText="true" />
-            <Button fx:id="tableVie1" layoutX="260.0" layoutY="122.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="99.0" prefWidth="161.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
+            <Button fx:id="tableVie1" layoutX="261.0" layoutY="154.0" mnemonicParsing="false" onAction="#addToTable" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -91,6 +91,11 @@
                </font>
             </Button>
             <TextField layoutX="78.0" layoutY="189.0" />
+            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
