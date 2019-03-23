@@ -93,7 +93,6 @@
                     <useSystemClassLoader>true</useSystemClassLoader>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -131,8 +130,7 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
-                            <rules>
-                            </rules>
+                            <rules/>
                         </configuration>
                     </execution>
                 </executions>
@@ -191,5 +189,4 @@
             </plugin>
         </plugins>
     </reporting>
-
 </project>

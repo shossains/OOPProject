@@ -9,25 +9,20 @@ import server.Server;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main extends Application {
-    public Stage primaryStage;
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         //setup the user class, for now just from string, in the future ideally from local storage
         setupUser();
 
-        try {
-            primaryStage = stage;
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
-            Scene scene = new Scene(root,720,480);
-            stage.setTitle("#GoGreen");
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
+        Scene scene = new Scene(root,720,480);
+        stage.setTitle("#GoGreen");
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**Main entry point for the application. Currently launches both server and client for demos.
