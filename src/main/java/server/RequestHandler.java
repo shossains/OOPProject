@@ -48,10 +48,6 @@ public class RequestHandler implements HttpHandler {
         os.close();
     }
 
-    public Request getRequest() {
-        return request;
-    }
-
     /**
      * This function uses Gson to parse the JSON into a Java Request class.
      *

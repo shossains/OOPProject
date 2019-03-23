@@ -1,5 +1,6 @@
 package application;
 
+import calculator.CarCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //setup the user class, for now just from string, in the future ideally from local storage
-        setupUser();
+//        setupUser();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
         Scene scene = new Scene(root,720,480);
@@ -31,26 +32,36 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         //setup server
-        Server server;
-        String serverpassword = "password";
+//        Server server;
+//        String serverpassword = "password";
+//        try {
+//            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
+//                    serverpassword.toCharArray());
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        launch(args);
+
         try {
-            server = new Server(3000, new FileInputStream("testkey.jks"),
-                    serverpassword.toCharArray());
-        } catch (FileNotFoundException e) {
+            CarCalculator.car();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        launch(args);
+
+
+
+
     }
 
 
-    private void setupUser() {
-        if (User.setServerUrl("https://localhost:3000")) {
-            System.out.println("URL valid");
-        } else {
-            System.out.println("URL invalid");
-        }
-        User.setUsername("shossain");
-        User.setPassword("test123");
-    }
+//    private void setupUser() {
+//        if (User.setServerUrl("https://localhost:3000")) {
+//            System.out.println("URL valid");
+//        } else {
+//            System.out.println("URL invalid");
+//        }
+//        User.setUsername("shossain");
+//        User.setPassword("test123");
+//    }
 }

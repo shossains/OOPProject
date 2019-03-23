@@ -45,8 +45,15 @@ public class Request {
      */
     public String execute() {
         if (rawQuery == null) {
-            System.out.println("You forgot to set the rawQuery Einstein");
+            String einstein = "You forgot to set the rawQuery Einstein";
+            System.out.println(einstein);
+            return einstein;
         }
+
+        if (type == null) {
+            return "{'error' : true, 'reason' : 'No type given'}";
+        }
+
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
@@ -57,7 +64,7 @@ public class Request {
             case "LocalProduce":
                 return localProduce();
             default:
-                return null;
+                return "{'error' : true, 'reason' : 'Unknown type'}";
         }
     }
 
@@ -81,10 +88,6 @@ public class Request {
         return LocalProduceQuery.runQuery();
     }
 
-
-    public String getType() {
-        return type;
-    }
 
 
     /**
