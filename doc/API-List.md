@@ -1,7 +1,6 @@
 # API List
 
 *For all your API needs!*
-## Our team
 - [Basics](#basics)
 - [Vegetarian Meal](#vegmeal)
 - [Local Produce](#localproduce)
