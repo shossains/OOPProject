@@ -8,7 +8,9 @@ All requests are defined by a *type*, to denote what kind of request it is. Dont
 All APIs need authentication, give each request a *username* and *password*.
 Armed with this knowledge, we can give our first example request, which sends a test request to our server:
 
+```
 {"type" : "TestRequest", "username" : "user", "password" : "hunter2", "isTest": true}
+```
 
 If you add an attribute that is incorrectly named, or irrelevant, the server will simiply ignore it.
 
@@ -31,12 +33,15 @@ It will always return the amount of points, whether or not you have added a vege
 * *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
 
 ### Example
+```
 {'type' : 'VegMeal', 'username' : 'mike', 'password' : 'hunter2', 'addMeal': false}
+```
 
 Response:
 
+```
 {"points" : 42}
-
+```
 
 ## LocalProduce
 
@@ -52,8 +57,11 @@ It will always return the amount of points, whether or not you have added a vege
 * *added*, Boolean, confirms that the meal has been added. Doesnt get returned if you set addLocal to false.
 
 ### Example
+```
 {'type' : 'LocalProduce', 'username' : 'shossain', 'password' : 'test123', 'addLocal' : true, 'weight' : 90}
+```
 
 Response:
-
+```
 {"points" : 35}
+```
