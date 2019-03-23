@@ -18,7 +18,7 @@ public class VegMealQuery extends ServerQuery {
      */
     public String runQuery() {
         int addPoints;
-        if((mealType == null)){
+        if (mealType == null) {
             return "{'error' : true, 'reason' : 'mealType not given'}";
         }
 
@@ -32,7 +32,7 @@ public class VegMealQuery extends ServerQuery {
             //run queries
             ResultSet rs = runQueries(addPoints)[0];
 
-            if(rs == null){
+            if (rs == null) {
                 return "{'error' : true, 'reason' : 'Could not find user for given credentials'}";
             }
 
@@ -53,11 +53,13 @@ public class VegMealQuery extends ServerQuery {
         }
     }
 
-    /**Runs db duties for the meal, as well as authentication, returns resultset array.
+    /**
+     * Runs db duties for the meal, as well as authentication, returns resultset array.
+     *
      * @param pointsToBeAdded points to be added for the meal
      * @return resultset with the current points total.
      */
-    private ResultSet[] runQueries(int pointsToBeAdded){
+    private ResultSet[] runQueries(int pointsToBeAdded) {
         String[] queries = new String[3];
         queries[0] = "UPDATE points SET points = points + " + pointsToBeAdded + ", last_updated = "
                 + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
