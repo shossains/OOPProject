@@ -41,18 +41,24 @@ public class Adapter {
     /**
      * Disconnect from database.
      */
-    public void disconnect() throws SQLException {
-        // Step 5 Close connection
-        if (stmt != null) {
-            stmt.close();
+    public void disconnect() {
+        try {
+
+            // Step 5 Close connection
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            // Print connected
+            System.out.println("DbAdapter: Connection to database closed");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (rs != null) {
-            rs.close();
-        }
-        if (conn != null) {
-            conn.close();
-        }
-        // Print connected
-        System.out.println("DbAdapter: Connection to database closed");
     } // disconnect
 }
