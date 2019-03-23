@@ -4,10 +4,10 @@
 - [Basics](#basics)
 - [Vegetarian Meal](#vegmeal)
 - [Local Produce](#localproduce)
-- [Bike ride](#)
-- [Public Transport](#)
-- [Temperature Adjustment](#)
-- [Solar Panels](#)
+- [Bike ride](#bikeride)
+- [Public Transport](#publictransport)
+- [Temperature Adjustment](#temperature)
+- [Solar Panels](#solar)
 
 
 
@@ -44,7 +44,7 @@ It will always return the amount of points, whether or not you have added a vege
 
 ### Example
 ```
-{'type' : 'VegMeal', 'username' : 'mike', 'password' : 'izan123','addMeal': true, 'mealType' : 'vegan'}
+{'type' : 'VegMeal', 'username' : 'Keizer', 'password' : 'Priester','addMeal': true, 'mealType' : 'vegan'}
 ```
 
 Response:
@@ -69,10 +69,34 @@ It will always return the amount of points, whether or not you have added a vege
 
 ### Example
 ```
-{'type' : 'LocalProduce', 'username' : 'shossain', 'password' : 'test123', 'addLocal' : true, 'weight' : 90}
+{'type' : 'LocalProduce', 'username' : 'Winne', 'password' : 'Feis', 'addLocal' : true, 'weight' : 90}
 ```
 
 Response:
 ```
 {"points" : 35}
+```
+
+## BikeRide
+
+Add local produce to a client's account
+It will always return the amount of points, whether or not you have added a vegetarian meal, so you get immediate feedback.
+
+### Request:
+* *type*: BikeRide
+* *addBike*:`Boolean` If you want to indicate that the client cycled, use true, if you just want to retrieve information, give it false.
+* *distance*:`Integer` The amount of kilometers the client has cycled. 
+
+### Response
+* *points*: `Integer` The current total of points the user has.
+* *added*: `Boolean` confirms that the bike ride has been added. Doesn't get returned if you set addBike to false.
+
+### Example
+```
+{'type' : 'BikeRide', 'username' : 'HenkieT', 'password' : 'Chivv', 'addBike' : true, 'distance' : 5}
+```
+
+Response:
+```
+{"points" : 39}
 ```
