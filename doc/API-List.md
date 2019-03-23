@@ -40,7 +40,7 @@ It will always return the amount of points, whether or not you have added a vege
 
 ### Response
 * *points*: `Integer` The current total of points the user has.
-* *added*: `Boolean` Confirms that the meal has been added. Doesnt get returned if you set addMeal to false.
+* *added*: `Boolean` Confirms that the meal has been added. Doesn't get returned if you set addMeal to false.
 
 ### Example
 ```
@@ -61,10 +61,11 @@ It will always return the amount of points, whether or not you have added a vege
 ### Request:
 * *type*: LocalProduce
 * *addLocal*:`Boolean` If you want to indicate that the client bought local produce, use true, if you just want to retrieve information, give it false.
+* *weight*:`Integer` The amount of local produce the client has purchashed in grams 
 
 ### Response
 * *points*: `Integer` The current total of points the user has.
-* *added*: `Boolean` confirms that the meal has been added. Doesnt get returned if you set addLocal to false.
+* *added*: `Boolean` confirms that the meal has been added. Doesn't get returned if you set addLocal to false.
 
 ### Example
 ```
