@@ -10,6 +10,7 @@ import server.Server;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main extends Application {
     public Stage primaryStage;
@@ -26,7 +27,7 @@ public class Main extends Application {
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) { // TODO: don't catch like that, andy will crucify us
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

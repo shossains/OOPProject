@@ -2,7 +2,6 @@ package server.db;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +17,9 @@ public class Query extends Adapter {
      * @param query The queries given as string to be executed
      * @param db    A query object if you want to continue an existing connection
      * @return a ResultSet array of SELECT query results, in order corresponding to that
-     *         of the query array order.
-     *         I.E.: the first select query appears in the return array first, the second second.
-     *         Returns an empty array if no SELECT queries were specified.
+     *      of the query array order.
+     *      I.E.: the first select query appears in the return array first, the second second.
+     *      Returns an empty array if no SELECT queries were specified.
      */
     public static ResultSet[] runQueries(String query[], Query db) {
         if (db == null) {
@@ -89,7 +88,7 @@ public class Query extends Adapter {
         Query db = new Query();
         db.connect();
         //auth
-        String sql = "SELECT username, password FROM client WHERE username = '"+username+"'";
+        String sql = "SELECT username, password FROM client WHERE username = '" + username + "'";
 
         try {
             PreparedStatement select = conn.prepareStatement(sql);
@@ -97,9 +96,9 @@ public class Query extends Adapter {
             resultSet.next();
             String passHash = resultSet.getString("password");
 
-            if(BCrypt.checkpw(password, passHash)){
+            if (BCrypt.checkpw(password, passHash)) {
                 return runQueries(query, db);
-            } else{
+            } else {
                 System.out.println("Authentication error");
             }
         } catch (SQLException e) {
