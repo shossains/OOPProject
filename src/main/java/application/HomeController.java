@@ -17,7 +17,7 @@ public class HomeController {
      * @throws IOException Throw exception if file is not found or corrupted
      */
     public void toMainMenu(ActionEvent event) throws IOException {
-        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/Temperature.fxml")); //temporarily changed this to Temperature to test thinfs
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/VegMeal.fxml"));
         Scene hmScene = new Scene(hmParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

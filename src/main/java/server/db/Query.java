@@ -3,156 +3,74 @@ package server.db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Query extends Adapter {
 
     /**
-     * Send the query to the sql db to insert a new client from reg form.
-     * @param username the username of the client
-     * @param firstName the first name of the client
-     * @param lastName the last name of the client
-     * @param email the email address of the client
-     * @param phone the phone number of the client (not required)
-     * @param password the password of the client
+     * Execute any given query, SELECT or otherwise. Returns a ResultSet array for results
+     * from any SELECT queries that were passed.
+     *
+     * @param query The queries given as string to be executed
+     * @return a ResultSet array of SELECT query results, in order corresponding to that
+     *         of the query array order.
+     *         I.E.: the first select query appears in the return array first, the second second.
+     *         Returns an empty array if no SELECT queries were specified.
      */
-    public void insertClient(String username, String firstName,
-                             String lastName, String email, String phone, String password) {
-        System.out.println("INSERT " + username + " $" + firstName + " $"
-                + lastName + " $" + email + " $" + phone + " $" + password);
-        try {
-            PreparedStatement lt = conn.prepareStatement(
-                    "INSERT INTO points "
-                            + "(username, points) "
-                            + "VALUES(?,?)");
-            lt.setString(1, username);
-            lt.setInt(2,0);
-            lt.executeUpdate();
-            lt.close();
-
-            PreparedStatement st = conn.prepareStatement(
-                    "INSERT INTO client "
-                            + "(username, first_name, last_name, email, phone, password) "
-                            + "VALUES(?,?,?,?,?,?)");
-
-            st.setString(1, username);
-            st.setString(2, firstName);
-            st.setString(3, lastName);
-            st.setString(4, email);
-            st.setString(5, phone);
-            st.setString(6, password);
-            st.executeUpdate();
-            st.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Execute any given query.
-     * @param query The query given as string to be executed
-     */
-    public static void query(String query[]) {
+    public static ResultSet[] runQueries(String query[]) {
         Query db = new Query();
         db.connect();
-
-        for (int i = 0; i < query.length; i++) {
-            System.out.println(query[i]);
-            try {
-                PreparedStatement st = conn.prepareStatement(query[i]);
-
-                st.executeUpdate();
-                st.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        db.disconnect();
-    }
-
-    /**
-     * Method that checks if the given email already exists in the database.
-     * @param username the email that you want to check
-     * @return true is it exists in the database
-     */
-    public boolean checkExistence(String username) {
         try {
-            PreparedStatement st = conn.prepareStatement(
-                    "SELECT username FROM client WHERE username = '" + username + "'");
+            Statement stmnt = conn.createStatement();
+            conn.setAutoCommit(false);
+            ArrayList<ResultSet> resultSets = new ArrayList<>();
 
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                String res = rs.getString(1);
+            for (int i = 0; i < query.length; i++) {
+                if (query[i].contains("SELECT")) {
+                    //SELECT query, add resultSet to array
+                    try {
+                        PreparedStatement select = conn.prepareStatement(query[i]);
+                        ResultSet resultSet = select.executeQuery();
+                        resultSets.add(resultSet);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        System.out.println("Error executing SELECT query");
+                    }
 
-                if (res.equals(username)) {
-                    return true;
+                } else {
+                    //Not a SELECT query, so it can be safely added to the batch.
+                    try {
+                        stmnt.addBatch(query[i]);
+                        stmnt.executeUpdate(query[i]);
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-
-            rs.close();
-            st.close();
+            conn.commit();
+            db.disconnect();
+            return resultSets.toArray(new ResultSet[resultSets.size()]);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
-    }
-
-    /**
-     * Checks the amount of points a user has right now.
-     * @param username the user that you want to check
-     * @return the amount of points in JSON format
-     */
-    public static String eaten(String username) {
-        Query db = new Query();
-        db.connect();
-
-        try {
-            PreparedStatement st = conn.prepareStatement(
-                    "SELECT points FROM points WHERE username = '" + username + "'");
-
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                int res = rs.getInt(1);
-                db.disconnect();
-                return "{\"points\" : " + res + "}";
-            }
-
-            rs.close();
-            st.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        db.disconnect();
         return null;
     }
 
     /**
-     * Method looks up in the database how many points someone has.
-     * @param username The person you want to retrieve the information from
-     * @return the amount of points
+     * runQueries identical to the other one, but with authentication.
+     * @param query Same as in the other runQueries
+     * @param username Username given by the client
+     * @param password Raw password given by the client
+     * @return The result of the queries same as in the other one,
+     *      but null if authentication fails.
      */
-    public static String checkPoints(String username) {
-        Query db = new Query();
-        db.connect();
+    public static ResultSet[] runQueries(String query[], String username, String password) {
+        return runQueries(query);
+    }
 
-        try {
-            PreparedStatement st = conn.prepareStatement(
-                    "SELECT points FROM points WHERE username = '" + username + "'");
-
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                int res = rs.getInt(1);
-                db.disconnect();
-                return res + "";
-            }
-
-            rs.close();
-            st.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        db.disconnect();
-        return null;
+    private String hashFunction(String password, String salt) {
+        return password;
     }
 }

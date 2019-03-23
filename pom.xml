@@ -134,11 +134,14 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <rules/>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>application/**</exclude>>
+                        <exclude>application/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -191,5 +194,4 @@
             </plugin>
         </plugins>
     </reporting>
-
 </project>

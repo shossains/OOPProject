@@ -30,7 +30,7 @@
       <Label fx:id="invalidPhone" layoutX="412.0" layoutY="266.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
       <Label fx:id="invalidPass" layoutX="412.0" layoutY="320.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="#a12020" />
       <Label fx:id="status" layoutX="261.0" layoutY="349.0" prefHeight="17.0" prefWidth="165.0" textAlignment="CENTER" textFill="#1fa125" />
-      <Button layoutX="337.0" layoutY="378.0" mnemonicParsing="false" onAction="#button" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="REGISTER" textFill="WHITE">
+      <Button cache="true" layoutX="337.0" layoutY="382.0" mnemonicParsing="false" onAction="#button" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
@@ -41,7 +41,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button cache="true" layoutX="202.0" layoutY="378.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/RegisterButton.css" text="&lt; GO BACK" textFill="WHITE">
+      <Button cache="true" layoutX="202.0" layoutY="382.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/RegisterButton.css" text="&lt; GO BACK" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
