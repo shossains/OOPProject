@@ -56,7 +56,7 @@ Response:
 ## LocalProduce
 
 Add local produce to a client's account
-It will always return the amount of points, whether or not you have added a vegetarian meal, so you get immediate feedback.
+It will always return the amount of points, whether or not you have added local produce, so you get immediate feedback.
 
 ### Request:
 * *type*: LocalProduce
@@ -79,8 +79,8 @@ Response:
 
 ## BikeRide
 
-Add local produce to a client's account
-It will always return the amount of points, whether or not you have added a vegetarian meal, so you get immediate feedback.
+Add bike ride to a client's account
+It will always return the amount of points, whether or not you have added a bike ride, so you get immediate feedback.
 
 ### Request:
 * *type*: BikeRide
