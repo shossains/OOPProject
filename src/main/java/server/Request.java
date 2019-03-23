@@ -3,6 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import server.queries.LocalProduceQuery;
 import server.queries.RegisterQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
@@ -51,9 +52,10 @@ public class Request {
                 return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
-
             case "VegMeal":
                 return vegMeal();
+            case "LocalProduce":
+                return localProduce();
             default:
                 return null;
         }
@@ -72,6 +74,11 @@ public class Request {
     private String vegMeal() {
         VegMealQuery vegMealQuery = buildGson(rawQuery, VegMealQuery.class);
         return vegMealQuery.runQuery();
+    }
+
+    private String localProduce() {
+        LocalProduceQuery LocalProduceQuery = buildGson(rawQuery, LocalProduceQuery.class);
+        return LocalProduceQuery.runQuery();
     }
 
 
