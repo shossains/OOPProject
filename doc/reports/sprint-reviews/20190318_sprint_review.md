@@ -17,7 +17,7 @@
  | Exclude package for jacoco | Shaan | 0.5 | 2 | Yes | - |
  | Connect database with server | Shaan | 2 | 4 | Yes | - | 
  | Complete Vegetarian Meal GUI | Vanessa | 3 | 6 | Yes | - |
- | Make the API work | Sami | ? | ? | Yes | - | 
+ | Make the API work | Sami | 3 | 8 | Yes | - | 
  | Worked on the logic for transportation | Lucas | 3 | 0 | No | Couldn't work on project due to illness | 
  | Implement communication | Alex | 3 | 5-6 | Yes | - |
  
