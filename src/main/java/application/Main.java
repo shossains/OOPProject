@@ -1,6 +1,6 @@
 package application;
 
-import calculator.BusCalculator;
+import calculator.CarCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +44,7 @@ public class Main extends Application {
 //        launch(args);
 
         try {
-            BusCalculator.bus();
+            CarCalculator.car();
         } catch (Exception e) {
             e.printStackTrace();
         }
