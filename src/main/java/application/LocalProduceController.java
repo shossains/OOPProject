@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ import java.util.ResourceBundle;
 public class LocalProduceController implements Initializable {
     public TextField weight;
     public Label invalidWeight;
+    public int weightInt;
     @FXML
     ToolBar myToolbar;
 
@@ -64,12 +66,20 @@ public class LocalProduceController implements Initializable {
     }
 
     /**
+     * Takes the input and converts it from string to int.
+     */
+    public void intify() {
+        weightInt = Integer.parseInt(weight.getText());
+    }
+
+    /**
      * Check if input is valid, only then proceed.
      */
     public void proceed(ActionEvent actionEvent) {
         boolean weight = invalidWeight();
 
         if (!weight) {
+            intify();
             add(actionEvent);
         }
     }
@@ -90,14 +100,14 @@ public class LocalProduceController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        int weightInt = Integer.parseInt(weight.getText());
-        TableContents tablecontent = new TableContents(50,weightInt);
+        TableContents tablecontent = new TableContents(0,weightInt);
         tableView.getItems().add(tablecontent);
 
-        String request = "{'type' : 'localProduce   ', 'username' : '"
-                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addLocal': true, 'weight' : " + weight + "}";
+        String request = "{'type' : 'LocalProduce', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
+                + "'addLocal' : true, 'weight' : " + weightInt + "}";
 
+        System.out.println(request);
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
     }
