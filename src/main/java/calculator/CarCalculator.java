@@ -43,7 +43,6 @@ public class CarCalculator {
         Double co2Car = third.getDouble("value");
         co2Car = Math.round(co2Car * 100.00) / 100.00;
         return co2Car.intValue();
-
     }
 
 }

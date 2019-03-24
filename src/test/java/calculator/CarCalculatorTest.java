@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+import calculator.CarCalculator;
 
 public class CarCalculatorTest {
 
@@ -65,4 +66,9 @@ public class CarCalculatorTest {
         Assert.assertEquals(2.6755309506179863, obj4, 0);
     }
 
+    @Test
+    public void Testcar() {
+        int res = CarCalculator.car(50);
+        Assert.assertEquals(6,res);
+    }
 }
