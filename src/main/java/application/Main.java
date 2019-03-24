@@ -1,15 +1,12 @@
 package application;
 
-import calculator.CarCalculator;
+import calculator.SolarPanelCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import server.Server;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -42,11 +39,13 @@ public class Main extends Application {
 //        }
 //        launch(args);
 
-        try {
-            CarCalculator.car(50);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+////            CarCalculator.car(50);
+////        } catch (Exception e) {
+////            e.printStackTrace();
+////        }
+
+        SolarPanelCalculator.solar();
 
 
 
