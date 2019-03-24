@@ -12,7 +12,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -104,7 +108,7 @@ public class BikeController implements Initializable {
 
         String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addBike' : true, 'weight' : " + distanceInt + "}";
+                + "'addBike' : true, 'distance' : " + distanceInt + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));

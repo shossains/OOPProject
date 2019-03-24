@@ -25,7 +25,7 @@ public class BikeRideQuery extends ServerQuery {
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO localproduce (username, points, weight, datetime) values"
+            queries[1] = "INSERT INTO bikeride (username, points, distance, datetime) values"
                     + " ('" + username + "',000,'" + distance + "',CURRENT_TIMESTAMP(0))";
 
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
@@ -47,7 +47,7 @@ public class BikeRideQuery extends ServerQuery {
             }
         } else if (!addBike) {
             String[] newquery = new String[1];
-            newquery[0] = "SELECT count(*) FROM localproduce WHERE username = '" + username + "'";
+            newquery[0] = "SELECT count(*) FROM bikeride WHERE username = '" + username + "'";
 
             //should be one function
             ResultSet[] newrsArray = Query.runQueries(newquery);

@@ -80,7 +80,7 @@
             <TableView fx:id="tableView" layoutX="80.0" layoutY="276.0" prefHeight="184.0" prefWidth="329.0">
                <columns>
                   <TableColumn fx:id="pointsColumn" prefWidth="80.13912362745924" text="Points" />
-                  <TableColumn fx:id="distanceColumn" prefWidth="128.0" text="Distance (km)" />
+                  <TableColumn fx:id="distanceColumn" prefWidth="128.0" text="Distance (meters)" />
                   <TableColumn fx:id="dateColumn" prefWidth="118.0" text="Date" />
                </columns>
             </TableView>
@@ -95,7 +95,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="79.0" layoutY="132.0" prefHeight="49.0" prefWidth="149.0" text="Enter the distance you have cycled in kilometers" textFill="#0000007b" wrapText="true" />
+            <Label alignment="CENTER" layoutX="79.0" layoutY="132.0" prefHeight="49.0" prefWidth="149.0" text="Enter the distance you have cycled in meters" textFill="#0000007b" wrapText="true" />
             <TextField fx:id="distance" layoutX="79.0" layoutY="189.0" />
             <Label fx:id="invalidDistance" layoutX="79.0" layoutY="216.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
          </children>

@@ -15,7 +15,7 @@ public class TableContents {
     /**
      * Constructor for the data of vegetarian meal.
      * @param points data of amount of points that will be projected
-     * @param type of the meal that will be projected
+     * @param type   of the meal that will be projected
      */
     public TableContents(int points, String type) {
         this.points = new SimpleIntegerProperty(points);
@@ -25,8 +25,8 @@ public class TableContents {
     }
 
     /**
-     * Constructor for the data of any table that takes an integer
-     * @param points data of amount of points that will be projected
+     * Constructor for the data of any table that takes an integer.
+     * @param points  data of amount of points that will be projected
      * @param integer that will be projected
      */
     public TableContents(int points, int integer) {

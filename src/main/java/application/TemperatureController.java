@@ -26,10 +26,12 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class LocalProduceController implements Initializable {
-    public TextField weight;
-    public Label invalidWeight;
-    public int weightInt;
+public class TemperatureController implements Initializable {
+    public TextField thigh;
+    public TextField tlow;
+    public Label invalidThigh;
+    public Label invalidTlow;
+    public int tInt;
     @FXML
     ToolBar myToolbar;
 
@@ -37,13 +39,13 @@ public class LocalProduceController implements Initializable {
     @FXML private TableView<TableContents> tableView;
     @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
-    @FXML private TableColumn<TableContents, Integer> weightColumn;
+    @FXML private TableColumn<TableContents, Integer> tempColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //sets up columns of the table
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        weightColumn.setCellValueFactory(
+        tempColumn.setCellValueFactory(
                 new PropertyValueFactory<TableContents, Integer>("integer"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
         ;
@@ -54,7 +56,7 @@ public class LocalProduceController implements Initializable {
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(40,weight.getText()));
+        content.add(new TableContents(40,tInt));
         return content;
     }
 
@@ -72,16 +74,20 @@ public class LocalProduceController implements Initializable {
      * Takes the input and converts it from string to int.
      */
     public void intify() {
-        weightInt = Integer.parseInt(weight.getText());
+        int T1 = Integer.parseInt(tlow.getText());
+        int T2 = Integer.parseInt(thigh.getText());
+        tInt = T2-T1;
     }
 
     /**
      * Check if input is valid, only then proceed.
      */
     public void proceed(ActionEvent actionEvent) {
-        boolean weight = invalidWeight();
+        System.out.println();
+        boolean thigh = invalidThigh();
+        boolean tLow = invalidTlow();
 
-        if (!weight) {
+        if (!thigh && !tLow) {
             intify();
             add(actionEvent);
         }
@@ -103,13 +109,14 @@ public class LocalProduceController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0,weightInt);
+        TableContents tablecontent = new TableContents(0,tInt);
         tableView.getItems().add(tablecontent);
 
-        String request = "{'type' : 'LocalProduce', 'username' : '"
+        String request = "{'type' : 'Temp', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addLocal' : true, 'weight' : " + weightInt + "}";
+                + "'addTemp' : true, 'temp' : " + tInt + "}";
 
+        System.out.println(request);
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
     }
@@ -151,9 +158,9 @@ public class LocalProduceController implements Initializable {
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'localProduce', 'username' : '"
+        String request = "{'type' : 'Temp', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': false}";
+                + "'addTemp': false}";
 
         String response = scn.sendPostRequest(request);
 
@@ -161,21 +168,41 @@ public class LocalProduceController implements Initializable {
     }
 
     /**
-     * Check whether Phone textField are integers only or empty.
+     * Check whether former Temp textField are integers only or empty.
      * @return true if empty or invalid
      */
-    public boolean invalidWeight() {
-        if (weight.getText().equals("")) {
-            invalidWeight.setText("Please enter a valid number");
+    public boolean invalidThigh() {
+        if (thigh.getText().equals("")) {
+            invalidThigh.setText("Please enter a valid number");
             return true;
 
         }
 
-        if (!isInt(weight.getText())) {
-            invalidWeight.setText("Please enter a valid number");
+        if (!isInt(thigh.getText())) {
+            invalidThigh.setText("Please enter a valid number");
             return true;
         } else {
-            invalidWeight.setText("");
+            invalidThigh.setText("");
+            return false;
+        }
+    }
+
+    /**
+     * Check whether former Temp textField are integers only or empty.
+     * @return true if empty or invalid
+     */
+    public boolean invalidTlow() {
+        if (tlow.getText().equals("")) {
+            invalidTlow.setText("Please enter a valid number");
+            return true;
+
+        }
+
+        if (!isInt(tlow.getText())) {
+            invalidTlow.setText("Please enter a valid number");
+            return true;
+        } else {
+            invalidTlow.setText("");
             return false;
         }
     }
@@ -218,6 +245,15 @@ public class LocalProduceController implements Initializable {
     }
 
     /**
+     * Go to the Local Produce screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goLocal(ActionEvent actionEvent) throws IOException {
+        go("LocalProduce");
+    }
+
+    /**
      * Go to the Bike screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
@@ -233,15 +269,6 @@ public class LocalProduceController implements Initializable {
      */
     public void goPublic(ActionEvent actionEvent) throws IOException {
         go("PublicTransport");
-    }
-
-    /**
-     * Go to the Temperature adjustment screen.
-     * @param actionEvent The click of the button
-     * @throws IOException Throw if file is missing/corrupted/incomplete
-     */
-    public void goTemp(ActionEvent actionEvent) throws IOException {
-        go("Temperature");
     }
 
     /**

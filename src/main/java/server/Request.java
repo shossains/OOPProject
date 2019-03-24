@@ -3,11 +3,13 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
 import server.queries.RegisterQuery;
+import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
-import server.queries.BikeRideQuery;
+
 
 /**
  * Class for parsing requests using Gson.
@@ -66,6 +68,8 @@ public class Request {
                 return localProduce();
             case "BikeRide":
                 return bikeRide();
+            case "Temp":
+                return temp();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -87,13 +91,18 @@ public class Request {
     }
 
     private String localProduce() {
-        LocalProduceQuery LocalProduceQuery = buildGson(rawQuery, LocalProduceQuery.class);
-        return LocalProduceQuery.runQuery();
+        LocalProduceQuery localProduceQuery = buildGson(rawQuery, LocalProduceQuery.class);
+        return localProduceQuery.runQuery();
     }
 
     private String bikeRide() {
-        BikeRideQuery BikeRideQuery = buildGson(rawQuery, BikeRideQuery.class);
-        return BikeRideQuery.runQuery();
+        BikeRideQuery bikeRideQuery = buildGson(rawQuery, BikeRideQuery.class);
+        return bikeRideQuery.runQuery();
+    }
+
+    private String temp() {
+        TemperatureQuery TemperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
+        return TemperatureQuery.runQuery();
     }
 
 
