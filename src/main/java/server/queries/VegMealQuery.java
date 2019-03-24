@@ -29,14 +29,11 @@ public class VegMealQuery extends ServerQuery {
         }
 
         if (addMeal) {
-            String[] queries = new String[3];
+            String[] queries = new String[2];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO vegetarian (username, points, type, datetime) values"
-                    + " ('" + username + "',000,'" + mealType + "',CURRENT_TIMESTAMP(0))";
-
-            queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
 
             //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
@@ -46,7 +43,13 @@ public class VegMealQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-                    return "{\"points\" : " + res + "}";
+
+                    String[] updateQuery = new String[1];
+                    updateQuery[0] = "INSERT INTO vegetarian (username, points, type, datetime) values"
+                            + " ('" + username + "'," + res + ",'" + mealType + "',CURRENT_TIMESTAMP(0))";
+                    Query.runQueries(updateQuery);
+
+                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
                 }
                 return null;
             } catch (SQLException e) {

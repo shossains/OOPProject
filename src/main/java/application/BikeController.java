@@ -106,7 +106,6 @@ public class BikeController implements Initializable {
         String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
                 + "'addBike' : true, 'distance' : " + distanceInt + "}";
-        System.out.println(request);
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
