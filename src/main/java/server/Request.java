@@ -101,8 +101,8 @@ public class Request {
     }
 
     private String temp() {
-        TemperatureQuery TemperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
-        return TemperatureQuery.runQuery();
+        TemperatureQuery temperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
+        return temperatureQuery.runQuery();
     }
 
 

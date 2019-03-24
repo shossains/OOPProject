@@ -31,7 +31,7 @@ public class TemperatureController implements Initializable {
     public TextField tlow;
     public Label invalidThigh;
     public Label invalidTlow;
-    public int tInt;
+    public int tint;
     @FXML
     ToolBar myToolbar;
 
@@ -56,7 +56,7 @@ public class TemperatureController implements Initializable {
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(40,tInt));
+        content.add(new TableContents(40, tint));
         return content;
     }
 
@@ -74,9 +74,9 @@ public class TemperatureController implements Initializable {
      * Takes the input and converts it from string to int.
      */
     public void intify() {
-        int T1 = Integer.parseInt(tlow.getText());
-        int T2 = Integer.parseInt(thigh.getText());
-        tInt = T2-T1;
+        int t1 = Integer.parseInt(tlow.getText());
+        int t2 = Integer.parseInt(thigh.getText());
+        tint = t2 - t1;
     }
 
     /**
@@ -85,9 +85,9 @@ public class TemperatureController implements Initializable {
     public void proceed(ActionEvent actionEvent) {
         System.out.println();
         boolean thigh = invalidThigh();
-        boolean tLow = invalidTlow();
+        boolean tlow = invalidTlow();
 
-        if (!thigh && !tLow) {
+        if (!thigh && !tlow) {
             intify();
             add(actionEvent);
         }
@@ -109,12 +109,12 @@ public class TemperatureController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0,tInt);
+        TableContents tablecontent = new TableContents(0, tint);
         tableView.getItems().add(tablecontent);
 
         String request = "{'type' : 'Temp', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addTemp' : true, 'temp' : " + tInt + "}";
+                + "'addTemp' : true, 'temp' : " + tint + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
