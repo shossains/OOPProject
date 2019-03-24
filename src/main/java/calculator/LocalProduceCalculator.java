@@ -11,6 +11,4 @@ public class LocalProduceCalculator {
         doubleResult = Math.round(doubleResult) / 10.00;
         return doubleResult.intValue();
     }
-
-
 }

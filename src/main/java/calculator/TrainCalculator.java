@@ -9,13 +9,7 @@ import java.util.Scanner;
 
 public class TrainCalculator {
 
-    public static void train() throws Exception {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Distance: ");
-        int number = input.nextInt();
-
+    public static int train(int number) throws Exception {
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "rail_trips.json";
@@ -37,24 +31,19 @@ public class TrainCalculator {
 
         JSONObject third = second.getJSONObject("object");
 
-        double co2Train = third.getFloat("value");
+        Double co2Train = third.getDouble("value");
         co2Train = Math.round(co2Train * 100.00) / 100.00;
-        System.out.println(co2Train);
 
         TrainCalculator trainCalculator = new TrainCalculator();
-        trainCalculator.carTrain(number, co2Train);
-
+        return trainCalculator.carTrain(number, co2Train);
     }
 
-    public static void carTrain(int dist, double trainCo2) throws MalformedURLException {
-
-        System.out.println("Distance: ");
-
+    public static int carTrain(int dist, double trainCo2) throws MalformedURLException {
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "automobile_trips.json";
         String distance = "?distance=" + dist;
-        double fuelCalc = 0.05 * dist;
+        Double fuelCalc = 0.05 * dist;
         String fuel = "&fuel_use=" + fuelCalc;
         String urlString = host + model + distance + fuel;
         URL url = new URL(urlString);
@@ -72,16 +61,12 @@ public class TrainCalculator {
 
         JSONObject third = second.getJSONObject("object");
 
-        double co2Car = third.getFloat("value");
+        Double co2Car = third.getDouble("value");
         co2Car = Math.round(co2Car * 100.00) / 100.00;
-        System.out.println(co2Car);
 
         //Calculate amount of kg CO2 saved.
-        double result = co2Car - (trainCo2 / 200);
-        result = Math.round(result * 100.00) / 100.00;
-        System.out.println("Amount CO2 saved= " + result + " kg CO2");
-
+        Double result = co2Car - (trainCo2 / 200);
+        result = Math.round(result * 1000.00) / 100.00;
+        return result.intValue();
     }
-
-
 }

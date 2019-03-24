@@ -19,11 +19,6 @@
     <children>
         <AnchorPane prefHeight="480.0" prefWidth="720.0" stylesheets="@../css/application.css">
             <children>
-            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
                 <ToolBar fx:id="myToolbar" prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
                     <items>
                         <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="Name of Program" textFill="WHITE">
@@ -87,7 +82,7 @@
                 <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when local produce was added and points awarded" textFill="#0000007b" />
                 <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
                 <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-            <Button fx:id="tableVie1" layoutX="261.0" layoutY="156.0" mnemonicParsing="false" onAction="#proceed" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
+            <Button fx:id="tableVie1" layoutX="261.0" layoutY="164.0" mnemonicParsing="false" onAction="#proceed" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -95,9 +90,9 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="66.0" layoutY="122.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
-            <TextField fx:id="weight" layoutX="79.0" layoutY="189.0" />
-            <Label fx:id="invalidWeight" layoutX="79.0" layoutY="216.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
+            <Label alignment="CENTER" layoutX="66.0" layoutY="140.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
+            <TextField fx:id="weight" layoutX="79.0" layoutY="204.0" />
+            <Label fx:id="invalidWeight" layoutX="79.0" layoutY="232.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
             </children>
         </AnchorPane>
     </children>
