@@ -103,15 +103,16 @@ public class BikeController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0, distanceInt);
-        tableView.getItems().add(tablecontent);
-
         String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
                 + "'addBike' : true, 'distance' : " + distanceInt + "}";
+        System.out.println(request);
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
+
+        TableContents tablecontent = new TableContents(addedPoints(response),distanceInt);
+        tableView.getItems().add(tablecontent);
     }
 
     /**
@@ -145,15 +146,44 @@ public class BikeController implements Initializable {
     }
 
     /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The added amount of points.
+     */
+    public int addedPoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("added").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
      * This method create the request for only points.
      * @param actionEvent opening a scene or clicking any given button
      */
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'Bikeride', 'username' : '"
+        String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': false}";
+                + "'addBike': false}";
 
         String response = scn.sendPostRequest(request);
 

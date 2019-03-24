@@ -1,5 +1,6 @@
 package server.queries;
 
+import calculator.CarCalculator;
 import server.db.Query;
 
 import java.sql.ResultSet;
@@ -18,17 +19,15 @@ public class BikeRideQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int addPoints = 0;
+        int addPoints = CarCalculator.car(distance);
+        System.out.println(addPoints);
 
         if (addBike) {
-            String[] queries = new String[3];
+            String[] queries = new String[2];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO bikeride (username, points, distance, datetime) values"
-                    + " ('" + username + "',000,'" + distance + "',CURRENT_TIMESTAMP(0))";
-
-            queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
 
             //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
@@ -38,7 +37,13 @@ public class BikeRideQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-                    return "{\"points\" : " + res + "}";
+
+                    String[] updateQuery = new String[1];
+                    updateQuery[1] = "INSERT INTO bikeride (username, points, distance, datetime) values"
+                            + " ('" + username + "'," + res + ",'" + distance + "',CURRENT_TIMESTAMP(0))";
+                    Query.runQueries(updateQuery);
+
+                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
                 }
                 return null;
             } catch (SQLException e) {

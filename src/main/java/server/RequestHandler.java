@@ -9,6 +9,7 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.util.Scanner;
 
 public class RequestHandler implements HttpHandler {
@@ -24,7 +25,6 @@ public class RequestHandler implements HttpHandler {
      *
      * @param exchange the exchange containing the request from the
      *                 client and used to send the response
-     * @throws NullPointerException if exchange is <code>null</code>
      */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
