@@ -79,9 +79,9 @@ public class BikeController implements Initializable {
      * Check if input is valid, only then proceed.
      */
     public void proceed(ActionEvent actionEvent) {
-        boolean weight = invalidDistance();
+        boolean distance = invalidDistance();
 
-        if (!weight) {
+        if (!distance) {
             intify();
             add(actionEvent);
         }

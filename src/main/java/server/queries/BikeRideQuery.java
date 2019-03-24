@@ -20,7 +20,6 @@ public class BikeRideQuery extends ServerQuery {
      */
     public String runQuery() {
         int addPoints = CarCalculator.car(distance);
-        System.out.println(addPoints);
 
         if (addBike) {
             String[] queries = new String[2];
@@ -29,7 +28,6 @@ public class BikeRideQuery extends ServerQuery {
 
             queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
 
-            //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
 
@@ -39,7 +37,7 @@ public class BikeRideQuery extends ServerQuery {
                     rs.close();
 
                     String[] updateQuery = new String[1];
-                    updateQuery[1] = "INSERT INTO bikeride (username, points, distance, datetime) values"
+                    updateQuery[0] = "INSERT INTO bikeride (username, points, distance, datetime) values"
                             + " ('" + username + "'," + res + ",'" + distance + "',CURRENT_TIMESTAMP(0))";
                     Query.runQueries(updateQuery);
 
