@@ -103,20 +103,19 @@ public class LocalProduceController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0,weightInt);
-        tableView.getItems().add(tablecontent);
-
         String request = "{'type' : 'LocalProduce', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
                 + "'addLocal' : true, 'weight' : " + weightInt + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
+
+        TableContents tablecontent = new TableContents(addedPoints(response),weightInt);
+        tableView.getItems().add(tablecontent);
     }
 
     /**
      * Helper function to parse response json.
-     *
      * @param responseJson The raw json response from the server
      * @return The current amount of points.
      */
@@ -133,6 +132,35 @@ public class LocalProduceController implements Initializable {
             int points = -1;
             try {
                 points = Integer.parseInt(json.get("points").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The added amount of points.
+     */
+    public int addedPoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("added").toString());
             } catch (NumberFormatException e) {
                 System.out.println(responseJson);
                 System.out.println("Bad json format returned");

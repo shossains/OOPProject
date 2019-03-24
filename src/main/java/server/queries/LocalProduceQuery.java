@@ -1,5 +1,6 @@
 package server.queries;
 
+import calculator.LocalProduceCalculator;
 import server.db.Query;
 
 import java.sql.ResultSet;
@@ -18,19 +19,15 @@ public class LocalProduceQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int addPoints = 0;
+        int addPoints = LocalProduceCalculator.produce(weight);
 
         if (addLocal) {
-            String[] queries = new String[3];
+            String[] queries = new String[2];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO localproduce (username, points, weight, datetime) values"
-                    + " ('" + username + "',000,'" + weight + "',CURRENT_TIMESTAMP(0))";
+            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
 
-            queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
-
-            //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
 
@@ -38,13 +35,19 @@ public class LocalProduceQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-                    return "{\"points\" : " + res + "}";
+
+                    String[] updateQuery = new String[1];
+                    updateQuery[0] = "INSERT INTO localproduce (username, points, weight, datetime) values"
+                            + " ('" + username + "'," + res + ",'" + weight + "',CURRENT_TIMESTAMP(0))";
+                    Query.runQueries(updateQuery);
+
+                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
                 }
-                return null;
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
             }
+            return null;
         } else if (!addLocal) {
             String[] newquery = new String[1];
             newquery[0] = "SELECT count(*) FROM localproduce WHERE username = '" + username + "'";
@@ -64,5 +67,8 @@ public class LocalProduceQuery extends ServerQuery {
             }
         }
         return "{'error' : true, 'reason' : 'Error in query'}";
+    }
+
+    public void update() {
     }
 }
