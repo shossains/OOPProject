@@ -116,7 +116,6 @@ public class TemperatureController implements Initializable {
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
                 + "'addTemp' : true, 'temp' : " + tInt + "}";
 
-        System.out.println(request);
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
     }
