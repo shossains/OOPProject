@@ -214,12 +214,12 @@ public class BikeController implements Initializable {
     }
 
     /**
-     * Go to the Bike screen.
+     * Go to the Local Produce screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-    public void goBike(ActionEvent actionEvent) throws IOException {
-        go("BikeRide");
+    public void goLocal(ActionEvent actionEvent) throws IOException {
+        go("LocalProduce");
     }
 
     /**

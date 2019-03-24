@@ -44,7 +44,7 @@
                   <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#goVeg" text="Add a Vegetarian Meal" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Add Local Produce" />
+                        <MenuItem mnemonicParsing="false" onAction="#goLocal" text="Add Local Produce" />
                      </items>
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -52,7 +52,7 @@
                   </MenuButton>
                   <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goBike" text="Add Bike Ride" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Add Bike Ride" />
                         <MenuItem mnemonicParsing="false" onAction="#goPublic" text="Add Public Transport Ride" />
                      </items>
                      <font>
@@ -71,7 +71,7 @@
                </items>
             </ToolBar>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-            <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by buying local produce" wrappingWidth="168.70703125" />
+            <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by gong by bike" wrappingWidth="168.70703125" />
             <Label layoutX="41.0" layoutY="66.0" text="Bike Ride">
                <font>
                   <Font size="18.0" />
