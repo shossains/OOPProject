@@ -7,6 +7,7 @@ import server.queries.LocalProduceQuery;
 import server.queries.RegisterQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
+import server.queries.BikeRideQuery;
 
 /**
  * Class for parsing requests using Gson.
@@ -63,6 +64,8 @@ public class Request {
                 return vegMeal();
             case "LocalProduce":
                 return localProduce();
+            case "BikeRide":
+                return bikeRide();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -88,6 +91,10 @@ public class Request {
         return LocalProduceQuery.runQuery();
     }
 
+    private String bikeRide() {
+        BikeRideQuery BikeRideQuery = buildGson(rawQuery, BikeRideQuery.class);
+        return BikeRideQuery.runQuery();
+    }
 
 
     /**

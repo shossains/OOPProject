@@ -10,7 +10,7 @@ public class TableContents {
     private SimpleIntegerProperty points;
     private String date;
     private String type;
-    private SimpleIntegerProperty weight;
+    private SimpleIntegerProperty integer;
 
     /**
      * Constructor for the data of vegetarian meal.
@@ -25,15 +25,15 @@ public class TableContents {
     }
 
     /**
-     * Constructor for the data of local produce.
+     * Constructor for the data of any table that takes an integer
      * @param points data of amount of points that will be projected
-     * @param weight of the bought groceries
+     * @param integer that will be projected
      */
-    public TableContents(int points, int weight) {
+    public TableContents(int points, int integer) {
         this.points = new SimpleIntegerProperty(points);
         this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                 .format(Calendar.getInstance().getTime());
-        this.weight = new SimpleIntegerProperty(weight);
+        this.integer = new SimpleIntegerProperty(integer);
     }
 
     public SimpleIntegerProperty pointsProperty() {
@@ -64,11 +64,11 @@ public class TableContents {
         this.type = type;
     }
 
-    public int getWeight() {
-        return weight.get();
+    public int getInteger() {
+        return integer.get();
     }
 
-    public void setWeight(int weight) {
-        this.weight.set(weight);
+    public void setInteger(int integer) {
+        this.integer.set(integer);
     }
 }

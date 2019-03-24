@@ -22,10 +22,10 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class LocalProduceController implements Initializable {
-    public TextField weight;
-    public Label invalidWeight;
-    public int weightInt;
+public class BikeController implements Initializable {
+    public TextField distance;
+    public Label invalidDistance;
+    public int distanceInt;
     @FXML
     ToolBar myToolbar;
 
@@ -33,16 +33,16 @@ public class LocalProduceController implements Initializable {
     @FXML private TableView<TableContents> tableView;
     @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
-    @FXML private TableColumn<TableContents, Integer> weightColumn;
+    @FXML private TableColumn<TableContents, Integer> distanceColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //sets up columns of the table
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        weightColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("integer"))
-        ;
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
-        ;
+        distanceColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("integer"));
+        pointsColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("points"));
     }
 
     /**
@@ -50,7 +50,7 @@ public class LocalProduceController implements Initializable {
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(40,weight.getText()));
+        content.add(new TableContents(40,distance.getText()));
         return content;
     }
 
@@ -68,14 +68,14 @@ public class LocalProduceController implements Initializable {
      * Takes the input and converts it from string to int.
      */
     public void intify() {
-        weightInt = Integer.parseInt(weight.getText());
+        distanceInt = Integer.parseInt(distance.getText());
     }
 
     /**
      * Check if input is valid, only then proceed.
      */
     public void proceed(ActionEvent actionEvent) {
-        boolean weight = invalidWeight();
+        boolean weight = invalidDistance();
 
         if (!weight) {
             intify();
@@ -99,12 +99,12 @@ public class LocalProduceController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0,weightInt);
+        TableContents tablecontent = new TableContents(0, distanceInt);
         tableView.getItems().add(tablecontent);
 
-        String request = "{'type' : 'LocalProduce', 'username' : '"
+        String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addLocal' : true, 'weight' : " + weightInt + "}";
+                + "'addBike' : true, 'weight' : " + distanceInt + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
@@ -147,7 +147,7 @@ public class LocalProduceController implements Initializable {
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'localProduce', 'username' : '"
+        String request = "{'type' : 'Bikeride', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
                 + "'addMeal': false}";
 
@@ -160,18 +160,18 @@ public class LocalProduceController implements Initializable {
      * Check whether Phone textField are integers only or empty.
      * @return true if empty or invalid
      */
-    public boolean invalidWeight() {
-        if (weight.getText().equals("")) {
-            invalidWeight.setText("Please enter a valid number");
+    public boolean invalidDistance() {
+        if (distance.getText().equals("")) {
+            invalidDistance.setText("Please enter a valid number");
             return true;
 
         }
 
-        if (!isInt(weight.getText())) {
-            invalidWeight.setText("Please enter a valid number");
+        if (!isInt(distance.getText())) {
+            invalidDistance.setText("Please enter a valid number");
             return true;
         } else {
-            invalidWeight.setText("");
+            invalidDistance.setText("");
             return false;
         }
     }
