@@ -22,7 +22,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
         Scene scene = new Scene(root,720,480);
         stage.setTitle("#GoGreen");
-        stage.getIcons().add(new Image("file:/greenfoot.png"));
+        stage.getIcons().add(new Image("/icon.png"));
         stage.setScene(scene);
         stage.show();
     }
