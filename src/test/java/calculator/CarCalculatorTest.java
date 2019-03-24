@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
-import calculator.CarCalculator;
 
 public class CarCalculatorTest {
 
@@ -30,35 +29,35 @@ public class CarCalculatorTest {
     }
 
     @Test
-    public void JsonStrict() throws JSONException {
+    public void JsonNotSame() throws JSONException {
         String actual = "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }";
         JSONAssert.assertNotEquals(
-                "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, JSONCompareMode.STRICT);
+                "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, true);
 
     }
 
 
 
-    @Test public void JsonLenient() throws JSONException {
+    @Test public void JsonAlmostSame() throws JSONException {
         String actual = "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }";
         JSONAssert.assertEquals(
-                "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, JSONCompareMode.LENIENT);
+                "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, false);
     }
 
     @Test
     public void JsonObj1() throws JSONException {
-        JSONAssert.assertEquals("{carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj1, JSONCompareMode.STRICT);
+        JSONAssert.assertEquals("{carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj1, true);
     }
 
 
     @Test
     public void JsonObj2() throws JSONException {
-        JSONAssert.assertEquals("{description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj2, JSONCompareMode.STRICT);
+        JSONAssert.assertEquals("{description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj2, true);
     }
 
     @Test
     public void JsonObj3() throws JSONException {
-        JSONAssert.assertEquals("{value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj3, JSONCompareMode.STRICT);
+        JSONAssert.assertEquals("{value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", obj3, true);
     }
 
     @Test
@@ -67,7 +66,7 @@ public class CarCalculatorTest {
     }
 
     @Test
-    public void Testcar() {
+    public void TestCar() {
         int res = CarCalculator.car(50);
         Assert.assertEquals(6,res);
     }
