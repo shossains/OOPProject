@@ -32,6 +32,8 @@ accidentally breaking something, so instead take time thoroughly testing your cl
 
 For JSON string `"{'type':'TestRequest', 'extraData':'Irrelevant Data', 'isTest': true}"`
 
+Note that the irrelevant `extraData``` variable is not processed since its not declared in the class.
+
 ```
 package server.queries;
 
@@ -53,9 +55,11 @@ public class TestQuery extends ServerQuery {
 
 Returns `"{"success": "who knows", "isTest": true, "username":"alexshulzycki"}`
 
+**IF YOU ARE GOING TO CONSTRUCT A JSON STRING MANUALLY LIKE SO, MAKE SURE IT IS VALID JSON**
+
 # Testing
 If you dont do this, Andy will kill you. And if he doesnt, I will.
-You need to test both the actual logic and calculations, and sending/receiving from the server.
+You need to test both the actual logic/calculations, and sending/receiving from the server.
 
 ### Writing a test for a ServerQuery query
 You essentially need to do these things: 
@@ -65,7 +69,7 @@ You essentially need to do these things:
 * Test individual functions - Preferrably do this, until the database-query workflow is optimized further ideally before next week.
 
 ### Setting up database row
-Usually just zero out the data in the user's test row. This is just an example, and is not the final code that will be used in VegMealQuery. Ask Shaan and use your head!
+Usually just zero out the data in the user's test row. This is just an example, and is not the final code that will be used in VegMealQuery. Look at the ER diagram in this folder, and ask Shaan if you have any questions!
 ```
 /**
      * initializes variables, clean up test entry in users
