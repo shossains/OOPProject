@@ -33,6 +33,7 @@ public class CarCalculator {
         JSONObject myResponse = new JSONObject(response);
 
         JSONObject first = myResponse.getJSONObject("decisions");
+        System.out.println(first);
 
         JSONObject second = first.getJSONObject("carbon");
 

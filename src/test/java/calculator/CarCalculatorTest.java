@@ -1,19 +1,11 @@
 package calculator;
 
-import client.SecureClientNetworking;
-import org.json.JSONObject;
-import org.junit.Assert;
+import org.json.JSONException;
 import org.junit.Test;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
 public class CarCalculatorTest {
-
-    static private SecureClientNetworking cn;
 
     @Test
     public void car() {
@@ -21,90 +13,98 @@ public class CarCalculatorTest {
     }
 
     @Test
-    public void badPostUrl() {
-        //setup test
-        try {
-            cn = new SecureClientNetworking(new URL("https://localhost"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        //make sure it works
-        Assert.assertEquals(null, cn.sendPostRequest("hello world"));
+    public void should_be_equals_when_is_same_objects_and_strict_mode_test() throws JSONException {
+
+        final String expected =
+                "{" +
+                        "'decisions' :" + "{" +
+                            "'carbon' :" + "{" +
+                                "'description' : '2.7 kg'," +
+                                "'object' :" + "{" +
+                                    "'value' : '2.6755309506179863'," +
+                                    "'units' : 'kilograms'" +
+                                "}," +
+                                "'methodology' : 'from co2 emission, ch4 emission, n2o emission, and hfc emission'" +
+                            "}," +
+                        "}," +
+                        "}";
+        final  String actual =
+                "{" +
+                        "'decisions' :" + "{" +
+                            "'carbon' :" + "{" +
+                                "'description' : '2.7 kg'," +
+                                "'object' :" + "{" +
+                                    "'value' : '2.6755309506179863'," +
+                                    "'units' : 'kilograms'" +
+                                "}," +
+                                "'methodology' : 'from co2 emission, ch4 emission, n2o emission, and hfc emission'" +
+                            "}," +
+                        "}," +
+                        "}";
+        JSONAssert.assertEquals(expected, actual, JSONCompareMode.STRICT);
     }
 
-    /**
-     * Test https POST with httpbin.
-     */
-
-    @Test
-    public void httpbinPost() {
-        //setup test
-        try {
-            cn = new SecureClientNetworking(new URL("https://httpbin.org/post"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        //make sure it works
-        Assert.assertEquals("{\n" +
-                "  \"args\": {}, \n" +
-                "  \"data\": \"\", \n" +
-                "  \"files\": {}, \n" +
-                "  \"form\": {\n" +
-                "    \"hello world\"", cn.sendPostRequest("hello world").substring(0, 77));
-    }
-
-    /**
-     * Tests unsecured POST with http using httpbin
-     */
-
-    @Test
-    public void httpbinPostUnsecured() {
-        try {
-            cn = new SecureClientNetworking(new URL("http://httpbin.org/post"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        //make sure it works
-        Assert.assertEquals("{\n" +
-                "  \"args\": {}, \n" +
-                "  \"data\": \"\", \n" +
-                "  \"files\": {}, \n" +
-                "  \"form\": {\n" +
-                "    \"hello world\"", cn.sendPostRequest("hello world").substring(0, 77));
-    }
-
-    @Test
-    public void verifySimilar() {
-        final String test1 = "SameJsonObject";
-        JSONObject obj1 = new JSONObject()
-                .put("key1", "abc")
-                .put("key2", 2)
-                .put("key3", test1);
-
-        JSONObject obj2 = new JSONObject()
-                .put("key1", "acb")
-                .put("key2", 2)
-                .put("key3", test1);
-
-        JSONObject obj3 = new JSONObject()
-                .put("key1", "abc")
-                .put("key2", 2)
-                .put("key3", new String(test1));
-
-        assertFalse("Should eval to false", obj1.similar(obj2));
-
-        assertTrue("Should eval to true", obj1.similar(obj3));
-
-    }
-
-//    /**
-//     * A JSONObject can be created with no content
-//     */
 //    @Test
-//    public void emptyJsonObject() {
-//        JSONObject jsonObject = new JSONObject();
-//        assertTrue("jsonObject should be empty", jsonObject.isEmpty());
+//    public void should_be_equals_when_adding_other_fields_and_lenient_mode_test() throws JSONException {
+//
+//        final String expected =
+//                "{" +
+//                        "'decisions' :" + "{" +
+//                            "'carbon' :" + "{" +
+//                                "'description' : '2.7 kg'," +
+//                                "'object' :" + "{" +
+//                                    "'value' : '2.6755309506179863'," +
+//                                    "'units' : 'kilograms'" +
+//                                "}" +
+//                                "'methodology' : 'from co2 emission, ch4 emission, n2o emission, and hfc emission'" +
+//                            "}" +
+//                        "}" +
+//                        "}";
+//        final  String actual =
+//                "{" +
+//                        "'decisions' :" + "{" +
+//                            "'carbon' :" + "{" +
+//                                "'description' : '2.7 kg'," +
+//                                "'object' :" + "{" +
+//                                    "'value' : '2.6755309506179863'," +
+//                                    "'units' : 'kilograms'" +
+//                                "}" +
+//                                "'methodology' : 'from co2 emission, ch4 emission, n2o emission, and hfc emission'" +
+//                            "}" +
+//                        "}" +
+//                        "}";
+//        JSONAssert.assertEquals(expected, actual, JSONCompareMode.LENIENT);
 //    }
+
+//    @Test
+//    public void should_be_equals_when_adding_other_fields_and_lenient_mode_test() throws JSONException {
+//
+//        final String expected =
+//                "{" +
+//                        "'id' : '123456'," +
+//                        "'name' : 'Toto'" +
+//                        "}";
+//        final  String actual =
+//                "{" +
+//                        "'id' : '123456'," +
+//                        "'name' : 'Toto'," +
+//                        "'age': 27" +
+//                        "}";
+//        JSONAssert.assertEquals(expected, actual, JSONCompareMode.LENIENT);
+//    }
+
+//    @Test public void shouldbeequal() throws JSONException {
+//        String actual = "{id:123, name:\"John\", zip:\"33025\"}";
+//        JSONAssert.assertEquals(
+//                "{id:123,name:\"John\"}", actual, JSONCompareMode.LENIENT);
+//    }
+
+    @Test public void shouldbeequal() throws JSONException {
+        String actual = "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }";
+        JSONAssert.assertEquals(
+                "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, JSONCompareMode.LENIENT);
+    }
+
 
 
 }
