@@ -3,7 +3,13 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.*;
+import server.queries.BikeRideQuery;
+import server.queries.LocalProduceQuery;
+import server.queries.PublicTransportQuery;
+import server.queries.RegisterQuery;
+import server.queries.TemperatureQuery;
+import server.queries.TestQuery;
+import server.queries.VegMealQuery;
 
 /**
  * Class for parsing requests using Gson.
@@ -102,8 +108,8 @@ public class Request {
     }
 
     private String publicTransport() {
-        PublicTransportQuery PublicTransportQuery= buildGson(rawQuery, PublicTransportQuery.class);
-        return PublicTransportQuery.runQuery();
+        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
+        return publicTransportQuery.runQuery();
     }
 
     /**

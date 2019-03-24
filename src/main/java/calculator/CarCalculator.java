@@ -5,8 +5,6 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
-
 
 public class CarCalculator {
 

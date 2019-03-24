@@ -9,7 +9,6 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.util.Scanner;
 
 public class RequestHandler implements HttpHandler {

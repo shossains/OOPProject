@@ -14,12 +14,12 @@ public class TemperatureCalculator {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Temperature right now: ");
-        int tHigh = input.nextInt();
+        int tempHigh = input.nextInt();
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tHigh;
+        int temperature = 1006 * 256 * tempHigh;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);
@@ -44,7 +44,6 @@ public class TemperatureCalculator {
         TemperatureCalculator testCalc = new TemperatureCalculator();
 
         testCalc.tempCalc(co2tHigh);
-
     }
 
     public void tempCalc(double tempHigh) throws MalformedURLException {
@@ -52,12 +51,12 @@ public class TemperatureCalculator {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Temperature changed to: ");
-        int tLow = input.nextInt();
+        int tempLow = input.nextInt();
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tLow;
+        int temperature = 1006 * 256 * tempLow;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);

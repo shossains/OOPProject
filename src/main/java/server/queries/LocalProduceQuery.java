@@ -37,8 +37,9 @@ public class LocalProduceQuery extends ServerQuery {
                     rs.close();
 
                     String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO localproduce (username, points, weight, datetime) values"
-                            + " ('" + username + "'," + res + ",'" + weight + "',CURRENT_TIMESTAMP(0))";
+                    updateQuery[0] = "INSERT INTO localproduce (username, points, weight, datetime)"
+                            + "values ('" + username + "'," + res + ",'"
+                            + weight + "',CURRENT_TIMESTAMP(0))";
                     Query.runQueries(updateQuery);
 
                     return "{'points' : " + res + " , 'added' : " + addPoints + "}";

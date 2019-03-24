@@ -12,7 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -77,15 +82,11 @@ public class PublicTransportController implements Initializable {
             vehicleType = "bus";
             invalidRadio.setText("");
             return true;
-        }
-
-        else if(train.isSelected()) {
+        } else if (train.isSelected()) {
             vehicleType = "train";
             invalidRadio.setText("");
             return true;
-        }
-
-        else {
+        } else {
             invalidRadio.setText("Please select one!");
             return false;
         }
@@ -129,7 +130,8 @@ public class PublicTransportController implements Initializable {
 
         String request = "{'type' : 'PublicTransport', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addPublic' : true, 'distance' : " + distanceInt + ", 'vehicle' : '" + vehicleType + "'}";
+                + "'addPublic' : true, 'distance' : " + distanceInt
+                + ", 'vehicle' : '" + vehicleType + "'}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));

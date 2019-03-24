@@ -37,8 +37,9 @@ public class BikeRideQuery extends ServerQuery {
                     rs.close();
 
                     String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO bikeride (username, points, distance, datetime) values"
-                            + " ('" + username + "'," + res + ",'" + distance + "',CURRENT_TIMESTAMP(0))";
+                    updateQuery[0] = "INSERT INTO bikeride (username, points, distance, datetime)"
+                            + "values ('" + username + "'," + res + ",'"
+                            + distance + "',CURRENT_TIMESTAMP(0))";
                     Query.runQueries(updateQuery);
 
                     return "{'points' : " + res + " , 'added' : " + addPoints + "}";

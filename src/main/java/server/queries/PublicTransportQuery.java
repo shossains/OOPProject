@@ -1,7 +1,6 @@
 package server.queries;
 
 import calculator.BusCalculator;
-import calculator.CarCalculator;
 import calculator.TrainCalculator;
 import server.db.Query;
 
@@ -23,9 +22,7 @@ public class PublicTransportQuery extends ServerQuery {
 
         if (vehicle.equals("bus")) {
             addPoints = BusCalculator.bus(distance);
-        }
-
-        else if (vehicle.equals("train")) {
+        } else if (vehicle.equals("train")) {
             try {
                 addPoints = TrainCalculator.train(distance);
             } catch (Exception e) {
@@ -49,8 +46,10 @@ public class PublicTransportQuery extends ServerQuery {
                     rs.close();
 
                     String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO publictransport (username, points, vehicletype, distance, datetime) values"
-                            + " ('" + username + "', " + res + ", '" + vehicle + "', '" + distance + "', CURRENT_TIMESTAMP(0))";
+                    updateQuery[0] = "INSERT INTO publictransport"
+                            + "(username, points, vehicletype, distance, datetime) values"
+                            + " ('" + username + "', " + res + ", '" + vehicle
+                            + "', '" + distance + "', CURRENT_TIMESTAMP(0))";
                     Query.runQueries(updateQuery);
 
                     return "{'points' : " + res + ", 'added' : " + addPoints + "}";
@@ -62,7 +61,8 @@ public class PublicTransportQuery extends ServerQuery {
             }
         } else if (!addPublic) {
             String[] newquery = new String[1];
-            newquery[0] = "SELECT count(*) FROM publictransport WHERE username = '" + username + "'";
+            newquery[0] = "SELECT count(*) FROM publictransport WHERE username = '"
+                    + username + "'";
 
             //should be one function
             ResultSet[] newrsArray = Query.runQueries(newquery);
