@@ -43,7 +43,7 @@ public class Main extends Application {
 //        launch(args);
 
         try {
-            CarCalculator.car();
+            CarCalculator.car(50);
         } catch (Exception e) {
             e.printStackTrace();
         }
