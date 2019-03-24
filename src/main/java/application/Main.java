@@ -1,6 +1,6 @@
 package application;
 
-import calculator.CarCalculator;
+import calculator.LocalProduceCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,12 +39,13 @@ public class Main extends Application {
 //        }
 //        launch(args);
 
-        try {
-            CarCalculator.car(50);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TemperatureCalculator.tempCalc(16, 2855.94);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
+        LocalProduceCalculator.produce(600);
 
 
 

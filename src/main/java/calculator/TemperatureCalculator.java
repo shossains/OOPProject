@@ -5,16 +5,10 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
 
 public class TemperatureCalculator {
 
-    public static void temp() throws Exception {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Temperature right now: ");
-        int tHigh = input.nextInt();
+    public static int temp(int tHigh, int tLow) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -37,22 +31,16 @@ public class TemperatureCalculator {
 
         JSONObject third = second.getJSONObject("object");
 
-        double co2tHigh = third.getFloat("value");
+        Double co2tHigh = third.getDouble("value");
         co2tHigh = Math.round(co2tHigh * 100.00) / 100.00;
-        System.out.println(co2tHigh + " kg CO2");
 
-        TemperatureCalculator testCalc = new TemperatureCalculator();
 
-        testCalc.tempCalc(co2tHigh);
+        TemperatureCalculator temperatureCalculator = new TemperatureCalculator();
+        return temperatureCalculator.tempCalc(tLow, co2tHigh);
 
     }
 
-    public void tempCalc(double tempHigh) throws MalformedURLException {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Temperature changed to: ");
-        int tLow = input.nextInt();
+    public static int tempCalc(int tLow, double tempHigh) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -74,16 +62,13 @@ public class TemperatureCalculator {
         JSONObject second = first.getJSONObject("carbon");
 
         JSONObject third = second.getJSONObject("object");
-
-        double co2tLow = third.getFloat("value");
+        Double co2tLow = third.getDouble("value");
         co2tLow = Math.round(co2tLow * 100.00) / 100.00;
-        System.out.println(co2tLow + " kg CO2");
 
         //Calculate amount of kg CO2 saved.
-        double result = tempHigh - co2tLow;
+        Double result = tempHigh - co2tLow;
         result = Math.round(result * 100.00) / 100.00;
-        System.out.println("Amount CO2 saved= " + result + " kg CO2");
-
+        return result.intValue();
     }
 
 

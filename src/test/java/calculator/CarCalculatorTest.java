@@ -23,6 +23,12 @@ public class CarCalculatorTest {
     }
 
     @Test
+    public void TestCar() {
+        int res = CarCalculator.car(50);
+        Assert.assertEquals(6,res);
+    }
+
+    @Test
     public void JsonSame() throws JSONException {
         String actual = "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }";
         JSONAssert.assertEquals("{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }", actual, JSONCompareMode.STRICT);
@@ -33,9 +39,7 @@ public class CarCalculatorTest {
         String actual = "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"}, methodology:\"from co2 emission, ch4 emission, n2o emission, and hfc emission\"},}  }";
         JSONAssert.assertNotEquals(
                 "{decisions: {carbon: {description:\"2.7 kg\", object: {value:\"2.6755309506179863\", units:\"kilograms\"},},}  }", actual, true);
-
     }
-
 
 
     @Test public void JsonAlmostSame() throws JSONException {
@@ -65,9 +69,4 @@ public class CarCalculatorTest {
         Assert.assertEquals(2.6755309506179863, obj4, 0);
     }
 
-    @Test
-    public void TestCar() {
-        int res = CarCalculator.car(50);
-        Assert.assertEquals(6,res);
-    }
 }

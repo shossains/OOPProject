@@ -1,26 +1,16 @@
 package calculator;
 
-import java.util.Scanner;
-
 public class LocalProduceCalculator {
 
-    public static void produce() {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Kg food bought: ");
-        double number = input.nextDouble();
-
-        number = number/1000;
-
+    public static int produce(int weight) {
         //Calculate amount of kg CO2 saved.
-        double localFood = 0.232 * number;
-        double importFood = 0.560 * number;
+        Double localFood = 0.232 * weight;
+        Double importFood = 0.560 * weight;
 
-        double result = importFood - localFood;
+        Double doubleResult = importFood - localFood;
 
-        result = Math.round(result * 100.00) / 100.00;
-        System.out.println(result + " kg CO2 saved");
+        doubleResult = Math.round(doubleResult) / 10.00;
+        return doubleResult.intValue();
     }
 
 
