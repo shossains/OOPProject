@@ -82,9 +82,9 @@
             <version>42.2.5</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
-            <version>5.1.4.RELEASE</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20171018</version>
         </dependency>
     </dependencies>
 
@@ -134,11 +134,14 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <rules/>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>application/**</exclude>>
+                        <exclude>application/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -188,8 +191,12 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>application/**</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
-
 </project>
