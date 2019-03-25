@@ -57,7 +57,7 @@
                         <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#goTemp" text="Add Temperature Adjustment" />
-                                <MenuItem mnemonicParsing="false" onAction="#goSolar" text="Add Solar Panels" />
+                                <MenuItem mnemonicParsing="false" text="Add Solar Panels" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="13.0" />

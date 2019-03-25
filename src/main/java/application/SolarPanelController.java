@@ -54,10 +54,10 @@ public class SolarPanelController implements Initializable {
 
     /**
      * Add content to table
-     * @param output
+     * //@param output
      */
-    public void addToTable(int output){
-        TableContents tablecontent = new TableContents(50, output);
+    public void addToTable(){
+        TableContents tablecontent = new TableContents(50, 50);
         tableView.getItems().add(tablecontent);
     }
 
