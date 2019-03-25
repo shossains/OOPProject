@@ -67,7 +67,13 @@
                     </items>
                 </ToolBar>
                 <Text layoutX="496.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friendlist" wrappingWidth="168.70703125" />
-                <TableView fx:id="tableView" layoutX="450.0" layoutY="120.0" prefHeight="329.0" prefWidth="184.0">
+                <TableView fx:id="friendlist" layoutX="450.0" layoutY="120.0" prefHeight="329.0" prefWidth="184.0">
+                    <columns>
+                        <TableColumn fx:id="friendsColumn" prefWidth="184"/>
+                    </columns>
+                </TableView>
+
+                <TableView fx:id="points" layoutX="50.0" layoutY="120.0" prefHeight="329.0" prefWidth="329.0">
                     <columns>
                         <TableColumn fx:id="pointsColumn" prefWidth="184"/>
                     </columns>
