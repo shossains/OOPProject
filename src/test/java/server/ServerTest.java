@@ -21,7 +21,7 @@ public class ServerTest {
     private static SecureClientNetworking httpCon;
 
 
-/**
+    /**
      * Sets up the server as well as http and https urls
      */
 
@@ -43,7 +43,7 @@ public class ServerTest {
         }
     }
 
-/**
+    /**
      * Sends a test request and listens for a response. This is effectively a test of the whole server, from receiving,
      * to processing, up until response.
      */
@@ -55,7 +55,7 @@ public class ServerTest {
                 " 'extraData':'Irrelevant Data'}"));
     }
 
-/**
+    /**
      * This test is supposed to successfully fail, as the server shouldn't accept any unencrypted requests.
      */
 
@@ -66,7 +66,7 @@ public class ServerTest {
     }
 
 
-/**
+    /**
      * Makes sure the testkey keystore actually exists, might be handy for debugging later on.
      */
 

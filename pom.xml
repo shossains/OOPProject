@@ -81,6 +81,11 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20171018</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -129,11 +134,14 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <rules/>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>application/**</exclude>>
+                        <exclude>application/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -183,8 +191,12 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>application/**</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
-
 </project>

@@ -12,8 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -24,8 +26,12 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class VegController implements Initializable {
-    public String mealType;
+public class TemperatureController implements Initializable {
+    public TextField thigh;
+    public TextField tlow;
+    public Label invalidThigh;
+    public Label invalidTlow;
+    public int tint;
     @FXML
     ToolBar myToolbar;
 
@@ -33,15 +39,16 @@ public class VegController implements Initializable {
     @FXML private TableView<TableContents> tableView;
     @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
-    @FXML private TableColumn<TableContents, String> typeColumn;
+    @FXML private TableColumn<TableContents, Integer> tempColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //sets up columns of the table
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<TableContents, String>("type"));
+        tempColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("integer"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
-                ;
+        ;
     }
 
     /**
@@ -49,45 +56,45 @@ public class VegController implements Initializable {
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50,mealType));
-
+        content.add(new TableContents(40, tint));
         return content;
     }
 
     /**
-     * After clicking vegan button client will receive 60 points.
-     * @param actionEvent Click of the button
+     * General method to add something to the table.
+     * @param points amount of points
+     * @param weight of bought groceries
      */
-    public void vegan(ActionEvent actionEvent) {
-        mealType = "vegan";
-
-        TableContents tablecontent = new TableContents(60, mealType);
+    public void addToTable(int points, int weight) {
+        TableContents tablecontent = new TableContents(points,weight);
         tableView.getItems().add(tablecontent);
-
-        add(actionEvent);
     }
 
     /**
-     * After clicking vegetarian button client will receive 50 points.
-     * @param actionEvent Click of the button
+     * Takes the input and converts it from string to int.
      */
-    public void vegetarian(ActionEvent actionEvent) {
-        mealType = "vegetarian";
-
-        TableContents tablecontent = new TableContents(50,mealType);
-        tableView.getItems().add(tablecontent);
-
-        add(actionEvent);
+    public void intify() {
+        int t1 = Integer.parseInt(tlow.getText());
+        int t2 = Integer.parseInt(thigh.getText());
+        tint = t2 - t1;
     }
 
-    public void addToTable(int points, String type) {
-        TableContents tablecontent = new TableContents(points,type);
-        tableView.getItems().add(tablecontent);
+    /**
+     * Check if input is valid, only then proceed.
+     */
+    public void proceed(ActionEvent actionEvent) {
+        System.out.println();
+        boolean thigh = invalidThigh();
+        boolean tlow = invalidTlow();
+
+        if (!thigh && !tlow) {
+            intify();
+            add(actionEvent);
+        }
     }
 
     /**
      * Searches for a meal that matches the input.
-     *
      * @param actionEvent The click of the button
      */
     public void add(ActionEvent actionEvent) {
@@ -98,13 +105,16 @@ public class VegController implements Initializable {
         // to make it compile
 
         //send json request
-
         System.out.println("Running add");
+
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'VegMeal', 'username' : '"
-                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': true, 'mealType' : '" + mealType + "'}";
+        TableContents tablecontent = new TableContents(0, tint);
+        tableView.getItems().add(tablecontent);
+
+        String request = "{'type' : 'Temp', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
+                + "'addTemp' : true, 'temp' : " + tint + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
@@ -147,13 +157,67 @@ public class VegController implements Initializable {
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'VegMeal', 'username' : '"
+        String request = "{'type' : 'Temp', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': false, 'mealType' : '" + mealType + "'}";
+                + "'addTemp': false}";
 
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
+    }
+
+    /**
+     * Check whether former Temp textField are integers only or empty.
+     * @return true if empty or invalid
+     */
+    public boolean invalidThigh() {
+        if (thigh.getText().equals("")) {
+            invalidThigh.setText("Please enter a valid number");
+            return true;
+
+        }
+
+        if (!isInt(thigh.getText())) {
+            invalidThigh.setText("Please enter a valid number");
+            return true;
+        } else {
+            invalidThigh.setText("");
+            return false;
+        }
+    }
+
+    /**
+     * Check whether former Temp textField are integers only or empty.
+     * @return true if empty or invalid
+     */
+    public boolean invalidTlow() {
+        if (tlow.getText().equals("")) {
+            invalidTlow.setText("Please enter a valid number");
+            return true;
+
+        }
+
+        if (!isInt(tlow.getText())) {
+            invalidTlow.setText("Please enter a valid number");
+            return true;
+        } else {
+            invalidTlow.setText("");
+            return false;
+        }
+    }
+
+    /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
@@ -168,6 +232,15 @@ public class VegController implements Initializable {
         Stage window = (Stage) myToolbar.getScene().getWindow();
         window.setScene(hmScene);
         window.show();
+    }
+
+    /**
+     * Go to the Vegetarian meal screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException {
+        go("VegMeal");
     }
 
     /**
@@ -195,15 +268,6 @@ public class VegController implements Initializable {
      */
     public void goPublic(ActionEvent actionEvent) throws IOException {
         go("PublicTransport");
-    }
-
-    /**
-     * Go to the Temperature adjustment screen.
-     * @param actionEvent The click of the button
-     * @throws IOException Throw if file is missing/corrupted/incomplete
-     */
-    public void goTemp(ActionEvent actionEvent) throws IOException {
-        go("Temperature");
     }
 
     /**

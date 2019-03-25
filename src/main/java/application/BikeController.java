@@ -12,8 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -24,8 +26,10 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class VegController implements Initializable {
-    public String mealType;
+public class BikeController implements Initializable {
+    public TextField distance;
+    public Label invalidDistance;
+    public int distanceInt;
     @FXML
     ToolBar myToolbar;
 
@@ -33,15 +37,16 @@ public class VegController implements Initializable {
     @FXML private TableView<TableContents> tableView;
     @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
-    @FXML private TableColumn<TableContents, String> typeColumn;
+    @FXML private TableColumn<TableContents, Integer> distanceColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //sets up columns of the table
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<TableContents, String>("type"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
-                ;
+        distanceColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("integer"));
+        pointsColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("points"));
     }
 
     /**
@@ -49,45 +54,41 @@ public class VegController implements Initializable {
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50,mealType));
-
+        content.add(new TableContents(40,distance.getText()));
         return content;
     }
 
     /**
-     * After clicking vegan button client will receive 60 points.
-     * @param actionEvent Click of the button
+     * General method to add something to the table.
+     * @param points amount of points
+     * @param weight of bought groceries
      */
-    public void vegan(ActionEvent actionEvent) {
-        mealType = "vegan";
-
-        TableContents tablecontent = new TableContents(60, mealType);
+    public void addToTable(int points, int weight) {
+        TableContents tablecontent = new TableContents(points,weight);
         tableView.getItems().add(tablecontent);
-
-        add(actionEvent);
     }
 
     /**
-     * After clicking vegetarian button client will receive 50 points.
-     * @param actionEvent Click of the button
+     * Takes the input and converts it from string to int.
      */
-    public void vegetarian(ActionEvent actionEvent) {
-        mealType = "vegetarian";
-
-        TableContents tablecontent = new TableContents(50,mealType);
-        tableView.getItems().add(tablecontent);
-
-        add(actionEvent);
+    public void intify() {
+        distanceInt = Integer.parseInt(distance.getText());
     }
 
-    public void addToTable(int points, String type) {
-        TableContents tablecontent = new TableContents(points,type);
-        tableView.getItems().add(tablecontent);
+    /**
+     * Check if input is valid, only then proceed.
+     */
+    public void proceed(ActionEvent actionEvent) {
+        boolean distance = invalidDistance();
+
+        if (!distance) {
+            intify();
+            add(actionEvent);
+        }
     }
 
     /**
      * Searches for a meal that matches the input.
-     *
      * @param actionEvent The click of the button
      */
     public void add(ActionEvent actionEvent) {
@@ -98,16 +99,19 @@ public class VegController implements Initializable {
         // to make it compile
 
         //send json request
-
         System.out.println("Running add");
+
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'VegMeal', 'username' : '"
-                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': true, 'mealType' : '" + mealType + "'}";
+        String request = "{'type' : 'BikeRide', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
+                + "'addBike' : true, 'distance' : " + distanceInt + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
+
+        TableContents tablecontent = new TableContents(addedPoints(response),distanceInt);
+        tableView.getItems().add(tablecontent);
     }
 
     /**
@@ -141,19 +145,82 @@ public class VegController implements Initializable {
     }
 
     /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The added amount of points.
+     */
+    public int addedPoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("added").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
      * This method create the request for only points.
      * @param actionEvent opening a scene or clicking any given button
      */
     public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'VegMeal', 'username' : '"
+        String request = "{'type' : 'BikeRide', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': false, 'mealType' : '" + mealType + "'}";
+                + "'addBike': false}";
 
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
+    }
+
+    /**
+     * Check whether Phone textField are integers only or empty.
+     * @return true if empty or invalid
+     */
+    public boolean invalidDistance() {
+        if (distance.getText().equals("")) {
+            invalidDistance.setText("Please enter a valid number");
+            return true;
+
+        }
+
+        if (!isInt(distance.getText())) {
+            invalidDistance.setText("Please enter a valid number");
+            return true;
+        } else {
+            invalidDistance.setText("");
+            return false;
+        }
+    }
+
+    /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
@@ -171,21 +238,21 @@ public class VegController implements Initializable {
     }
 
     /**
+     * Go to the Vegetarian meal screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException {
+        go("VegMeal");
+    }
+
+    /**
      * Go to the Local Produce screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
     public void goLocal(ActionEvent actionEvent) throws IOException {
         go("LocalProduce");
-    }
-
-    /**
-     * Go to the Bike screen.
-     * @param actionEvent The click of the button
-     * @throws IOException Throw if file is missing/corrupted/incomplete
-     */
-    public void goBike(ActionEvent actionEvent) throws IOException {
-        go("BikeRide");
     }
 
     /**

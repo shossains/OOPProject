@@ -3,7 +3,11 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import server.queries.BikeRideQuery;
+import server.queries.LocalProduceQuery;
+import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;
+import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
 
@@ -58,9 +62,16 @@ public class Request {
                 return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
-
             case "VegMeal":
                 return vegMeal();
+            case "LocalProduce":
+                return localProduce();
+            case "BikeRide":
+                return bikeRide();
+            case "Temp":
+                return temp();
+            case "PublicTransport":
+                return publicTransport();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -81,7 +92,25 @@ public class Request {
         return vegMealQuery.runQuery();
     }
 
+    private String localProduce() {
+        LocalProduceQuery localProduceQuery = buildGson(rawQuery, LocalProduceQuery.class);
+        return localProduceQuery.runQuery();
+    }
 
+    private String bikeRide() {
+        BikeRideQuery bikeRideQuery = buildGson(rawQuery, BikeRideQuery.class);
+        return bikeRideQuery.runQuery();
+    }
+
+    private String temp() {
+        TemperatureQuery temperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
+        return temperatureQuery.runQuery();
+    }
+
+    private String publicTransport() {
+        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
+        return publicTransportQuery.runQuery();
+    }
 
     /**
      * Builds specified object with Gson from specified string.

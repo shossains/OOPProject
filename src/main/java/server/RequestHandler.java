@@ -24,7 +24,6 @@ public class RequestHandler implements HttpHandler {
      *
      * @param exchange the exchange containing the request from the
      *                 client and used to send the response
-     * @throws NullPointerException if exchange is <code>null</code>
      */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
