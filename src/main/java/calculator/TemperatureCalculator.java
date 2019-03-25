@@ -8,6 +8,14 @@ import java.net.URL;
 
 public class TemperatureCalculator {
 
+    /**
+     * The calculator for calculating the amount of kg CO2 produced by your house with a certain amount of temperature.
+     * @param tHigh The temperature on which the thermometer is set.
+     * @param tLow The temperature on which the thermometer could be set to save CO2.
+     * @return The wished temperature tLow(int) and calculated kg CO2(double) produced by the current temperature of the house, passed to the method 'tempCalc()'.
+     * @throws Exception
+     */
+
     public static int temp(int tHigh, int tLow) throws Exception {
 
         //Setup https client
@@ -39,6 +47,15 @@ public class TemperatureCalculator {
         return temperatureCalculator.tempCalc(tLow, co2tHigh);
 
     }
+
+    /**
+     * The calculator for calculating the difference in kg CO2 by changing the temperature of your house.
+     * @param tLow The temperature on which the thermometer could be set to save CO2.
+     * @param tempHigh The amount of kg CO2 produced by a temperature.
+     * @return The calculated result of the equation ->
+     * (Amount of kg CO2 produced by your house with a high temperature) - (Amount of kg CO2 produced by your house with with reduced temperature) = kg CO2 saved
+     * @throws MalformedURLException
+     */
 
     public static int tempCalc(int tLow, double tempHigh) throws MalformedURLException {
 

@@ -9,6 +9,12 @@ import java.net.URL;
 
 public class CarCalculator {
 
+    /**
+     * The calculator for getting the amount of kg CO2 produced by a car.
+     * @param distance The distance.
+     * @return Amount of kg CO2 produced by a car.
+     */
+
     public static int car(int distance) {
 
         //Setup https client
