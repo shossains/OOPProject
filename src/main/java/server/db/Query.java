@@ -108,15 +108,4 @@ public class Query extends Adapter {
 
         return null;
     }
-
-    /**
-     * Takes in raw password and salt, returns a SHA512 hash from that.
-     *
-     * @param password The raw password to be hashed.
-     * @param salt     The salt that will be used in the algorithm.
-     * @return A String that is the SHA512 hash of the password and salt.
-     */
-    public static String getHashedPassword(String password, String salt) {
-        return BCrypt.hashpw(password, salt);
-    }
 }

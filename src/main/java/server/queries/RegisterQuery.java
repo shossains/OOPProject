@@ -1,5 +1,6 @@
 package server.queries;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import server.db.Query;
 
 import java.sql.ResultSet;
@@ -9,10 +10,10 @@ import java.sql.SQLException;
  * Fields needed for registration of a new user.
  */
 public class RegisterQuery extends ServerQuery {
-    private String firstName;
-    private String lastName;
+    private String fname;
+    private String lname;
     private String email;
-    private String phoneNumber;
+    private String phone;
 
 
     /**
@@ -26,15 +27,27 @@ public class RegisterQuery extends ServerQuery {
      * @return result of registration.
      */
     public String runQuery() {
+        if(usernameExists()){
+            return "{'error': true, 'reason' : 'Username already exists'}";
+        }
 
-        return "{'error': true, 'reason' : 'not implemented yet'}";
+        Query.runQueries(getQueries());
+        return "{'error': true, 'reason' : 'not fully implemented yet'}";
     }
 
+    /**Constructs queries for the insertion of the new user to the database.
+     * Note that for some reason the points table needs to be updated first.
+     * @return Returns the queries needed to run.
+     */
     private String[] getQueries() {
-        String[] queries = new String[0];
-        //check if username exists
-        queries[0] = "SELECT username FROM client WHERE username = '" + username + "'";
+        String[] queries = new String[2];
+        //add to client
+        queries[1] = "INSERT INTO client \n" +
+                "VALUES ('"+username+"', '"+fname+"', '"+lname+"'," +
+                " '"+email+"', '"+getHashedPassword(password)+"', '"+phone+"')";
 
+        //add to points
+        queries[0] = "INSERT INTO points VALUES ('"+username+"', 0, CURRENT_TIMESTAMP(0))";
 
         return queries;
     }
@@ -54,9 +67,18 @@ public class RegisterQuery extends ServerQuery {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return true;
         }
+    }
 
 
-        return true;
+    /**
+     * Takes in raw password and salt, returns a SHA512 hash from that.
+     *
+     * @param password The raw password to be hashed.
+     * @return A String that is the SHA512 hash of the password and salt.
+     */
+    public static String getHashedPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt(10));
     }
 }

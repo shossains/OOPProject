@@ -23,15 +23,6 @@ public class AuthenticationTest {
     }
 
     @Test
-    public void hashTest(){
-        String password = "hunter2";
-        String salt = "$2a$10$bi7JYEY2MDeWYw7CH1Kpzu";
-        String hash = Query.getHashedPassword(password, salt);
-        Assert.assertEquals(hunter2Hash, hash);
-        Assert.assertTrue(BCrypt.checkpw(password, hash));
-    }
-
-    @Test
     public void queryAuthTest(){
         String[] query = new String[2];
         query[0] = "UPDATE client \n SET phone = '123456' \n" +
