@@ -183,6 +183,7 @@ public class TemperatureController implements Initializable {
             return -1.0;
         }
     }
+
     /**
      * Helper function to parse response json.
      * @param responseJson The raw json response from the server

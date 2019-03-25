@@ -73,13 +73,13 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <TextField fx:id="kwh" layoutX="79.0" layoutY="192.0" promptText="Insert output in kwh" />
+                <TextField fx:id="kwh" layoutX="79.0" layoutY="192.0" promptText="Insert amount in kwh" />
                 <Label layoutX="41.0" layoutY="66.0" text="Solar Panels">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-            <Label layoutX="79.0" layoutY="161.0" text="Solar Panel Output:" />
+            <Label layoutX="72.0" layoutY="128.0" prefHeight="65.0" prefWidth="182.0" text="The amount of electricity used in a month with only solar panels" wrapText="true" />
             <Button fx:id="tableVie1" layoutX="261.0" layoutY="152.0" mnemonicParsing="false" onAction="#proceed" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />

@@ -46,7 +46,8 @@ public class LocalProduceQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    return "{'points' : " + res + " , 'added' : " + addPoints + " , 'co2' : " + co2 + "}";
+                    return "{'points' : " + res + " , 'added' : "
+                            + addPoints + " , 'co2' : " + co2 + "}";
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -1,7 +1,6 @@
 package server.queries;
 
 import calculator.SolarPanelCalculator;
-import calculator.TemperatureCalculator;
 import server.db.Query;
 
 import java.sql.ResultSet;
@@ -43,7 +42,8 @@ public class SolarQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    return "{'points' : " + res + ", 'added' : " + addPoints + ", 'co2' : " + co2 + "}";
+                    return "{'points' : " + res + ", 'added' : "
+                            + addPoints + ", 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {
