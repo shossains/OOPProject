@@ -244,4 +244,13 @@ public class VegController implements Initializable {
     public void goSolar(ActionEvent actionEvent) throws IOException {
         go("SolarPanels");
     }
+
+    /**
+     * Go to the User Stats screen
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goStats(ActionEvent actionEvent) throws IOException{
+        go("StatsPieChart");
+    }
 }

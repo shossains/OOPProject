@@ -9,19 +9,19 @@ import java.net.URL;
 public class TemperatureCalculator {
 
     /**
-     * The calculator for calculating the amount of kg CO2 produced by your house with a certain amount of temperature.
-     * @param tHigh The temperature on which the thermometer is set.
-     * @param tLow The temperature on which the thermometer could be set to save CO2.
-     * @return The wished temperature tLow(int) and calculated kg CO2(double) produced by the current temperature of the house, passed to the method 'tempCalc()'.
-     * @throws Exception
+     * Calculating kg CO2 produced by your house with a certain amount of temperature.
+     * @param thigh The temperature on which the thermometer is set.
+     * @param tlow The temperature on which the thermometer could be set to save CO2.
+     * @return 'tlow'(int) and kg CO2(double), passed to the method 'tempCalc()'.
+     * @throws Exception Throws Url exception.
      */
 
-    public static int temp(int tHigh, int tLow) throws Exception {
+    public static int temp(int thigh, int tlow) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tHigh;
+        int temperature = 1006 * 256 * thigh;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);
@@ -44,25 +44,24 @@ public class TemperatureCalculator {
 
 
         TemperatureCalculator temperatureCalculator = new TemperatureCalculator();
-        return temperatureCalculator.tempCalc(tLow, co2tHigh);
+        return temperatureCalculator.tempCalc(tlow, co2tHigh);
 
     }
 
     /**
-     * The calculator for calculating the difference in kg CO2 by changing the temperature of your house.
-     * @param tLow The temperature on which the thermometer could be set to save CO2.
+     * Calculating the difference in kg CO2 by changing the temperature of your house.
+     * @param tlow The temperature on which the thermometer could be set to save CO2.
      * @param tempHigh The amount of kg CO2 produced by a temperature.
-     * @return The calculated result of the equation ->
-     * (Amount of kg CO2 produced by your house with a high temperature) - (Amount of kg CO2 produced by your house with with reduced temperature) = kg CO2 saved
-     * @throws MalformedURLException
+     * @return The calculated result of the equation.
+     * @throws MalformedURLException Url exception.
      */
 
-    public static int tempCalc(int tLow, double tempHigh) throws MalformedURLException {
+    public static int tempCalc(int tlow, double tempHigh) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tLow;
+        int temperature = 1006 * 256 * tlow;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);

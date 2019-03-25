@@ -58,12 +58,9 @@ public class BusCalculator {
      * The calculator for calculating the difference in kg CO2 produced by a bus and a car.
      * @param dist The distance from the method 'bus()'.
      * @param busCo2 The amount of kg CO2 by the bus, from the method 'bus()'.
-     * @return the calculated result of the equation ->
-     * (Amount of kg CO2 produced by a car) - (Amount of kg CO2 produced by a bus/
-     * Average amount of people taking the bus) = kg CO2 saved
-     * @throws MalformedURLException throw error
+     * @return The calculated result of the equation.
+     * @throws MalformedURLException Use of URL
      */
-
     public static Double carBus(int dist, double busCo2) throws MalformedURLException {
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
