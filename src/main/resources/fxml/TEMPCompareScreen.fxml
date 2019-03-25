@@ -72,9 +72,9 @@
                     </items>
                 </ToolBar>
                 <Text layoutX="550.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friendlist" wrappingWidth="168.70703125" />
-                <TableView fx:id="friendlist" layoutX="500.0" layoutY="120.0" prefHeight="329.0" prefWidth="184.0">
+                <TableView fx:id="friendList" layoutX="500.0" layoutY="120.0" prefHeight="329.0" prefWidth="184.0">
                     <columns>
-                        <TableColumn fx:id="friendsColumn" prefWidth="184"/>
+                        <TableColumn fx:id="friendsColumn" prefWidth="184"></TableColumn>
                     </columns>
                 </TableView>
 
@@ -87,7 +87,7 @@
                         <TableColumn fx:id="yourPointsColumn" prefWidth="165.0" text="Your points">
                             <cellValueFactory><PropertyValueFactory property="userPoints" />
                         </cellValueFactory></TableColumn>
-                        <TableColumn fx:id="friendPointsColumn" prefWidth="165.0" text="Your friend's points">
+                        <TableColumn fx:id="friendPointsColumn" prefWidth="165.0" text="Global average">
                             <cellValueFactory><PropertyValueFactory property="friendPoints" />
                         </cellValueFactory></TableColumn>
                     </columns>
@@ -95,9 +95,9 @@
                         <FXCollections fx:factory="observableArrayList">
                             <Compare categories="Total" userPoints="0" friendPoints="0"/>
                             <Compare categories="Vegetarian meal" userPoints="0" friendPoints="0"/>
-                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
-                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
-                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Local produce" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Bike" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Public transport" userPoints="0" friendPoints="0"/>
                         </FXCollections>
                     </items>
                 </TableView>
