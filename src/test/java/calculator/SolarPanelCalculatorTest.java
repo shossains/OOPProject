@@ -9,12 +9,18 @@ public class SolarPanelCalculatorTest {
     public void solar() {
     }
 
+    /**
+     * Testing if the calculator works as it should with values > 0.
+     */
     @Test
     public void SolarTest(){
         int result = SolarPanelCalculator.solar(20);
         Assert.assertEquals(9.2, result, 1);
     }
 
+    /**
+     * Testing if the calculator works as it should with the value 0.
+     */
     @Test
     public void SolarZero() {
         int result = SolarPanelCalculator.solar(0);

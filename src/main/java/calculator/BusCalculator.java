@@ -11,7 +11,7 @@ public class BusCalculator {
     /**
      * The calculator for getting the amount of kg CO2 produced by a bus.
      * @param number The distance travelled.
-     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'CarBus()'.
+     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carBus()'.
      */
 
     public static int bus(int number) {
