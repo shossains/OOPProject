@@ -4,10 +4,22 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import client.SecureClientNetworking;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class CompController {
+    @FXML private TableView<Compare> points;
+
+    public void initialize() {
+            ObservableList<Compare> data = points.getItems();
+            data.add(new Compare("Veg meal", 0, 0));
+    }
+
+
     /**
      * @param actionEvent The click of the button
      */
