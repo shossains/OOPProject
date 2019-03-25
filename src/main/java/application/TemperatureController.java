@@ -280,11 +280,11 @@ public class TemperatureController implements Initializable {
     }
 
     /**
-     * Go to the User Stats screen
-     * @param actionEvent
-     * @throws IOException
+     * Go to the User Stats screen.
+     * @param actionEvent Click of the button
+     * @throws IOException If the chart is invalid
      */
-    public void goStats(ActionEvent actionEvent) throws IOException{
+    public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPieChart");
     }
 }

@@ -12,7 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -246,11 +248,11 @@ public class VegController implements Initializable {
     }
 
     /**
-     * Go to the User Stats screen
-     * @param actionEvent
-     * @throws IOException
+     * Go to the User Stats screen.
+     * @param actionEvent Click of the button.
+     * @throws IOException Throw if chart is invalid
      */
-    public void goStats(ActionEvent actionEvent) throws IOException{
+    public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPieChart");
     }
 }

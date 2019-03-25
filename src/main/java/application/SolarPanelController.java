@@ -34,18 +34,18 @@ public class SolarPanelController implements Initializable {
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Date>("date"));
-        outputColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("output"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"));
-
-        //tableView.setItems(getContent());
+        outputColumn.setCellValueFactory(new PropertyValueFactory
+                <TableContents, Integer>("output"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory
+                <TableContents, Integer>("points"));
     }
 
     /**
-     * returns an ObservableList of Content objects (date, output and point)
+     * returns an ObservableList of Content objects (date, output and point).
      */
-    public ObservableList<TableContents> getContent(){
+    public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
         content.add(new TableContents(50, output.getText()));
 
@@ -53,10 +53,10 @@ public class SolarPanelController implements Initializable {
     }
 
     /**
-     * Add content to table
+     * Add content to table.
      * //@param output
      */
-    public void addToTable(){
+    public void addToTable() {
         TableContents tablecontent = new TableContents(50, 50);
         tableView.getItems().add(tablecontent);
     }

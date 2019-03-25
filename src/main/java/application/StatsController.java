@@ -24,7 +24,7 @@ public class StatsController implements Initializable {
     @FXML private PieChart friendPieChart;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(new PieChart.Data("VegMeal", 50),
                 new PieChart.Data("Bike Ride", 120), new PieChart.Data("Temperature", 100));

@@ -36,7 +36,8 @@ public class VegMealQuery extends ServerQuery {
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "UPDATE points SET co2 = co2 + " + co2 + " WHERE username = '" + username + "'";
+            queries[1] = "UPDATE points SET co2 = co2 + " + co2
+                    + " WHERE username = '" + username + "'";
 
             queries[2] = "INSERT INTO vegetarian (username, points, type, datetime, co2) values"
                     + " ('" + username + "'," + addPoints + ",'" + mealType
@@ -52,8 +53,8 @@ public class VegMealQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-
-                    return "{'points' : " + res + " , 'added' : " + addPoints + " , 'co2' : " + co2 + "}";
+                    return "{'points' : " + res + " , 'added' : "
+                            + addPoints + " , 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {

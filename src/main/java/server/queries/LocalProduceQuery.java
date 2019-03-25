@@ -28,9 +28,11 @@ public class LocalProduceQuery extends ServerQuery {
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "UPDATE points SET co2 = co2 + " + co2 + " WHERE username = '" + username + "'";
+            queries[1] = "UPDATE points SET co2 = co2 + " + co2
+                    + " WHERE username = '" + username + "'";
 
-            queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[2] = "SELECT points FROM points WHERE username = '"
+                    + username + "'";
 
             queries[3] = "INSERT INTO localproduce (username, points, weight, datetime, co2)"
                     + "values ('" + username + "'," + addPoints + ",'"
