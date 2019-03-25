@@ -24,7 +24,7 @@ The #GoGreen project is a java application that stimulates its users to go green
 
 
 ## Shaan Hossain
-NetID: shossain
+NetID: shossain<br/>
 ![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
 
 ### Personal Development Plan
