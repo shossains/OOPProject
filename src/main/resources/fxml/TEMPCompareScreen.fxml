@@ -79,7 +79,10 @@
 
                 <TableView fx:id="points" layoutX="50.0" layoutY="120.0" prefHeight="330.0" prefWidth="400.0">
                     <columns>
-                        <TableColumn fx:id="categories" prefWidth="70.0" text="Features"></TableColumn>
+                        <TableColumn fx:id="categories" prefWidth="70.0" text="Features">
+                            <cellValueFactory><PropertyValueFactory property="categories" />
+                            </cellValueFactory>
+                        </TableColumn>
                         <TableColumn fx:id="yourPointsColumn" prefWidth="165.0" text="Your points">
                             <cellValueFactory><PropertyValueFactory property="userPoints" />
                         </cellValueFactory></TableColumn>
