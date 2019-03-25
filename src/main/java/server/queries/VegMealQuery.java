@@ -29,27 +29,18 @@ public class VegMealQuery extends ServerQuery {
         }
 
         if (addMeal) {
-            String[] queries = new String[2];
-            queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
-                    + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
+            //run queries
+            ResultSet rs = runQueries(addPoints)[0];
 
-            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
-
-            //should be one function
-            ResultSet[] rsArray = Query.runQueries(queries);
-            ResultSet rs = rsArray[0];
+            if (rs == null) {
+                return "{'error' : true, 'reason' : 'Could not find user for given credentials'}";
+            }
 
             try {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-
-                    String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO vegetarian (username, points, type, datetime) values"
-                            + " ('" + username + "'," + res + ",'" + mealType + "',CURRENT_TIMESTAMP(0))";
-                    Query.runQueries(updateQuery);
-
-                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
+                    return "{\"points\" : " + res + "}";
                 }
                 return null;
             } catch (SQLException e) {
@@ -57,24 +48,28 @@ public class VegMealQuery extends ServerQuery {
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
             }
 
-        } else if (!addMeal) {
-            String[] queries = new String[1];
-            queries[0] = "SELECT count(*) FROM localProduce WHERE username = '" + username + "'";
-
-            //should be one function
-            ResultSet[] rsArray = Query.runQueries(queries);
-            ResultSet rs = rsArray[0];
-
-            try {
-                while (rs.next()) {
-                    int res = rs.getInt(1);
-                    return "{\"points\" : " + res + "}";
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return "Error in resultset";
-            }
+        } else {
+            return null;
         }
-        return "{'error' : true, 'reason' : 'Error in query'}";
+    }
+
+    /**
+     * Runs db duties for the meal, as well as authentication, returns resultset array.
+     *
+     * @param pointsToBeAdded points to be added for the meal
+     * @return resultset with the current points total.
+     */
+    private ResultSet[] runQueries(int pointsToBeAdded) {
+        String[] queries = new String[3];
+        queries[0] = "UPDATE points SET points = points + " + pointsToBeAdded + ", last_updated = "
+                + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
+
+        queries[1] = "INSERT INTO vegetarian (username, points, type, datetime) values"
+                + " ('" + username + "',000,'" + mealType + "',CURRENT_TIMESTAMP(0))";
+
+        queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+
+        //should be one function
+        return Query.runQueries(queries, username, password);
     }
 }
