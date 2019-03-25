@@ -18,7 +18,7 @@ public class Compare {
         setFriendPoints(friendPoints);
     }
 
-    public String Categories() {
+    public String getCategories() {
         return categories.get();
     }
 
