@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Compare {
-    private final SimpleStringProperty features = new SimpleStringProperty("");
+    private final SimpleStringProperty categories = new SimpleStringProperty("");
     public SimpleIntegerProperty userPoints = new SimpleIntegerProperty(0);
     public  SimpleIntegerProperty friendPoints = new SimpleIntegerProperty(0);
 
@@ -12,18 +12,18 @@ public class Compare {
         this("", 0, 0);
     }
 
-    public Compare(String feautures, int userPoints, int friendPoints) {
-        setFeatures(feautures);
+    public Compare(String categories, int userPoints, int friendPoints) {
+        setCategories (categories);
         setUserPoints(userPoints);
         setFriendPoints(friendPoints);
     }
 
-    public String getFeatures() {
-        return features.get();
+    public String Categories() {
+        return categories.get();
     }
 
-    public void setFeatures(String feature) {
-        features.set(feature);
+    public void setCategories(String category) {
+        categories.set(category);
     }
 
     public int getUserPoints() {
