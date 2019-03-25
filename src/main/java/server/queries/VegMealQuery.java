@@ -8,24 +8,25 @@ import java.sql.SQLException;
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
     private String mealType;
+    int addPoints;
+    Double co2;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
-     * TODO: Cleanup, add helper functions to make it more readable.
-     * TODO: Figure out how new points can be queried in log
-     *
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int addPoints;
+
         if (mealType == null) {
             return "{'error' : true, 'reason' : 'mealType not given'}";
         }
 
         if (mealType.equals("vegan")) {
             addPoints = 60;
+            co2 = 1.5   ;
         } else {
             addPoints = 50;
+            co2 = 1.0;
         }
 
         if (addMeal) {
@@ -40,7 +41,8 @@ public class VegMealQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-                    return "{\"points\" : " + res + "}";
+                    return "{'points' : " + res + " , 'added' : "
+                            + addPoints + " , 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {
@@ -60,14 +62,18 @@ public class VegMealQuery extends ServerQuery {
      * @return resultset with the current points total.
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {
-        String[] queries = new String[3];
-        queries[0] = "UPDATE points SET points = points + " + pointsToBeAdded + ", last_updated = "
+        String[] queries = new String[4];
+        queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                 + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-        queries[1] = "INSERT INTO vegetarian (username, points, type, datetime) values"
-                + " ('" + username + "',000,'" + mealType + "',CURRENT_TIMESTAMP(0))";
+        queries[1] = "UPDATE points SET co2 = co2 + " + co2
+                + " WHERE username = '" + username + "'";
 
-        queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+        queries[2] = "INSERT INTO vegetarian (username, points, type, datetime, co2) values"
+                + " ('" + username + "'," + addPoints + ",'" + mealType
+                + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
+
+        queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
 
         //should be one function
         return Query.runQueries(queries, username, password);

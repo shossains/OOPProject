@@ -7,6 +7,7 @@ import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
 import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;
+import server.queries.SolarQuery;
 import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
@@ -72,6 +73,8 @@ public class Request {
                 return temp();
             case "PublicTransport":
                 return publicTransport();
+            case "Solar":
+                return solar();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -102,14 +105,19 @@ public class Request {
         return bikeRideQuery.runQuery();
     }
 
+    private String publicTransport() {
+        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
+        return publicTransportQuery.runQuery();
+    }
+
     private String temp() {
         TemperatureQuery temperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
         return temperatureQuery.runQuery();
     }
 
-    private String publicTransport() {
-        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
-        return publicTransportQuery.runQuery();
+    private String solar() {
+        SolarQuery solarQuery = buildGson(rawQuery, SolarQuery.class);
+        return solarQuery.runQuery();
     }
 
     /**

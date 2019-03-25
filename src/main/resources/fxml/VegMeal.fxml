@@ -28,7 +28,7 @@
                         <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
                             <items>
                                 <MenuItem mnemonicParsing="false" text="Personal Settings" />
-                                <MenuItem mnemonicParsing="false" text="Stats" />
+                                <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                                 <MenuItem mnemonicParsing="false" text="Friend List" />
                             </items>
                             <font>
@@ -65,7 +65,10 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by eating vegetarian meal" wrappingWidth="168.70703125" />
+                <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
+               <font>
+                  <Font size="26.0" />
+               </font></Text>
                 <Label layoutX="41.0" layoutY="66.0" text="Add a vegan/vegetarian meal">
                     <font>
                         <Font size="18.0" />
@@ -86,8 +89,6 @@
                     </columns>
                 </TableView>
                 <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when vegetarian meal was added and points awarded" textFill="#0000007b" />
-                <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-                <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
             <Button layoutX="253.0" layoutY="138.0" mnemonicParsing="false" onAction="#vegan" prefHeight="53.0" prefWidth="169.0" stylesheets="@../CSS/RegisterButton.css" text="Vegan" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -96,11 +97,6 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
             </children>
         </AnchorPane>
     </children>

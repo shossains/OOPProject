@@ -66,7 +66,6 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <Text layoutX="496.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows total number of points earned by buying local produce" wrappingWidth="168.70703125" />
                 <Label layoutX="41.0" layoutY="66.0" text="Local Produce">
                     <font>
                         <Font size="18.0" />
@@ -80,9 +79,7 @@
                </columns>
             </TableView>
                 <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when local produce was added and points awarded" textFill="#0000007b" />
-                <Text layoutX="496.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-                <Text layoutX="506.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125" />
-            <Button fx:id="tableVie1" layoutX="261.0" layoutY="164.0" mnemonicParsing="false" onAction="#proceed" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
+            <Button fx:id="tableVie1" layoutX="261.0" layoutY="152.0" mnemonicParsing="false" onAction="#proceed" prefHeight="65.0" prefWidth="149.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -90,14 +87,14 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="66.0" layoutY="140.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
-            <TextField fx:id="weight" layoutX="79.0" layoutY="204.0" />
-            <Label fx:id="invalidWeight" layoutX="79.0" layoutY="232.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
-            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="136.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
+            <TextField fx:id="weight" layoutX="79.0" layoutY="192.0" />
+            <Label fx:id="invalidWeight" layoutX="79.0" layoutY="217.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
+            <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
                <font>
-                  <Font size="13.0" />
+                  <Font size="26.0" />
                </font>
-            </Label>
+            </Text>
             </children>
         </AnchorPane>
     </children>

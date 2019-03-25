@@ -5,21 +5,23 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
 
 public class TemperatureCalculator {
 
-    public static void temp() throws Exception {
+    /**
+     * Calculating kg CO2 produced by your house with a certain amount of temperature.
+     * @param thigh The temperature on which the thermometer is set.
+     * @param tlow The temperature on which the thermometer could be set to save CO2.
+     * @return 'tlow'(int) and kg CO2(double), passed to the method 'tempCalc()'.
+     * @throws Exception Throws Url exception.
+     */
 
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Temperature right now: ");
-        int tempHigh = input.nextInt();
+    public static Double temp(int thigh, int tlow) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tempHigh;
+        int temperature = 1006 * 256 * thigh;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);
@@ -37,26 +39,27 @@ public class TemperatureCalculator {
 
         JSONObject third = second.getJSONObject("object");
 
-        double co2tHigh = third.getFloat("value");
+        Double co2tHigh = third.getDouble("value");
         co2tHigh = Math.round(co2tHigh * 100.00) / 100.00;
-        System.out.println(co2tHigh + " kg CO2");
 
-        TemperatureCalculator testCalc = new TemperatureCalculator();
 
-        testCalc.tempCalc(co2tHigh);
+        TemperatureCalculator temperatureCalculator = new TemperatureCalculator();
+        return temperatureCalculator.tempCalc(tlow, co2tHigh);
     }
 
-    public void tempCalc(double tempHigh) throws MalformedURLException {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Temperature changed to: ");
-        int tempLow = input.nextInt();
+    /**
+     * Calculating the difference in kg CO2 by changing the temperature of your house.
+     * @param tlow The temperature on which the thermometer could be set to save CO2.
+     * @param tempHigh The amount of kg CO2 produced by a temperature.
+     * @return The calculated result of the equation.
+     * @throws MalformedURLException Url exception.
+     */
+    public static Double tempCalc(int tlow, Double tempHigh) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "residences.json";
-        int temperature = 1006 * 256 * tempLow;
+        int temperature = 1006 * 256 * tlow;
         String monthlyUse = "?monthly_natural_gas_volume_estimate=" + temperature;
         String urlString = host + model + monthlyUse;
         URL url = new URL(urlString);
@@ -73,16 +76,13 @@ public class TemperatureCalculator {
         JSONObject second = first.getJSONObject("carbon");
 
         JSONObject third = second.getJSONObject("object");
-
-        double co2tLow = third.getFloat("value");
+        Double co2tLow = third.getDouble("value");
         co2tLow = Math.round(co2tLow * 100.00) / 100.00;
-        System.out.println(co2tLow + " kg CO2");
 
         //Calculate amount of kg CO2 saved.
-        double result = tempHigh - co2tLow;
+        Double result = tempHigh - co2tLow;
         result = Math.round(result * 100.00) / 100.00;
-        System.out.println("Amount CO2 saved= " + result + " kg CO2");
-
+        return result;
     }
 
 

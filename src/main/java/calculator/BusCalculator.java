@@ -7,7 +7,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BusCalculator {
-    public static int bus(int number) {
+
+    /**
+     * The calculator for getting the amount of kg CO2 produced by a bus.
+     * @param number The distance travelled.
+     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carBus()'.
+     */
+
+    public static Double bus(int number) {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -43,11 +50,18 @@ public class BusCalculator {
             return busCalculator.carBus(number, co2Bus);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            return -1;
+            return -1.0;
         }
     }
 
-    public static int carBus(int dist, double busCo2) throws MalformedURLException {
+    /**
+     * The calculator for calculating the difference in kg CO2 produced by a bus and a car.
+     * @param dist The distance from the method 'bus()'.
+     * @param busCo2 The amount of kg CO2 by the bus, from the method 'bus()'.
+     * @return The calculated result of the equation.
+     * @throws MalformedURLException Use of URL
+     */
+    public static Double carBus(int dist, double busCo2) throws MalformedURLException {
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "automobile_trips.json";
@@ -75,7 +89,8 @@ public class BusCalculator {
 
         //Calculate amount of kg CO2 saved.
         Double result = co2New - (busCo2 / 20);
-        result = Math.round(result * 1000.00) / 100.00;
-        return result.intValue();
+        result = Math.round(result * 100.00) / 100.00;
+        return result;
     }
+
 }

@@ -1,4 +1,7 @@
-﻿# The #GoGreen project
+[![pipeline status](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template/badges/master/pipeline.svg)](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template/commits/master)
+[![coverage report](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template/badges/master/coverage.svg)](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template/commits/master)
+
+# The #GoGreen project
 Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't it be great if those Sahara-hot summers and those deadly polar vortexes were no more? Well, say no more! With our java application, project #GoGreen, this might just be possible! How, you ask? Well, read more and you'll find out.  
 
 ## Overview
@@ -6,8 +9,10 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 The #GoGreen project is a java application that stimulates its users to go greener. By asking the user questions about their lifestyle, the application is able to determine how much CO2 they emit. By comparing the user's score to others', as well as rewarding the user with achievements, the application stimulates the user to become "greener", which brings us closer to our end goal, namely reducing our carbon footprint.  
 
 ## Technologies used
-- Java  
-- Java libraries  
+- Java
+- Java libraries
+  - JavaFX
+  - PostgreSQL
 - Heroku
 
 ## Our team
@@ -19,7 +24,7 @@ The #GoGreen project is a java application that stimulates its users to go green
 
 
 ## Shaan Hossain
-NetID: shossain
+NetID: shossain<br/>
 ![Shaan Hossain](https://ibin.co/w800/4X7B75sSRihD.jpg) <br/>
 
 ### Personal Development Plan

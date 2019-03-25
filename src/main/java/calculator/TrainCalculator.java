@@ -8,7 +8,15 @@ import java.net.URL;
 
 public class TrainCalculator {
 
-    public static int train(int number) throws Exception {
+    /**
+     * The calculator for getting the amount of kg CO2 produced by a train.
+     * @param number The distance travelled.
+     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carTrain()'
+     * @throws Exception Url exception.
+     */
+
+    public static Double train(int number) throws Exception {
+
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "rail_trips.json";
@@ -37,7 +45,15 @@ public class TrainCalculator {
         return trainCalculator.carTrain(number, co2Train);
     }
 
-    public static int carTrain(int dist, double trainCo2) throws MalformedURLException {
+    /**
+     * The calculator for calculating the difference in kg CO2 produced by a train and a car.
+     * @param dist The distance travelled from the method 'train()'.
+     * @param trainCo2 The amount of kg CO2 produced by the train, from the method 'train()'.
+     * @return the calculated result of the equation.
+     * @throws MalformedURLException Url Exception.
+     */
+    public static Double carTrain(int dist, double trainCo2) throws MalformedURLException {
+
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "automobile_trips.json";
@@ -65,7 +81,9 @@ public class TrainCalculator {
 
         //Calculate amount of kg CO2 saved.
         Double result = co2Car - (trainCo2 / 200);
-        result = Math.round(result * 1000.00) / 100.00;
-        return result.intValue();
+        result = Math.round(result * 100.00) / 100.00;
+        return result;
+
     }
+
 }

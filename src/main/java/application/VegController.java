@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.util.ResourceBundle;
 
 public class VegController implements Initializable {
     public String mealType;
+    public Text saved;
     @FXML
     ToolBar myToolbar;
 
@@ -87,14 +89,13 @@ public class VegController implements Initializable {
 
     /**
      * Searches for a meal that matches the input.
-     *
      * @param actionEvent The click of the button
      */
     public void add(ActionEvent actionEvent) {
         // Gets username and password to send via json to the server
         // Which uses the CLIENT stored vars.
-        //Don't use any server queries on the gosh darned client, that's only for the server
-        //And please for the love of God don't just change server code vars to static just
+        //  Don't use any server queries on the gosh darned client, that's only for the server
+        //  And please for the love of God don't just change server code vars to static just
         // to make it compile
 
         //send json request
@@ -108,6 +109,8 @@ public class VegController implements Initializable {
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
+
+        saved.setText("You saved: " + parseCo2(response) + " kg of CO2");
     }
 
     /**
@@ -137,6 +140,35 @@ public class VegController implements Initializable {
         } else {
             System.out.println("Null JSON returned");
             return -1;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of co2 saved.
+     */
+    public Double parseCo2(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1.0;
+            }
+            Double points = -1.0;
+            try {
+                points = Double.parseDouble(json.get("co2").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1.0;
         }
     }
 
@@ -213,5 +245,14 @@ public class VegController implements Initializable {
      */
     public void goSolar(ActionEvent actionEvent) throws IOException {
         go("SolarPanels");
+    }
+
+    /**
+     * Go to the User Stats screen.
+     * @param actionEvent Click of the button.
+     * @throws IOException Throw if chart is invalid
+     */
+    public void goStats(ActionEvent actionEvent) throws IOException {
+        go("StatsPieChart");
     }
 }
