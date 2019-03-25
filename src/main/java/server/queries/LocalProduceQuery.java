@@ -46,7 +46,7 @@ public class LocalProduceQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
+                    return "{'points' : " + res + " , 'added' : " + addPoints + " , 'co2' : " + co2 + "}";
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -72,8 +72,5 @@ public class LocalProduceQuery extends ServerQuery {
             }
         }
         return "{'error' : true, 'reason' : 'Error in query'}";
-    }
-
-    public void update() {
     }
 }

@@ -27,8 +27,8 @@ public class CarCalculatorTest {
      */
     @Test
     public void TestCar() {
-        int res = CarCalculator.car(50);
-        Assert.assertEquals(6,res);
+        Double res = CarCalculator.car(50);
+        Assert.assertEquals(6.69, res, 1);
     }
 
     /**

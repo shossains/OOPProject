@@ -6,7 +6,7 @@ import server.db.Query;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TemperatureQuery extends ServerQuery {
+public class SolarQuery extends ServerQuery {
     private Boolean addTemp;
     private int thigh;
     private int tlow;
@@ -33,7 +33,7 @@ public class TemperatureQuery extends ServerQuery {
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "INSERT INTO temperature "
+            queries[1] = "INSERT INTO solar "
                     + "(username, points, temperature, datetime, co2) values"
                     + " ('" + username + "'," + addPoints + ",'" + temp
                     + "',CURRENT_TIMESTAMP(0), " + co2 + ")";

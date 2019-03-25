@@ -23,20 +23,21 @@ public class PublicTransportQuery extends ServerQuery {
 
         if (vehicle.equals("bus")) {
             co2 = BusCalculator.bus(distance);
+
             Double temp = BusCalculator.bus(distance) * 10;
             addPoints = temp.intValue();
-            System.out.println(addPoints);
         } else if (vehicle.equals("train")) {
             try {
                 co2 = TrainCalculator.train(distance);
-                addPoints = TrainCalculator.train(distance).intValue();
+                Double temp = TrainCalculator.train(distance) * 10;
+                addPoints = temp.intValue();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         if (addPublic) {
-            String[] queries = new String[3];
+            String[] queries = new String[4];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
@@ -47,6 +48,9 @@ public class PublicTransportQuery extends ServerQuery {
                     + " ('" + username + "', " + addPoints + ", '" + vehicle
                     + "', '" + distance + "', CURRENT_TIMESTAMP(0), " + co2 + ")";
 
+            queries[3] = "UPDATE points SET co2 = co2 + " + co2
+                    + " WHERE username = '" + username + "'";
+
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
 
@@ -55,7 +59,7 @@ public class PublicTransportQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    return "{'points' : " + res + ", 'added' : " + addPoints + "}";
+                    return "{'points' : " + res + ", 'added' : " + addPoints + ", 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {

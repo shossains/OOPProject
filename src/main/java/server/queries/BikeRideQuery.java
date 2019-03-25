@@ -12,21 +12,26 @@ public class BikeRideQuery extends ServerQuery {
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
-     * TODO: Cleanup, add helper functions to make it more readable.
-     * TODO: Figure out how new points can be queried in log
-     * TODO: Connect with calc to determine points
-     *
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int addPoints = CarCalculator.car(distance);
+        Double co2 = CarCalculator.car(distance) / 1000;
+        Double temp = CarCalculator.car(distance) / 10;
+        int addPoints = temp.intValue();
 
         if (addBike) {
-            String[] queries = new String[2];
+            String[] queries = new String[4];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[1] = "INSERT INTO bikeride (username, points, distance, datetime, co2)"
+                    + "values ('" + username + "'," + addPoints + ",'"
+                    + distance + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
+
+            queries[2] = "UPDATE points SET co2 = co2 + " + co2
+                    + " WHERE username = '" + username + "'";
+
+            queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
 
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
@@ -36,13 +41,7 @@ public class BikeRideQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO bikeride (username, points, distance, datetime)"
-                            + "values ('" + username + "'," + res + ",'"
-                            + distance + "',CURRENT_TIMESTAMP(0))";
-                    Query.runQueries(updateQuery);
-
-                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
+                    return "{'points' : " + res + " , 'added' : " + addPoints + " , 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {

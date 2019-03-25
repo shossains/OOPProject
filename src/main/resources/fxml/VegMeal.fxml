@@ -65,7 +65,7 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
+                <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
                <font>
                   <Font size="26.0" />
                </font></Text>

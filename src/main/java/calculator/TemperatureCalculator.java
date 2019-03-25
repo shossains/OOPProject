@@ -16,7 +16,7 @@ public class TemperatureCalculator {
      * @throws Exception Throws Url exception.
      */
 
-    public static int temp(int thigh, int tlow) throws Exception {
+    public static Double temp(int thigh, int tlow) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -45,7 +45,6 @@ public class TemperatureCalculator {
 
         TemperatureCalculator temperatureCalculator = new TemperatureCalculator();
         return temperatureCalculator.tempCalc(tlow, co2tHigh);
-
     }
 
     /**
@@ -55,8 +54,7 @@ public class TemperatureCalculator {
      * @return The calculated result of the equation.
      * @throws MalformedURLException Url exception.
      */
-
-    public static int tempCalc(int tlow, double tempHigh) throws MalformedURLException {
+    public static Double tempCalc(int tlow, Double tempHigh) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -84,7 +82,7 @@ public class TemperatureCalculator {
         //Calculate amount of kg CO2 saved.
         Double result = tempHigh - co2tLow;
         result = Math.round(result * 100.00) / 100.00;
-        return result.intValue();
+        return result;
     }
 
 

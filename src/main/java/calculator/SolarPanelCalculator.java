@@ -7,10 +7,9 @@ public class SolarPanelCalculator {
      * @param energy amount of kWh used by solar panels
      * @return Calculated amount of kg CO2 saved by using solar panels
      */
-
-    public static int solar(int energy) {
+    public static double solar(int energy) {
         Double energyUsed = 0.46 * energy;
-        return energyUsed.intValue();
+        return energyUsed;
     }
 
 }

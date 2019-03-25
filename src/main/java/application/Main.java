@@ -37,7 +37,7 @@ public class Main extends Application {
         Server server;
         String serverpassword = "password";
         try {
-            server = new Server(3000, new FileInputStream("testkey.jks"),
+            server = new Server(3000, new FileInputStream("D:\\OOPP\\testkey.jks"),
                     serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
