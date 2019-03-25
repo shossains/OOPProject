@@ -93,6 +93,11 @@
             <Label alignment="CENTER" layoutX="66.0" layoutY="140.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
             <TextField fx:id="weight" layoutX="79.0" layoutY="204.0" />
             <Label fx:id="invalidWeight" layoutX="79.0" layoutY="232.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
+            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
