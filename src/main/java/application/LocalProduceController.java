@@ -176,16 +176,17 @@ public class LocalProduceController implements Initializable {
      * This method create the request for only points.
      * @param actionEvent opening a scene or clicking any given button
      */
-    public void returnPoints(ActionEvent actionEvent) {
+    public int returnPoints() {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'localProduce', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
-                + "'addMeal': false}";
+                + "'addLocal': false}";
 
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
+        return parsePoints(response);
     }
 
     /**
