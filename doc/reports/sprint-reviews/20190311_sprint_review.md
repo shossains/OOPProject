@@ -13,7 +13,7 @@
  | Implement CI Pipeline | Shaan  | 2 | 5 | Yes | - |
  | Design VegMeal GUI  | Vanessa | 2 | 4  | Yes | - |
  | Research on the API for the calculator  | Sami  | 4 | 8  | No | - |
- | Worked on the logic for transportation  | Lucas  | - | -  | - | - |
+ | Worked on the logic for transportation  | Lucas  | 3 | 6  | Yes | - |
  | Redesigned server + added SSL/GSON  | Alex  | 2-3 | 6-7  | Yes | - |
  
 ### Adjustments for next sprint
