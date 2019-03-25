@@ -1,4 +1,6 @@
-﻿# The #GoGreen project
+![coverage](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template/badges/master/coverage.svg)
+
+# The #GoGreen project
 Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't it be great if those Sahara-hot summers and those deadly polar vortexes were no more? Well, say no more! With our java application, project #GoGreen, this might just be possible! How, you ask? Well, read more and you'll find out.  
 
 ## Overview
