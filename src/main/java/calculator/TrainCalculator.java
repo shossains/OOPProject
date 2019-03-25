@@ -8,11 +8,11 @@ import java.net.URL;
 
 public class TrainCalculator {
 
-     /**
+    /**
      * The calculator for getting the amount of kg CO2 produced by a train.
      * @param number The distance travelled.
-     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carTrain()'.
-     * @throws Exception
+     * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carTrain()'
+     * @throws Exception Url exception.
      */
 
     public static int train(int number) throws Exception {
@@ -50,9 +50,8 @@ public class TrainCalculator {
      * The calculator for calculating the difference in kg CO2 produced by a train and a car.
      * @param dist The distance travelled from the method 'train()'.
      * @param trainCo2 The amount of kg CO2 produced by the train, from the method 'train()'.
-     * @return the calculated result of the equation ->
-     * (Amount of kg CO2 produced by a car) - (Amount of kg CO2 produced by a train/ Average amount of people taking the train) = kg CO2 saved
-     * @throws MalformedURLException
+     * @return the calculated result of the equation.
+     * @throws MalformedURLException Url Exception.
      */
 
     public static int carTrain(int dist, double trainCo2) throws MalformedURLException {
