@@ -22,8 +22,8 @@
             <TableView fx:id="tableView" layoutX="72.0" layoutY="252.0" prefHeight="184.0" prefWidth="329.0">
                <columns>
                   <TableColumn fx:id="pointsColumn" prefWidth="59.0" text="Points" />
-                  <TableColumn fx:id="tempColumn" prefWidth="167.0" text="Temperature difference" />
-                  <TableColumn fx:id="dateColumn" prefWidth="101.0" text="Date" />
+                  <TableColumn fx:id="kwhColumn" prefWidth="103.0" text="kWh" />
+                  <TableColumn fx:id="dateColumn" prefWidth="165.0" text="Date" />
                </columns>
             </TableView>
                 <ToolBar fx:id="myToolbar" prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
@@ -64,7 +64,7 @@
                         <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#goTemp" text="Add Temperature Adjustment" />
-                                <MenuItem mnemonicParsing="false" text="Add Solar Panels" />
+                                <MenuItem disable="true" mnemonicParsing="false" text="Add Solar Panels" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="13.0" />
@@ -73,7 +73,7 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                <TextField fx:id="output" layoutX="79.0" layoutY="192.0" promptText="Insert output in kwh" />
+                <TextField fx:id="kwh" layoutX="79.0" layoutY="192.0" promptText="Insert output in kwh" />
                 <Label layoutX="41.0" layoutY="66.0" text="Solar Panels">
                     <font>
                         <Font size="18.0" />
@@ -88,7 +88,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Label fx:id="invalidDistance" layoutX="79.0" layoutY="217.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
+            <Label fx:id="invalidKwh" layoutX="79.0" layoutY="217.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
             <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
                <font>
                   <Font size="26.0" />

@@ -1,5 +1,9 @@
 package application;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,56 +12,61 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+
 public class SolarPanelController implements Initializable {
+    public TextField kwh;
+    public Label invalidKwh;
+    public Text saved;
+    public int kwhInt;
+    @FXML
+    ToolBar myToolbar;
 
-    public TextField output;
-    public int outputInt;
-
-    @FXML ToolBar myToolbar;
-
-    //configures the table
+    //configure the table
     @FXML private TableView<TableContents> tableView;
-    @FXML private TableColumn<TableContents, Date> dateColumn;
-    @FXML private TableColumn<TableContents, Integer> outputColumn;
+    @FXML private TableColumn<TableContents, LocalDate> dateColumn;
     @FXML private TableColumn<TableContents, Integer> pointsColumn;
+    @FXML private TableColumn<TableContents, Integer> kwhColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Date>("date"));
-        outputColumn.setCellValueFactory(new PropertyValueFactory
-                <TableContents, Integer>("output"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory
-                <TableContents, Integer>("points"));
+        //sets up columns of the table
+        dateColumn.setCellValueFactory(new PropertyValueFactory<TableContents, LocalDate>("date"));
+        kwhColumn.setCellValueFactory(
+                new PropertyValueFactory<TableContents, Integer>("integer"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
+        ;
     }
 
     /**
-     * returns an ObservableList of Content objects (date, output and point).
+     * returns an OberservableList of Content objects(date and points).
      */
     public ObservableList<TableContents> getContent() {
         ObservableList<TableContents> content = FXCollections.observableArrayList();
-        content.add(new TableContents(50, output.getText()));
-
+        content.add(new TableContents(40,kwh.getText()));
         return content;
     }
 
     /**
-     * Add content to table.
-     * //@param output
+     * General method to add something to the table.
+     * @param points amount of points
+     * @param weight of bought groceries
      */
-    public void addToTable() {
-        TableContents tablecontent = new TableContents(50, 50);
+    public void addToTable(int points, int weight) {
+        TableContents tablecontent = new TableContents(points,weight);
         tableView.getItems().add(tablecontent);
     }
 
@@ -65,7 +74,185 @@ public class SolarPanelController implements Initializable {
      * Takes the input and converts it from string to int.
      */
     public void intify() {
-        outputInt = Integer.parseInt(output.getText());
+        kwhInt = Integer.parseInt(kwh.getText());
+    }
+
+    /**
+     * Check if input is valid, only then proceed.
+     */
+    public void proceed(ActionEvent actionEvent) {
+        boolean kwh = invalidKwh();
+
+        if (!kwh) {
+            intify();
+            add(actionEvent);
+        }
+    }
+
+    /**
+     * Searches for a meal that matches the input.
+     * @param actionEvent The click of the button
+     */
+    public void add(ActionEvent actionEvent) {
+        // Gets username and password to send via json to the server
+        // Which uses the CLIENT stored vars.
+        //Don't use any server queries on the gosh darned client, that's only for the server
+        //And please for the love of God don't just change server code vars to static just
+        // to make it compile
+
+        //send json request
+        System.out.println("Running add");
+
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{'type' : 'Solar', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
+                + "'addSolar' : true, 'kwh' : " + kwhInt + "}";
+
+        String response = scn.sendPostRequest(request);
+        System.out.println(parsePoints(response));
+
+        TableContents tablecontent = new TableContents(addedPoints(response), kwhInt);
+        tableView.getItems().add(tablecontent);
+
+        saved.setText("You've saved " + parseCo2(response) + " kg of CO2");
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points.
+     */
+    public int parsePoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("points").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of co2 saved.
+     */
+    public Double parseCo2(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1.0;
+            }
+            Double points = -1.0;
+            try {
+                points = Double.parseDouble(json.get("co2").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1.0;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The added amount of points.
+     */
+    public int addedPoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("added").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
+     * This method create the request for only points.
+     * @param actionEvent opening a scene or clicking any given button
+     */
+    public void returnPoints(ActionEvent actionEvent) {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{'type' : 'Solar', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
+                + "'addMeal': false}";
+
+        String response = scn.sendPostRequest(request);
+
+        System.out.println(parsePoints(response));
+    }
+
+    /**
+     * Check whether Phone textField are integers only or empty.
+     * @return true if empty or invalid
+     */
+    public boolean invalidKwh() {
+        if (kwh.getText().equals("")) {
+            invalidKwh.setText("Please enter a valid number");
+            return true;
+
+        }
+
+        if (!isInt(kwh.getText())) {
+            invalidKwh.setText("Please enter a valid number");
+            return true;
+        } else {
+            invalidKwh.setText("");
+            return false;
+        }
+    }
+
+    /**
+     * Check whether input is an integer.
+     * @param input the input that needs to be checked
+     * @return True or false
+     */
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
@@ -89,6 +276,15 @@ public class SolarPanelController implements Initializable {
      */
     public void goVeg(ActionEvent actionEvent) throws IOException {
         go("VegMeal");
+    }
+
+    /**
+     * Go to the Local Produce screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goLocal(ActionEvent actionEvent) throws IOException {
+        go("LocalProduce");
     }
 
     /**
@@ -117,17 +313,4 @@ public class SolarPanelController implements Initializable {
     public void goTemp(ActionEvent actionEvent) throws IOException {
         go("Temperature");
     }
-
-
-    /**
-     * Go to the Local Produce screen.
-     * @param actionEvent The click of the button
-     * @throws IOException Throw if file is missing/corrupted/incomplete
-     */
-    public void goLocal(ActionEvent actionEvent) throws IOException {
-        go("LocalProduce");
-    }
-
-
-
 }

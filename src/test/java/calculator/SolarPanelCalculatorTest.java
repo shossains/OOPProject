@@ -14,7 +14,7 @@ public class SolarPanelCalculatorTest {
      */
     @Test
     public void SolarTest(){
-        int result = SolarPanelCalculator.solar(20);
+        Double result = SolarPanelCalculator.solar(20);
         Assert.assertEquals(9.2, result, 1);
     }
 
@@ -23,7 +23,7 @@ public class SolarPanelCalculatorTest {
      */
     @Test
     public void SolarZero() {
-        int result = SolarPanelCalculator.solar(0);
+        Double result = SolarPanelCalculator.solar(0);
         Assert.assertEquals(0, result, 1);
     }
 }

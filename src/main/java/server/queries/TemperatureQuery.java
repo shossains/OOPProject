@@ -61,7 +61,7 @@ public class TemperatureQuery extends ServerQuery {
             }
         } else if (!addTemp) {
             String[] newquery = new String[1];
-            newquery[0] = "SELECT count(*) FROM bikeride WHERE username = '"
+            newquery[0] = "SELECT count(*) FROM solar WHERE username = '"
                     + username + "'";
 
             //should be one function

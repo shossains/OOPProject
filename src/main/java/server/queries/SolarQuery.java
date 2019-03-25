@@ -1,5 +1,6 @@
 package server.queries;
 
+import calculator.SolarPanelCalculator;
 import calculator.TemperatureCalculator;
 import server.db.Query;
 
@@ -7,35 +8,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SolarQuery extends ServerQuery {
-    private Boolean addTemp;
-    private int thigh;
-    private int tlow;
+    private Boolean addSolar;
+    private int kwh;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int temp = thigh - tlow;
-        Double co2 = 0.0;
-        int addPoints = 0;
+        Double co2 = SolarPanelCalculator.solar(kwh);
+        int addPoints = co2.intValue();
 
-        try {
-            co2 = TemperatureCalculator.temp(thigh,tlow);
-            Double tempvalue = co2 * 100;
-            addPoints = tempvalue.intValue();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (addTemp) {
+        if (addSolar) {
             String[] queries = new String[4];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
             queries[1] = "INSERT INTO solar "
-                    + "(username, points, temperature, datetime, co2) values"
-                    + " ('" + username + "'," + addPoints + ",'" + temp
+                    + "(username, points, kwh, datetime, co2) values"
+                    + " ('" + username + "'," + addPoints + ",'" + kwh
                     + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
             queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
@@ -59,9 +50,9 @@ public class SolarQuery extends ServerQuery {
                 e.printStackTrace();
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
             }
-        } else if (!addTemp) {
+        } else if (!addSolar) {
             String[] newquery = new String[1];
-            newquery[0] = "SELECT count(*) FROM bikeride WHERE username = '"
+            newquery[0] = "SELECT count(*) FROM solar WHERE username = '"
                     + username + "'";
 
             //should be one function
