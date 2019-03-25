@@ -59,7 +59,8 @@ public class VegMealQuery extends ServerQuery {
 
         } else if (!addMeal) {
             String[] queries = new String[1];
-            queries[0] = "SELECT count(*) FROM localProduce WHERE username = '" + username + "'";
+
+            queries[0] = "SELECT count(*) FROM vegetarian WHERE username = '" + username + "'";
 
             //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
@@ -68,8 +69,11 @@ public class VegMealQuery extends ServerQuery {
             try {
                 while (rs.next()) {
                     int res = rs.getInt(1);
-                    return "{\"points\" : " + res + "}";
+                    rs.close();
+
+                    return "{'points' : " + res + "}";
                 }
+                return null;
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "Error in resultset";
