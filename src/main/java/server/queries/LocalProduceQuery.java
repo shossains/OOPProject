@@ -19,14 +19,22 @@ public class LocalProduceQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        int addPoints = LocalProduceCalculator.produce(weight);
+        Double co2 = LocalProduceCalculator.produce(weight);
+        Double addCo2 = LocalProduceCalculator.produce(weight) * 100;
+        int addPoints = addCo2.intValue();
 
         if (addLocal) {
-            String[] queries = new String[2];
+            String[] queries = new String[4];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[1] = "UPDATE points SET co2 = co2 + " + co2 + " WHERE username = '" + username + "'";
+
+            queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";
+
+            queries[3] = "INSERT INTO localproduce (username, points, weight, datetime, co2)"
+                    + "values ('" + username + "'," + addPoints + ",'"
+                    + weight + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
@@ -35,12 +43,6 @@ public class LocalProduceQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-
-                    String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO localproduce (username, points, weight, datetime)"
-                            + "values ('" + username + "'," + res + ",'"
-                            + weight + "',CURRENT_TIMESTAMP(0))";
-                    Query.runQueries(updateQuery);
 
                     return "{'points' : " + res + " , 'added' : " + addPoints + "}";
                 }

@@ -14,7 +14,7 @@ public class LocalProduceCalculatorTest {
      */
     @Test
     public void local() {
-        int result = LocalProduceCalculator.produce(600);
+        Double result = LocalProduceCalculator.produce(600);
         Assert.assertEquals(0.2, result, 1);
     }
 
@@ -23,7 +23,7 @@ public class LocalProduceCalculatorTest {
      */
     @Test
     public void localZero() {
-        int result = LocalProduceCalculator.produce(0);
+        Double result = LocalProduceCalculator.produce(0);
         Assert.assertEquals(0, result, 1);
     }
 }

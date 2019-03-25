@@ -15,7 +15,7 @@ public class TrainCalculator {
      * @throws Exception
      */
 
-    public static int train(int number) throws Exception {
+    public static Double train(int number) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -43,7 +43,6 @@ public class TrainCalculator {
 
         TrainCalculator trainCalculator = new TrainCalculator();
         return trainCalculator.carTrain(number, co2Train);
-
     }
 
     /**
@@ -54,8 +53,7 @@ public class TrainCalculator {
      * (Amount of kg CO2 produced by a car) - (Amount of kg CO2 produced by a train/ Average amount of people taking the train) = kg CO2 saved
      * @throws MalformedURLException
      */
-
-    public static int carTrain(int dist, double trainCo2) throws MalformedURLException {
+    public static Double carTrain(int dist, double trainCo2) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -85,7 +83,7 @@ public class TrainCalculator {
         //Calculate amount of kg CO2 saved.
         Double result = co2Car - (trainCo2 / 200);
         result = Math.round(result * 100.00) / 100.00;
-        return result.intValue();
+        return result;
 
     }
 

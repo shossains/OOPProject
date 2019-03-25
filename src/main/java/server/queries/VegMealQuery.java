@@ -18,22 +18,31 @@ public class VegMealQuery extends ServerQuery {
      */
     public String runQuery() {
         int addPoints;
+        Double co2;
         if (mealType == null) {
             return "{'error' : true, 'reason' : 'mealType not given'}";
         }
 
         if (mealType.equals("vegan")) {
             addPoints = 60;
+            co2 = 1.5   ;
         } else {
             addPoints = 50;
+            co2 = 1.0;
         }
 
         if (addMeal) {
-            String[] queries = new String[2];
+            String[] queries = new String[4];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-            queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
+            queries[1] = "UPDATE points SET co2 = co2 + " + co2 + " WHERE username = '" + username + "'";
+
+            queries[2] = "INSERT INTO vegetarian (username, points, type, datetime, co2) values"
+                    + " ('" + username + "'," + addPoints + ",'" + mealType
+                    + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
+
+            queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
 
             //should be one function
             ResultSet[] rsArray = Query.runQueries(queries);
@@ -44,12 +53,7 @@ public class VegMealQuery extends ServerQuery {
                     int res = rs.getInt(1);
                     rs.close();
 
-                    String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO vegetarian (username, points, type, datetime) values"
-                            + " ('" + username + "'," + res + ",'" + mealType + "',CURRENT_TIMESTAMP(0))";
-                    Query.runQueries(updateQuery);
-
-                    return "{'points' : " + res + " , 'added' : " + addPoints + "}";
+                    return "{'points' : " + res + " , 'added' : " + addPoints + " , 'co2' : " + co2 + "}";
                 }
                 return null;
             } catch (SQLException e) {

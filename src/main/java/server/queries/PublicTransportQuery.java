@@ -18,24 +18,34 @@ public class PublicTransportQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
+        Double co2 = 0.0;
         int addPoints = 0;
 
         if (vehicle.equals("bus")) {
-            addPoints = BusCalculator.bus(distance);
+            co2 = BusCalculator.bus(distance);
+            Double temp = BusCalculator.bus(distance) * 10;
+            addPoints = temp.intValue();
+            System.out.println(addPoints);
         } else if (vehicle.equals("train")) {
             try {
-                addPoints = TrainCalculator.train(distance);
+                co2 = TrainCalculator.train(distance);
+                addPoints = TrainCalculator.train(distance).intValue();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         if (addPublic) {
-            String[] queries = new String[2];
+            String[] queries = new String[3];
             queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
                     + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
             queries[1] = "SELECT points FROM points WHERE username = '" + username + "'";
+
+            queries[2] = "INSERT INTO publictransport"
+                    + "(username, points, vehicletype, distance, datetime, co2) values"
+                    + " ('" + username + "', " + addPoints + ", '" + vehicle
+                    + "', '" + distance + "', CURRENT_TIMESTAMP(0), " + co2 + ")";
 
             ResultSet[] rsArray = Query.runQueries(queries);
             ResultSet rs = rsArray[0];
@@ -44,13 +54,6 @@ public class PublicTransportQuery extends ServerQuery {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
-
-                    String[] updateQuery = new String[1];
-                    updateQuery[0] = "INSERT INTO publictransport"
-                            + "(username, points, vehicletype, distance, datetime) values"
-                            + " ('" + username + "', " + res + ", '" + vehicle
-                            + "', '" + distance + "', CURRENT_TIMESTAMP(0))";
-                    Query.runQueries(updateQuery);
 
                     return "{'points' : " + res + ", 'added' : " + addPoints + "}";
                 }

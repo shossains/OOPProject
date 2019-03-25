@@ -14,7 +14,7 @@ public class BusCalculator {
      * @return Passing the values of the distance(int) and kg CO2(double) to the method 'carBus()'.
      */
 
-    public static int bus(int number) {
+    public static Double bus(int number) {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -50,7 +50,7 @@ public class BusCalculator {
             return busCalculator.carBus(number, co2Bus);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            return -1;
+            return -1.0;
         }
     }
 
@@ -59,11 +59,12 @@ public class BusCalculator {
      * @param dist The distance from the method 'bus()'.
      * @param busCo2 The amount of kg CO2 by the bus, from the method 'bus()'.
      * @return the calculated result of the equation ->
-     * (Amount of kg CO2 produced by a car) - (Amount of kg CO2 produced by a bus/ Average amount of people taking the bus) = kg CO2 saved
-     * @throws MalformedURLException
+     * (Amount of kg CO2 produced by a car) - (Amount of kg CO2 produced by a bus/
+     * Average amount of people taking the bus) = kg CO2 saved
+     * @throws MalformedURLException throw error
      */
 
-    public static int carBus(int dist, double busCo2) throws MalformedURLException {
+    public static Double carBus(int dist, double busCo2) throws MalformedURLException {
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
         String model = "automobile_trips.json";
@@ -92,7 +93,7 @@ public class BusCalculator {
         //Calculate amount of kg CO2 saved.
         Double result = co2New - (busCo2 / 20);
         result = Math.round(result * 100.00) / 100.00;
-        return result.intValue();
+        return result;
     }
 
 }
