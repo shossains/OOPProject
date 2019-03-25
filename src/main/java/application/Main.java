@@ -21,7 +21,7 @@ public class Main extends Application {
 
         try {
             primaryStage = stage;
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/TEMPCompareScreen.fxml"));
             Scene scene = new Scene(root, 720, 480);
             stage.setTitle("#GoGreen");
             stage.setScene(scene);
