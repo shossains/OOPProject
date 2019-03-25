@@ -1,5 +1,8 @@
 package application;
 
+import client.SecureClientNetworking;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +16,9 @@ import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import application.VegController;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StatsController implements Initializable {
@@ -25,20 +30,69 @@ public class StatsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        VegController vegController = new VegController();
+        //LocalProduceController localProduceController = new LocalProduceController();
+        BikeController bikeController = new BikeController();
+        int VegMealValue = vegController.returnPoints();
+        //int LocProdValue = .returnPoints();
+        //int BikeValue = bikeController.returnPoints();
+        request();
         ObservableList<PieChart.Data> userPieChartData
-                = FXCollections.observableArrayList(new PieChart.Data("VegMeal", 50),
-                new PieChart.Data("Bike Ride", 120), new PieChart.Data("Temperature", 100));
+                = FXCollections.observableArrayList(
+                        new PieChart.Data("VegMeal", VegMealValue),
+                        new PieChart.Data("Bike Ride", 120),
+                        new PieChart.Data("Temperature", 80),
+                        new PieChart.Data("SolarPanels", 50),
+                        new PieChart.Data("LocalProduce", 25),
+                        new PieChart.Data("Public Transport", 10));
         userPieChart.setData(userPieChartData);
 
         ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", 60), new PieChart.Data("Bike Ride", 120),
+                        new PieChart.Data("VegMeal", 60),
+                        new PieChart.Data("Bike Ride", 120),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50),
                         new PieChart.Data("LocalProduce", 25),
-                        new PieChart.Data("Public Transport", 10)
-        );
+                        new PieChart.Data("Public Transport", 10));
         friendPieChart.setData(friendPieChartData);
+    }
+
+    public void request() {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{'type' : 'Combined', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
+
+        String response = scn.sendPostRequest(request);
+
+        System.out.println(parsePoints(response));
+        //return parsePoints(response);
+    }
+
+
+    public int parsePoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("points").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
     }
 
     /**
