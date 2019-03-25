@@ -1,6 +1,6 @@
 # How to write server queries
 ### What is a server query?
-A server query is a java class that lives under Server.queries and extends ServerQuery. It is the code that is executed server-side for each query, and is responsible for
+A server query is a java class that lives under Server.queries and extends ServerQuery. It is code that is executed server-side, and is responsible for
 processing the request into a JSON response. This means that all the database stuff and calculations need to be done in those classes.
 
 
@@ -9,15 +9,16 @@ processing the request into a JSON response. This means that all the database st
 * The processing of the JSON is done automatically be the server using GSON.
 * GSON takes raw JSON, and a java class as input, then maps matching JSON variables onto variables of the java class.
 * It then returns a java class with the values from JSON variables initialized as java variables.
-* Because of this approach, we need to create classes which match those JSON variables for each kind of request, as per the API list. 
+* Because of this approach, we need to create java classes for each kind of request listed the API list. 
 * However, this allows us greater flexibility in the long run, as each of these separate classes will contain all the logic needed to process that JSON query.
 * So, no more convoluted and bloated switch statements, and enigmatic function calls.
 
 ### Requirements for a server-side Query class
 * Call your class something like xxxQuery to make everything look uniform
 * Must extend ServerQuery, the superclass containing the username and password of the user requesting it.
-* Must declare all variables it expects from json, ***as the correct type: if you expect a boolean fro JSON, declare the corresponding variable as a boolean!***
-* Do not initialize the variables (i.e. simply list them right after `public class xxx extends ServerQuery {` )
+* Must declare all variables it expects from json, ***as the correct type: if you expect a boolean from JSON, declare the corresponding variable as a boolean!***
+* **Do not initialize the variables** (i.e. simply list them right after `public class xxx extends ServerQuery {` )
+* These variables will be automatically initialized by the server - don't worry about that.
 * Must contain a *runQuery()* method, which contains all the code that will execute the query on the server (i.e. all the database calls, calculations ,api calls)
 * *runQuery()* will be called by the server **once**, and will expect it to do the actual logic of the query. No other processing is done by the server.
 * This method must return a String in JSON format, which will then be returned to the client as the response. This is **the** response, so it will be passed back as is!
@@ -30,6 +31,8 @@ accidentally breaking something, so instead take time thoroughly testing your cl
 # Example
 
 For JSON string `"{'type':'TestRequest', 'extraData':'Irrelevant Data', 'isTest': true}"`
+
+Note that the irrelevant `extraData``` variable is not processed since its not declared in the class.
 
 ```
 package server.queries;
@@ -52,8 +55,11 @@ public class TestQuery extends ServerQuery {
 
 Returns `"{"success": "who knows", "isTest": true, "username":"alexshulzycki"}`
 
+**IF YOU ARE GOING TO CONSTRUCT A JSON STRING MANUALLY LIKE SO, MAKE SURE IT IS VALID JSON**
+
 # Testing
 If you dont do this, Andy will kill you. And if he doesnt, I will.
+You need to test both the actual logic/calculations, and sending/receiving from the server.
 
 ### Writing a test for a ServerQuery query
 You essentially need to do these things: 
@@ -63,7 +69,7 @@ You essentially need to do these things:
 * Test individual functions - Preferrably do this, until the database-query workflow is optimized further ideally before next week.
 
 ### Setting up database row
-Usually just zero out the data in the user's test row. This is just an example, and is not the final code that will be used in VegMealQuery. Ask Shaan and use your head!
+Usually just zero out the data in the user's test row. This is just an example, and is not the final code that will be used in VegMealQuery. Look at the ER diagram in this folder, and ask Shaan if you have any questions!
 ```
 /**
      * initializes variables, clean up test entry in users
