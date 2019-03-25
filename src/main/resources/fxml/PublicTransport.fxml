@@ -100,6 +100,11 @@
                   <TableColumn fx:id="dateColumn" prefWidth="118.0" text="Date" />
                </columns>
             </TableView>
+            <Label alignment="CENTER" layoutX="647.0" layoutY="56.0" prefHeight="18.0" prefWidth="72.0" text="Points">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
