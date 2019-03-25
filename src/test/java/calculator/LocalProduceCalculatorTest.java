@@ -15,7 +15,7 @@ public class LocalProduceCalculatorTest {
     @Test
     public void local() {
         int result = LocalProduceCalculator.produce(600);
-        Assert.assertEquals(19.7, result, 1);
+        Assert.assertEquals(0.2, result, 1);
     }
 
     /**

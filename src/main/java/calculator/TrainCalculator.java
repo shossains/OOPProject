@@ -84,7 +84,7 @@ public class TrainCalculator {
 
         //Calculate amount of kg CO2 saved.
         Double result = co2Car - (trainCo2 / 200);
-        result = Math.round(result * 1000.00) / 100.00;
+        result = Math.round(result * 100.00) / 100.00;
         return result.intValue();
 
     }

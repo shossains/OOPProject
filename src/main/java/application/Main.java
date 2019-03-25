@@ -1,6 +1,6 @@
 package application;
 
-import calculator.BusCalculator;
+import calculator.LocalProduceCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,12 +39,13 @@ public class Main extends Application {
 //        }
 //        launch(args);
 
-        try {
-            BusCalculator.carBus(20, 3.1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            BusCalculator.bus(30);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
+        LocalProduceCalculator.produce(0);
 
 
 

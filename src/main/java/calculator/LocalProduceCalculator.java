@@ -10,12 +10,13 @@ public class LocalProduceCalculator {
 
     public static int produce(int weight) {
         //Calculate amount of kg CO2 saved.
-        Double localFood = 0.232 * weight;
-        Double importFood = 0.560 * weight;
+        Double localFood = 232.0 * weight;
+        Double importFood = 560.0 * weight;
 
         Double doubleResult = importFood - localFood;
 
-        doubleResult = Math.round(doubleResult) / 10.00;
+        doubleResult = doubleResult /1000000;
+        doubleResult = Math.round(doubleResult*100.00) / 100.00;
         return doubleResult.intValue();
     }
 

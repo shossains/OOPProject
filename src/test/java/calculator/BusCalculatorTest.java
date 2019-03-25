@@ -32,7 +32,7 @@ public class BusCalculatorTest {
     @Test
     public void TestBus() {
         int result = BusCalculator.bus(30);
-        Assert.assertEquals(37, result);
+        Assert.assertEquals(3.8, result, 1);
     }
 
 
@@ -43,7 +43,7 @@ public class BusCalculatorTest {
     @Test
     public void TestBusCar() throws MalformedURLException {
         int result = BusCalculator.carBus(20, 3.1);
-        Assert.assertEquals(25, result);
+        Assert.assertEquals(2.5, result, 1);
     }
 
     /**

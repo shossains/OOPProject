@@ -91,7 +91,7 @@ public class BusCalculator {
 
         //Calculate amount of kg CO2 saved.
         Double result = co2New - (busCo2 / 20);
-        result = Math.round(result * 1000.00) / 100.00;
+        result = Math.round(result * 100.00) / 100.00;
         return result.intValue();
     }
 
