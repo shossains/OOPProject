@@ -20,7 +20,7 @@ public class Main extends Application {
         setupUser();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
-        Scene scene = new Scene(root,720,480);
+        Scene scene = new Scene(root,720,480); //Dimensions
         stage.setTitle("#GoGreen");
         stage.setScene(scene);
         stage.show();
