@@ -1,6 +1,5 @@
 package server.queries;
 
-import application.VegController;
 import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -10,10 +9,6 @@ import server.db.Query;
 
 public class VegMealTest {
 
-    /**
-     * as in VegController, not vietcong
-     */
-    static private VegController vc;
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
 
