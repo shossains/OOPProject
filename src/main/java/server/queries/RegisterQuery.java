@@ -27,7 +27,7 @@ public class RegisterQuery extends ServerQuery {
      * @return result of registration.
      */
     public String runQuery() {
-        if(usernameExists()){
+        if (usernameExists()) {
             return "{'error': true, 'reason' : 'Username already exists'}";
         }
 
@@ -35,24 +35,28 @@ public class RegisterQuery extends ServerQuery {
         return "{'error': true, 'reason' : 'not fully implemented yet'}";
     }
 
-    /**Constructs queries for the insertion of the new user to the database.
+    /**
+     * Constructs queries for the insertion of the new user to the database.
      * Note that for some reason the points table needs to be updated first.
+     *
      * @return Returns the queries needed to run.
      */
     private String[] getQueries() {
         String[] queries = new String[2];
         //add to client
-        queries[1] = "INSERT INTO client \n" +
-                "VALUES ('"+username+"', '"+fname+"', '"+lname+"'," +
-                " '"+email+"', '"+getHashedPassword(password)+"', '"+phone+"')";
+        queries[1] = "INSERT INTO client \n"
+                + "VALUES ('" + username + "', '" + fname + "', '" + lname + "',"
+                + " '" + email + "', '" + getHashedPassword(password) + "', '" + phone + "')";
 
         //add to points
-        queries[0] = "INSERT INTO points VALUES ('"+username+"', 0, CURRENT_TIMESTAMP(0))";
+        queries[0] = "INSERT INTO points VALUES ('" + username + "', 0, CURRENT_TIMESTAMP(0))";
 
         return queries;
     }
 
-    /**Checks whether the username is already in use.
+    /**
+     * Checks whether the username is already in use.
+     *
      * @return Whether or not the username exists in the main client table.
      */
     public boolean usernameExists() {
