@@ -194,6 +194,7 @@
                 <configuration>
                     <excludes>
                         <exclude>application/**</exclude>
+                        <exclude>server/queries/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
