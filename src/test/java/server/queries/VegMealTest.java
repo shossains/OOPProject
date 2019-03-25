@@ -22,37 +22,12 @@ public class VegMealTest {
      * initializes variables, clean up test entry in users
      */
     @BeforeClass
-    public static void init(){
-        vc = new VegController();
-
+    public static void init() {
         //set the score to 0 on the test row
         String[] queries = new String[1];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
-                + testUserRow +"'";
+                + testUserRow + "'";
         Query.runQueries(queries, testUserRow, testUserPass);
-
-    }
-
-    /**
-     * Test if json parsing used in the class actually parses
-     */
-    @Test
-    public void JsonParsing(){
-        int points = vc.parsePoints("{'points': 43}");
-        Assert.assertEquals(43, points);
-    }
-
-    /**
-     * Testing reaction to a bad json response
-     */
-    @Test
-    public void BadJsonParsing(){
-        int points = vc.parsePoints("{'points': '43'}");
-        Assert.assertEquals(-1, points);
-        points = vc.parsePoints("{'points': false}");
-        Assert.assertEquals(-1, points);
-        points = vc.parsePoints("what");
-        Assert.assertEquals(-1, points);
     }
 
     /**
