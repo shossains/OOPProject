@@ -18,6 +18,7 @@
 <?import javafx.scene.control.skin.TableHeaderRow?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <?import application.Compare?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CompController">
     <children>
@@ -79,7 +80,7 @@
 
                 <TableView fx:id="points" layoutX="50.0" layoutY="120.0" prefHeight="330.0" prefWidth="400.0">
                     <columns>
-                        <TableColumn fx:id="categories" prefWidth="70.0" text="Features">
+                        <TableColumn fx:id="categories" prefWidth="70.0" text="Category">
                             <cellValueFactory><PropertyValueFactory property="categories" />
                             </cellValueFactory>
                         </TableColumn>
@@ -92,7 +93,11 @@
                     </columns>
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <Compare userPoints="12" friendPoints="0"/>
+                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Vegetarian meal" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
+                            <Compare categories="Total" userPoints="0" friendPoints="0"/>
                         </FXCollections>
                     </items>
                 </TableView>
