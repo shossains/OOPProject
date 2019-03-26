@@ -37,9 +37,9 @@ public class StatsController implements Initializable {
                         new PieChart.Data("SolarPanels", 50),
                         new PieChart.Data("LocalProduce", 25),
                         new PieChart.Data("Public Transport", 10));
-        userPieChart.setData(userPieChartData);
+    userPieChart.setData(userPieChartData);
 
-        ObservableList<PieChart.Data> friendPieChartData
+    ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", 60),
                         new PieChart.Data("Bike Ride", 120),
@@ -47,11 +47,11 @@ public class StatsController implements Initializable {
                         new PieChart.Data("SolarPanels", 50),
                         new PieChart.Data("LocalProduce", 25),
                         new PieChart.Data("Public Transport", 10));
-        friendPieChart.setData(friendPieChartData);
-    }
+     friendPieChart.setData(friendPieChartData);
+  }
 
-    public int[] request() {
-        int[] ints = new int[10]; //size = amount of categories TODO: change size to actually do that
+  public int[] request() {
+    int[] ints = new int[6];
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'Combined', 'username' : '"
