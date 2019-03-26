@@ -30,16 +30,16 @@ public class StatsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        VegController vegController = new VegController();
+        //VegController vegController = new VegController();
         //LocalProduceController localProduceController = new LocalProduceController();
-        BikeController bikeController = new BikeController();
-        int VegMealValue = vegController.returnPoints();
+        //BikeController bikeController = new BikeController();
+        //int VegMealValue = vegController.returnPoints();
         //int LocProdValue = .returnPoints();
         //int BikeValue = bikeController.returnPoints();
         request();
         ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", VegMealValue),
+                        new PieChart.Data("VegMeal", 20),
                         new PieChart.Data("Bike Ride", 120),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50),
