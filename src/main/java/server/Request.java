@@ -3,7 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.CombinedQuery;
+import server.queries.*;
 
 /**
  * Class for parsing requests using Gson.
