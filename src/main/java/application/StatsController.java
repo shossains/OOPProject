@@ -27,11 +27,12 @@ public class StatsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     int[] allPoints = request();
     int vegMealValue = allPoints[0];
+    int bikeValue = allPoints[1];
 
     ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", vegMealValue),
-                        new PieChart.Data("Bike Ride", 120),
+                        new PieChart.Data("Bike Ride", bikeValue),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50),
                         new PieChart.Data("LocalProduce", 25),
