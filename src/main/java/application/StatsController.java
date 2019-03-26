@@ -27,31 +27,31 @@ public class StatsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     int[] allPoints = request();
     int vegMealValue = allPoints[0];
-    int bikeValue = allPoints[1];
+    int locProdValue = allPoints[1];
+    int bikeValue = allPoints[2];
 
     ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", vegMealValue),
+                        new PieChart.Data("LocalProduce", locProdValue),
                         new PieChart.Data("Bike Ride", bikeValue),
+                        new PieChart.Data("Public Transport", 10),
                         new PieChart.Data("Temperature", 80),
-                        new PieChart.Data("SolarPanels", 50),
-                        new PieChart.Data("LocalProduce", 25),
-                        new PieChart.Data("Public Transport", 10));
+                        new PieChart.Data("SolarPanels", 50));
     userPieChart.setData(userPieChartData);
 
     ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", 60),
-                        new PieChart.Data("Bike Ride", 120),
-                        new PieChart.Data("Temperature", 80),
-                        new PieChart.Data("SolarPanels", 50),
-                        new PieChart.Data("LocalProduce", 25),
-                        new PieChart.Data("Public Transport", 10));
+            new PieChart.Data("VegMeal", 60),
+            new PieChart.Data("LocalProduce", 25),
+            new PieChart.Data("Bike Ride", 120),
+            new PieChart.Data("Public Transport", 10),
+            new PieChart.Data("Temperature", 80),
+            new PieChart.Data("SolarPanels", 50));
     friendPieChart.setData(friendPieChartData);
   }
 
   public int[] request() {
-    int[] ints = new int[6];
     SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
     String request = "{'type' : 'Combined', 'username' : '"
@@ -60,9 +60,14 @@ public class StatsController implements Initializable {
     String response = scn.sendPostRequest(request);
 
     System.out.println(parseVegPoints(response));
+    System.out.println(parseLocProdPoints(response));
     System.out.println(parseBikePoints(response));
+
+    int[] ints = new int[6];
     ints[0] = parseVegPoints(response);
-    ints[1] = parseBikePoints(response);
+    ints[1] = parseLocProdPoints(response);
+    ints[2] = parseBikePoints(response);
+
     return ints;
   }
 
@@ -107,6 +112,18 @@ public class StatsController implements Initializable {
       System.out.println("Bad json format returned");
     }
     return bikePoints;
+  }
+
+  public int parseLocProdPoints(String responseJson) {
+    JsonObject json = parseJson(responseJson);
+    int locProdPoints = -1;
+    try {
+      locProdPoints = Integer.parseInt(json.get("locProdPoints").toString());
+    } catch (NumberFormatException e) {
+      System.out.println(responseJson);
+      System.out.println("Bad json format returned");
+    }
+    return locProdPoints;
   }
 
   /**
