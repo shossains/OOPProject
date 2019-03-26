@@ -15,22 +15,26 @@ public class CombinedQuery  extends ServerQuery {
      */
 
     public String runQuery() {
-        String[] queries = new String[2];
+        String[] queries = new String[3];
         queries[0] = "SELECT count(*) FROM vegetarian WHERE username = '" + username + "'";
-        queries[1] = "SELECT count(*) FROM bikeride WHERE username = '" + username + "'";
+        queries[1] = "SELECT count(*) FROM localproduce WHERE username = '" + username + "'";
+        queries[2] = "SELECT count(*) FROM bikeride WHERE username = '" + username + "'";
 
         ResultSet[] rsArray = Query.runQueries(queries);
         ResultSet rs = rsArray[0];
         ResultSet rs1 = rsArray[1];
+        ResultSet rs2 = rsArray[2];
 
 
         try {
-            while (rs.next() && rs1.next()) {
+            while (rs.next() && rs1.next() && rs2.next()) {
                 int res = rs.getInt(1);
                 int res1 = rs1.getInt(1);
+                int res2 = rs2.getInt(1);
                 rs.close();
                 rs1.close();
-                String resStr = "{'vegPoints' : " + res  + ", 'bikePoints' : " + res1 + "}";
+                rs2.close();
+                String resStr = "{'vegPoints' : " + res  + ", 'locProdPoints' : " + res1 + ", 'bikePoints' : " + res2 + "}";
                 return resStr;
             }
             return null;
