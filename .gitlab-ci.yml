@@ -28,6 +28,9 @@ coverage:
   dependencies:
     - test
   script: 
+    - cd test/target/site
+    - tar -czf coverage.tar.gz jacoco-aggregate
+    - cd -
     - "path=$(curl --request POST --header \"PRIVATE-TOKEN: oTkZcmVWPN9HFjUSVs-z\" --form \"file=@tests/target/site/coverage.tar.gz\" https://gitlab.ewi.tudelft.nl/api/v4/projects/1096/uploads | sed 's/.\"url\":\"\\(.\\)\",\".*/\\1/')"
     - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nCOVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' target/site/jacoco/jacoco.csv)
     - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nAGGREGATE COVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
