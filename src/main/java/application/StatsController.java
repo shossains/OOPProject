@@ -1,6 +1,7 @@
 package application;
 
 import client.SecureClientNetworking;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import org.json.*;
 
 import java.io.IOException;
 import application.VegController;
@@ -66,33 +68,39 @@ public class StatsController implements Initializable {
 
         String response = scn.sendPostRequest(request);
 
-        System.out.println(parsePoints(response));
+        System.out.println(parseVegPoints(response));
         //return parsePoints(response);
     }
 
 
-    public int parsePoints(String responseJson) {
+    public JsonObject parseJson(String responseJson) {
         if (responseJson != null) {
             //de-Json the response and update the amount of points.
-            JsonObject json = null;
+            //JsonElement jsonElement = new JsonParser().parse(responseJson);
+            JsonObject json;
             try {
                 json = new JsonParser().parse(responseJson).getAsJsonObject();
+                return json;
             } catch (IllegalStateException e) {
                 System.out.println("Returned something that's not even JSON");
-                return -1;
+                return null;
             }
-            int points = -1;
-            try {
-                points = Integer.parseInt(json.get("points").toString());
-            } catch (NumberFormatException e) {
-                System.out.println(responseJson);
-                System.out.println("Bad json format returned");
-            }
-            return points;
         } else {
             System.out.println("Null JSON returned");
-            return -1;
+            return null;
         }
+    }
+
+    public int parseVegPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int vegPoints = -1;
+        try {
+            vegPoints = Integer.parseInt(json.get("vegPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return vegPoints;
     }
 
     /**
