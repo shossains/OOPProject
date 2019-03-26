@@ -70,7 +70,9 @@ public class StatsController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parseVegPoints(response));
+        System.out.println(parseBikePoints(response));
         ints[0] = parseVegPoints(response);
+        ints[1] = parseBikePoints(response);
         return ints;
     }
 
@@ -103,6 +105,18 @@ public class StatsController implements Initializable {
             System.out.println("Bad json format returned");
         }
         return vegPoints;
+    }
+
+    public int parseBikePoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int bikePoints = -1;
+        try {
+            bikePoints = Integer.parseInt(json.get("bikePoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return bikePoints;
     }
 
     /**
