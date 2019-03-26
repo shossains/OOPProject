@@ -30,7 +30,7 @@ public class CombinedQuery  extends ServerQuery {
                 int res1 = rs1.getInt(1);
                 rs.close();
                 rs1.close();
-                String resStr = "{'points' : " + res  + res1 + "}";
+                String resStr = "{'vegPoints' : " + res  + ", 'bikePoints' : " + res1 + "}";
                 return resStr;
             }
             return null;
