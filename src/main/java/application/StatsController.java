@@ -1,9 +1,11 @@
 package application;
 
 import client.SecureClientNetworking;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,33 +17,20 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
-import org.json.*;
-
-import java.io.IOException;
-import application.VegController;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class StatsController implements Initializable {
+  @FXML private ToolBar myToolbar;
+  @FXML private PieChart userPieChart;
+  @FXML private PieChart friendPieChart;
 
-    @FXML ToolBar myToolbar;
+  @Override
+    public void initialize(URL url, ResourceBundle rb) {
+    int[] allPoints = request();
+    int vegMealValue = allPoints[0];
 
-    @FXML private PieChart userPieChart;
-    @FXML private PieChart friendPieChart;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-        //VegController vegController = new VegController();
-        //LocalProduceController localProduceController = new LocalProduceController();
-        //BikeController bikeController = new BikeController();
-        //int VegMealValue = vegController.returnPoints();
-        //int LocProdValue = .returnPoints();
-        //int BikeValue = bikeController.returnPoints();
-        request();
-        ObservableList<PieChart.Data> userPieChartData
+    ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", 20),
+                        new PieChart.Data("VegMeal", vegMealValue),
                         new PieChart.Data("Bike Ride", 120),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50),
