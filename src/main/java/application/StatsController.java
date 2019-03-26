@@ -60,7 +60,8 @@ public class StatsController implements Initializable {
         friendPieChart.setData(friendPieChartData);
     }
 
-    public void request() {
+    public int[] request() {
+        int[] ints = new int[10]; //size = amount of categories TODO: change size to actually do that
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'Combined', 'username' : '"
@@ -69,7 +70,8 @@ public class StatsController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parseVegPoints(response));
-        //return parsePoints(response);
+        ints[0] = parseVegPoints(response);
+        return ints;
     }
 
 
