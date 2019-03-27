@@ -34,7 +34,7 @@ coverage:
     - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nCOVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n----------------------------\n" }' target/site/jacoco/jacoco.csv)
     - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nAGGREGATE COVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
     - printf "$coverage\n$aggregate\n\n"
-  coverage: "/Total.*?([0-9]{1.3})%/"
+  coverage: "/$coverage.*?([0-9]{1.3})%/"
 
 checkstyle:
   stage: checkstyle
