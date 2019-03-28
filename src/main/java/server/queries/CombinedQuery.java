@@ -16,9 +16,9 @@ public class CombinedQuery  extends ServerQuery {
 
     public String runQuery() {
         String[] queries = new String[3];
-        queries[0] = "SELECT SUM (points) AS total FROM vegeterian WHERE username = '" + username + "'";
-        queries[1] = "SELECT count(*) FROM localproduce WHERE username = '" + username + "'";
-        queries[2] = "SELECT count(*) FROM bikeride WHERE username = '" + username + "'";
+        queries[0] = "SELECT SUM (points) AS total FROM vegetarian WHERE username = '" + username + "'";
+        queries[1] = "SELECT SUM (points) AS total FROM localproduce WHERE username = '" + username + "'";
+        queries[2] = "SELECT SUM (points) AS total FROM bikeride WHERE username = '" + username + "'";
 
         ResultSet[] rsArray = Query.runQueries(queries);
         ResultSet rs = rsArray[0];
