@@ -80,6 +80,6 @@ public class PublicTransportQuery extends ServerQuery {
         queries[3] = "UPDATE points SET co2 = co2 + " + co2
                 + " WHERE username = '" + username + "'";
 
-        return Query.runQueries(queries);
+        return Query.runQueries(queries,username,password);
     }
 }

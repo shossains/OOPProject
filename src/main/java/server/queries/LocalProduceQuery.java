@@ -63,6 +63,6 @@ public class LocalProduceQuery extends ServerQuery {
                 + "values ('" + username + "'," + pointsToBeAdded + ",'"
                 + weight + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
-        return Query.runQueries(queries);
+        return Query.runQueries(queries,username,password);
     }
 }

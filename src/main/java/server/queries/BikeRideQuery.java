@@ -62,6 +62,6 @@ public class BikeRideQuery extends ServerQuery {
 
         queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
 
-        return Query.runQueries(queries);
+        return Query.runQueries(queries,username,password);
     }
 }
