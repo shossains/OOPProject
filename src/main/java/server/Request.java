@@ -58,6 +58,14 @@ public class Request {
             return "{'error' : true, 'reason' : 'No type given'}";
         }
 
+        return chooseType();
+    }
+
+    /**
+     * Determine what class should be used by determining the type in the JSON.
+     * @return the class corresponding with the type
+     */
+    public String chooseType() {
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
@@ -82,7 +90,6 @@ public class Request {
 
     /**
      * Registers the user given username and password on the database.
-     *
      * @return Either true or false on success, and gives reason for failure;
      */
     private String registerUser() {
