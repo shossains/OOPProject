@@ -32,17 +32,18 @@ public class StatsController implements Initializable {
     int vegMealValue = allPoints[0];
     int locProdValue = allPoints[1];
     int bikeValue = allPoints[2];
+    int pubTransValue = allPoints[3];
 
     ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", vegMealValue),
                         new PieChart.Data("LocalProduce", locProdValue),
                         new PieChart.Data("Bike Ride", bikeValue),
-                        new PieChart.Data("Public Transport", 10),
+                        new PieChart.Data("Public Transport", pubTransValue),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50));
     userPieChart.setData(userPieChartData);
-
+//TODO: for the friend values temporarily add a global average -> send query to sum all points from all the users and divide by the amount of users
       ObservableList<PieChart.Data> friendPieChartData
               = FXCollections.observableArrayList(
               new PieChart.Data("VegMeal", 60),
@@ -63,14 +64,17 @@ public class StatsController implements Initializable {
 
     String response = scn.sendPostRequest(request);
 
+    //TODO: delete this
     System.out.println(parseVegPoints(response));
     System.out.println(parseLocProdPoints(response));
     System.out.println(parseBikePoints(response));
+    System.out.println(parsePubTransPoints(response));
 
     int[] ints = new int[6];
     ints[0] = parseVegPoints(response);
     ints[1] = parseLocProdPoints(response);
     ints[2] = parseBikePoints(response);
+    ints[3] = parsePubTransPoints(response);
 
     return ints;
   }
@@ -128,6 +132,18 @@ public class StatsController implements Initializable {
       System.out.println("Bad json format returned");
     }
     return locProdPoints;
+  }
+
+  public int parsePubTransPoints(String responseJson) {
+    JsonObject json = parseJson(responseJson);
+    int pubTransPoints = -1;
+    try {
+      pubTransPoints = Integer.parseInt(json.get("pubTransPoints").toString());
+    } catch (NumberFormatException e) {
+      System.out.println(responseJson);
+      System.out.println("Bad json format returned");
+    }
+    return pubTransPoints;
   }
 
   /**
