@@ -30,7 +30,7 @@ coverage:
   script: 
     - coverage=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "Total" ,int(100*covered/branches), "%% covered" }' target/site/jacoco/jacoco.csv)
     # - aggregate=$(awk -F"," '{ branches += $6 + $7; covered += $7 } END { print "\nAGGREGATE COVERAGE REPORT"; print covered, "/", branches, "branches covered"; print int(100*covered/branches), "%% covered\n---------------------------\n" }' target/site/jacoco-aggregate/jacoco.csv)
-    - printf "$coverage /n/n"
+    - printf "$coverage"
   coverage: '/Total *?([0-9]{1,3}) %/'
 
 ##
