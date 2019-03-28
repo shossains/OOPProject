@@ -8,8 +8,8 @@ import java.sql.SQLException;
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
     private String mealType;
-    int addPoints;
-    Double co2;
+    private int addPoints;
+    private Double co2;
 
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
@@ -31,16 +31,14 @@ public class VegMealQuery extends ServerQuery {
 
         if (addMeal) {
             //run queries
-            ResultSet rs = runQueries(addPoints)[0];
-
-            if (rs == null) {
-                return "{'error' : true, 'reason' : 'Could not find user for given credentials'}";
-            }
+            ResultSet[] rsArray = runQueries(addPoints);
+            ResultSet rs = rsArray[0];
 
             try {
                 while (rs.next()) {
                     int res = rs.getInt(1);
                     rs.close();
+
                     return "{'points' : " + res + " , 'added' : "
                             + addPoints + " , 'co2' : " + co2 + "}";
                 }
@@ -63,19 +61,18 @@ public class VegMealQuery extends ServerQuery {
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {
         String[] queries = new String[4];
-        queries[0] = "UPDATE points SET points = points + " + addPoints + ", last_updated = "
+        queries[0] = "UPDATE points SET points = points + " + pointsToBeAdded + ", last_updated = "
                 + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
         queries[1] = "UPDATE points SET co2 = co2 + " + co2
                 + " WHERE username = '" + username + "'";
 
         queries[2] = "INSERT INTO vegetarian (username, points, type, datetime, co2) values"
-                + " ('" + username + "'," + addPoints + ",'" + mealType
+                + " ('" + username + "'," + pointsToBeAdded + ",'" + mealType
                 + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
         queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
 
-        //should be one function
-        return Query.runQueries(queries, username, password);
+        return Query.runQueries(queries);
     }
 }

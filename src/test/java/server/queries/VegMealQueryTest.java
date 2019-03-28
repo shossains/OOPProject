@@ -7,7 +7,7 @@ import org.junit.Test;
 import server.Request;
 import server.db.Query;
 
-public class VegMealTest {
+public class VegMealQueryTest {
 
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
