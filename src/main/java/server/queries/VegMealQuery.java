@@ -47,25 +47,6 @@ public class VegMealQuery extends ServerQuery {
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
             }
 
-<<<<<<< HEAD
-        } else if (!addMeal) {
-            String[] queries = new String[1];
-
-            queries[0] = "SELECT count(*) FROM vegetarian WHERE username = '" + username + "'";
-
-            //should be one function
-            ResultSet[] rsArray = Query.runQueries(queries);
-            ResultSet rs = rsArray[0];
-
-            try {
-                while (rs.next()) {
-                    int res = rs.getInt(1);
-                    rs.close();
-
-                    return "{'points' : " + res + "}";
-                }
-                return null;
-=======
         } else {
             ResultSet[] rsArray = runSelect();
             ResultSet rs = rsArray[0];
@@ -82,7 +63,6 @@ public class VegMealQuery extends ServerQuery {
                 }
                 rs.close();
                 return Arrays.toString(json);
->>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
