@@ -19,6 +19,7 @@ import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class StatsController implements Initializable {
+<<<<<<< HEAD
   @FXML private ToolBar myToolbar;
   @FXML private PieChart userPieChart;
   @FXML private PieChart friendPieChart;
@@ -39,6 +40,64 @@ public class StatsController implements Initializable {
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50));
     userPieChart.setData(userPieChartData);
+=======
+
+    @FXML ToolBar myToolbar;
+
+    @FXML private PieChart userPieChart;
+    @FXML private PieChart friendPieChart;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<PieChart.Data> userPieChartData
+                = FXCollections.observableArrayList(new PieChart.Data("VegMeal", 50),
+                new PieChart.Data("Bike Ride", 120), new PieChart.Data("Temperature", 100));
+        userPieChart.setData(userPieChartData);
+
+        ObservableList<PieChart.Data> friendPieChartData
+                = FXCollections.observableArrayList(
+                        new PieChart.Data("VegMeal", 120),
+                        new PieChart.Data("Bike Ride", 120),
+                        new PieChart.Data("Temperature", 80),
+                        new PieChart.Data("SolarPanels", 50),
+                        new PieChart.Data("LocalProduce", 25),
+                        new PieChart.Data("Public Transport", 0)
+        );
+        friendPieChart.setData(friendPieChartData);
+    }
+
+    /**
+     * The general go method which will switch to a specific scene.
+     * @param fileName The name of the file where we want to go
+     * @throws IOException TThrow if file is missing/corrupted/incomplete
+     */
+    public void go(String fileName) throws IOException {
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/" + fileName + ".fxml"));
+        Scene hmScene = new Scene(hmParent);
+
+        Stage window = (Stage) myToolbar.getScene().getWindow();
+        window.setScene(hmScene);
+        window.show();
+    }
+
+    /**
+     * Go to the Vegetarian meal screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException {
+        go("VegMeal");
+    }
+
+    /**
+     * Go to the Local Produce screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goLocal(ActionEvent actionEvent) throws IOException {
+        go("LocalProduce");
+    }
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
 
     ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
@@ -123,6 +182,7 @@ public class StatsController implements Initializable {
       System.out.println(responseJson);
       System.out.println("Bad json format returned");
     }
+<<<<<<< HEAD
     return locProdPoints;
   }
 
@@ -194,4 +254,6 @@ public class StatsController implements Initializable {
     go("VegMeal");
   }
 
+=======
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
 }
