@@ -87,6 +87,11 @@
             <version>20171018</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>5.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
             <version>1.5.0</version>
@@ -199,7 +204,6 @@
                 <configuration>
                     <excludes>
                         <exclude>application/**</exclude>
-                        <exclude>server/queries/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>

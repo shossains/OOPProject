@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import server.Server;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,12 +20,16 @@ public class Main extends Application {
         //setup the user class, for now just from string, in the future ideally from local storage
         setupUser();
 
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml")); //Home screen
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
         Scene scene = new Scene(root,720,480); //Dimensions of the app
+        stage.setScene(scene);
         stage.setTitle("#GoGreen"); //App title
         stage.getIcons().add(new Image("/icon.png")); //App logo
         stage.setResizable(false); //Disable maximizing the app
-        stage.setScene(scene);
         stage.show();
     }
 
@@ -37,7 +42,11 @@ public class Main extends Application {
         Server server;
         String serverpassword = "password";
         try {
+<<<<<<< HEAD
             server = new Server(3000, new FileInputStream("C:\\Users\\lucas\\Desktop\\OOPP\\testkey.jks"),
+=======
+            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
                     serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -52,7 +61,7 @@ public class Main extends Application {
         } else {
             System.out.println("URL invalid");
         }
-        User.setUsername("shossain");
-        User.setPassword("test123");
+        User.setUsername("testUser");
+        User.setPassword("hunter2");
     }
 }

@@ -32,7 +32,7 @@ public class TrainCalculatorTest {
      */
     @Test
     public void TestTrain() throws Exception {
-        int result = TrainCalculator.train(20);
+        Double result = TrainCalculator.train(20);
         Assert.assertEquals(2.6, result, 1);
     }
 
@@ -42,7 +42,7 @@ public class TrainCalculatorTest {
      */
     @Test
     public void TestTrainCar() throws MalformedURLException {
-        int result = TrainCalculator.carTrain(10, 0.62);
+        Double result = TrainCalculator.carTrain(10, 0.62);
         Assert.assertEquals(1.3, result, 1);
     }
 

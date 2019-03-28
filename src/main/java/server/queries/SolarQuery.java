@@ -1,37 +1,26 @@
 package server.queries;
 
-import calculator.TemperatureCalculator;
+import calculator.SolarPanelCalculator;
 import server.db.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TemperatureQuery extends ServerQuery {
-    private Boolean addTemp;
-    private int thigh;
-    private int tlow;
-    private Double co2;
+public class SolarQuery extends ServerQuery {
+    private Boolean addSolar;
+    private int kwh;
     private int addPoints;
-    private int temp;
+    private Double co2;
 
     /**
-     * Connects to the database and executes the query to add a temperature saving.
+     * Connects to the database and executes the query to add a solar panel.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        temp = thigh - tlow;
-        co2 = 0.0;
-        addPoints = 0;
+        co2 = SolarPanelCalculator.solar(kwh);
+        addPoints = co2.intValue();
 
-        try {
-            co2 = TemperatureCalculator.temp(thigh,tlow);
-            Double tempvalue = co2 * 100;
-            addPoints = tempvalue.intValue();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (addTemp) {
+        if (addSolar) {
             ResultSet[] rsArray = runQueries(addPoints);
             ResultSet rs = rsArray[0];
 
@@ -54,8 +43,8 @@ public class TemperatureQuery extends ServerQuery {
     }
 
     /**
-     * Runs db duties for the temperature, returns resultset array.
-     * @param pointsToBeAdded points to be added for the temperature
+     * Runs db duties for the solar panel, as well as authentication, returns resultset array.
+     * @param pointsToBeAdded points to be added for the solar panel
      * @return resultset with the current points total.
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {
@@ -63,9 +52,9 @@ public class TemperatureQuery extends ServerQuery {
         queries[0] = "UPDATE points SET points = points + " + pointsToBeAdded + ", last_updated = "
                 + "CURRENT_TIMESTAMP(0) WHERE username = '" + username + "'";
 
-        queries[1] = "INSERT INTO temperature "
-                + "(username, points, temperature, datetime, co2) values"
-                + " ('" + username + "'," + pointsToBeAdded + ",'" + temp
+        queries[1] = "INSERT INTO solar "
+                + "(username, points, kwh, datetime, co2) values"
+                + " ('" + username + "'," + pointsToBeAdded + ",'" + kwh
                 + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
         queries[2] = "SELECT points FROM points WHERE username = '" + username + "'";

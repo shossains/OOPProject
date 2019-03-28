@@ -3,7 +3,18 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+<<<<<<< HEAD
 import server.queries.*;
+=======
+import server.queries.BikeRideQuery;
+import server.queries.LocalProduceQuery;
+import server.queries.PublicTransportQuery;
+import server.queries.RegisterQuery;
+import server.queries.SolarQuery;
+import server.queries.TemperatureQuery;
+import server.queries.TestQuery;
+import server.queries.VegMealQuery;
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
 
 /**
  * Class for parsing requests using Gson.
@@ -51,6 +62,14 @@ public class Request {
             return "{'error' : true, 'reason' : 'No type given'}";
         }
 
+        return chooseType();
+    }
+
+    /**
+     * Determine what class should be used by determining the type in the JSON.
+     * @return the class corresponding with the type
+     */
+    public String chooseType() {
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
@@ -66,8 +85,13 @@ public class Request {
                 return temp();
             case "PublicTransport":
                 return publicTransport();
+<<<<<<< HEAD
             case "Combined":
                 return combined();
+=======
+            case "Solar":
+                return solar();
+>>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -75,7 +99,6 @@ public class Request {
 
     /**
      * Registers the user given username and password on the database.
-     *
      * @return Either true or false on success, and gives reason for failure;
      */
     private String registerUser() {
@@ -98,14 +121,19 @@ public class Request {
         return bikeRideQuery.runQuery();
     }
 
+    private String publicTransport() {
+        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
+        return publicTransportQuery.runQuery();
+    }
+
     private String temp() {
         TemperatureQuery temperatureQuery = buildGson(rawQuery, TemperatureQuery.class);
         return temperatureQuery.runQuery();
     }
 
-    private String publicTransport() {
-        PublicTransportQuery publicTransportQuery = buildGson(rawQuery, PublicTransportQuery.class);
-        return publicTransportQuery.runQuery();
+    private String solar() {
+        SolarQuery solarQuery = buildGson(rawQuery, SolarQuery.class);
+        return solarQuery.runQuery();
     }
 
     private String combined() {

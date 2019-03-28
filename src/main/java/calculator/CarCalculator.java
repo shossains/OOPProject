@@ -11,11 +11,11 @@ public class CarCalculator {
 
     /**
      * The calculator for getting the amount of kg CO2 produced by a car.
-     * @param distance The distance.
-     * @return Amount of kg CO2 produced by a car.
+     * @param distance The distance
+     * @return Amount of kg CO2 produced by a car
      */
 
-    public static int car(int distance) {
+    public static Double car(int distance) {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
@@ -47,7 +47,7 @@ public class CarCalculator {
         //Calculate amount of kg CO2 saved.
         Double co2Car = third.getDouble("value");
         co2Car = Math.round(co2Car * 100.00) / 100.00;
-        return co2Car.intValue();
+        return co2Car;
     }
 
 }

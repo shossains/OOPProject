@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class TemperatureController implements Initializable {
     public TextField tlow;
     public Label invalidThigh;
     public Label invalidTlow;
+    public Text saved;
     public int tint;
     @FXML
     ToolBar myToolbar;
@@ -109,15 +111,18 @@ public class TemperatureController implements Initializable {
 
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        TableContents tablecontent = new TableContents(0, tint);
-        tableView.getItems().add(tablecontent);
-
         String request = "{'type' : 'Temp', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "', "
-                + "'addTemp' : true, 'temp' : " + tint + "}";
+                + "'addTemp' : true, 'thigh' : " + thigh.getText()
+                + ", 'tlow' : " + tlow.getText() + "}";
 
         String response = scn.sendPostRequest(request);
         System.out.println(parsePoints(response));
+
+        TableContents tablecontent = new TableContents(addedPoints(response), tint);
+        tableView.getItems().add(tablecontent);
+
+        saved.setText("You've saved " + parseCo2(response) + " kg of CO2");
     }
 
     /**
@@ -139,6 +144,64 @@ public class TemperatureController implements Initializable {
             int points = -1;
             try {
                 points = Integer.parseInt(json.get("points").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of co2 saved.
+     */
+    public Double parseCo2(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1.0;
+            }
+            Double points = -1.0;
+            try {
+                points = Double.parseDouble(json.get("co2").toString());
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return points;
+        } else {
+            System.out.println("Null JSON returned");
+            return -1.0;
+        }
+    }
+
+    /**
+     * Helper function to parse response json.
+     * @param responseJson The raw json response from the server
+     * @return The added amount of points.
+     */
+    public int addedPoints(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return -1;
+            }
+            int points = -1;
+            try {
+                points = Integer.parseInt(json.get("added").toString());
             } catch (NumberFormatException e) {
                 System.out.println(responseJson);
                 System.out.println("Bad json format returned");
@@ -280,11 +343,11 @@ public class TemperatureController implements Initializable {
     }
 
     /**
-     * Go to the User Stats screen
-     * @param actionEvent
-     * @throws IOException
+     * Go to the User Stats screen.
+     * @param actionEvent Click of the button
+     * @throws IOException If the chart is invalid
      */
-    public void goStats(ActionEvent actionEvent) throws IOException{
+    public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPieChart");
     }
 }
