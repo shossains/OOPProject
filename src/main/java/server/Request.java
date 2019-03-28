@@ -3,9 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-<<<<<<< HEAD
 import server.queries.*;
-=======
 import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
 import server.queries.PublicTransportQuery;
@@ -14,7 +12,6 @@ import server.queries.SolarQuery;
 import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
->>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
 
 /**
  * Class for parsing requests using Gson.
@@ -81,17 +78,14 @@ public class Request {
                 return localProduce();
             case "BikeRide":
                 return bikeRide();
-            case "Temp":
-                return temp();
             case "PublicTransport":
                 return publicTransport();
-<<<<<<< HEAD
-            case "Combined":
-                return combined();
-=======
+            case "Temp":
+                return temp();
             case "Solar":
                 return solar();
->>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
+            case "Combined":
+                return combined();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
