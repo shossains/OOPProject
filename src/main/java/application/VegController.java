@@ -44,6 +44,8 @@ public class VegController implements Initializable {
         typeColumn.setCellValueFactory(new PropertyValueFactory<TableContents, String>("type"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
                 ;
+
+        fetchData();
     }
 
     /**
@@ -57,6 +59,28 @@ public class VegController implements Initializable {
     }
 
     /**
+     * Request the date, process the data, and print it to the table.
+     */
+    public void fetchData() {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        //request
+        String request = "{'type' : 'VegMeal', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
+                + "'addMeal': false}";
+        String response = scn.sendPostRequest(request);
+
+        //response
+        String[] jsons = response.split(", ");
+        for (int i = 0; i < 20; i++) {
+            jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
+            String[] res = parseRow(jsons[i]);
+            addToTable(Integer.parseInt(res[0]), res[1].replaceAll("^\"|\"$", ""),
+                    res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+        }
+    }
+
+    /**
      * After clicking vegan button client will receive 60 points.
      * @param actionEvent Click of the button
      */
@@ -64,7 +88,7 @@ public class VegController implements Initializable {
         mealType = "vegan";
 
         TableContents tablecontent = new TableContents(60, mealType);
-        tableView.getItems().add(tablecontent);
+        tableView.getItems().add(0,tablecontent);
 
         add(actionEvent);
     }
@@ -77,13 +101,44 @@ public class VegController implements Initializable {
         mealType = "vegetarian";
 
         TableContents tablecontent = new TableContents(50,mealType);
-        tableView.getItems().add(tablecontent);
+        tableView.getItems().add(0,tablecontent);
 
         add(actionEvent);
     }
 
-    public void addToTable(int points, String type) {
-        TableContents tablecontent = new TableContents(points,type);
+    /**
+     * Helper function that transform the json into array of variables.
+     * @param responseJson the json that will be processed
+     * @return A array with the values of the json
+     */
+    public String[] parseRow(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response and update the amount of points.
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return null;
+            }
+            String[] res = new String[3];
+            try {
+                res[0] = json.get("points").toString();
+                res[1] = json.get("type").toString();
+                res[2] = json.get("datetime").toString();
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return res;
+        } else {
+            System.out.println("Null JSON returned");
+            return null;
+        }
+    }
+
+    public void addToTable(int points, String type, String datetime) {
+        TableContents tablecontent = new TableContents(points,type,datetime);
         tableView.getItems().add(tablecontent);
     }
 

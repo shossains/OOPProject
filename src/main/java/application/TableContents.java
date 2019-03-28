@@ -36,6 +36,18 @@ public class TableContents {
         this.integer = new SimpleIntegerProperty(integer);
     }
 
+    /**
+     * Contructor that is used to print to the table with date from the DB.
+     * @param points Amount of points
+     * @param type distance/weight/kwh/Type of vehicle/-meal
+     * @param date Date and time of event
+     */
+    public TableContents(int points, String type, String date) {
+        this.points = new SimpleIntegerProperty(points);
+        this.date = date;
+        this.type = type;
+    }
+
     public SimpleIntegerProperty pointsProperty() {
         return points;
     }

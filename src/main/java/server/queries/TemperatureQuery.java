@@ -15,7 +15,7 @@ public class TemperatureQuery extends ServerQuery {
     private int temp;
 
     /**
-     * Connects to the database and executes the query to add a vegetarian meal.
+     * Connects to the database and executes the query to add a temperature saving.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {

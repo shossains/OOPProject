@@ -13,7 +13,7 @@ public class BikeRideQuery extends ServerQuery {
     private int addPoints;
 
     /**
-     * Connects to the database and executes the query to add a vegetarian meal.
+     * Connects to the database and executes the query to add a bike ride.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
@@ -44,8 +44,8 @@ public class BikeRideQuery extends ServerQuery {
     }
 
     /**
-     * Runs db duties for the meal, as well as authentication, returns resultset array.
-     * @param pointsToBeAdded points to be added for the meal
+     * Runs db duties bike ride, as well as authentication, returns resultset array.
+     * @param pointsToBeAdded points to be added for the bike ride
      * @return resultset with the current points total.
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {

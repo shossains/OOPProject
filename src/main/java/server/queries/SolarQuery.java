@@ -13,7 +13,7 @@ public class SolarQuery extends ServerQuery {
     private Double co2;
 
     /**
-     * Connects to the database and executes the query to add a vegetarian meal.
+     * Connects to the database and executes the query to add a solar panel.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
@@ -43,8 +43,8 @@ public class SolarQuery extends ServerQuery {
     }
 
     /**
-     * Runs db duties for the meal, as well as authentication, returns resultset array.
-     * @param pointsToBeAdded points to be added for the meal
+     * Runs db duties for the solar panel, as well as authentication, returns resultset array.
+     * @param pointsToBeAdded points to be added for the solar panel
      * @return resultset with the current points total.
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {

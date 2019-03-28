@@ -13,7 +13,7 @@ public class LocalProduceQuery extends ServerQuery {
     private Double co2;
 
     /**
-     * Connects to the database and executes the query to add a vegetarian meal.
+     * Connects to the database and executes the query to add a local produce.
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
@@ -45,7 +45,7 @@ public class LocalProduceQuery extends ServerQuery {
 
     /**
      * Runs db duties for the local produce, returns resultset array.
-     * @param pointsToBeAdded points to be added for the meal
+     * @param pointsToBeAdded points to be added for the local produce
      * @return resultset with the current points total.
      */
     private ResultSet[] runQueries(int pointsToBeAdded) {

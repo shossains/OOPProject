@@ -4,6 +4,7 @@ import server.db.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
@@ -16,20 +17,18 @@ public class VegMealQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-
-        if (mealType == null) {
-            return "{'error' : true, 'reason' : 'mealType not given'}";
-        }
-
-        if (mealType.equals("vegan")) {
-            addPoints = 60;
-            co2 = 1.5   ;
-        } else {
-            addPoints = 50;
-            co2 = 1.0;
-        }
-
         if (addMeal) {
+            if (mealType == null) {
+                return "{'error' : true, 'reason' : 'mealType not given'}";
+            }
+
+            if (mealType.equals("vegan")) {
+                addPoints = 60;
+                co2 = 1.5   ;
+            } else {
+                addPoints = 50;
+                co2 = 1.0;
+            }
             //run queries
             ResultSet[] rsArray = runQueries(addPoints);
             ResultSet rs = rsArray[0];
@@ -49,7 +48,25 @@ public class VegMealQuery extends ServerQuery {
             }
 
         } else {
-            return null;
+            ResultSet[] rsArray = runSelect();
+            ResultSet rs = rsArray[0];
+
+            try {
+                String[] json = new String[20];
+                for (int i = 0; i < 20; i++) {
+                    rs.next();
+                    int points = rs.getInt(1);
+                    String type = rs.getString(2);
+                    String datetime = rs.getString(3);
+                    json[i] = "{'points' : " + points + ",'type' : '" + type
+                            + "','datetime' : '" + datetime + "'}";
+                }
+                rs.close();
+                return Arrays.toString(json);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "{'error' : true, 'reason' : 'Error parsing resultset'}";
+            }
         }
     }
 
@@ -72,6 +89,14 @@ public class VegMealQuery extends ServerQuery {
                 + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
 
         queries[3] = "SELECT points FROM points WHERE username = '" + username + "'";
+
+        return Query.runQueries(queries,username,password);
+    }
+
+    private ResultSet[] runSelect() {
+        String[] queries = new String[1];
+        queries[0] = "SELECT points, type, datetime FROM vegetarian WHERE username = '"
+                + username + "' ORDER BY datetime DESC LIMIT 20";
 
         return Query.runQueries(queries,username,password);
     }
