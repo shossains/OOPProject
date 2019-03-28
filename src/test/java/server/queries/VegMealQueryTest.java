@@ -7,7 +7,7 @@ import org.junit.Test;
 import server.Request;
 import server.db.Query;
 
-public class VegMealTest {
+public class VegMealQueryTest {
 
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
@@ -36,5 +36,29 @@ public class VegMealTest {
         Assert.assertEquals("{'error' : true, 'reason' : 'mealType not given'}", request.execute());
     }
 
+    /**
+     * Tests for the request of the vegan meal
+     */
+    @Test
+    public void vegMealQueryVegan(){
+        String testString = "{'type' : 'VegMeal', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addMeal': true, 'mealType' : 'vegan'}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        Assert.assertEquals("{'points' : 60 , 'added' : 60 , 'co2' : 1.5}", request.execute());
+    }
 
+    /**
+     * Tests for the request of the vegetarian.
+     */
+    @Test
+    public void vegMealQueryVegetarian(){
+        String testString = "{'type' : 'VegMeal', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addMeal': true, 'mealType' : 'vegetarian'}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        Assert.assertEquals("{'points' : 110 , 'added' : 50 , 'co2' : 1.0}", request.execute());
+    }
 }

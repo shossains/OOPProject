@@ -77,7 +77,6 @@ public class Query extends Adapter {
 
     /**
      * runQueries identical to the other one, but with authentication.
-     *
      * @param query    Same as in the other runQueries
      * @param username Username given by the client
      * @param password Raw password given by the client
@@ -105,7 +104,6 @@ public class Query extends Adapter {
             e.printStackTrace();
             System.out.println("Error executing authentication SELECT query");
         }
-
         return null;
     }
 }
