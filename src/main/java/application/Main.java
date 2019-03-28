@@ -20,11 +20,7 @@ public class Main extends Application {
         //setup the user class, for now just from string, in the future ideally from local storage
         setupUser();
 
-<<<<<<< HEAD
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml")); //Home screen
-=======
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
->>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
         Scene scene = new Scene(root,720,480); //Dimensions of the app
         stage.setScene(scene);
         stage.setTitle("#GoGreen"); //App title
@@ -42,11 +38,7 @@ public class Main extends Application {
         Server server;
         String serverpassword = "password";
         try {
-<<<<<<< HEAD
             server = new Server(3000, new FileInputStream("C:\\Users\\lucas\\Desktop\\OOPP\\testkey.jks"),
-=======
-            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
->>>>>>> 7df6bcdfb06269304b5672a60adcc1219b4de5db
                     serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
