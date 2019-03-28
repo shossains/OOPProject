@@ -65,7 +65,7 @@ When code of the features is not tested, only a maximum of 0.2 can be achieved.
     * [x] On closing the client and reopening it, it is able to request the data from the server and show it to the user. (0.1)
 
 ### Week 8 (0.8)
-* [ ] 4 of the 6 minimal features from Food, Transportation and Energy have been implemented (0.4)
+* [x] 4 of the 6 minimal features from Food, Transportation and Energy have been implemented (0.4)
 
 The full workflow for "Track the CO2 that you save and compare to your friends" is implemented
 * [ ] You are able to have an overview of the CO2 that you have saved. (0.2)
