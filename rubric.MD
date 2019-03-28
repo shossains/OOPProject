@@ -1,4 +1,11 @@
-Overview
+# Rubric
+This is the rubric for the course OOP-Project for the 2018-2019 edition. Some parts of your
+grade has been designated as bonus. These are stretch goals and are not required to get a
+good grade. This rubric contains a lot of terminology. We consider it your job to research this.
+If after research anything is still unclear, 
+please consult with your TA
+
+## Overview
 
 | Section                      | Points | Bonus |
 |------------------------------|--------|-------|
