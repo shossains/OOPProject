@@ -20,11 +20,11 @@ public class SolarPanelQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries);
+        Query.runQueries(queries, testUserRow, testUserPass);
     }
 
     /**
-     * Tests for the request of the
+     * Tests for the request of solar panel usage
      */
     @Test
     public void SolarPanelRequest(){
@@ -41,6 +41,12 @@ public class SolarPanelQueryTest {
      */
     @Test
     public void addSolarFalse(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM solar WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'Solar', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addSolar' : false, 'kwh' : 0}";

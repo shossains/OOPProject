@@ -91,7 +91,7 @@ public class LocalProduceController implements Initializable {
 
     public void addToTable(int points, int weight, String datetime) {
         TableContents tablecontent = new TableContents(points,weight,datetime);
-        tableView.getItems().add(tablecontent);
+        tableView.getItems().add(1,tablecontent);
     }
 
     /**

@@ -25,10 +25,10 @@ public class TemperatureQueryTest {
     }
 
     /**
-     * Tests for the request of the vegan meal
+     * Tests for the request of temp decrease of 0
      */
     @Test
-    public void BikeRideDistance(){
+    public void TemperatureReqeust(){
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addTemp' : true, 'thigh' : 0, 'tlow' : 0}";
@@ -38,10 +38,16 @@ public class TemperatureQueryTest {
     }
 
     /**
-     * Tests is addBike is false.
+     * Tests is addTemp is false.
      */
     @Test
-    public void addLocalFalse(){
+    public void addTempFalse(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM temperature WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
                 + "'addTemp': false}";

@@ -167,7 +167,6 @@ public class VegController implements Initializable {
 
     /**
      * Helper function to parse response json.
-     *
      * @param responseJson The raw json response from the server
      * @return The current amount of points.
      */
@@ -301,7 +300,7 @@ public class VegController implements Initializable {
 
     /**
      * Go to the User Stats screen.
-     * @param actionEvent Click of the button.
+     * @param actionEvent The click of the button
      * @throws IOException Throw if chart is invalid
      */
     public void goStats(ActionEvent actionEvent) throws IOException {

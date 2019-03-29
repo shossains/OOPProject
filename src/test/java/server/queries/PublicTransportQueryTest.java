@@ -20,7 +20,7 @@ public class PublicTransportQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries);
+        Query.runQueries(queries, testUserRow, testUserPass);
     }
 
     /**
@@ -53,7 +53,13 @@ public class PublicTransportQueryTest {
      * Tests is addPublic is false.
      */
     @Test
-    public void addLocalFalse(){
+    public void addPublicFalse(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM publictransport WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addPublic' : false, 'distance' : 0, 'vehicle' : 'bus'}";
