@@ -71,12 +71,17 @@ public class VegController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         //response
-        String[] jsons = response.split(", ");
-        for (int i = 0; i < 20; i++) {
-            jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
-            String[] res = parseRow(jsons[i]);
-            addToTable(Integer.parseInt(res[0]), res[1].replaceAll("^\"|\"$", ""),
-                    res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+        if (response != null) {
+            String[] jsons = response.split(", ");
+            for (int i = 0; i < jsons.length; i++) {
+                jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
+                if (jsons[i].equals("null")) {
+                    break;
+                }
+                String[] res = parseRow(jsons[i]);
+                addToTable(Integer.parseInt(res[0]), res[1].replaceAll("^\"|\"$", ""),
+                        res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+            }
         }
     }
 
@@ -112,8 +117,9 @@ public class VegController implements Initializable {
      * @return A array with the values of the json
      */
     public String[] parseRow(String responseJson) {
+        String[] res = new String[3];
+
         if (responseJson != null) {
-            //de-Json the response and update the amount of points.
             JsonObject json = null;
             try {
                 json = new JsonParser().parse(responseJson).getAsJsonObject();
@@ -121,7 +127,6 @@ public class VegController implements Initializable {
                 System.out.println("Returned something that's not even JSON");
                 return null;
             }
-            String[] res = new String[3];
             try {
                 res[0] = json.get("points").toString();
                 res[1] = json.get("type").toString();
