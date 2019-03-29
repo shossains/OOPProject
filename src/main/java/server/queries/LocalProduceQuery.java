@@ -5,6 +5,9 @@ import server.db.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LocalProduceQuery extends ServerQuery {
     private Boolean addLocal;
@@ -39,7 +42,40 @@ public class LocalProduceQuery extends ServerQuery {
             }
             return null;
         } else {
-            return null;
+            ResultSet[] rsArray = runSelect();
+            ResultSet rs = rsArray[0];
+
+            try {
+                //If user had no logs in db
+                if (rs.next()) {
+                    //Ambiguity needed to prevent skipping first row from resultset
+                    List<String> json = new ArrayList<>();
+                    int firstPoint = rs.getInt(1);
+                    int firstWeight = rs.getInt(2);
+                    String firstDatetime = rs.getString(3);
+                    String firstRow = "{'points' : " + firstPoint + ",'weight' : " + firstWeight
+                            + ",'datetime' : '" + firstDatetime + "'}";
+                    json.add(firstRow);
+
+                    while (rs.next()) {
+                        int points = rs.getInt(1);
+                        int weight = rs.getInt(2);
+                        String datetime = rs.getString(3);
+                        String temp = "{'points' : " + points + ",'weight' : " + weight
+                                + ",'datetime' : '" + datetime + "'}";
+                        json.add(temp);
+                    }
+
+                    rs.close();
+                    return Arrays.toString(json.toArray());
+                } else {
+                    return null;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "{'error' : true, 'reason' : 'Error parsing resultset'}";
+            }
         }
     }
 
@@ -62,6 +98,14 @@ public class LocalProduceQuery extends ServerQuery {
         queries[3] = "INSERT INTO localproduce (username, points, weight, datetime, co2)"
                 + "values ('" + username + "'," + pointsToBeAdded + ",'"
                 + weight + "',CURRENT_TIMESTAMP(0), " + co2 + ")";
+
+        return Query.runQueries(queries,username,password);
+    }
+
+    private ResultSet[] runSelect() {
+        String[] queries = new String[1];
+        queries[0] = "SELECT points, weight, datetime FROM localproduce WHERE username = '"
+                + username + "' ORDER BY datetime DESC LIMIT 20";
 
         return Query.runQueries(queries,username,password);
     }

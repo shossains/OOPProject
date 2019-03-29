@@ -152,14 +152,6 @@ public class VegController implements Initializable {
      * @param actionEvent The click of the button
      */
     public void add(ActionEvent actionEvent) {
-        // Gets username and password to send via json to the server
-        // Which uses the CLIENT stored vars.
-        //  Don't use any server queries on the gosh darned client, that's only for the server
-        //  And please for the love of God don't just change server code vars to static just
-        // to make it compile
-
-        //send json request
-
         System.out.println("Running add");
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
