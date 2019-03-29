@@ -36,6 +36,8 @@ public class StatsController implements Initializable {
     int tempValue = allPoints[4];
     int solarValue = allPoints[5];
 
+    int[] average = averageRequest();
+
     ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", vegMealValue),
@@ -45,15 +47,15 @@ public class StatsController implements Initializable {
                         new PieChart.Data("Temperature", tempValue),
                         new PieChart.Data("SolarPanels", solarValue));
     userPieChart.setData(userPieChartData);
-//TODO: for the friend values temporarily add a global average -> send query to sum all points from all the users and divide by the amount of users
+
       ObservableList<PieChart.Data> friendPieChartData
               = FXCollections.observableArrayList(
-              new PieChart.Data("VegMeal", 60),
-              new PieChart.Data("LocalProduce", 25),
-              new PieChart.Data("Bike Ride", 120),
-              new PieChart.Data("Public Transport", 10),
-              new PieChart.Data("Temperature", 80),
-              new PieChart.Data("SolarPanels", 50));
+              new PieChart.Data("VegMeal", average[0]),
+              new PieChart.Data("LocalProduce", average[1]),
+              new PieChart.Data("Bike Ride", average[2]),
+              new PieChart.Data("Public Transport", average[3]),
+              new PieChart.Data("Temperature", average[4]),
+              new PieChart.Data("SolarPanels", average[5]));
       friendPieChart.setData(friendPieChartData);
   }
 
@@ -85,6 +87,29 @@ public class StatsController implements Initializable {
     return ints;
   }
 
+  public int[] averageRequest() {
+    SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+    String request = "{'type' : 'Average', 'username' : '"
+            + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
+
+    String response = scn.sendPostRequest(request);
+
+    int users = parseUsers(response);
+    int[] ints = new int[6];
+    ints[0] = parseVegPoints(response);
+    ints[1] = parseLocProdPoints(response);
+    ints[2] = parseBikePoints(response);
+    ints[3] = parsePubTransPoints(response);
+    ints[4] = parseTempPoints(response);
+    ints[5] = parseSolarPoints(response);
+
+    for (int i =0; i < ints.length; i++) {
+      ints[i] = ints[i]/users;
+    }
+
+    return ints;
+  }
 
   public JsonObject parseJson(String responseJson) {
     if (responseJson != null) {
@@ -174,6 +199,18 @@ public class StatsController implements Initializable {
       System.out.println("Bad json format returned");
     }
     return solarPoints;
+  }
+
+  public int parseUsers(String responseJson) {
+    JsonObject json = parseJson(responseJson);
+    int users = -1;
+    try {
+      users = Integer.parseInt(json.get("users").toString());
+    } catch (NumberFormatException e) {
+      System.out.println(responseJson);
+      System.out.println("Bad json format returned");
+    }
+    return users;
   }
 
   /**

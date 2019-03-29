@@ -86,6 +86,8 @@ public class Request {
                 return solar();
             case "Combined":
                 return combined();
+            case "Average":
+                return average();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -133,6 +135,11 @@ public class Request {
     private String combined() {
         CombinedQuery combinedQuery = buildGson(rawQuery, CombinedQuery.class);
         return combinedQuery.runQuery();
+    }
+
+    private String average() {
+        AverageQuery averageQuery = buildGson(rawQuery, AverageQuery.class);
+        return averageQuery.runQuery();
     }
 
     /**
