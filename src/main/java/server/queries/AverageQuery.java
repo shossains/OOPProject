@@ -1,6 +1,7 @@
 package server.queries;
 
 import server.db.Query;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -35,14 +36,15 @@ public class AverageQuery {
 
 
         try {
-            while (rsVeg.next() && rsLocProd.next() && rsBike.next() && rsPubTrans.next() && rsTemp.next() && rsSolar.next() && rsUsers.next()) {
-                int resVeg = rsVeg.getInt(1);
-                int resLocProd = rsLocProd.getInt(1);
-                int resBike = rsBike.getInt(1);
-                int resPubTrans = rsPubTrans.getInt(1);
-                int resTemp = rsTemp.getInt(1);
-                int resSolar = rsSolar.getInt(1);
-                int resUsers = rsUsers.getInt(1);
+            while (rsVeg.next() && rsLocProd.next() && rsBike.next()
+                    && rsPubTrans.next() && rsTemp.next() && rsSolar.next() && rsUsers.next()) {
+                final int resVeg = rsVeg.getInt(1);
+                final int resLocProd = rsLocProd.getInt(1);
+                final int resBike = rsBike.getInt(1);
+                final int resPubTrans = rsPubTrans.getInt(1);
+                final int resTemp = rsTemp.getInt(1);
+                final int resSolar = rsSolar.getInt(1);
+                final int resUsers = rsUsers.getInt(1);
                 rsVeg.close();
                 rsLocProd.close();
                 rsBike.close();
@@ -50,7 +52,10 @@ public class AverageQuery {
                 rsTemp.close();
                 rsSolar.close();
                 rsUsers.close();
-                String resStr = "{'vegPoints' : " + resVeg  + ", 'locProdPoints' : " + resLocProd + ", 'bikePoints' : " + resBike + ", 'pubTransPoints' : " + resPubTrans + ", 'tempPoints' : " + resTemp + ", 'solarPoints' : " + resSolar + ", 'users' : " + resUsers + "}";
+                String resStr = "{'vegPoints' : " + resVeg  + ", 'locProdPoints' : " + resLocProd
+                        + ", 'bikePoints' : " + resBike + ", 'pubTransPoints' : " + resPubTrans
+                        + ", 'tempPoints' : " + resTemp + ", 'solarPoints' : " + resSolar
+                        + ", 'users' : " + resUsers + "}";
                 return resStr;
             }
             return null;
