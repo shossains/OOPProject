@@ -15,30 +15,34 @@ public class CombinedQuery  extends ServerQuery {
      */
 
     public String runQuery() {
-        String[] queries = new String[4];
+        String[] queries = new String[5];
         queries[0] = "SELECT SUM (points) AS total FROM vegetarian WHERE username = '" + username + "'";
         queries[1] = "SELECT SUM (points) AS total FROM localproduce WHERE username = '" + username + "'";
         queries[2] = "SELECT SUM (points) AS total FROM bikeride WHERE username = '" + username + "'";
         queries[3] = "SELECT SUM (points) AS total FROM publictransport WHERE username = '" + username + "'";
+        queries[4] = "SELECT SUM (points) AS total FROM temperature WHERE username = '" + username + "'";
 
         ResultSet[] rsArray = Query.runQueries(queries);
         ResultSet rs = rsArray[0];
         ResultSet rs1 = rsArray[1];
         ResultSet rs2 = rsArray[2];
         ResultSet rs3 = rsArray[3];
+        ResultSet rsTemp = rsArray[4];
 
 
         try {
-            while (rs.next() && rs1.next() && rs2.next() && rs3.next()) {
+            while (rs.next() && rs1.next() && rs2.next() && rs3.next() && rsTemp.next()) {
                 int res = rs.getInt(1);
                 int res1 = rs1.getInt(1);
                 int res2 = rs2.getInt(1);
                 int res3 = rs3.getInt(1);
+                int resTemp = rsTemp.getInt(1);
                 rs.close();
                 rs1.close();
                 rs2.close();
                 rs3.close();
-                String resStr = "{'vegPoints' : " + res  + ", 'locProdPoints' : " + res1 + ", 'bikePoints' : " + res2 + ", 'pubTransPoints' : " + res3 +"}";
+                rsTemp.close();
+                String resStr = "{'vegPoints' : " + res  + ", 'locProdPoints' : " + res1 + ", 'bikePoints' : " + res2 + ", 'pubTransPoints' : " + res3 + ", 'tempPoints' : " + resTemp + "}";
                 return resStr;
             }
             return null;
