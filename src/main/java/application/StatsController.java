@@ -1,8 +1,9 @@
 package application;
 
-import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,19 +27,19 @@ public class StatsController implements Initializable {
     @FXML private PieChart userPieChart;
     @FXML private PieChart friendPieChart;
 
-  @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    int[] allPoints = request();
-    int vegMealValue = allPoints[0];
-    int locProdValue = allPoints[1];
-    int bikeValue = allPoints[2];
-    int pubTransValue = allPoints[3];
-    int tempValue = allPoints[4];
-    int solarValue = allPoints[5];
+    @Override
+      public void initialize(URL url, ResourceBundle rb) {
+        int[] allPoints = request();
+        int vegMealValue = allPoints[0];
+        int locProdValue = allPoints[1];
+        int bikeValue = allPoints[2];
+        int pubTransValue = allPoints[3];
+        int tempValue = allPoints[4];
+        int solarValue = allPoints[5];
 
-    int[] average = averageRequest();
+        int[] average = averageRequest();
 
-    ObservableList<PieChart.Data> userPieChartData
+        ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
                         new PieChart.Data("VegMeal", vegMealValue),
                         new PieChart.Data("LocalProduce", locProdValue),
@@ -46,9 +47,9 @@ public class StatsController implements Initializable {
                         new PieChart.Data("Public Transport", pubTransValue),
                         new PieChart.Data("Temperature", tempValue),
                         new PieChart.Data("SolarPanels", solarValue));
-    userPieChart.setData(userPieChartData);
+        userPieChart.setData(userPieChartData);
 
-      ObservableList<PieChart.Data> friendPieChartData
+        ObservableList<PieChart.Data> friendPieChartData
               = FXCollections.observableArrayList(
               new PieChart.Data("VegMeal", average[0]),
               new PieChart.Data("LocalProduce", average[1]),
@@ -56,228 +57,264 @@ public class StatsController implements Initializable {
               new PieChart.Data("Public Transport", average[3]),
               new PieChart.Data("Temperature", average[4]),
               new PieChart.Data("SolarPanels", average[5]));
-      friendPieChart.setData(friendPieChartData);
-  }
+        friendPieChart.setData(friendPieChartData);
+    }
 
+    /**
+     * returns an integer array of the user's points per category.
+     */
+    public int[] request() {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-  public int[] request() {
-    SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-    String request = "{'type' : 'Combined', 'username' : '"
+        String request = "{'type' : 'Combined', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
 
-    String response = scn.sendPostRequest(request);
+        String response = scn.sendPostRequest(request);
 
-    //TODO: delete this
-    System.out.println(parseVegPoints(response));
-    System.out.println(parseLocProdPoints(response));
-    System.out.println(parseBikePoints(response));
-    System.out.println(parsePubTransPoints(response));
-    System.out.println(parseTempPoints(response));
-    System.out.println(parseSolarPoints(response));
+        int[] ints = new int[6];
+        ints[0] = parseVegPoints(response);
+        ints[1] = parseLocProdPoints(response);
+        ints[2] = parseBikePoints(response);
+        ints[3] = parsePubTransPoints(response);
+        ints[4] = parseTempPoints(response);
+        ints[5] = parseSolarPoints(response);
 
-    int[] ints = new int[6];
-    ints[0] = parseVegPoints(response);
-    ints[1] = parseLocProdPoints(response);
-    ints[2] = parseBikePoints(response);
-    ints[3] = parsePubTransPoints(response);
-    ints[4] = parseTempPoints(response);
-    ints[5] = parseSolarPoints(response);
+        return ints;
+    }
 
-    return ints;
-  }
+    /**
+     * returns an integer array of the global average amount of points.
+     */
+    public int[] averageRequest() {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-  public int[] averageRequest() {
-    SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-    String request = "{'type' : 'Average', 'username' : '"
+        String request = "{'type' : 'Average', 'username' : '"
             + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
 
-    String response = scn.sendPostRequest(request);
+        String response = scn.sendPostRequest(request);
 
-    int users = parseUsers(response);
-    int[] ints = new int[6];
-    ints[0] = parseVegPoints(response);
-    ints[1] = parseLocProdPoints(response);
-    ints[2] = parseBikePoints(response);
-    ints[3] = parsePubTransPoints(response);
-    ints[4] = parseTempPoints(response);
-    ints[5] = parseSolarPoints(response);
+        int users = parseUsers(response);
+        int[] ints = new int[6];
+        ints[0] = parseVegPoints(response);
+        ints[1] = parseLocProdPoints(response);
+        ints[2] = parseBikePoints(response);
+        ints[3] = parsePubTransPoints(response);
+        ints[4] = parseTempPoints(response);
+        ints[5] = parseSolarPoints(response);
 
-    for (int i =0; i < ints.length; i++) {
-      ints[i] = ints[i]/users;
+        for (int i = 0; i < ints.length; i++) {
+            ints[i] = ints[i] / users;
+        }
+
+        return ints;
     }
 
-    return ints;
-  }
-
-  public JsonObject parseJson(String responseJson) {
-    if (responseJson != null) {
-      //de-Json the response and update the amount of points.
-      //JsonElement jsonElement = new JsonParser().parse(responseJson);
-      JsonObject json;
-      try {
-        json = new JsonParser().parse(responseJson).getAsJsonObject();
-        return json;
-      } catch (IllegalStateException e) {
-        System.out.println("Returned something that's not even JSON");
-        return null;
-      }
-    } else {
-      System.out.println("Null JSON returned");
-      return null;
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return JsonObject.
+     */
+    public JsonObject parseJson(String responseJson) {
+        if (responseJson != null) {
+            //de-Json the response.
+            JsonObject json;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+                return json;
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return null;
+            }
+        } else {
+            System.out.println("Null JSON returned");
+            return null;
+        }
     }
-  }
 
-  public int parseVegPoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int vegPoints = -1;
-    try {
-      vegPoints = Integer.parseInt(json.get("vegPoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+    * Helper function to parse the response json.
+    * @param responseJson The raw json response from the server
+    * @return The current amount of points earned by eating vegetarian meals.
+    */
+    public int parseVegPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int vegPoints = -1;
+        try {
+            vegPoints = Integer.parseInt(json.get("vegPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return vegPoints;
     }
-    return vegPoints;
-  }
 
-  public int parseBikePoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int bikePoints = -1;
-    try {
-      bikePoints = Integer.parseInt(json.get("bikePoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points earned by buying local produce.
+     */
+    public int parseLocProdPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int locProdPoints = -1;
+        try {
+            locProdPoints = Integer.parseInt(json.get("locProdPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return locProdPoints;
     }
-    return bikePoints;
-  }
 
-  public int parseLocProdPoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int locProdPoints = -1;
-    try {
-      locProdPoints = Integer.parseInt(json.get("locProdPoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points earned by biking.
+     */
+    public int parseBikePoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int bikePoints = -1;
+        try {
+            bikePoints = Integer.parseInt(json.get("bikePoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return bikePoints;
     }
-    return locProdPoints;
-  }
 
-  public int parsePubTransPoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int pubTransPoints = -1;
-    try {
-      pubTransPoints = Integer.parseInt(json.get("pubTransPoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points earned by using public transport.
+     */
+    public int parsePubTransPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int pubTransPoints = -1;
+        try {
+            pubTransPoints = Integer.parseInt(json.get("pubTransPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return pubTransPoints;
     }
-    return pubTransPoints;
-  }
 
-  public int parseTempPoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int tempPoints = -1;
-    try {
-      tempPoints = Integer.parseInt(json.get("tempPoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points earned by lowering the temperature.
+     */
+    public int parseTempPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int tempPoints = -1;
+        try {
+            tempPoints = Integer.parseInt(json.get("tempPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return tempPoints;
     }
-    return tempPoints;
-  }
 
-  public int parseSolarPoints(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int solarPoints = -1;
-    try {
-      solarPoints = Integer.parseInt(json.get("solarPoints").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of points earned by using solar power.
+     */
+    public int parseSolarPoints(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int solarPoints = -1;
+        try {
+            solarPoints = Integer.parseInt(json.get("solarPoints").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return solarPoints;
     }
-    return solarPoints;
-  }
 
-  public int parseUsers(String responseJson) {
-    JsonObject json = parseJson(responseJson);
-    int users = -1;
-    try {
-      users = Integer.parseInt(json.get("users").toString());
-    } catch (NumberFormatException e) {
-      System.out.println(responseJson);
-      System.out.println("Bad json format returned");
+    /**
+     * Helper function to parse the response json.
+     * @param responseJson The raw json response from the server
+     * @return The current amount of users.
+     */
+    public int parseUsers(String responseJson) {
+        JsonObject json = parseJson(responseJson);
+        int users = -1;
+        try {
+            users = Integer.parseInt(json.get("users").toString());
+        } catch (NumberFormatException e) {
+            System.out.println(responseJson);
+            System.out.println("Bad json format returned");
+        }
+        return users;
     }
-    return users;
-  }
 
-  /**
-   * The general go method which will switch to a specific scene.
-   * @param fileName The name of the file where we want to go
-   * @throws IOException TThrow if file is missing/corrupted/incomplete
-   */
-  public void go(String fileName) throws IOException {
-    Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/" + fileName + ".fxml"));
-    Scene hmScene = new Scene(hmParent);
+    /**
+     * The general go method which will switch to a specific scene.
+     * @param fileName The name of the file where we want to go
+     * @throws IOException TThrow if file is missing/corrupted/incomplete
+     */
+    public void go(String fileName) throws IOException {
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/" + fileName + ".fxml"));
+        Scene hmScene = new Scene(hmParent);
 
-    Stage window = (Stage) myToolbar.getScene().getWindow();
-    window.setScene(hmScene);
-    window.show();
-  }
+        Stage window = (Stage) myToolbar.getScene().getWindow();
+        window.setScene(hmScene);
+        window.show();
+    }
 
-  /**
+    /**
      * Go to the Local Produce screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-  public void goLocal(ActionEvent actionEvent) throws IOException {
-    go("LocalProduce");
-  }
+    public void goLocal(ActionEvent actionEvent) throws IOException {
+        go("LocalProduce");
+    }
 
-  /**
-   * Go to the Bike screen.
-   * @param actionEvent The click of the button
-   * @throws IOException Throw if file is missing/corrupted/incomplete
-   */
-  public void goBike(ActionEvent actionEvent) throws IOException {
-    go("BikeRide");
-  }
+    /**
+     * Go to the Bike screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goBike(ActionEvent actionEvent) throws IOException {
+        go("BikeRide");
+    }
 
-  /**
-   * Go to the Public transport screen.
-   * @param actionEvent The click of the button
-   * @throws IOException Throw if file is missing/corrupted/incomplete
-   */
-  public void goPublic(ActionEvent actionEvent) throws IOException {
-    go("PublicTransport");
-  }
+    /**
+     * Go to the Public transport screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goPublic(ActionEvent actionEvent) throws IOException {
+        go("PublicTransport");
+    }
 
-  /**
-   * Go to the Temperature adjustment screen.
-   * @param actionEvent The click of the button
-   * @throws IOException Throw if file is missing/corrupted/incomplete
-   */
-  public void goTemp(ActionEvent actionEvent) throws IOException {
-    go("Temperature");
-  }
+    /**
+     * Go to the Temperature adjustment screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goTemp(ActionEvent actionEvent) throws IOException {
+        go("Temperature");
+    }
 
-  /**
-   * Go to the Solar panel screen.
-   * @param actionEvent The click of the button
-   * @throws IOException Throw if file is missing/corrupted/incomplete
-   */
-  public void goSolar(ActionEvent actionEvent) throws IOException {
-    go("SolarPanels");
-  }
+    /**
+     * Go to the Solar panel screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goSolar(ActionEvent actionEvent) throws IOException {
+        go("SolarPanels");
+    }
 
-  /**
-   * Go to the Vegetarian meal screen.
-   * @param actionEvent The click of the button
-   * @throws IOException Throw if file is missing/corrupted/incomplete
-   */
-  public void goVeg(ActionEvent actionEvent) throws IOException {
-    go("VegMeal");
-  }
+    /**
+     * Go to the Vegetarian meal screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException {
+        go("VegMeal");
+    }
 }
