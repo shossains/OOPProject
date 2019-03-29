@@ -34,6 +34,7 @@ public class StatsController implements Initializable {
     int bikeValue = allPoints[2];
     int pubTransValue = allPoints[3];
     int tempValue = allPoints[4];
+    int solarValue = allPoints[5];
 
     ObservableList<PieChart.Data> userPieChartData
                 = FXCollections.observableArrayList(
@@ -42,7 +43,7 @@ public class StatsController implements Initializable {
                         new PieChart.Data("Bike Ride", bikeValue),
                         new PieChart.Data("Public Transport", pubTransValue),
                         new PieChart.Data("Temperature", tempValue),
-                        new PieChart.Data("SolarPanels", 50));
+                        new PieChart.Data("SolarPanels", solarValue));
     userPieChart.setData(userPieChartData);
 //TODO: for the friend values temporarily add a global average -> send query to sum all points from all the users and divide by the amount of users
       ObservableList<PieChart.Data> friendPieChartData
@@ -71,6 +72,7 @@ public class StatsController implements Initializable {
     System.out.println(parseBikePoints(response));
     System.out.println(parsePubTransPoints(response));
     System.out.println(parseTempPoints(response));
+    System.out.println(parseSolarPoints(response));
 
     int[] ints = new int[6];
     ints[0] = parseVegPoints(response);
@@ -78,6 +80,7 @@ public class StatsController implements Initializable {
     ints[2] = parseBikePoints(response);
     ints[3] = parsePubTransPoints(response);
     ints[4] = parseTempPoints(response);
+    ints[5] = parseSolarPoints(response);
 
     return ints;
   }
@@ -159,6 +162,18 @@ public class StatsController implements Initializable {
       System.out.println("Bad json format returned");
     }
     return tempPoints;
+  }
+
+  public int parseSolarPoints(String responseJson) {
+    JsonObject json = parseJson(responseJson);
+    int solarPoints = -1;
+    try {
+      solarPoints = Integer.parseInt(json.get("solarPoints").toString());
+    } catch (NumberFormatException e) {
+      System.out.println(responseJson);
+      System.out.println("Bad json format returned");
+    }
+    return solarPoints;
   }
 
   /**
