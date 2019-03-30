@@ -91,7 +91,7 @@ public class LocalProduceController implements Initializable {
 
     public void addToTable(int points, int weight, String datetime) {
         TableContents tablecontent = new TableContents(points,weight,datetime);
-        tableView.getItems().add(1,tablecontent);
+        tableView.getItems().add(tablecontent);
     }
 
     /**
@@ -130,7 +130,7 @@ public class LocalProduceController implements Initializable {
         System.out.println(parsePoints(response));
 
         TableContents tablecontent = new TableContents(addedPoints(response),weightInt);
-        tableView.getItems().add(tablecontent);
+        tableView.getItems().add(0,tablecontent);
 
         saved.setText("You've saved " + parseCo2(response) + " kg of CO2");
     }

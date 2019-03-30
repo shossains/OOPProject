@@ -102,33 +102,23 @@ public class VegMealQueryTest {
         Assert.assertEquals(null, request.execute());
     }
 
-//    /**
-//     * Tests for the printing of the records
-//     */
-//    @Test
-//    public void addMealFalsePrint(){
-//        String testString = "{'type' : 'VegMeal', 'username' : '"
-//                + testUserRow + "', 'password' : '" + testUserPass + "',"
-//                + "'addMeal': true, 'mealType' : 'vegetarian'}";
-//        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
-//        request.setRaw(testString);
-//
-//        String testString2 = "{'type' : 'VegMeal', 'username' : '"
-//                + testUserRow + "', 'password' : '" + testUserPass + "', "
-//                + "'addMeal' : false}";
-//        Request request2 = new GsonBuilder().create().fromJson(testString2, Request.class);
-//        request2.setRaw(testString2);
-//
-//        String testString3 = "{'type' : 'VegMeal', 'username' : '"
-//                + testUserRow + "', 'password' : '" + testUserPass + "',"
-//                + "'addMeal': true, 'mealType' : 'vegan'}";
-//        Request request3 = new GsonBuilder().create().fromJson(testString3, Request.class);
-//        request3.setRaw(testString3);
-//
-//        String datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-//
-//        request3.execute();
-//        request.execute();
-//        Assert.assertEquals("[{'points' : 50,'type' : 'vegetarian','datetime' : '"+datetime+"+01'}, {'points' : 60,'type' : 'vegan','datetime' : '"+datetime+"+01'}]", request2.execute());
-//    }
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addMealFalsePrint(){
+        String[] queries = new String[2];
+        queries[0] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegetarian','2019-03-29 00:00:00',1)";
+        queries[1] = "INSERT INTO vegetarian VALUES ('testUser',60,'vegan','2019-03-29 00:00:00',1)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'VegMeal', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addMeal': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 50,'type' : 'vegetarian','datetime' : '2019-03-29 00:00:00'}, {'points' : 60,'type' : 'vegan','datetime' : '2019-03-29 00:00:00'}]", request.execute());
+    }
 }
