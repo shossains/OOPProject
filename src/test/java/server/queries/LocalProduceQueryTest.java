@@ -76,26 +76,20 @@ public class LocalProduceQueryTest {
      * Tests for the printing of the records
      */
     @Test
-    public void addLocalFalsePrint(){
-        //reset db
-        String[] queries = new String[1];
-        queries[0] = "DELETE FROM localproduce WHERE username = '"
-                + testUserRow + "'";
+    public void addMealFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM localproduce WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO localproduce VALUES ('testUser',10,1000,'2019-03-29 00:00:00',1.0)";
+        queries[2] = "INSERT INTO localproduce VALUES ('testUser',15,1500,'2019-03-29 00:00:00',1.5)";
         Query.runQueries(queries, testUserRow, testUserPass);
 
         String testString = "{'type' : 'LocalProduce', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addLocal' : true, 'weight' : 0}";
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addLocal': false}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
         request.execute();
 
-        String testString2 = "{'type' : 'LocalProduce', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addLocal' : false}";
-        Request request2 = new GsonBuilder().create().fromJson(testString2, Request.class);
-        request2.setRaw(testString2);
-        String datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        Assert.assertEquals("[{'points' : 0,'weight' : 0,'datetime' : '"+datetime+"+01'}]", request2.execute());
+        Assert.assertEquals("[{'points' : 10,'weight' : 1000,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'weight' : 1500,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

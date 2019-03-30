@@ -38,10 +38,10 @@ public class TemperatureQueryTest {
     }
 
     /**
-     * Tests is addTemp is false.
+     * Tests is addTemp is false with no records.
      */
     @Test
-    public void addTempFalse(){
+    public void addTempFalseEmpty(){
         //reset db
         String[] queries = new String[1];
         queries[0] = "DELETE FROM temperature WHERE username = '"
@@ -54,5 +54,26 @@ public class TemperatureQueryTest {
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
         Assert.assertEquals(null, request.execute());
+    }
+
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addTempFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO temperature VALUES ('testUser',10,3,'2019-03-29 00:00:00',2)";
+        queries[2] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'Temp', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addTemp': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 10,'temperature' : 3,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

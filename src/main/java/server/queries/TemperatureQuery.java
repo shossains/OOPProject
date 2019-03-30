@@ -63,8 +63,8 @@ public class TemperatureQuery extends ServerQuery {
                     int firstPoint = rs.getInt(1);
                     int firstTemperature = rs.getInt(2);
                     String firstDatetime = rs.getString(3);
-                    String firstRow = "{'points' : " + firstPoint + ",'temperature' : " + firstTemperature
-                            + ",'datetime' : '" + firstDatetime + "'}";
+                    String firstRow = "{'points' : " + firstPoint + ",'temperature' : "
+                            + firstTemperature + ",'datetime' : '" + firstDatetime + "'}";
                     json.add(firstRow);
 
                     while (rs.next()) {
