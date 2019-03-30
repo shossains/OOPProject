@@ -75,7 +75,7 @@
                 </Label>
             <Label layoutX="92.0" layoutY="103.0" text="Former Temperature:" />
             <Label layoutX="92.0" layoutY="157.0" text="Temperature after adjustement:" />
-            <Label fx:id="invalidThigh" alignment="CENTER" layoutX="277.0" layoutY="124.0" prefHeight="19.0" prefWidth="144.0" textFill="#a12020">
+            <Label fx:id="invalidThigh" layoutX="278.0" layoutY="124.0" prefHeight="19.0" prefWidth="189.0" textFill="#a12020">
                <font>
                   <Font size="13.0" />
                </font>
@@ -90,12 +90,12 @@
             <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when s bike ride was added and points awarded" textFill="#0000007b" />
             <TableView fx:id="tableView" layoutX="80.0" layoutY="276.0" prefHeight="184.0" prefWidth="329.0">
                <columns>
-                  <TableColumn fx:id="pointsColumn" prefWidth="59.0" text="Points" />
-                  <TableColumn fx:id="tempColumn" prefWidth="167.0" text="Temperature difference" />
-                  <TableColumn fx:id="dateColumn" prefWidth="101.0" text="Date" />
+                  <TableColumn fx:id="pointsColumn" prefWidth="100.0" text="Points" />
+                  <TableColumn fx:id="tempColumn" prefWidth="100.0" text="∆T (&#176;C)" />
+                  <TableColumn fx:id="dateColumn" prefWidth="127.0" text="Date" />
                </columns>
             </TableView>
-            <Label fx:id="invalidTlow" alignment="CENTER" layoutX="277.0" layoutY="178.0" prefHeight="19.0" prefWidth="129.0" textFill="#a12020">
+            <Label fx:id="invalidTlow" layoutX="278.0" layoutY="178.0" prefHeight="19.0" prefWidth="189.0" textFill="#a12020">
                <font>
                   <Font size="13.0" />
                </font>

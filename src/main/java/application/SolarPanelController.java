@@ -49,6 +49,8 @@ public class SolarPanelController implements Initializable {
                 new PropertyValueFactory<TableContents, Integer>("integer"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<TableContents, Integer>("points"))
         ;
+
+        fetchData();
     }
 
     /**
@@ -61,12 +63,34 @@ public class SolarPanelController implements Initializable {
     }
 
     /**
-     * General method to add something to the table.
-     * @param points amount of points
-     * @param weight of bought groceries
+     * Request the date, process the data, and print it to the table.
      */
-    public void addToTable(int points, int weight) {
-        TableContents tablecontent = new TableContents(points,weight);
+    public void fetchData() {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        //request
+        String request = "{'type' : 'Solar', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "',"
+                + "'addSolar': false}";
+        String response = scn.sendPostRequest(request);
+
+        //response
+        if (response != null) {
+            String[] jsons = response.split(", ");
+            for (int i = 0; i < jsons.length; i++) {
+                jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
+                if (jsons[i].equals("null")) {
+                    break;
+                }
+                String[] res = parseRow(jsons[i]);
+                addToTable(Integer.parseInt(res[0]), Integer.parseInt(res[1]),
+                        res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+            }
+        }
+    }
+
+    public void addToTable(int points, int kwh, String datetime) {
+        TableContents tablecontent = new TableContents(points,kwh,datetime);
         tableView.getItems().add(tablecontent);
     }
 
@@ -113,9 +137,40 @@ public class SolarPanelController implements Initializable {
         System.out.println(parsePoints(response));
 
         TableContents tablecontent = new TableContents(addedPoints(response), kwhInt);
-        tableView.getItems().add(tablecontent);
+        tableView.getItems().add(0,tablecontent);
 
         saved.setText("You've saved " + parseCo2(response) + " kg of CO2");
+    }
+
+    /**
+     * Helper function that transform the json into array of variables.
+     * @param responseJson the json that will be processed
+     * @return A array with the values of the json
+     */
+    public String[] parseRow(String responseJson) {
+        String[] res = new String[3];
+
+        if (responseJson != null) {
+            JsonObject json = null;
+            try {
+                json = new JsonParser().parse(responseJson).getAsJsonObject();
+            } catch (IllegalStateException e) {
+                System.out.println("Returned something that's not even JSON");
+                return null;
+            }
+            try {
+                res[0] = json.get("points").toString();
+                res[1] = json.get("kwh").toString();
+                res[2] = json.get("datetime").toString();
+            } catch (NumberFormatException e) {
+                System.out.println(responseJson);
+                System.out.println("Bad json format returned");
+            }
+            return res;
+        } else {
+            System.out.println("Null JSON returned");
+            return null;
+        }
     }
 
     /**
