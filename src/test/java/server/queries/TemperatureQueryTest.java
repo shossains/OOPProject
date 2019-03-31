@@ -25,10 +25,10 @@ public class TemperatureQueryTest {
     }
 
     /**
-     * Tests for the request of the vegan meal
+     * Tests for the request of temp decrease of 0
      */
     @Test
-    public void BikeRideDistance(){
+    public void TemperatureReqeust(){
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addTemp' : true, 'thigh' : 0, 'tlow' : 0}";
@@ -38,15 +38,42 @@ public class TemperatureQueryTest {
     }
 
     /**
-     * Tests is addBike is false.
+     * Tests is addTemp is false with no records.
      */
     @Test
-    public void addLocalFalse(){
+    public void addTempFalseEmpty(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM temperature WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
                 + "'addTemp': false}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
         Assert.assertEquals(null, request.execute());
+    }
+
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addTempFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO temperature VALUES ('testUser',10,3,'2019-03-29 00:00:00',2)";
+        queries[2] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'Temp', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addTemp': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 10,'temperature' : 3,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

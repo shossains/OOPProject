@@ -6,6 +6,9 @@ import server.db.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PublicTransportQuery extends ServerQuery {
     private Boolean addPublic;
@@ -19,25 +22,24 @@ public class PublicTransportQuery extends ServerQuery {
      * @return json-format string of the amount of points of the username
      */
     public String runQuery() {
-        co2 = 0.0;
-        addPoints = 0;
-
-        if (vehicle.equals("bus")) {
-            co2 = BusCalculator.bus(distance);
-
-            Double temp = BusCalculator.bus(distance) * 10;
-            addPoints = temp.intValue();
-        } else if (vehicle.equals("train")) {
-            try {
-                co2 = TrainCalculator.train(distance);
-                Double temp = TrainCalculator.train(distance) * 10;
-                addPoints = temp.intValue();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
         if (addPublic) {
+            co2 = 0.0;
+            addPoints = 0;
+
+            if (vehicle.equals("bus")) {
+                co2 = BusCalculator.bus(distance);
+
+                Double temp = BusCalculator.bus(distance) * 10;
+                addPoints = temp.intValue();
+            } else if (vehicle.equals("train")) {
+                try {
+                    co2 = TrainCalculator.train(distance);
+                    Double temp = TrainCalculator.train(distance) * 10;
+                    addPoints = temp.intValue();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
             ResultSet[] rsArray = runQueries(addPoints);
             ResultSet rs = rsArray[0];
@@ -56,7 +58,40 @@ public class PublicTransportQuery extends ServerQuery {
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
             }
         } else {
-            return null;
+            ResultSet[] rsArray = runSelect();
+            ResultSet rs = rsArray[0];
+
+            try {
+                //If user had no logs in db
+                if (rs.next()) {
+                    //Ambiguity needed to prevent skipping first row from resultset
+                    List<String> json = new ArrayList<>();
+                    int firstPoint = rs.getInt(1);
+                    int firstDistance = rs.getInt(2);
+                    String firstDatetime = rs.getString(3);
+                    String firstRow = "{'points' : " + firstPoint + ",'distance' : " + firstDistance
+                            + ",'datetime' : '" + firstDatetime + "'}";
+                    json.add(firstRow);
+
+                    while (rs.next()) {
+                        int points = rs.getInt(1);
+                        int distance = rs.getInt(2);
+                        String datetime = rs.getString(3);
+                        String result = "{'points' : " + points + ",'distance' : " + distance
+                                + ",'datetime' : '" + datetime + "'}";
+                        json.add(result);
+                    }
+
+                    rs.close();
+                    return Arrays.toString(json.toArray());
+                } else {
+                    return null;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "{'error' : true, 'reason' : 'Error parsing resultset'}";
+            }
         }
     }
 
@@ -79,6 +114,14 @@ public class PublicTransportQuery extends ServerQuery {
 
         queries[3] = "UPDATE points SET co2 = co2 + " + co2
                 + " WHERE username = '" + username + "'";
+
+        return Query.runQueries(queries,username,password);
+    }
+
+    private ResultSet[] runSelect() {
+        String[] queries = new String[1];
+        queries[0] = "SELECT points, distance, datetime FROM publictransport WHERE username = '"
+                + username + "' ORDER BY datetime DESC LIMIT 20";
 
         return Query.runQueries(queries,username,password);
     }

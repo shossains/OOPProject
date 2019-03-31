@@ -7,6 +7,9 @@ import org.junit.Test;
 import server.Request;
 import server.db.Query;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class VegMealQueryTest {
 
     static final String testUserRow = "testUser";
@@ -19,8 +22,10 @@ public class VegMealQueryTest {
     @BeforeClass
     public static void init() {
         //set the score to 0 on the test row
-        String[] queries = new String[1];
+        String[] queries = new String[2];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow + "'";
+        queries[1] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
         Query.runQueries(queries, testUserRow, testUserPass);
     }
@@ -41,6 +46,14 @@ public class VegMealQueryTest {
      */
     @Test
     public void vegMealQueryVegan(){
+        //reset db
+        String[] queries = new String[2];
+        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow + "'";
+        queries[1] = "DELETE FROM vegetarian WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
                 + "'addMeal': true, 'mealType' : 'vegan'}";
@@ -54,11 +67,59 @@ public class VegMealQueryTest {
      */
     @Test
     public void vegMealQueryVegetarian(){
+        //reset db
+        String[] queries = new String[2];
+        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+                + testUserRow + "'";
+        queries[1] = "DELETE FROM vegetarian WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
                 + "'addMeal': true, 'mealType' : 'vegetarian'}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{'points' : 110 , 'added' : 50 , 'co2' : 1.0}", request.execute());
+        Assert.assertEquals("{'points' : 50 , 'added' : 50 , 'co2' : 1.0}", request.execute());
+    }
+
+    /**
+     * Tests is addMeal is false and no records.
+     */
+    @Test
+    public void addMealFalseEmpty(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM vegetarian WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'VegMeal', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addMeal': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        Assert.assertEquals(null, request.execute());
+    }
+
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addMealFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM vegetarian WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegetarian','2019-03-29 00:00:00',1)";
+        queries[2] = "INSERT INTO vegetarian VALUES ('testUser',60,'vegan','2019-03-29 00:00:00',1)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'VegMeal', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addMeal': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 50,'type' : 'vegetarian','datetime' : '2019-03-29 00:00:00'}, {'points' : 60,'type' : 'vegan','datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

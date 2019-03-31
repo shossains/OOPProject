@@ -20,11 +20,11 @@ public class SolarPanelQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries);
+        Query.runQueries(queries, testUserRow, testUserPass);
     }
 
     /**
-     * Tests for the request of the
+     * Tests for the request of solar panel usage
      */
     @Test
     public void SolarPanelRequest(){
@@ -37,15 +37,42 @@ public class SolarPanelQueryTest {
     }
 
     /**
-     * Tests is addSolar is false.
+     * Tests is addSolar is false with no records.
      */
     @Test
     public void addSolarFalse(){
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM solar WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
         String testString = "{'type' : 'Solar', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addSolar' : false, 'kwh' : 0}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
         Assert.assertEquals(null, request.execute());
+    }
+
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addPanelFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM solar WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO solar VALUES ('testUser',20,150,'2019-03-29 00:00:00',2)";
+        queries[2] = "INSERT INTO solar VALUES ('testUser',30,200,'2019-03-29 00:00:00',3)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'Solar', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addSolar': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 20,'kwh' : 150,'datetime' : '2019-03-29 00:00:00'}, {'points' : 30,'kwh' : 200,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

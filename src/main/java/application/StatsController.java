@@ -32,11 +32,12 @@ public class StatsController implements Initializable {
 
         ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", 60), new PieChart.Data("Bike Ride", 120),
+                        new PieChart.Data("VegMeal", 120),
+                        new PieChart.Data("Bike Ride", 120),
                         new PieChart.Data("Temperature", 80),
                         new PieChart.Data("SolarPanels", 50),
                         new PieChart.Data("LocalProduce", 25),
-                        new PieChart.Data("Public Transport", 10)
+                        new PieChart.Data("Public Transport", 0)
         );
         friendPieChart.setData(friendPieChartData);
     }
@@ -53,6 +54,15 @@ public class StatsController implements Initializable {
         Stage window = (Stage) myToolbar.getScene().getWindow();
         window.setScene(hmScene);
         window.show();
+    }
+
+    /**
+     * Go to the Vegetarian meal screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException {
+        go("VegMeal");
     }
 
     /**
@@ -99,15 +109,4 @@ public class StatsController implements Initializable {
     public void goSolar(ActionEvent actionEvent) throws IOException {
         go("SolarPanels");
     }
-
-
-    /**
-     * Go to the Vegetarian meal screen.
-     * @param actionEvent The click of the button
-     * @throws IOException Throw if file is missing/corrupted/incomplete
-     */
-    public void goVeg(ActionEvent actionEvent) throws IOException {
-        go("VegMeal");
-    }
-
 }

@@ -21,32 +21,59 @@ public class BikeRideQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries);
+        Query.runQueries(queries, testUserRow, testUserPass);
     }
 
     /**
-     * Tests for the request of the vegan meal
+     * Tests is addBike is false with no records.
      */
     @Test
-    public void BikeRideDistance(){
-        String testString = "{'type' : 'BikeRide', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addBike' : true, 'distance' : 0}";
-        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
-        request.setRaw(testString);
-        Assert.assertEquals("{'points' : 0 , 'added' : 0 , 'co2' : 0.0}", request.execute());
-    }
+    public void addBikeFalseEmpty() {
+        //reset db
+        String[] queries = new String[1];
+        queries[0] = "DELETE FROM bikeride WHERE username = '"
+                + testUserRow + "'";
+        Query.runQueries(queries, testUserRow, testUserPass);
 
-    /**
-     * Tests is addBike is false.
-     */
-    @Test
-    public void addLocalFalse(){
         String testString = "{'type' : 'BikeRide', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
                 + "'addBike': false}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
         Assert.assertEquals(null, request.execute());
+    }
+
+    /**
+     * Tests for the request of the bike ride
+     */
+    @Test
+    public void BikeRideDistance() {
+        String testString = "{'type' : 'BikeRide', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "', "
+                + "'addBike' : true, 'distance' : 2500}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        Assert.assertEquals("{'points' : 33 , 'added' : 33 , 'co2' : 0.33444}", request.execute());
+    }
+
+    /**
+     * Tests for the printing of the records
+     */
+    @Test
+    public void addMealFalsePrint(){
+        String[] queries = new String[3];
+        queries[0] = "DELETE FROM bikeride WHERE username = '" + testUserRow + "';";
+        queries[1] = "INSERT INTO bikeride VALUES ('testUser',20,'50','2019-03-29 00:00:00',2.2)";
+        queries[2] = "INSERT INTO bikeride VALUES ('testUser',30,'60','2019-03-29 00:00:00',3.2)";
+        Query.runQueries(queries, testUserRow, testUserPass);
+
+        String testString = "{'type' : 'BikeRide', 'username' : '"
+                + testUserRow + "', 'password' : '" + testUserPass + "',"
+                + "'addBike': false}";
+        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
+        request.setRaw(testString);
+        request.execute();
+
+        Assert.assertEquals("[{'points' : 20,'distance' : 50,'datetime' : '2019-03-29 00:00:00'}, {'points' : 30,'distance' : 60,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }
