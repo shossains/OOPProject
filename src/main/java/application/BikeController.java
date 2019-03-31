@@ -273,7 +273,6 @@ public class BikeController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-        return parsePoints(response);
     }
 
     /**

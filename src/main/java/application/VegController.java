@@ -237,7 +237,6 @@ public class VegController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         System.out.println(parsePoints(response));
-        return parsePoints(response);
     }
 
     /**
