@@ -261,8 +261,9 @@ public class BikeController implements Initializable {
 
     /**
      * This method create the request for only points.
+     * @param actionEvent opening a scene or clicking any given button
      */
-    public int returnPoints() {
+    public void returnPoints(ActionEvent actionEvent) {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
         String request = "{'type' : 'BikeRide', 'username' : '"
