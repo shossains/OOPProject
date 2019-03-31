@@ -4,7 +4,9 @@ import server.db.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class VegMealQuery extends ServerQuery {
     private boolean addMeal;
@@ -52,17 +54,31 @@ public class VegMealQuery extends ServerQuery {
             ResultSet rs = rsArray[0];
 
             try {
-                String[] json = new String[20];
-                for (int i = 0; i < 20; i++) {
-                    rs.next();
-                    int points = rs.getInt(1);
-                    String type = rs.getString(2);
-                    String datetime = rs.getString(3);
-                    json[i] = "{'points' : " + points + ",'type' : '" + type
-                            + "','datetime' : '" + datetime + "'}";
+                //If user had no logs in db
+                if (rs.next()) {
+                    //Ambiguity needed to prevent skipping first row from resultset
+                    List<String> json = new ArrayList<>();
+                    int firstPoint = rs.getInt(1);
+                    String firstType = rs.getString(2);
+                    String firstDatetime = rs.getString(3);
+                    String firstRow = "{'points' : " + firstPoint + ",'type' : '" + firstType
+                            + "','datetime' : '" + firstDatetime + "'}";
+                    json.add(firstRow);
+
+                    while (rs.next()) {
+                        int points = rs.getInt(1);
+                        String type = rs.getString(2);
+                        String datetime = rs.getString(3);
+                        String temp = "{'points' : " + points + ",'type' : '" + type
+                                + "','datetime' : '" + datetime + "'}";
+                        json.add(temp);
+                    }
+                    rs.close();
+                    return Arrays.toString(json.toArray());
+                } else {
+                    return null;
                 }
-                rs.close();
-                return Arrays.toString(json);
+
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "{'error' : true, 'reason' : 'Error parsing resultset'}";
@@ -72,7 +88,6 @@ public class VegMealQuery extends ServerQuery {
 
     /**
      * Runs db duties for the meal, as well as authentication, returns resultset array.
-     *
      * @param pointsToBeAdded points to be added for the meal
      * @return resultset with the current points total.
      */

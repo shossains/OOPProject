@@ -71,12 +71,17 @@ public class VegController implements Initializable {
         String response = scn.sendPostRequest(request);
 
         //response
-        String[] jsons = response.split(", ");
-        for (int i = 0; i < 20; i++) {
-            jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
-            String[] res = parseRow(jsons[i]);
-            addToTable(Integer.parseInt(res[0]), res[1].replaceAll("^\"|\"$", ""),
-                    res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+        if (response != null) {
+            String[] jsons = response.split(", ");
+            for (int i = 0; i < jsons.length; i++) {
+                jsons[i] = jsons[i].replaceAll("\\[|\\]", "");
+                if (jsons[i].equals("null")) {
+                    break;
+                }
+                String[] res = parseRow(jsons[i]);
+                addToTable(Integer.parseInt(res[0]), res[1].replaceAll("^\"|\"$", ""),
+                        res[2].replaceAll("^\\\"|\\+\\d\\d\\\"$", ""));
+            }
         }
     }
 
@@ -112,8 +117,9 @@ public class VegController implements Initializable {
      * @return A array with the values of the json
      */
     public String[] parseRow(String responseJson) {
+        String[] res = new String[3];
+
         if (responseJson != null) {
-            //de-Json the response and update the amount of points.
             JsonObject json = null;
             try {
                 json = new JsonParser().parse(responseJson).getAsJsonObject();
@@ -121,7 +127,6 @@ public class VegController implements Initializable {
                 System.out.println("Returned something that's not even JSON");
                 return null;
             }
-            String[] res = new String[3];
             try {
                 res[0] = json.get("points").toString();
                 res[1] = json.get("type").toString();
@@ -147,14 +152,6 @@ public class VegController implements Initializable {
      * @param actionEvent The click of the button
      */
     public void add(ActionEvent actionEvent) {
-        // Gets username and password to send via json to the server
-        // Which uses the CLIENT stored vars.
-        //  Don't use any server queries on the gosh darned client, that's only for the server
-        //  And please for the love of God don't just change server code vars to static just
-        // to make it compile
-
-        //send json request
-
         System.out.println("Running add");
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
@@ -170,7 +167,6 @@ public class VegController implements Initializable {
 
     /**
      * Helper function to parse response json.
-     *
      * @param responseJson The raw json response from the server
      * @return The current amount of points.
      */
@@ -304,7 +300,7 @@ public class VegController implements Initializable {
 
     /**
      * Go to the User Stats screen.
-     * @param actionEvent Click of the button.
+     * @param actionEvent The click of the button
      * @throws IOException Throw if chart is invalid
      */
     public void goStats(ActionEvent actionEvent) throws IOException {

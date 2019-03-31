@@ -74,7 +74,7 @@
             <TableView fx:id="tableView" layoutX="80.0" layoutY="276.0" prefHeight="184.0" prefWidth="329.0">
                <columns>
                   <TableColumn fx:id="pointsColumn" prefWidth="80.13912362745924" text="Points" />
-                  <TableColumn fx:id="distanceColumn" prefWidth="128.0" text="Distance (meters)" />
+                  <TableColumn fx:id="distanceColumn" prefWidth="128.0" text="Distance (m)" />
                   <TableColumn fx:id="dateColumn" prefWidth="118.0" text="Date" />
                </columns>
             </TableView>

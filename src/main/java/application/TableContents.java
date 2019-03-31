@@ -37,15 +37,27 @@ public class TableContents {
     }
 
     /**
-     * Contructor that is used to print to the table with date from the DB.
+     * Contructor that is used to print to the table with date from the VegMeal DB.
      * @param points Amount of points
-     * @param type distance/weight/kwh/Type of vehicle/-meal
+     * @param type of vehicle/-meal
      * @param date Date and time of event
      */
     public TableContents(int points, String type, String date) {
         this.points = new SimpleIntegerProperty(points);
         this.date = date;
         this.type = type;
+    }
+
+    /**
+     * Contructor that is used to print to the table with date from the DB.
+     * @param points Amount of points
+     * @param integer distance/weight/kwh
+     * @param date Date and time of event
+     */
+    public TableContents(int points, int integer, String date) {
+        this.points = new SimpleIntegerProperty(points);
+        this.date = date;
+        this.integer = new SimpleIntegerProperty(integer);
     }
 
     public SimpleIntegerProperty pointsProperty() {
