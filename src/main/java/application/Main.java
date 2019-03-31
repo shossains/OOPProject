@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import server.Server;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class Main extends Application {
         Server server;
         String serverpassword = "password";
         try {
-            server = new Server(3000, new FileInputStream("C:\\Users\\lucas\\Desktop\\OOPP\\testkey.jks"),
+            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
                     serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
