@@ -7,10 +7,11 @@ import org.junit.Test;
 import server.Request;
 import server.db.Query;
 
-public class TemperatureQueryTest {
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    static final String testUserRow = "testUser";
-    static final String testUserPass = "hunter2";
+public class AverageQueryTest {
+    static int resUsers;
 
     /**
      * initializes variables, clean up test entry in users
@@ -18,62 +19,35 @@ public class TemperatureQueryTest {
     @BeforeClass
     public static void init() {
         //set the score to 0 on the test row
-        String[] queries = new String[1];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
-                + testUserRow + "'";
-        Query.runQueries(queries);
+        String[] queries = new String[7];
+        queries[0] = "UPDATE vegetarian SET points = 0";
+        queries[1] = "UPDATE localproduce SET points = 0";
+        queries[2] = "UPDATE bikeride SET points = 0";
+        queries[3] = "UPDATE publictransport SET points = 0";
+        queries[4] = "UPDATE temperature SET points = 0";
+        queries[5] = "UPDATE solar SET points = 0";
+        queries[6] = "SELECT COUNT(*) FROM client";
+        ResultSet[] rsArray = Query.runQueries(queries);
+        ResultSet rsUsers = rsArray[0];
+        try {
+            while (rsUsers.next()) {
+                resUsers = rsUsers.getInt(1);
+            }
+            rsUsers.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in resultset");
+        }
     }
 
     /**
-     * Tests for the request of temp decrease of 0
+     * Tests for the combined request
      */
     @Test
-    public void TemperatureReqeust(){
-        String testString = "{'type' : 'Temp', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addTemp' : true, 'thigh' : 0, 'tlow' : 0}";
+    public void AverageRequest(){
+        String testString = "{'type' : 'Average'}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{'points' : 0, 'added' : 0, 'co2' : 0.0}", request.execute());
-    }
-
-    /**
-     * Tests is addTemp is false with no records.
-     */
-    @Test
-    public void addTempFalseEmpty(){
-        //reset db
-        String[] queries = new String[1];
-        queries[0] = "DELETE FROM temperature WHERE username = '"
-                + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
-
-        String testString = "{'type' : 'Temp', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "',"
-                + "'addTemp': false}";
-        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
-        request.setRaw(testString);
-        Assert.assertEquals(null, request.execute());
-    }
-
-    /**
-     * Tests for the printing of the records
-     */
-    @Test
-    public void addTempFalsePrint(){
-        String[] queries = new String[3];
-        queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
-        queries[1] = "INSERT INTO temperature VALUES ('testUser',10,3,'2019-03-29 00:00:00',2)";
-        queries[2] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
-        Query.runQueries(queries, testUserRow, testUserPass);
-
-        String testString = "{'type' : 'Temp', 'username' : '"
-                + testUserRow + "', 'password' : '" + testUserPass + "',"
-                + "'addTemp': false}";
-        Request request = new GsonBuilder().create().fromJson(testString, Request.class);
-        request.setRaw(testString);
-        request.execute();
-
-        Assert.assertEquals("[{'points' : 10,'temperature' : 3,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
+        Assert.assertEquals("{'vegPoints' : 0, 'locProdPoints' : 0, 'bikePoints' : 0, 'pubTransPoints' : 0, 'tempPoints' : 0, 'solarPoints' : 0, 'users' : " + resUsers + "}", request.execute());
     }
 }
