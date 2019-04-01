@@ -27,30 +27,38 @@ public class StatsController implements Initializable {
     @FXML private MenuButton friendMenu;
 
 
+    /**
+     * When clicking the button, a new friend is added to the Friends menu
+     * To test how to add new menu items that have a method
+     */
     @FXML public void addFriend(){
         MenuItem newFriend = new MenuItem("new Friend");
-        //ObservableList<PieChart.Data> friendData
-          //      = FXCollections.observableArrayList(
-            //            new PieChart.Data( "LocalProduce", 50),
-              //          new PieChart.Data( "Solar Panels", 205)
-                //);
 
-        //newFriend.setOnAction(friendPieChart.setData(friendData));
         friendMenu.getItems().add(newFriend);
-        newFriend.setOnAction(e -> generate("Local produce", 120));
+        newFriend.setOnAction(e -> generate("Local produce", (int)(Math.random() * 100),
+                "Temperature", (int)(Math.random() * 100)));
 
-
-       // friendPieChart.setVisible(false);
     }
 
-    @FXML public void generate(String name, int value){
+    /**
+     * Test data for addfriend() method
+     * @param name
+     * @param value
+     * @param name2
+     * @param value2
+     */
+    @FXML public void generate(String name, int value, String name2, int value2){
         ObservableList<PieChart.Data> friendData
                 = FXCollections.observableArrayList(
-                new PieChart.Data(name, value));
+                new PieChart.Data(name, value),
+                new PieChart.Data(name2, value2));
 
         friendPieChart.setData(friendData);
     }
 
+    /**
+     * Test data to see if displaying data tied to menu item 1 works
+     */
     @FXML public void showFriendData(){
         ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
