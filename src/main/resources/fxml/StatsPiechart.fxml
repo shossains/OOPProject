@@ -66,7 +66,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <MenuButton layoutX="475.0" layoutY="92.0" mnemonicParsing="false" stylesheets="@../choiceboxcsstest.css" text="Your friends">
+            <MenuButton layoutX="475.0" layoutY="92.0" mnemonicParsing="false" stylesheets="@../choiceboxcsstest.css" text="Global average">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
