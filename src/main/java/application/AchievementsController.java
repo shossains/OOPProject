@@ -6,19 +6,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AchievementsController {
+    StatsController statsController = new StatsController();
+    int[] points = statsController.request();
 
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(request())
     }
 
-    public int request() {
-        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
-
-        String request = "{'type' : 'Combined', 'username' : '"
-                + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
-
-        String response = scn.sendPostRequest(request);
-        //parse respone
+    public boolean check() {
+        if(points[1] > 1) {
+            System.out.println("Getting started");
+        }
     }
 }
