@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
@@ -22,6 +24,45 @@ public class StatsController implements Initializable {
 
     @FXML private PieChart userPieChart;
     @FXML private PieChart friendPieChart;
+    @FXML private MenuButton friendMenu;
+
+
+    @FXML public void addFriend(){
+        MenuItem newFriend = new MenuItem("new Friend");
+        //ObservableList<PieChart.Data> friendData
+          //      = FXCollections.observableArrayList(
+            //            new PieChart.Data( "LocalProduce", 50),
+              //          new PieChart.Data( "Solar Panels", 205)
+                //);
+
+        //newFriend.setOnAction(friendPieChart.setData(friendData));
+        friendMenu.getItems().add(newFriend);
+        newFriend.setOnAction(e -> generate("Local produce", 120));
+
+
+       // friendPieChart.setVisible(false);
+    }
+
+    @FXML public void generate(String name, int value){
+        ObservableList<PieChart.Data> friendData
+                = FXCollections.observableArrayList(
+                new PieChart.Data(name, value));
+
+        friendPieChart.setData(friendData);
+    }
+
+    @FXML public void showFriendData(){
+        ObservableList<PieChart.Data> friendPieChartData
+                = FXCollections.observableArrayList(
+                new PieChart.Data("VegMeal", 120),
+                new PieChart.Data("Bike Ride", 120),
+                new PieChart.Data("Temperature", 80),
+                new PieChart.Data("SolarPanels", 50),
+                new PieChart.Data("LocalProduce", 25),
+                new PieChart.Data("Public Transport", 0)
+        );
+        friendPieChart.setData(friendPieChartData);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -30,16 +71,7 @@ public class StatsController implements Initializable {
                 new PieChart.Data("Bike Ride", 120), new PieChart.Data("Temperature", 100));
         userPieChart.setData(userPieChartData);
 
-        ObservableList<PieChart.Data> friendPieChartData
-                = FXCollections.observableArrayList(
-                        new PieChart.Data("VegMeal", 120),
-                        new PieChart.Data("Bike Ride", 120),
-                        new PieChart.Data("Temperature", 80),
-                        new PieChart.Data("SolarPanels", 50),
-                        new PieChart.Data("LocalProduce", 25),
-                        new PieChart.Data("Public Transport", 0)
-        );
-        friendPieChart.setData(friendPieChartData);
+
     }
 
     /**
