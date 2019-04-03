@@ -149,4 +149,13 @@ public class StatsController implements Initializable {
     public void goSolar(ActionEvent actionEvent) throws IOException {
         go("SolarPanels");
     }
+
+    /**
+     * Go to the Personal settings screen
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goPersonal(ActionEvent actionEvent) throws IOException{
+        go("PersonalSettings");
+    }
 }
