@@ -88,8 +88,7 @@ public class StatsController implements Initializable {
     public int[] averageRequest() {
         SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
-        String request = "{'type' : 'Average', 'username' : '"
-            + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
+        String request = "{'type' : 'Average'}";
 
         String response = scn.sendPostRequest(request);
 
