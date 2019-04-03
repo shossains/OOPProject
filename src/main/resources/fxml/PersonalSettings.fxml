@@ -36,7 +36,7 @@
                   </MenuButton>
                   <MenuButton fx:id="mb" mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Add a Vegetarian Meal" />
+                        <MenuItem mnemonicParsing="false" onAction="#goVeg" text="Add a Vegetarian Meal" />
                         <MenuItem mnemonicParsing="false" onAction="#goLocal" text="Add Local Produce" />
                      </items>
                      <font>
