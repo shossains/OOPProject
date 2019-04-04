@@ -16,19 +16,71 @@ import java.util.ResourceBundle;
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
 
+    boolean veg0 = false;
+    boolean veg1 = false;
+    boolean veg2 = false;
 
+    boolean locProd0 = false;
+    boolean locProd1 = false;
+    boolean locProd2 = false;
+    boolean locProd3 = false;
 
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
+    int vegPoints = points[0];
+    int locProdPoints = points[1];
+
+    int total = vegPoints + locProdPoints;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        achievements();
+        vegAchieve0();
+        vegAchieve2();
+        locProdAchieve0();
+        locProdAchieve1();
+        locProdAchieve2();
+        locProdAchieve3();
     }
 
-    public void achievements() {
-        if(points[0] > 0) {
-            System.out.println("Getting started");
+    public void vegAchieve0() {
+        if(vegPoints > 0 && veg0 == false) {
+            System.out.println("Getting started"); //TODO: placeholder, replace by activating badge/achievement
+            veg0 = true;
+        }
+    }
+
+    public void vegAchieve2() {
+        if(vegPoints > 1000 && veg2 == false) {
+            System.out.println("Earned 100 points"); //TODO: placeholder, replace by activating badge/achievement
+            veg2 = true;
+        }
+    }
+
+    public void locProdAchieve0() {
+        if(locProdPoints > 0 && locProd0 == false) {
+            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+            locProd0 = true;
+        }
+    }
+
+    public void locProdAchieve1() {
+        if(locProdPoints > 12345 && locProd1 == false) { //TODO: calculate the exact amount of points that eating 1 kg of local produce gets you
+            System.out.println("Ate 1kg of local produce"); //TODO: placeholder, replace by activating badge/achievement
+            locProd1 = true;
+        }
+    }
+
+    public void locProdAchieve2() {
+        if(locProdPoints > 12345 && locProd2 == false) { //TODO: calculate the exact amount of points that eating 1000 kg of local produce gets you
+            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+            locProd2 = true;
+        }
+    }
+
+    public void locProdAchieve3() {
+        if(locProdPoints > 1000 && locProd3 == false) {
+            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+            locProd3 = true;
         }
     }
 
