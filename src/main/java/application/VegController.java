@@ -315,4 +315,13 @@ public class VegController implements Initializable {
     public void goPersonal(ActionEvent actionEvent) throws IOException{
         go("PersonalSettings");
     }
+
+    /**
+     * Go to the Achievements screen
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goAchievements(ActionEvent actionEvent) throws IOException{
+        go("Achievements");
+    }
 }
