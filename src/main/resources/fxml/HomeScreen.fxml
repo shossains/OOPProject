@@ -63,10 +63,10 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TextField layoutX="120.0" layoutY="261.0" />
+            <TextField fx:id="usernameField" layoutX="120.0" layoutY="261.0" />
             <Label layoutX="119.0" layoutY="240.0" text="Username:" />
             <Label layoutX="119.0" layoutY="297.0" text="Password:" />
-            <PasswordField layoutX="120.0" layoutY="315.0" />
+            <PasswordField fx:id="passwordField" layoutX="120.0" layoutY="315.0" />
             <Label layoutX="518.0" layoutY="428.0" text="Skip straight to the program" textFill="#00000081" />
          </children>
       </AnchorPane>

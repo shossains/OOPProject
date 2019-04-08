@@ -88,6 +88,8 @@ public class Request {
                 return combined();
             case "Average":
                 return average();
+            case "Login":
+                return buildGson(rawQuery, LoginQuery.class).runQuery();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }

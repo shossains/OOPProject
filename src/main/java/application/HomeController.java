@@ -5,11 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class HomeController {
+
+    public TextField usernameField;
+    public PasswordField passwordField;
 
     /**
      * This method brings you to the vegetarian meal screen.
@@ -20,6 +25,15 @@ public class HomeController {
         Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
         Scene hmScene = new Scene(hmParent);
 
+        //get passwords
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        //set user vars
+        User.setUsername(username);
+        User.setPassword(password);
+
+        //go to first page
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(hmScene);
         window.show();
