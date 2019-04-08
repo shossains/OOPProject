@@ -80,4 +80,16 @@ public class HomeController {
             return false;
         }
     }
+
+    public void skip(ActionEvent event) throws IOException {
+        User.setUsername("testUser");
+        User.setPassword("hunter2");
+
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
+        Scene hmScene = new Scene(hmParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(hmScene);
+        window.show();
+    }
 }

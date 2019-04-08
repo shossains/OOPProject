@@ -59,7 +59,7 @@
             </TextField>
             <Line endX="-21.60870361328125" endY="124.00003051757812" layoutX="379.0" layoutY="349.0" startX="-21.60870361328125" startY="-135.07827758789062" />
             <Line endX="100.0" layoutX="391.0" layoutY="113.0" startX="-165.3739471435547" startY="1.52587890625E-5" />
-            <Button layoutX="477.0" layoutY="445.0" mnemonicParsing="false" onAction="#toMainMenu" text="God Mode (REMOVE IN FINAL VERSION)">
+            <Button layoutX="477.0" layoutY="445.0" mnemonicParsing="false" onAction="#skip" text="God Mode (REMOVE IN FINAL VERSION)">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
