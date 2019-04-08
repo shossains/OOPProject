@@ -1,5 +1,6 @@
 package application;
 
+import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,19 +23,31 @@ public class HomeController {
      * @throws IOException Throw exception if file is not found or corrupted
      */
     public void toMainMenu(ActionEvent event) throws IOException {
-        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
-        Scene hmScene = new Scene(hmParent);
+
 
         //get passwords
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         //prepare request
-        String request = "";
+        String request = "{'type' : 'Login', 'username' : '"+username+"', 'password' : '"+password+"'}";
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        if(scn.sendPostRequest(request).equals("{'login' : false}")){
+            //invalid login
+            System.out.println("Invalid login");
+            //do an error message
+
+            return;
+        }
 
         //set user vars
         User.setUsername(username);
         User.setPassword(password);
+
+        //do whatever this is doing and creating extra server requests
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
+        Scene hmScene = new Scene(hmParent);
 
         //go to first page
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

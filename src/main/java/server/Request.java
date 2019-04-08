@@ -13,6 +13,8 @@ import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
 
+import java.awt.desktop.ScreenSleepEvent;
+
 /**
  * Class for parsing requests using Gson.
  * Must give raw string used to instantiate the object via setRaw(),
