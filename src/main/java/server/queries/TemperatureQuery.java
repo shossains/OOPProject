@@ -3,6 +3,7 @@ package server.queries;
 import calculator.TemperatureCalculator;
 import server.db.Query;
 
+import java.net.MalformedURLException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public class TemperatureQuery extends ServerQuery {
             co2 = TemperatureCalculator.temp(thigh,tlow);
             Double tempvalue = co2 * 100;
             addPoints = tempvalue.intValue();
-        } catch (Exception e) {
+        } catch (MalformedURLException e) {
+            //TODO: This should be caught in the calculator method!
             e.printStackTrace();
         }
 

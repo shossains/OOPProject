@@ -3,9 +3,11 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.*;
+import server.queries.AverageQuery;
 import server.queries.BikeRideQuery;
+import server.queries.CombinedQuery;
 import server.queries.LocalProduceQuery;
+import server.queries.LoginQuery;
 import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;
 import server.queries.SolarQuery;
@@ -13,7 +15,6 @@ import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
 
-import java.awt.desktop.ScreenSleepEvent;
 
 /**
  * Class for parsing requests using Gson.
