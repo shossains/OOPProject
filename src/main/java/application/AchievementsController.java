@@ -17,7 +17,9 @@ import java.util.ResourceBundle;
 
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
-    @FXML Circle vegBronze;
+    @FXML Circle vegCircle0;
+    @FXML Circle vegCircle1;
+    @FXML Circle vegCircle2;
 
     boolean veg0 = false;
     boolean veg1 = false;
@@ -45,45 +47,69 @@ public class AchievementsController implements Initializable {
         locProdAchieve3();
     }
 
+    /**
+     * Checks whether the first vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void vegAchieve0() {
-        if(vegPoints > 0 && veg0 == false) {
-            System.out.println("Getting started"); //TODO: placeholder, replace by activating badge/achievement
-            vegBronze.setFill(Paint.valueOf("#ca784b"));
+        if (vegPoints > 0 && veg0 == false) {
+            System.out.println("Getting started"); //TODO: delete
+            vegCircle0.setFill(Paint.valueOf("#ca784b"));
             veg0 = true;
         }
     }
 
+    /**
+     * Checks whether the third vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void vegAchieve2() {
-        if(vegPoints > 1000 && veg2 == false) {
-            System.out.println("Earned 100 points"); //TODO: placeholder, replace by activating badge/achievement
+        if (vegPoints > 1000 && veg2 == false) {
+            System.out.println("Earned 100 points"); //TODO: delete
             veg2 = true;
         }
     }
 
+    /**
+     * Checks whether the first local produce achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void locProdAchieve0() {
-        if(locProdPoints > 0 && locProd0 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+        if (locProdPoints > 0 && locProd0 == false) {
+            System.out.println("Ate local produce for 1st time"); //TODO: delete
             locProd0 = true;
         }
     }
 
+    /**
+     * Checks whether the second vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void locProdAchieve1() {
-        if(locProdPoints > 12345 && locProd1 == false) { //TODO: calculate the exact amount of points that eating 1 kg of local produce gets you
-            System.out.println("Ate 1kg of local produce"); //TODO: placeholder, replace by activating badge/achievement
+        if (locProdPoints > 12345 && locProd1 == false) { //TODO: calculate the exact amount of points that eating 1 kg of local produce gets you
+            System.out.println("Ate 1kg of local produce"); //TODO: delete
             locProd1 = true;
         }
     }
 
+    /**
+     * Checks whether the third vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void locProdAchieve2() {
-        if(locProdPoints > 12345 && locProd2 == false) { //TODO: calculate the exact amount of points that eating 1000 kg of local produce gets you
-            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+        if (locProdPoints > 12345 && locProd2 == false) { //TODO: calculate the exact amount of points that eating 1000 kg of local produce gets you
+            System.out.println("Ate local produce for 1st time"); //TODO: delete
             locProd2 = true;
         }
     }
 
+    /**
+     * Checks whether the fourth vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
     public void locProdAchieve3() {
-        if(locProdPoints > 1000 && locProd3 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: placeholder, replace by activating badge/achievement
+        if (locProdPoints > 1000 && locProd3 == false) {
+            System.out.println("Ate local produce for 1st time"); //TODO: delete
             locProd3 = true;
         }
     }
@@ -165,7 +191,7 @@ public class AchievementsController implements Initializable {
         go("StatsPieChart");
     }
 
-    public void goPersonal(ActionEvent actionEvent) throws IOException{
+    public void goPersonal(ActionEvent actionEvent) throws IOException {
         go("PersonalSettings");
     }
 
