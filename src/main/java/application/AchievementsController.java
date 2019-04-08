@@ -17,12 +17,18 @@ import java.util.ResourceBundle;
 
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
+
     @FXML Circle vegCircle0;
     @FXML Circle vegCircle1;
     @FXML Circle vegCircle2;
+
     @FXML Circle locProdCircle0;
     @FXML Circle locProdCircle1;
     @FXML Circle locProdCircle2;
+
+    @FXML Circle bikeCircle0;
+    @FXML Circle bikeCircle1;
+    @FXML Circle bikeCircle2;
 
     boolean veg0 = false;
     boolean veg1 = false;
@@ -32,12 +38,17 @@ public class AchievementsController implements Initializable {
     boolean locProd1 = false;
     boolean locProd2 = false;
 
+    boolean bike0 = false;
+    boolean bike1 = false;
+    boolean bike2 = false;
+
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
     int vegPoints = points[0];
     int locProdPoints = points[1];
+    int bikePoints = points[2];
 
-    int total = vegPoints + locProdPoints; //TODO
+    int total = vegPoints + locProdPoints + bikePoints; //TODO
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,6 +57,9 @@ public class AchievementsController implements Initializable {
         locProdAchieve0();
         locProdAchieve1();
         locProdAchieve2();
+        bikeAchieve0();
+        bikeAchieve1();
+        bikeAchieve2();
     }
 
     /**
@@ -85,38 +99,68 @@ public class AchievementsController implements Initializable {
     }
 
     /**
-     * Checks whether the first vegetarian achievement has been achieved.
+     * Checks whether the first local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void locProdAchieve0() {
         if (locProdPoints > 33 && locProd0 == false) {
-            System.out.println("Ate 1kg of local produce"); //TODO: delete
             locProdCircle0.setFill(Paint.valueOf("#ca784b"));
             locProd0 = true;
         }
     }
 
     /**
-     * Checks whether the second vegetarian achievement has been achieved.
+     * Checks whether the second local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void locProdAchieve1() {
         if (locProdPoints > 32800 && locProd1 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: delete
             locProdCircle1.setFill(Paint.valueOf("#d0d0d0"));
             locProd1 = true;
         }
     }
 
     /**
-     * Checks whether the third vegetarian achievement has been achieved.
+     * Checks whether the third local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void locProdAchieve2() {
         if (locProdPoints > 1000 && locProd2 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: delete
             locProdCircle2.setFill(Paint.valueOf("#ecec09"));
             locProd2 = true;
+        }
+    }
+
+    /**
+     * Checks whether the first bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void bikeAchieve0() {
+        if (bikePoints > 13 && bike0 == false) {
+            bikeCircle0.setFill(Paint.valueOf("#ca784b"));
+            bike0 = true;
+        }
+    }
+
+    /**
+     * Checks whether the second bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void bikeAchieve1() {
+        if (bikePoints > 13377 && bike1 == false) {
+            bikeCircle1.setFill(Paint.valueOf("#d0d0d0"));
+            bike1 = true;
+        }
+    }
+
+    /**
+     * Checks whether the third bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void bikeAchieve2() {
+        if (bikePoints > 1000 && bike2 == false) {
+            bikeCircle2.setFill(Paint.valueOf("#ecec09"));
+            bike2 = true;
         }
     }
 
