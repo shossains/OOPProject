@@ -20,6 +20,9 @@ public class AchievementsController implements Initializable {
     @FXML Circle vegCircle0;
     @FXML Circle vegCircle1;
     @FXML Circle vegCircle2;
+    @FXML Circle locProdCircle0;
+    @FXML Circle locProdCircle1;
+    @FXML Circle locProdCircle2;
 
     boolean veg0 = false;
     boolean veg1 = false;
@@ -28,7 +31,6 @@ public class AchievementsController implements Initializable {
     boolean locProd0 = false;
     boolean locProd1 = false;
     boolean locProd2 = false;
-    boolean locProd3 = false;
 
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
@@ -44,7 +46,6 @@ public class AchievementsController implements Initializable {
         locProdAchieve0();
         locProdAchieve1();
         locProdAchieve2();
-        locProdAchieve3();
     }
 
     /**
@@ -66,7 +67,7 @@ public class AchievementsController implements Initializable {
     public void vegAchieve1() {
         if (veg1 == false) {
             System.out.println("Achievement 1"); //TODO: delete
-            vegCircle0.setFill(Paint.valueOf("#d0d0d0"));
+            vegCircle1.setFill(Paint.valueOf("#d0d0d0"));
             veg1 = true;
         }
     }
@@ -78,18 +79,19 @@ public class AchievementsController implements Initializable {
     public void vegAchieve2() {
         if (vegPoints > 1000 && veg2 == false) {
             System.out.println("Earned 1000 points"); //TODO: delete
-            vegCircle0.setFill(Paint.valueOf("#ecec09"));
+            vegCircle2.setFill(Paint.valueOf("#ecec09"));
             veg2 = true;
         }
     }
 
     /**
-     * Checks whether the first local produce achievement has been achieved.
+     * Checks whether the first vegetarian achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void locProdAchieve0() {
-        if (locProdPoints > 0 && locProd0 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: delete
+        if (locProdPoints > 33 && locProd0 == false) {
+            System.out.println("Ate 1kg of local produce"); //TODO: delete
+            locProdCircle0.setFill(Paint.valueOf("#ca784b"));
             locProd0 = true;
         }
     }
@@ -99,8 +101,9 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void locProdAchieve1() {
-        if (locProdPoints > 12345 && locProd1 == false) { //TODO: calculate the exact amount of points that eating 1 kg of local produce gets you
-            System.out.println("Ate 1kg of local produce"); //TODO: delete
+        if (locProdPoints > 32800 && locProd1 == false) {
+            System.out.println("Ate local produce for 1st time"); //TODO: delete
+            locProdCircle1.setFill(Paint.valueOf("#d0d0d0"));
             locProd1 = true;
         }
     }
@@ -110,20 +113,10 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void locProdAchieve2() {
-        if (locProdPoints > 12345 && locProd2 == false) { //TODO: calculate the exact amount of points that eating 1000 kg of local produce gets you
+        if (locProdPoints > 1000 && locProd2 == false) {
             System.out.println("Ate local produce for 1st time"); //TODO: delete
+            locProdCircle2.setFill(Paint.valueOf("#ecec09"));
             locProd2 = true;
-        }
-    }
-
-    /**
-     * Checks whether the fourth vegetarian achievement has been achieved.
-     * Sets the achievement true/false.
-     */
-    public void locProdAchieve3() {
-        if (locProdPoints > 1000 && locProd3 == false) {
-            System.out.println("Ate local produce for 1st time"); //TODO: delete
-            locProd3 = true;
         }
     }
 

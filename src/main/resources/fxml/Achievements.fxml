@@ -68,12 +68,12 @@
                 <Circle fx:id="vegCircle0" fill="gray" layoutX="115.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fx:id= "vegCircle1" fill="gray" layoutX="197.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fx:id="vegCircle2" fill="gray" layoutX="282.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="115.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="197.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="282.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="412.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="494.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="579.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="bikeCircle0" fill="gray" layoutX="115.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="bikeCircle1" fill="gray" layoutX="197.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="bikeCircle2" fill="gray" layoutX="282.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="locProdCircle0" fill="gray" layoutX="412.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="locProdCircle1" fill="gray" layoutX="494.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="locProdCircle2" fill="gray" layoutX="579.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="411.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="493.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="578.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
