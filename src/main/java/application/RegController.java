@@ -150,7 +150,6 @@ public class RegController {
         if (phone.getText().equals("")) {
             invalidPhone.setText("Phone can't be empty");
             return true;
-
         }
 
         if (!isInt(phone.getText())) {
