@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class RegisterLoginQueryTest {
     private static String existingUserHash;
     private static String existingTestUser = "testUser";
-    private static String regQueryJSON = "{'type': 'register', 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}";
+    private static String regQueryJSON = "{'type': 'Register', 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}";
     private static RegisterQuery testRegQuery;
 
     @BeforeClass
@@ -50,7 +50,7 @@ public class RegisterLoginQueryTest {
 
     @Test
     public void fullRegTest(){
-        String json = "{'type': 'register', 'username' : 'registerTest', 'password' : 'sickPassword'," +
+        String json = "{'type': 'Register', 'username' : 'registerTest', 'password' : 'sickPassword'," +
                 " 'fname' : 'Test', 'lname' : 'User', 'email' : 'fraud@tudelft.nl', 'phone' : '12345678'}";
 
         RegisterQuery registerQuery = new GsonBuilder().create().fromJson(json, RegisterQuery.class);

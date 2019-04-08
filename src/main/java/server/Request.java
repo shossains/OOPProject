@@ -72,7 +72,7 @@ public class Request {
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
-            case "register":
+            case "Register":
                 return registerUser();
             case "VegMeal":
                 return vegMeal();
