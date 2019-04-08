@@ -30,6 +30,10 @@ public class AchievementsController implements Initializable {
     @FXML Circle bikeCircle1;
     @FXML Circle bikeCircle2;
 
+    @FXML Circle pubTransCircle0;
+    @FXML Circle pubTransCircle1;
+    @FXML Circle pubTransCircle2;
+
     boolean veg0 = false;
     boolean veg1 = false;
     boolean veg2 = false;
@@ -42,13 +46,18 @@ public class AchievementsController implements Initializable {
     boolean bike1 = false;
     boolean bike2 = false;
 
+    boolean pubTrans0 = false;
+    boolean pubTrans1 = false;
+    boolean pubTrans2 = false;
+
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
     int vegPoints = points[0];
     int locProdPoints = points[1];
     int bikePoints = points[2];
+    int pubTransPoints = points[3];
 
-    int total = vegPoints + locProdPoints + bikePoints; //TODO
+    int total = vegPoints + locProdPoints + bikePoints + pubTransPoints; //TODO
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,6 +69,9 @@ public class AchievementsController implements Initializable {
         bikeAchieve0();
         bikeAchieve1();
         bikeAchieve2();
+        pubTransAchieve0();
+        pubTransAchieve1();
+        pubTransAchieve2();
     }
 
     /**
@@ -158,9 +170,42 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void bikeAchieve2() {
-        if (bikePoints > 1000 && bike2 == false) {
+        if (bikePoints >= 1000 && bike2 == false) {
             bikeCircle2.setFill(Paint.valueOf("#ecec09"));
             bike2 = true;
+        }
+    }
+
+    /**
+     * Checks whether the first public transport achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void pubTransAchieve0() {
+        if (pubTransPoints >= 1 && pubTrans0 == false) {
+            pubTransCircle0.setFill(Paint.valueOf("#ca784b"));
+            pubTrans0 = true;
+        }
+    }
+
+    /**
+     * Checks whether the second public transport achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void pubTransAchieve1() {
+        if (pubTransPoints >= 126 && pubTrans1 == false) {
+            pubTransCircle1.setFill(Paint.valueOf("#d0d0d0"));
+            pubTrans1 = true;
+        }
+    }
+
+    /**
+     * Checks whether the third public transport achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void pubTransAchieve2() {
+        if (pubTransPoints >= 1000 && pubTrans2 == false) {
+            pubTransCircle2.setFill(Paint.valueOf("#ecec09"));
+            pubTrans2 = true;
         }
     }
 
