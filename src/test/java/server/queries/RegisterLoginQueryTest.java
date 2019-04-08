@@ -13,7 +13,7 @@ import server.db.Query;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RegisterQueryTest {
+public class RegisterLoginQueryTest {
     private static String existingUserHash;
     private static String existingTestUser = "testUser";
     private static String regQueryJSON = "{'type': 'register', 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}";
@@ -82,6 +82,22 @@ public class RegisterQueryTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void loginTest(){
+        LoginQuery loginQuery = new GsonBuilder().create().fromJson("{'type':'Login',"
+                + " 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}", LoginQuery.class);
+
+        Assert.assertEquals("{'login' : true}", loginQuery.runQuery());
+    }
+
+    @Test
+    public void badLoginTest(){
+        LoginQuery loginQuery = new GsonBuilder().create().fromJson("{'type':'Login',"
+                + " 'username' : '"+existingTestUser+"', 'password' : 'hunter3'}", LoginQuery.class);
+
+        Assert.assertEquals("{'login' : false}", loginQuery.runQuery());
     }
 
 

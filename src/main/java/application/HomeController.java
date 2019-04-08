@@ -29,6 +29,9 @@ public class HomeController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
+        //prepare request
+        String request = "";
+
         //set user vars
         User.setUsername(username);
         User.setPassword(password);
