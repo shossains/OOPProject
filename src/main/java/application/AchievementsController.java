@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
+    @FXML Circle vegBronze;
 
     boolean veg0 = false;
     boolean veg1 = false;
@@ -45,6 +48,7 @@ public class AchievementsController implements Initializable {
     public void vegAchieve0() {
         if(vegPoints > 0 && veg0 == false) {
             System.out.println("Getting started"); //TODO: placeholder, replace by activating badge/achievement
+            vegBronze.setFill(Paint.valueOf("#ca784b"));
             veg0 = true;
         }
     }
