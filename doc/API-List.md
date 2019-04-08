@@ -125,3 +125,18 @@ Response:
 ```
 {"vegPoints" : 55, "locProdPoints" : 63, "bikePoints" : 120, "pubTransPoints" : 37, "tempPoints" : 205, "solarPoints" : 0}
 ```
+
+## Login
+Used to check if the username and password combination is valid.
+
+### Request
+* type
+* username
+* password
+
+### Response
+Either
+* `{'login' : true}` if the user/pass combo is valid
+* `{'login' : false}` if the combo is invalid.
+
+This request is only used at the beggining to verify the login input.

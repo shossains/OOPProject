@@ -15,7 +15,7 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="483.0" prefWidth="720.0">
          <children>
-            <Button layoutX="133.0" layoutY="373.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="SIGN IN" textFill="WHITE">
+            <Button layoutX="133.0" layoutY="389.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="SIGN IN" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -59,15 +59,16 @@
             </TextField>
             <Line endX="-21.60870361328125" endY="124.00003051757812" layoutX="379.0" layoutY="349.0" startX="-21.60870361328125" startY="-135.07827758789062" />
             <Line endX="100.0" layoutX="391.0" layoutY="113.0" startX="-165.3739471435547" startY="1.52587890625E-5" />
-            <Button layoutX="477.0" layoutY="445.0" mnemonicParsing="false" onAction="#toMainMenu" text="God Mode (REMOVE IN FINAL VERSION)">
+            <Button layoutX="477.0" layoutY="445.0" mnemonicParsing="false" onAction="#skip" text="God Mode (REMOVE IN FINAL VERSION)">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TextField layoutX="120.0" layoutY="261.0" />
+            <TextField fx:id="usernameField" layoutX="120.0" layoutY="261.0" />
             <Label layoutX="119.0" layoutY="240.0" text="Username:" />
             <Label layoutX="119.0" layoutY="297.0" text="Password:" />
-            <PasswordField layoutX="120.0" layoutY="315.0" />
+            <PasswordField fx:id="passwordField" layoutX="120.0" layoutY="315.0" onAction="#toMainMenu" />
             <Label layoutX="518.0" layoutY="428.0" text="Skip straight to the program" textFill="#00000081" />
+            <Label fx:id="invalidLogin" alignment="CENTER" layoutX="119.0" layoutY="354.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
          </children>
       </AnchorPane>
    </children>
