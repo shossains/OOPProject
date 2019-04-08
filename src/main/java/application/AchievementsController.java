@@ -34,6 +34,10 @@ public class AchievementsController implements Initializable {
     @FXML Circle pubTransCircle1;
     @FXML Circle pubTransCircle2;
 
+    @FXML Circle tempCircle0;
+    @FXML Circle tempCircle1;
+    @FXML Circle tempCircle2;
+
     boolean veg0 = false;
     boolean veg1 = false;
     boolean veg2 = false;
@@ -50,18 +54,24 @@ public class AchievementsController implements Initializable {
     boolean pubTrans1 = false;
     boolean pubTrans2 = false;
 
+    boolean temp0 = false;
+    boolean temp1 = false;
+    boolean temp2 = false;
+
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
     int vegPoints = points[0];
     int locProdPoints = points[1];
     int bikePoints = points[2];
     int pubTransPoints = points[3];
+    int tempPoints = points[4];
 
-    int total = vegPoints + locProdPoints + bikePoints + pubTransPoints; //TODO
+    int total = vegPoints + locProdPoints + bikePoints + pubTransPoints + tempPoints; //TODO
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         vegAchieve0();
+        vegAchieve1();
         vegAchieve2();
         locProdAchieve0();
         locProdAchieve1();
@@ -72,6 +82,9 @@ public class AchievementsController implements Initializable {
         pubTransAchieve0();
         pubTransAchieve1();
         pubTransAchieve2();
+        tempAchieve0();
+        tempAchieve1();
+        tempAchieve2();
     }
 
     /**
@@ -91,7 +104,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void vegAchieve1() {
-        if (veg1 == false) {
+        if (vegPoints >= 1000 && veg1 == false) {
             System.out.println("Achievement 1"); //TODO: delete
             vegCircle1.setFill(Paint.valueOf("#d0d0d0"));
             veg1 = true;
@@ -103,7 +116,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void vegAchieve2() {
-        if (vegPoints > 1000 && veg2 == false) {
+        if (vegPoints >= 10000 && veg2 == false) {
             System.out.println("Earned 1000 points"); //TODO: delete
             vegCircle2.setFill(Paint.valueOf("#ecec09"));
             veg2 = true;
@@ -115,7 +128,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void locProdAchieve0() {
-        if (locProdPoints > 33 && locProd0 == false) {
+        if (locProdPoints >= 33 && locProd0 == false) {
             locProdCircle0.setFill(Paint.valueOf("#ca784b"));
             locProd0 = true;
         }
@@ -126,7 +139,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void locProdAchieve1() {
-        if (locProdPoints > 32800 && locProd1 == false) {
+        if (locProdPoints >= 32800 && locProd1 == false) {
             locProdCircle1.setFill(Paint.valueOf("#d0d0d0"));
             locProd1 = true;
         }
@@ -137,7 +150,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void locProdAchieve2() {
-        if (locProdPoints > 1000 && locProd2 == false) {
+        if (locProdPoints >= 1000 && locProd2 == false) {
             locProdCircle2.setFill(Paint.valueOf("#ecec09"));
             locProd2 = true;
         }
@@ -148,7 +161,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void bikeAchieve0() {
-        if (bikePoints > 13 && bike0 == false) {
+        if (bikePoints >= 13 && bike0 == false) {
             bikeCircle0.setFill(Paint.valueOf("#ca784b"));
             bike0 = true;
         }
@@ -159,7 +172,7 @@ public class AchievementsController implements Initializable {
      * Sets the achievement true/false.
      */
     public void bikeAchieve1() {
-        if (bikePoints > 13377 && bike1 == false) {
+        if (bikePoints >= 13377 && bike1 == false) {
             bikeCircle1.setFill(Paint.valueOf("#d0d0d0"));
             bike1 = true;
         }
@@ -206,6 +219,39 @@ public class AchievementsController implements Initializable {
         if (pubTransPoints >= 1000 && pubTrans2 == false) {
             pubTransCircle2.setFill(Paint.valueOf("#ecec09"));
             pubTrans2 = true;
+        }
+    }
+
+    /**
+     * Checks whether the first bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void tempAchieve0() {
+        if (tempPoints >= 10 && temp0 == false) {
+            tempCircle0.setFill(Paint.valueOf("#ca784b"));
+            temp0 = true;
+        }
+    }
+
+    /**
+     * Checks whether the second bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void tempAchieve1() {
+        if (tempPoints >= 100 && temp1 == false) {
+            tempCircle1.setFill(Paint.valueOf("#d0d0d0"));
+            temp1 = true;
+        }
+    }
+
+    /**
+     * Checks whether the third bike achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void tempAchieve2() {
+        if (tempPoints >= 1000 && temp2 == false) {
+            tempCircle2.setFill(Paint.valueOf("#ecec09"));
+            temp2 = true;
         }
     }
 

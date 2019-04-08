@@ -77,9 +77,9 @@
                 <Circle fx:id="pubTransCircle0" fill="gray" layoutX="411.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fx:id="pubTransCircle1" fill="gray" layoutX="493.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fx:id="pubTransCircle2" fill="gray" layoutX="578.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="115.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="197.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="282.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="tempCircle0" fill="gray" layoutX="115.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="tempCircle1" fill="gray" layoutX="197.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="tempCircle2" fill="gray" layoutX="282.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="412.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="494.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                 <Circle fill="gray" layoutX="579.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />

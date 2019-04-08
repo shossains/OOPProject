@@ -6,8 +6,8 @@ Getting started: make an account? / earn more than 1 point? / earn 100 points?
 
 //Vegetarian meal
 0. Eat a vegetarian/vegan meal V
-1. Eat 100 meals
-2. Earn 1000 points just by eating veg meals V
+1. Earn 1000 points just by eating veg meals V
+2. Earn 10000 points just by eating veg meals V
 
 //Local produce
 0. Eat 1 kilo? V
@@ -22,11 +22,13 @@ Getting started: make an account? / earn more than 1 point? / earn 100 points?
 
 //Public transport
 0. Travel 1 km by bus/train V
-1. Travel 100 kms by bus/train
-2. Earn 1000 points just by taking local transport
+1. Travel 100 kms by bus/train V
+2. Earn 1000 points just by taking local transport V
 
 //Temperature
-2. Earn 1000 points just by taking local transport
+0. Earn 100 points just by lowering temperature
+1. Earn 1000 points just by lowering temperature
+2. Earn 10000 points just by lowering temperature
 
 //Solar panels
 2. Earn 1000 points just by taking local transport
