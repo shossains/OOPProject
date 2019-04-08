@@ -1,8 +1,9 @@
 package application;
 
-import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -34,15 +35,18 @@ public class RegController {
 
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
+     *
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException, SQLException {
         if (valid()) {
 
             //build request
-            String requestString = "{'type' : 'Register', 'username' : '"+username.getText()+"', 'password' : '"+pass.getText()+"', "
-                    + "'fname' : '"+firstName.getText()+"', 'lname' : '"+lastName.getText()+"', "
-                    + "'email' : '"+email.getText()+"', 'phone' : '"+phone.getText()+"'}";
+            String requestString = "{'type' : 'Register', 'username' : '" + username.getText()
+                    + "', 'password' : '" + pass.getText() + "', "
+                    + "'fname' : '" + firstName.getText() + "', 'lname' : '"
+                    + lastName.getText() + "', "
+                    + "'email' : '" + email.getText() + "', 'phone' : '" + phone.getText() + "'}";
 
             //send, process request, show on gui
             SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
@@ -66,6 +70,7 @@ public class RegController {
 
     /**
      * Do all input validation at once and finally check if username is taken.
+     *
      * @return return true if all holds else return false
      */
     public boolean valid() {
@@ -85,6 +90,7 @@ public class RegController {
 
     /**
      * Check whether Username textField is not empty.
+     *
      * @return true if empty
      */
     public boolean emptyUsername() {
@@ -99,6 +105,7 @@ public class RegController {
 
     /**
      * Check whether FirstName textField is not empty or contains other character than letters.
+     *
      * @return true if it does not violate constraints
      */
     public boolean invalidFirstName() {
@@ -118,6 +125,7 @@ public class RegController {
 
     /**
      * Check whether LastName textField is not empty or contains other character than letters.
+     *
      * @return true if it does not violate constraints
      */
     public boolean invalidLastName() {
@@ -137,6 +145,7 @@ public class RegController {
 
     /**
      * Check whether Email textField is not empty.
+     *
      * @return true if empty
      */
     public boolean emptyEmail() {
@@ -151,6 +160,7 @@ public class RegController {
 
     /**
      * Check whether Phone textField are integers only or empty.
+     *
      * @return true if empty or invalid
      */
     public boolean invalidPhone() {
@@ -170,6 +180,7 @@ public class RegController {
 
     /**
      * Check whether Password textField is not empty.
+     *
      * @return true if empty
      */
     public boolean emptyPass() {
@@ -184,6 +195,7 @@ public class RegController {
 
     /**
      * Check whether input is an integer.
+     *
      * @param input the input that needs to be checked
      * @return True or false
      */
@@ -198,6 +210,7 @@ public class RegController {
 
     /**
      * Check is input contains only letters.
+     *
      * @param string input that needs to be checked
      * @return true is input contains only letters
      */
@@ -214,6 +227,7 @@ public class RegController {
 
     /**
      * Goes back to the homescreen.
+     *
      * @param actionEvent The click of the button
      * @throws IOException If the fxml is invalid or corrupted throw this
      */
@@ -226,21 +240,23 @@ public class RegController {
         window.show();
     }
 
-    /**This class parses json so it can be further manipulated.
+    /**
+     * This class parses json so it can be further manipulated.
+     *
      * @param input json to be parsed
      * @return status string for the main function
      */
-    private String parseJson(String input){
+    private String parseJson(String input) {
         JsonObject json = null;
         json = new JsonParser().parse(input).getAsJsonObject();
 
         boolean error = json.get("error").getAsBoolean();
 
-        if(error){
+        if (error) {
             System.out.println("error");
             String reason = json.get("reason").getAsString();
             return reason;
-        }else{
+        } else {
             System.out.println("success");
             return "Success!";
         }

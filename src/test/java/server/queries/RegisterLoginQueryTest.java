@@ -55,7 +55,7 @@ public class RegisterLoginQueryTest {
 
         RegisterQuery registerQuery = new GsonBuilder().create().fromJson(json, RegisterQuery.class);
 
-        Assert.assertEquals("{'error': true, 'reason' : 'not fully implemented yet'}", registerQuery.runQuery());
+        Assert.assertEquals("{'error' : false}", registerQuery.runQuery());
     }
 
     @Test

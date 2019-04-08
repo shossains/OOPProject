@@ -28,27 +28,27 @@ public class HomeController {
         if (!emptyField()) {
             invalidLogin.setText(" ");
 
-            //get passwords
-            String username = usernameField.getText();
-            String password = passwordField.getText();
+        //get passwords
+        String username = usernameField.getText();
+        String password = passwordField.getText();
 
-            //prepare request
-            String request = "{'type' : 'Login', 'username' : '" + username + "', 'password' : '" + password + "'}";
-            SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+        //prepare request
+        String request = "{'type' : 'Login', 'username' : '"+username+"', 'password' : '"+password+"'}";
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
 
             if (scn.sendPostRequest(request).equals("{'login' : false}")) {
                 invalidLogin.setText("User/password incorrect!");
 
-                return;
-            }
+            return;
+        }
 
-            //set user vars
-            User.setUsername(username);
-            User.setPassword(password);
+        //set user vars
+        User.setUsername(username);
+        User.setPassword(password);
 
-            //do whatever this is doing and creating extra server requests
-            Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
-            Scene hmScene = new Scene(hmParent);
+        //do whatever this is doing and creating extra server requests
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
+        Scene hmScene = new Scene(hmParent);
 
             //go to first page
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
