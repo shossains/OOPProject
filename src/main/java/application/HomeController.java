@@ -23,8 +23,7 @@ public class HomeController {
      * @throws IOException Throw exception if file is not found or corrupted
      */
     public void toMainMenu(ActionEvent event) throws IOException {
-        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
-        Scene hmScene = new Scene(hmParent);
+
 
         //get passwords
         String username = usernameField.getText();
@@ -45,6 +44,10 @@ public class HomeController {
         //set user vars
         User.setUsername(username);
         User.setPassword(password);
+
+        //do whatever this is doing and creating extra server requests
+        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
+        Scene hmScene = new Scene(hmParent);
 
         //go to first page
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
