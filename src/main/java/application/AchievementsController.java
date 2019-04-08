@@ -33,7 +33,7 @@ public class AchievementsController implements Initializable {
     int vegPoints = points[0];
     int locProdPoints = points[1];
 
-    int total = vegPoints + locProdPoints;
+    int total = vegPoints + locProdPoints; //TODO
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -163,6 +163,10 @@ public class AchievementsController implements Initializable {
      */
     public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPieChart");
+    }
+
+    public void goPersonal(ActionEvent actionEvent) throws IOException{
+        go("PersonalSettings");
     }
 
 }
