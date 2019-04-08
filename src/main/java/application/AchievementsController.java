@@ -60,12 +60,25 @@ public class AchievementsController implements Initializable {
     }
 
     /**
+     * Checks whether the second vegetarian achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void vegAchieve1() {
+        if (veg1 == false) {
+            System.out.println("Achievement 1"); //TODO: delete
+            vegCircle0.setFill(Paint.valueOf("#d0d0d0"));
+            veg1 = true;
+        }
+    }
+
+    /**
      * Checks whether the third vegetarian achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void vegAchieve2() {
         if (vegPoints > 1000 && veg2 == false) {
-            System.out.println("Earned 100 points"); //TODO: delete
+            System.out.println("Earned 1000 points"); //TODO: delete
+            vegCircle0.setFill(Paint.valueOf("#ecec09"));
             veg2 = true;
         }
     }
