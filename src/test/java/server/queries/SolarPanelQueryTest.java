@@ -60,10 +60,11 @@ public class SolarPanelQueryTest {
      */
     @Test
     public void addPanelFalsePrint(){
-        String[] queries = new String[3];
-        queries[0] = "DELETE FROM solar WHERE username = '" + testUserRow + "';";
-        queries[1] = "INSERT INTO solar VALUES ('testUser',20,150,'2019-03-29 00:00:00',2)";
-        queries[2] = "INSERT INTO solar VALUES ('testUser',30,200,'2019-03-29 00:00:00',3)";
+        String[] queries = new String[4];
+        queries[0] = "UPDATE points SET points = 0 WHERE username = " + testUserRow + "'";
+        queries[1] = "DELETE FROM solar WHERE username = '" + testUserRow + "';";
+        queries[2] = "INSERT INTO solar VALUES ('testUser',20,150,'2019-03-29 00:00:00',2)";
+        queries[3] = "INSERT INTO solar VALUES ('testUser',30,200,'2019-03-29 00:00:00',3)";
         Query.runQueries(queries, testUserRow, testUserPass);
 
         String testString = "{'type' : 'Solar', 'username' : '"
