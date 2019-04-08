@@ -107,10 +107,11 @@ public class VegMealQueryTest {
      */
     @Test
     public void addMealFalsePrint(){
-        String[] queries = new String[3];
-        queries[0] = "DELETE FROM vegetarian WHERE username = '" + testUserRow + "';";
-        queries[1] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegetarian','2019-03-29 00:00:00',1)";
-        queries[2] = "INSERT INTO vegetarian VALUES ('testUser',60,'vegan','2019-03-29 00:00:00',1)";
+        String[] queries = new String[4];
+        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '" + testUserRow + "'";
+        queries[1] = "DELETE FROM vegetarian WHERE username = '" + testUserRow + "';";
+        queries[2] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegetarian','2019-03-29 00:00:00',1)";
+        queries[3] = "INSERT INTO vegetarian VALUES ('testUser',60,'vegan','2019-03-29 00:00:00',1)";
         Query.runQueries(queries, testUserRow, testUserPass);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
