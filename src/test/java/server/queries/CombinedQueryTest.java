@@ -18,13 +18,14 @@ public class CombinedQueryTest {
     @BeforeClass
     public static void init() {
         //set the score to 0 on the test row
-        String[] queries = new String[6];
-        queries[0] = "UPDATE vegetarian SET points = 0 WHERE username = '" + testUserRow + "'";
-        queries[1] = "UPDATE localproduce SET points = 0 WHERE username = '" + testUserRow + "'";
-        queries[2] = "UPDATE bikeride SET points = 0 WHERE username = '" + testUserRow + "'";
-        queries[3] = "UPDATE publictransport SET points = 0 WHERE username = '" + testUserRow + "'";
-        queries[4] = "UPDATE temperature SET points = 0 WHERE username = '" + testUserRow + "'";
-        queries[5] = "UPDATE solar SET points = 0 WHERE username = '" + testUserRow + "'";
+        String[] queries = new String[7];
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[1] = "UPDATE vegetarian SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[2] = "UPDATE localproduce SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[3] = "UPDATE bikeride SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[4] = "UPDATE publictransport SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[5] = "UPDATE temperature SET points = 0 WHERE username = '" + testUserRow + "'";
+        queries[6] = "UPDATE solar SET points = 0 WHERE username = '" + testUserRow + "'";
         Query.runQueries(queries);
     }
 
