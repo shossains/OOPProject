@@ -13,7 +13,6 @@ import java.io.IOException;
 public class AchievementsController {
 
     @FXML ToolBar myToolbar;
-    //@FXML Circle vegBronze;
 
     /**
      * The general go method which will switch to a specific scene.
