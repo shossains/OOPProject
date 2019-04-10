@@ -38,6 +38,11 @@ public class AchievementsController implements Initializable {
     @FXML Circle tempCircle1;
     @FXML Circle tempCircle2;
 
+    @FXML Circle solarCircle0;
+    @FXML Circle solarCircle1;
+    @FXML Circle solarCircle2;
+
+
     boolean veg0 = false;
     boolean veg1 = false;
     boolean veg2 = false;
@@ -58,6 +63,10 @@ public class AchievementsController implements Initializable {
     boolean temp1 = false;
     boolean temp2 = false;
 
+    boolean solar0 = false;
+    boolean solar1 = false;
+    boolean solar2 = false;
+
     StatsController statsController = new StatsController();
     int[] points = statsController.request();
     int vegPoints = points[0];
@@ -65,6 +74,7 @@ public class AchievementsController implements Initializable {
     int bikePoints = points[2];
     int pubTransPoints = points[3];
     int tempPoints = points[4];
+    int solarPoints = points[5];
 
     int total = vegPoints + locProdPoints + bikePoints + pubTransPoints + tempPoints; //TODO
 
@@ -85,6 +95,9 @@ public class AchievementsController implements Initializable {
         tempAchieve0();
         tempAchieve1();
         tempAchieve2();
+        solarAchieve0();
+        solarAchieve1();
+        solarAchieve2();
     }
 
     /**
@@ -223,7 +236,7 @@ public class AchievementsController implements Initializable {
     }
 
     /**
-     * Checks whether the first bike achievement has been achieved.
+     * Checks whether the first temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void tempAchieve0() {
@@ -234,7 +247,7 @@ public class AchievementsController implements Initializable {
     }
 
     /**
-     * Checks whether the second bike achievement has been achieved.
+     * Checks whether the second temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void tempAchieve1() {
@@ -245,13 +258,46 @@ public class AchievementsController implements Initializable {
     }
 
     /**
-     * Checks whether the third bike achievement has been achieved.
+     * Checks whether the third temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
     public void tempAchieve2() {
         if (tempPoints >= 1000 && temp2 == false) {
             tempCircle2.setFill(Paint.valueOf("#ecec09"));
             temp2 = true;
+        }
+    }
+
+    /**
+     * Checks whether the first solar panel achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void solarAchieve0() {
+        if (solarPoints >= 10 && solar0 == false) {
+            solarCircle0.setFill(Paint.valueOf("#ca784b"));
+            solar0 = true;
+        }
+    }
+
+    /**
+     * Checks whether the second solar panel achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void solarAchieve1() {
+        if (solarPoints >= 100 && solar1 == false) {
+            solarCircle1.setFill(Paint.valueOf("#d0d0d0"));
+            solar1 = true;
+        }
+    }
+
+    /**
+     * Checks whether the third solar panel achievement has been achieved.
+     * Sets the achievement true/false.
+     */
+    public void solarAchieve2() {
+        if (solarPoints >= 1000 && solar2 == false) {
+            solarCircle2.setFill(Paint.valueOf("#ecec09"));
+            solar2 = true;
         }
     }
 
