@@ -88,6 +88,8 @@ public class Request {
                 return combined();
             case "Average":
                 return average();
+            case "Friend":
+                return friend();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -140,6 +142,11 @@ public class Request {
     private String average() {
         AverageQuery averageQuery = buildGson(rawQuery, AverageQuery.class);
         return averageQuery.runQuery();
+    }
+
+    private String friend() {
+        FriendQuery friendQuery = buildGson(rawQuery, FriendQuery.class);
+        return friendQuery.runQuery();
     }
 
     /**
