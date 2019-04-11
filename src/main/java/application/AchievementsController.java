@@ -382,4 +382,8 @@ public class AchievementsController implements Initializable {
         go("PersonalSettings");
     }
 
+    public void goFriends(ActionEvent actionEvent) throws IOException {
+        go("FriendList");
+    }
+
 }
