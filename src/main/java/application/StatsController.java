@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StatsController implements Initializable {
@@ -30,32 +31,42 @@ public class StatsController implements Initializable {
     @FXML private PieChart friendPieChart;
     @FXML private MenuButton friendMenu;
 
+    private ArrayList<String> friends = new ArrayList<>();
+    int currentAdd = 0;
 
     /**
      * When clicking the button, a new friend is added to the Friends menu
      * To test how to add new menu items that have a method
      */
     @FXML public void addFriend(){
-        MenuItem newFriend = new MenuItem("new Friend");
+        if(currentAdd<friends.size()) {
+            String friendName = friends.get(currentAdd);
+            MenuItem newFriend = new MenuItem(friendName);
 
-        friendMenu.getItems().add(newFriend);
-        newFriend.setOnAction(e -> generate("Local produce", (int)(Math.random() * 100),
-                "Temperature", (int)(Math.random() * 100)));
+            friendMenu.getItems().add(newFriend);
+            int[] ints = friendPointsRequest(friendName);
+            newFriend.setOnAction(e -> generate(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5]));
+
+
+           // newFriend.setOnAction(e -> generate("Local produce", (int)(Math.random() * 100),
+           //         "Temperature", (int)(Math.random() * 100)));
+            currentAdd += 1;
+        } //else error message to user
 
     }
 
     /**
      * Test data for addfriend() method
-     * @param name
-     * @param value
-     * @param name2
-     * @param value2
      */
-    @FXML public void generate(String name, int value, String name2, int value2){
+    @FXML public void generate(int vegMealValue, int locProdValue, int bikeValue, int pubTransValue, int tempValue, int solarValue){
         ObservableList<PieChart.Data> friendData
                 = FXCollections.observableArrayList(
-                new PieChart.Data(name, value),
-                new PieChart.Data(name2, value2));
+                new PieChart.Data("VegMeal", vegMealValue),
+                new PieChart.Data("LocalProduce", locProdValue),
+                new PieChart.Data("Bike Ride", bikeValue),
+                new PieChart.Data("Public Transport", pubTransValue),
+                new PieChart.Data("Temperature", tempValue),
+                new PieChart.Data("SolarPanels", solarValue));
 
         friendPieChart.setData(friendData);
     }
@@ -78,6 +89,7 @@ public class StatsController implements Initializable {
 
     @Override
       public void initialize(URL url, ResourceBundle rb) {
+        friends = FriendListController.getFriends();
         int[] allPoints = request();
         int vegMealValue = allPoints[0];
         int locProdValue = allPoints[1];
@@ -117,6 +129,25 @@ public class StatsController implements Initializable {
 
         String request = "{'type' : 'Combined', 'username' : '"
                 + User.getUsername() + "', 'password' : '" + User.getPassword() + "'}";
+
+        String response = scn.sendPostRequest(request);
+
+        int[] ints = new int[6];
+        ints[0] = parseVegPoints(response);
+        ints[1] = parseLocProdPoints(response);
+        ints[2] = parseBikePoints(response);
+        ints[3] = parsePubTransPoints(response);
+        ints[4] = parseTempPoints(response);
+        ints[5] = parseSolarPoints(response);
+
+        return ints;
+    }
+
+    public int[] friendPointsRequest(String friendName) {
+        SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+
+        String request = "{'type' : 'Combined', 'username' : '"
+                + User.getUsername() + "', 'password' : '" + User.getPassword() + "', 'friend' : true, 'friendname' : '" + friendName + "'}";
 
         String response = scn.sendPostRequest(request);
 
