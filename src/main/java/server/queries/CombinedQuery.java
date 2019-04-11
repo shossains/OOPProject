@@ -7,6 +7,9 @@ import java.sql.SQLException;
 
 
 public class CombinedQuery  extends ServerQuery {
+    private boolean friend;
+    private String friendname;
+
     /**
      * Connects to the database and executes the query to add a vegetarian meal.
      * TODO: Cleanup, add helper functions to make it more readable.
@@ -16,19 +19,27 @@ public class CombinedQuery  extends ServerQuery {
      */
 
     public String runQuery() {
+        if(friend == false) {
+            return execute(username);
+        } else {
+            return execute(friendname);
+        }
+    }
+
+    public String execute(String name) {
         String[] queries = new String[6];
         queries[0] = "SELECT SUM (points) AS total FROM vegetarian "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
         queries[1] = "SELECT SUM (points) AS total FROM localproduce "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
         queries[2] = "SELECT SUM (points) AS total FROM bikeride "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
         queries[3] = "SELECT SUM (points) AS total FROM publictransport "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
         queries[4] = "SELECT SUM (points) AS total FROM temperature "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
         queries[5] = "SELECT SUM (points) AS total FROM solar "
-                + "WHERE username = '" + username + "'";
+                + "WHERE username = '" + name + "'";
 
         ResultSet[] rsArray = Query.runQueries(queries);
         ResultSet rsVeg = rsArray[0];
@@ -54,7 +65,7 @@ public class CombinedQuery  extends ServerQuery {
                 rsPubTrans.close();
                 rsTemp.close();
                 rsSolar.close();
-                String resStr = "{'vegPoints' : " + resVeg  + ", 'locProdPoints' : " + resLocProd
+                String resStr = "{'vegPoints' : " + resVeg + ", 'locProdPoints' : " + resLocProd
                         + ", 'bikePoints' : " + resBike + ", 'pubTransPoints' : " + resPubTrans
                         + ", 'tempPoints' : " + resTemp + ", 'solarPoints' : " + resSolar + "}";
                 return resStr;
