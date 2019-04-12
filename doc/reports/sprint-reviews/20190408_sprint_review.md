@@ -1,20 +1,17 @@
 # Sprint Review
 
-## Main problems  Encountered
-
 
 ### Sprint Retrospective
 
 |Task | Assssigned to | Estimated Effort (in hours per person) | Actual effort | Done | Notes |
 | --- | ------------- | -------------------------------------- | ------------- | ---- | ----- |
-| Printing to the GUI | Shaan | 4 | 10 | Yes | - |
-| Testing GUI | Shaan | 1 | 4 | Yes | - |
-| Optimizing query execution | Shaan | 1 | 2 | Yes | - |
-| Make UI for the remaining parts of the program minus User | Vanessa | 2 | 4 | Yes | - |
-| Fix Vegetarian Meal button | Vanessa | 2 | 2 | Yes | - | 
-| Fix a problem with the calculator | Sami | 1 | 2 | Yes | - |
-| Finish the authentication | Alex | 3 | 3 | Yes | - |
-| Compare your points to average | Lucas | 6 | 12 | Yes | - |
+| Draft report, fix 'Name of the program' issue for the GUI | Shaan | 1 | 1 | Yes | - |
+| Finish the achievements feature| Vanessa | 4 | 4 | Yes | - | 
+| Draft report | Sami | 2 | 2 | Yes | - |
+| Draft report | Alex | 2| 2 | Yes | - |
+| Finish the achievements feature | Lucas | 4 | 4 | Yes | - |
 
 ### Adjustments for next sprint
+- Make sure we keep the code coverage >80%
+
 
