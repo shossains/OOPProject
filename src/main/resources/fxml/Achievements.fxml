@@ -12,15 +12,14 @@
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AchievementsController">
-<<<<<<< HEAD
     <children>
         <AnchorPane prefHeight="480.0" prefWidth="720.0">
             <children>
                 <ToolBar fx:id="myToolbar" prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
                     <items>
-                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="Name of Program" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="GoGreen" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
                         <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
@@ -68,25 +67,25 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Circle fx:id="vegCircle0" fill="gray" layoutX="115.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id= "vegCircle1" fill="gray" layoutX="197.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="vegCircle2" fill="gray" layoutX="282.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="bikeCircle0" fill="gray" layoutX="115.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="bikeCircle1" fill="gray" layoutX="197.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="bikeCircle2" fill="gray" layoutX="282.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="locProdCircle0" fill="gray" layoutX="412.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="locProdCircle1" fill="gray" layoutX="494.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="locProdCircle2" fill="gray" layoutX="579.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="pubTransCircle0" fill="gray" layoutX="411.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="pubTransCircle1" fill="gray" layoutX="493.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="pubTransCircle2" fill="gray" layoutX="578.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="tempCircle0" fill="gray" layoutX="115.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="tempCircle1" fill="gray" layoutX="197.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="tempCircle2" fill="gray" layoutX="282.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle id fill="gray" layoutX="412.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="494.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fill="gray" layoutX="579.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                <Label layoutX="90.0" layoutY="133.0" text="Vegetarian/Vegan Meal:">
+                <Circle fx:id="vegBronze" fill="#ca784b" layoutX="115.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="197.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="282.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ca784b" layoutX="115.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="197.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="282.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ca784b" layoutX="412.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="494.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="579.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ca784b" layoutX="411.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="493.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="578.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ca784b" layoutX="115.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="197.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="282.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ca784b" layoutX="412.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#d0d0d0" layoutX="494.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Circle fill="#ecec09" layoutX="579.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                <Label layoutX="90.0" layoutY="133.0" text="Vegeterian/Vegan Meal:">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -116,205 +115,97 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="154.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="249.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophybronze.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophysilver.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="352.0">
+                    <image>
+                        <Image url="@../trophygold.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
     </children>
-=======
-   <children>
-      <AnchorPane prefHeight="480.0" prefWidth="720.0">
-         <children>
-            <ToolBar fx:id="myToolbar" prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
-               <items>
-                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="GoGreen" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goPersonal" text="Personal Settings" />
-                        <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
-                        <MenuItem mnemonicParsing="false" text="Friend List" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Achievements" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton fx:id="mb" mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goVeg" text="Add a Vegetarian Meal" />
-                        <MenuItem mnemonicParsing="false" onAction="#goLocal" text="Add Local Produce" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goBike" text="Add Bike Ride" />
-                        <MenuItem mnemonicParsing="false" onAction="#goPublic" text="Add Public Transport Ride" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goTemp" text="Add Temperature Adjustment" />
-                        <MenuItem mnemonicParsing="false" onAction="#goSolar" text="Add Solar Panels" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </MenuButton>
-               </items>
-            </ToolBar>
-            <Label layoutX="41.0" layoutY="66.0" text="Achievements">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Circle fx:id="vegBronze" fill="#ca784b" layoutX="115.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="197.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="282.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ca784b" layoutX="115.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="197.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="282.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ca784b" layoutX="412.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="494.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="579.0" layoutY="187.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ca784b" layoutX="411.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="493.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="578.0" layoutY="282.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ca784b" layoutX="115.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="197.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="282.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ca784b" layoutX="412.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#d0d0d0" layoutX="494.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Circle fill="#ecec09" layoutX="579.0" layoutY="377.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-            <Label layoutX="90.0" layoutY="133.0" text="Vegeterian/Vegan Meal:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="386.0" layoutY="133.0" text="Local Produce:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="90.0" layoutY="230.0" text="Bike Ride:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="387.0" layoutY="230.0" text="Public Transport:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="90.0" layoutY="325.0" text="Temperature:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="386.0" layoutY="325.0" text="Solar Panels:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="154.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="249.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophybronze.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophysilver.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="352.0">
-               <image>
-                  <Image url="@../trophygold.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </children>
->>>>>>> UIweek5
 </VBox>

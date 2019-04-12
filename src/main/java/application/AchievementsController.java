@@ -81,7 +81,7 @@ public class AchievementsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        vegAchieve0();
+       /* vegAchieve0();
         vegAchieve1();
         vegAchieve2();
         locProdAchieve0();
@@ -98,7 +98,7 @@ public class AchievementsController implements Initializable {
         tempAchieve2();
         solarAchieve0();
         solarAchieve1();
-        solarAchieve2();
+        solarAchieve2();*/
     }
 
     /**
