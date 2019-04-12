@@ -51,7 +51,7 @@ public class TemperatureQueryTest {
         String[] queries = new String[1];
         queries[0] = "DELETE FROM temperature WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -70,7 +70,7 @@ public class TemperatureQueryTest {
         queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
         queries[1] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
         queries[2] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
