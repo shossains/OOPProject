@@ -7,7 +7,8 @@ import java.sql.SQLException;
 
 public class PersonalSettingsQuery extends ServerQuery {
     public String email;
-    public int co2;
+    public Double co2;
+
 
     /**
      * Connects to the database and executes the query to fetch email and co2.
@@ -27,7 +28,8 @@ public class PersonalSettingsQuery extends ServerQuery {
                 email = rs.getString(1);
             }
             while (rs2.next()) {
-                co2 = rs2.getInt(1);
+                co2 = rs2.getDouble(1);
+                co2 = Math.round(co2* 100.0) / 100.0;
             }
 
             rs.close();

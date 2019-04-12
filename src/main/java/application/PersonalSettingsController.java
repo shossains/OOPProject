@@ -86,6 +86,7 @@ public class PersonalSettingsController implements Initializable {
             try {
                 res[0] = json.get("email").toString();
                 res[1] = json.get("co2").toString();
+
             } catch (NumberFormatException e) {
                 System.out.println(responseJson);
                 System.out.println("Bad json format returned");
