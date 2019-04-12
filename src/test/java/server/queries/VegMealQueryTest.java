@@ -106,12 +106,12 @@ public class VegMealQueryTest {
      * Tests for the printing of the records
      */
     @Test
-    public void addMealFalsePrint(){
+    public void addMealFalsePrint1(){
         String[] queries = new String[4];
         queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '" + testUserRow + "'";
         queries[1] = "DELETE FROM vegetarian WHERE username = '" + testUserRow + "';";
-        queries[2] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegetarian','2019-03-29 00:00:00',1)";
-        queries[3] = "INSERT INTO vegetarian VALUES ('testUser',60,'vegan','2019-03-29 00:00:00',1)";
+        queries[2] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegan','2019-03-29 00:00:00',1)";
+        queries[3] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegan','2019-03-29 00:00:00',1)";
         Query.runQueries(queries, testUserRow, testUserPass);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
@@ -121,6 +121,6 @@ public class VegMealQueryTest {
         request.setRaw(testString);
         request.execute();
 
-        Assert.assertEquals("[{'points' : 50,'type' : 'vegetarian','datetime' : '2019-03-29 00:00:00'}, {'points' : 60,'type' : 'vegan','datetime' : '2019-03-29 00:00:00'}]", request.execute());
+        Assert.assertEquals("[{'points' : 50,'type' : 'vegan','datetime' : '2019-03-29 00:00:00'}, {'points' : 50,'type' : 'vegan','datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }
