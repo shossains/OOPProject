@@ -36,7 +36,7 @@
                         <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#goPersonal" text="Personal Settings" />
-                                <MenuItem mnemonicParsing="false" text="Stats" />
+                                <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                                 <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
                             </items>
