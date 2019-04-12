@@ -313,6 +313,15 @@ public class StatsController implements Initializable {
     }
 
     /**
+     *Go to the Vegetarian Meal screen
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if file is missing/corrupted/incomplete
+     */
+    public void goVeg(ActionEvent actionEvent) throws IOException{
+        go("VegMeal");
+    }
+
+    /**
      * Go to the Local Produce screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
