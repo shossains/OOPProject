@@ -77,8 +77,6 @@ public class AchievementsController implements Initializable {
     int tempPoints = points[4];
     int solarPoints = points[5];
 
-    int total = vegPoints + locProdPoints + bikePoints + pubTransPoints + tempPoints; //TODO
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ColorAdjust enable = new ColorAdjust();

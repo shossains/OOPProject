@@ -20,7 +20,7 @@ public class Main extends Application {
         //setup the user class, for now just from string, in the future ideally from local storage
         setupUser();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Achievements.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
         Scene scene = new Scene(root,720,480); //Dimensions of the app
         stage.setScene(scene);
         stage.setTitle("#GoGreen"); //App title
