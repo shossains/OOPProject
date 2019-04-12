@@ -64,7 +64,6 @@ public class PersonalSettingsController implements Initializable {
         oldpasswordField.setVisible(true);
         newpasswordField.setVisible(true);
         button.setVisible(true);
-        username.setText("test");
     }
 
     /**
