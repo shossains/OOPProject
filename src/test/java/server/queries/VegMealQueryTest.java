@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class VegMealQueryTest {
-
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
 
@@ -69,7 +68,7 @@ public class VegMealQueryTest {
     public void vegMealQueryVegetarian(){
         //reset db
         String[] queries = new String[2];
-        queries[0] = "UPDATE points \n SET points = 0\n WHERE username = '"
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
         queries[1] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
