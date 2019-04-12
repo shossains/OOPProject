@@ -27,7 +27,10 @@ public class PersonalSettingsController {
     @FXML private PasswordField newpasswordField;
     @FXML private Button button;
 
-    public void changepassword(){
+    /**
+     * Change the users current password.
+     */
+    public void changepassword() {
         oldpassword.setVisible(true);
         newpassword.setVisible(true);
         oldpasswordField.setVisible(true);
@@ -104,20 +107,20 @@ public class PersonalSettingsController {
     }
 
     /**
-     * Go to the Stats screen
+     * Go to the Stats screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-    public void goStats(ActionEvent actionEvent) throws IOException{
+    public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPiechart");
     }
 
     /**
-     * Go to the Achievements screen
+     * Go to the Achievements screen.
      * @param actionEvent The click of the button
      * @throws IOException Throws if file is missing/corrupted/incomplete
      */
-    public void goAchievements(ActionEvent actionEvent) throws IOException{
+    public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
     }
 

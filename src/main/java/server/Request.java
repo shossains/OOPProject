@@ -3,7 +3,6 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.*;
 import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
 import server.queries.PublicTransportQuery;
@@ -78,16 +77,12 @@ public class Request {
                 return localProduce();
             case "BikeRide":
                 return bikeRide();
-            case "PublicTransport":
-                return publicTransport();
             case "Temp":
                 return temp();
+            case "PublicTransport":
+                return publicTransport();
             case "Solar":
                 return solar();
-            case "Combined":
-                return combined();
-            case "Average":
-                return average();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -130,16 +125,6 @@ public class Request {
     private String solar() {
         SolarQuery solarQuery = buildGson(rawQuery, SolarQuery.class);
         return solarQuery.runQuery();
-    }
-
-    private String combined() {
-        CombinedQuery combinedQuery = buildGson(rawQuery, CombinedQuery.class);
-        return combinedQuery.runQuery();
-    }
-
-    private String average() {
-        AverageQuery averageQuery = buildGson(rawQuery, AverageQuery.class);
-        return averageQuery.runQuery();
     }
 
     /**

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
 
@@ -372,12 +373,17 @@ public class AchievementsController implements Initializable {
     /**
      * Go to the User Stats screen.
      * @param actionEvent The click of the button
-     * @throws IOException Throw if chart is invalid
+     * @throws IOException Throw if file is missing/corrupted/incomplete
      */
     public void goStats(ActionEvent actionEvent) throws IOException {
-        go("StatsPieChart");
+        go("StatsPiechart");
     }
 
+    /**
+     * Go to the Personal settings screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if chart is invalid
+     */
     public void goPersonal(ActionEvent actionEvent) throws IOException {
         go("PersonalSettings");
     }
