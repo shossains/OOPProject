@@ -100,3 +100,43 @@ Response:
 ```
 {"points" : 39}
 ```
+
+## Combined
+
+Fetches the amount of points per category
+
+### Request:
+* *type*: Combined
+
+### Response:
+* *vegPoints*: `Integer` The current amount of points earned by eating vegetarian meals
+* *locProdPoints*: `Integer` The current amount of points earned by eating local produce
+* *bikePoints*: `Integer` The current amount of points earned by biking
+* *pubTransPoints*: `Integer` The current amount of points earned by using public transport
+* *tempPoints*: `Integer` The current amount of points earned by lowering the temperature
+* *solarPoints*: `Integer` The current amount of points earned by using solar power
+
+### Example
+```
+{'type' : 'Combined', 'username' : 'Hubble', 'password' : 'Supernova'}
+```
+
+Response:
+```
+{"vegPoints" : 55, "locProdPoints" : 63, "bikePoints" : 120, "pubTransPoints" : 37, "tempPoints" : 205, "solarPoints" : 0}
+```
+
+## Login
+Used to check if the username and password combination is valid.
+
+### Request
+* type
+* username
+* password
+
+### Response
+Either
+* `{'login' : true}` if the user/pass combo is valid
+* `{'login' : false}` if the combo is invalid.
+
+This request is only used at the beggining to verify the login input.

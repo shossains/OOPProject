@@ -16,7 +16,7 @@ public class TemperatureCalculator {
      * @throws Exception Throws Url exception.
      */
 
-    public static Double temp(int thigh, int tlow) throws Exception {
+    public static Double temp(int thigh, int tlow) throws MalformedURLException {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
