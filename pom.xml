@@ -152,7 +152,6 @@
                 <configuration>
                     <excludes>
                         <exclude>application/**</exclude>
-                        <exclude>server/queries/AverageQuery.*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -204,8 +203,7 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>application/**</exclude> <!--GUI part-->
-                        <exclude>server/queries/AverageQuery.*</exclude> <!--impossible to test all users-->
+                        <exclude>application/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>

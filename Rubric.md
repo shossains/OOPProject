@@ -35,7 +35,7 @@ please consult with your TA
 * [x] Using public transport instead of car (0.1)
 * [x] Lowering the temperature of your home (0.2)
 * [x] Installing solar panels (0.2)
-* [x] Track the CO2 that you save and compare to your friends (0.2)
+* [ ] Track the CO2 that you save and compare to your friends (0.2)
 * [ ] Provide badges, achievements & other stimuli (0.2)
 
 
@@ -68,8 +68,8 @@ When code of the features is not tested, only a maximum of 0.2 can be achieved.
 * [x] 4 of the 6 minimal features from Food, Transportation and Energy have been implemented (0.4)
 
 The full workflow for "Track the CO2 that you save and compare to your friends" is implemented
-* [x] You are able to have an overview of the CO2 that you have saved. (0.2)
-* [x] You are able to have an overview of the CO2 that others have saved. (0.2)
+* [ ] You are able to have an overview of the CO2 that you have saved. (0.2)
+* [ ] You are able to have an overview of the CO2 that others have saved. (0.2)
 
 ## Scrum: (1.6 points)
 
