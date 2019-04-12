@@ -66,7 +66,7 @@
                         </MenuButton>
                     </items>
                 </ToolBar>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff5a45" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21ff5900" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: green;" width="182.0" />
                 <Label layoutX="41.0" layoutY="66.0" text="Local Produce">
                     <font>
                         <Font size="18.0" />
@@ -91,9 +91,9 @@
             <Label alignment="CENTER" layoutX="79.0" layoutY="136.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
             <TextField fx:id="weight" layoutX="79.0" layoutY="192.0" />
             <Label fx:id="invalidWeight" layoutX="79.0" layoutY="217.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
-            <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="168.70703125">
+            <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.70703125">
                <font>
-                  <Font size="26.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             </children>
