@@ -21,7 +21,7 @@ public class BikeRideQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
     }
 
     /**
@@ -33,7 +33,7 @@ public class BikeRideQueryTest {
         String[] queries = new String[1];
         queries[0] = "DELETE FROM bikeride WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'BikeRide', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"

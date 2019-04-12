@@ -390,6 +390,15 @@ public class PublicTransportController implements Initializable {
     }
 
     /**
+     * Go to the User Stats screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throw if chart is invalid
+     */
+    public void goStats(ActionEvent actionEvent) throws IOException {
+        go("StatsPieChart");
+    }
+
+    /**
      * Go to the Personal settings screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
