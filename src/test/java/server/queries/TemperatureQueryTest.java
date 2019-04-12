@@ -29,11 +29,6 @@ public class TemperatureQueryTest {
      */
     @Test
     public void TemperatureReqeust(){
-        String[] queries = new String[1];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
-                + testUserRow + "'";
-        Query.runQueries(queries);
-
         String testString = "{'type' : 'Temp', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addTemp' : true, 'thigh' : 0, 'tlow' : 0}";

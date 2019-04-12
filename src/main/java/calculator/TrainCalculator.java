@@ -15,7 +15,7 @@ public class TrainCalculator {
      * @throws Exception Url exception.
      */
 
-    public static Double train(int number) throws MalformedURLException {
+    public static Double train(int number) throws Exception {
 
         //Setup https client
         String host = "http://impact.brighterplanet.com/";
