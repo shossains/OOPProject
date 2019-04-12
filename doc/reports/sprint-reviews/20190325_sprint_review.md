@@ -1,7 +1,5 @@
 # Sprint Review
 
-## Main problems  Encountered
-
 
 ### Sprint Retrospective
 

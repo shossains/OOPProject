@@ -1,7 +1,5 @@
 # Sprint Review
 
-## Main problems  Encountered
-
  
 ### Sprint Retrospective
  | Task  | Assigned to | Estimated Effort (in hours per person) | Actual Effort | Done | Notes |
