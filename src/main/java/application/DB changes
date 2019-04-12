@@ -1,0 +1,2 @@
+        queries[0] = "CREATE TABLE friendlist (username)";
+        queries[0] = "ALTER TABLE friendlist ADD COLUMN friends VARCHAR REFERENCES client(username)";

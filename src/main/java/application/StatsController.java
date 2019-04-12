@@ -47,9 +47,6 @@ public class StatsController implements Initializable {
             int[] ints = friendPointsRequest(friendName);
             newFriend.setOnAction(e -> generate(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5]));
 
-
-           // newFriend.setOnAction(e -> generate("Local produce", (int)(Math.random() * 100),
-           //         "Temperature", (int)(Math.random() * 100)));
             currentAdd += 1;
         } //else error message to user
 
