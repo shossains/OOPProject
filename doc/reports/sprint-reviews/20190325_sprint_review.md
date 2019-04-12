@@ -1,9 +1,9 @@
-<h1>Sprint Review</h1>
+# Sprint Review
 
-<h2>Main problems encountered</h2>
+## Main problems  Encountered
 
 
-<h3>Sprint Retrospective</h3>
+### Sprint Retrospective
 
 |Task | Assssigned to | Estimated Effort (in hours per person) | Actual effort | Done | Notes |
 | --- | ------------- | -------------------------------------- | ------------- | ---- | ----- |
@@ -16,6 +16,6 @@
 | Finish the authentication | Alex | 3 | 3 | Yes | - |
 | Compare your points to average | Lucas | 6 | 12 | Yes | - |
 
-<h3>Adjustements for next sprint</h3>
+### Adjustments for next sprint
 
 *  We need to divide the tasks more clearly so people don't accidentally work on the same thing
