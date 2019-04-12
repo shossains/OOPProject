@@ -68,7 +68,7 @@ public class TemperatureQueryTest {
     public void addTempFalsePrint(){
         String[] queries = new String[3];
         queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
-        queries[1] = "INSERT INTO temperature VALUES ('testUser',10,3,'2019-03-29 00:00:00',2)";
+        queries[1] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
         queries[2] = "INSERT INTO temperature VALUES ('testUser',15,5,'2019-03-29 00:00:00',3)";
         Query.runQueries(queries, testUserRow, testUserPass);
 
@@ -79,6 +79,6 @@ public class TemperatureQueryTest {
         request.setRaw(testString);
         request.execute();
 
-        Assert.assertEquals("[{'points' : 10,'temperature' : 3,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
+        Assert.assertEquals("[{'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}, {'points' : 15,'temperature' : 5,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }
