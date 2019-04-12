@@ -26,6 +26,6 @@ public class PersonalSettingsQueryTest {
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
 
-        Assert.assertEquals("{'email' : 'empty@hotmail.com', 'co2' : 0}", request.execute());
+        Assert.assertEquals("{'email' : 'empty@hotmail.com', 'co2' : 0.0}", request.execute());
     }
 }
