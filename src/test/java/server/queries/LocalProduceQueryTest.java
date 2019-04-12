@@ -24,7 +24,7 @@ public class LocalProduceQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
     }
 
     /**
@@ -32,6 +32,11 @@ public class LocalProduceQueryTest {
      */
     @Test
     public void LocalProduceWeight(){
+        String[] queries = new String[2];
+        queries[0] = "DELETE FROM localproduce WHERE username = '" + testUserRow + "';";
+        queries[1] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "'";
+        Query.runQueries(queries);
+
         String testString = "{'type' : 'LocalProduce', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addLocal' : true, 'weight' : 1500}";
@@ -45,6 +50,11 @@ public class LocalProduceQueryTest {
      */
     @Test
     public void LocalProduceZero(){
+        String[] queries = new String[2];
+        queries[0] = "DELETE FROM localproduce WHERE username = '" + testUserRow + "';";
+        queries[1] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "'";
+        Query.runQueries(queries);
+
         String testString = "{'type' : 'LocalProduce', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addLocal' : true, 'weight' : 0}";
@@ -62,7 +72,7 @@ public class LocalProduceQueryTest {
         String[] queries = new String[1];
         queries[0] = "DELETE FROM localproduce WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'LocalProduce', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -76,12 +86,12 @@ public class LocalProduceQueryTest {
      * Tests for the printing of the records
      */
     @Test
-    public void addMealFalsePrint(){
+    public void addLocalFalsePrint(){
         String[] queries = new String[3];
         queries[0] = "DELETE FROM localproduce WHERE username = '" + testUserRow + "';";
         queries[1] = "INSERT INTO localproduce VALUES ('testUser',10,1000,'2019-03-29 00:00:00',1.0)";
         queries[2] = "INSERT INTO localproduce VALUES ('testUser',15,1500,'2019-03-29 00:00:00',1.5)";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'LocalProduce', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"

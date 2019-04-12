@@ -27,7 +27,7 @@ public class VegMealQueryTest {
                 + testUserRow + "'";
         queries[1] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
     }
 
     /**
@@ -52,7 +52,7 @@ public class VegMealQueryTest {
                 + testUserRow + "'";
         queries[1] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -73,7 +73,7 @@ public class VegMealQueryTest {
                 + testUserRow + "'";
         queries[1] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -92,7 +92,7 @@ public class VegMealQueryTest {
         String[] queries = new String[1];
         queries[0] = "DELETE FROM vegetarian WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -112,7 +112,7 @@ public class VegMealQueryTest {
         queries[1] = "DELETE FROM vegetarian WHERE username = '" + testUserRow + "';";
         queries[2] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegan','2019-03-29 00:00:00',1)";
         queries[3] = "INSERT INTO vegetarian VALUES ('testUser',50,'vegan','2019-03-29 00:00:00',1)";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'VegMeal', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
