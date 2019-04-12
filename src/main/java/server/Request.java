@@ -3,14 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.BikeRideQuery;
-import server.queries.LocalProduceQuery;
-import server.queries.PublicTransportQuery;
-import server.queries.RegisterQuery;
-import server.queries.SolarQuery;
-import server.queries.TemperatureQuery;
-import server.queries.TestQuery;
-import server.queries.VegMealQuery;
+import server.queries.*;
 
 /**
  * Class for parsing requests using Gson.
@@ -83,6 +76,8 @@ public class Request {
                 return publicTransport();
             case "Solar":
                 return solar();
+            case "Settings":
+                return personalSetting();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -125,6 +120,11 @@ public class Request {
     private String solar() {
         SolarQuery solarQuery = buildGson(rawQuery, SolarQuery.class);
         return solarQuery.runQuery();
+    }
+
+    private String personalSetting() {
+        PersonalSettingsQuery personalQuery = buildGson(rawQuery, PersonalSettingsQuery.class);
+        return personalQuery.runQuery();
     }
 
     /**
