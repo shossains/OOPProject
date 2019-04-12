@@ -3,6 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import server.queries.*;
 import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
 import server.queries.PersonalSettingsQuery;
@@ -79,10 +80,10 @@ public class Request {
                 return localProduce();
             case "BikeRide":
                 return bikeRide();
-            case "Temp":
-                return temp();
             case "PublicTransport":
                 return publicTransport();
+            case "Temp":
+                return temp();
             case "Solar":
                 return solar();
             case "Settings":
