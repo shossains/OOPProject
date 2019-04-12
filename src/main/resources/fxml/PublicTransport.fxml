@@ -23,9 +23,9 @@
             <children>
             <ToolBar fx:id="myToolbar" prefHeight="49.0" prefWidth="720.0" style="-fx-background-color: #3ea758;">
                <items>
-                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="Name of Program" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="135.0" text="GoGreen" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
