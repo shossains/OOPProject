@@ -48,11 +48,6 @@ public class BikeRideQueryTest {
      */
     @Test
     public void BikeRideDistance() {
-        String[] queries = new String[1];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
-                + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
-
         String testString = "{'type' : 'BikeRide', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addBike' : true, 'distance' : 2500}";

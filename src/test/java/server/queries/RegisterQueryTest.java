@@ -13,10 +13,10 @@ import server.db.Query;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RegisterLoginQueryTest {
+public class RegisterQueryTest {
     private static String existingUserHash;
     private static String existingTestUser = "testUser";
-    private static String regQueryJSON = "{'type': 'Register', 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}";
+    private static String regQueryJSON = "{'type': 'register', 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}";
     private static RegisterQuery testRegQuery;
 
     @BeforeClass
@@ -50,12 +50,12 @@ public class RegisterLoginQueryTest {
 
     @Test
     public void fullRegTest(){
-        String json = "{'type': 'Register', 'username' : 'registerTest', 'password' : 'sickPassword'," +
+        String json = "{'type': 'register', 'username' : 'registerTest', 'password' : 'sickPassword'," +
                 " 'fname' : 'Test', 'lname' : 'User', 'email' : 'fraud@tudelft.nl', 'phone' : '12345678'}";
 
         RegisterQuery registerQuery = new GsonBuilder().create().fromJson(json, RegisterQuery.class);
 
-        Assert.assertEquals("{'error' : false}", registerQuery.runQuery());
+        Assert.assertEquals("{'error': true, 'reason' : 'not fully implemented yet'}", registerQuery.runQuery());
     }
 
     @Test
@@ -82,22 +82,6 @@ public class RegisterLoginQueryTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Test
-    public void loginTest(){
-        LoginQuery loginQuery = new GsonBuilder().create().fromJson("{'type':'Login',"
-                + " 'username' : '"+existingTestUser+"', 'password' : 'hunter2'}", LoginQuery.class);
-
-        Assert.assertEquals("{'login' : true}", loginQuery.runQuery());
-    }
-
-    @Test
-    public void badLoginTest(){
-        LoginQuery loginQuery = new GsonBuilder().create().fromJson("{'type':'Login',"
-                + " 'username' : '"+existingTestUser+"', 'password' : 'hunter3'}", LoginQuery.class);
-
-        Assert.assertEquals("{'login' : false}", loginQuery.runQuery());
     }
 
 

@@ -4,7 +4,6 @@ import calculator.BusCalculator;
 import calculator.TrainCalculator;
 import server.db.Query;
 
-import java.net.MalformedURLException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,8 +36,7 @@ public class PublicTransportQuery extends ServerQuery {
                     co2 = TrainCalculator.train(distance);
                     Double temp = TrainCalculator.train(distance) * 10;
                     addPoints = temp.intValue();
-                } catch (MalformedURLException e) {
-                    //TODO: this should be caught in the calculator method
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

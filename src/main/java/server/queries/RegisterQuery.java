@@ -32,7 +32,7 @@ public class RegisterQuery extends ServerQuery {
         }
 
         Query.runQueries(getQueries());
-        return "{'error' : false}";
+        return "{'error': true, 'reason' : 'not fully implemented yet'}";
     }
 
     /**

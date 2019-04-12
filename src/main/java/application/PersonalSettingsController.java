@@ -1,85 +1,41 @@
 package application;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ToolBar;
+//import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class StatsController implements Initializable {
+public class PersonalSettingsController {
 
     @FXML ToolBar myToolbar;
 
-    @FXML private PieChart userPieChart;
-    @FXML private PieChart friendPieChart;
-    @FXML private MenuButton friendMenu;
-
-
-    /**
-     * When clicking the button, a new friend is added to the Friends menu.
-     * To test how to add new menu items that have a method.
-     */
-    @FXML public void addFriend() {
-        MenuItem newFriend = new MenuItem("new Friend");
-
-        friendMenu.getItems().add(newFriend);
-        newFriend.setOnAction(e -> generate("Local produce", (int)(Math.random() * 100),
-                "Temperature", (int)(Math.random() * 100)));
-
-    }
+    //@FXML private Text username;
+    //@FXML private Text emailaddress;
+    //@FXML private Text points;
+    @FXML private Label oldpassword;
+    @FXML private Label newpassword;
+    @FXML private PasswordField oldpasswordField;
+    @FXML private PasswordField newpasswordField;
+    @FXML private Button button;
 
     /**
-     * Test data for addfriend() method.
-     * @param name Name of the friend
-     * @param value The value fot the pie chart
-     * @param name2 Name of the second friend
-     * @param value2 The value of the second friend
+     * Change the users current password.
      */
-    @FXML public void generate(String name, int value, String name2, int value2) {
-        ObservableList<PieChart.Data> friendData
-                = FXCollections.observableArrayList(
-                new PieChart.Data(name, value),
-                new PieChart.Data(name2, value2));
-
-        friendPieChart.setData(friendData);
-    }
-
-    /**
-     * Test data to see if displaying data tied to menu item 1 works.
-     */
-    @FXML public void showFriendData() {
-        ObservableList<PieChart.Data> friendPieChartData
-                = FXCollections.observableArrayList(
-                new PieChart.Data("VegMeal", 120),
-                new PieChart.Data("Bike Ride", 120),
-                new PieChart.Data("Temperature", 80),
-                new PieChart.Data("SolarPanels", 50),
-                new PieChart.Data("LocalProduce", 25),
-                new PieChart.Data("Public Transport", 0)
-        );
-        friendPieChart.setData(friendPieChartData);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<PieChart.Data> userPieChartData
-                = FXCollections.observableArrayList(new PieChart.Data("VegMeal", 50),
-                new PieChart.Data("Bike Ride", 120), new PieChart.Data("Temperature", 100));
-        userPieChart.setData(userPieChartData);
-
-
+    public void changepassword() {
+        oldpassword.setVisible(true);
+        newpassword.setVisible(true);
+        oldpasswordField.setVisible(true);
+        newpasswordField.setVisible(true);
+        button.setVisible(true);
     }
 
     /**
@@ -151,12 +107,12 @@ public class StatsController implements Initializable {
     }
 
     /**
-     * Go to the Personal settings screen.
+     * Go to the Stats screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-    public void goPersonal(ActionEvent actionEvent) throws IOException {
-        go("PersonalSettings");
+    public void goStats(ActionEvent actionEvent) throws IOException {
+        go("StatsPiechart");
     }
 
     /**
@@ -167,4 +123,5 @@ public class StatsController implements Initializable {
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
     }
+
 }
