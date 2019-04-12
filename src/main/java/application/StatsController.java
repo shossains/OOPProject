@@ -32,10 +32,10 @@ public class StatsController implements Initializable {
 
 
     /**
-     * When clicking the button, a new friend is added to the Friends menu
-     * To test how to add new menu items that have a method
+     * When clicking the button, a new friend is added to the Friends menu.
+     * To test how to add new menu items that have a method.
      */
-    @FXML public void addFriend(){
+    @FXML public void addFriend() {
         MenuItem newFriend = new MenuItem("new Friend");
 
         friendMenu.getItems().add(newFriend);
@@ -45,13 +45,13 @@ public class StatsController implements Initializable {
     }
 
     /**
-     * Test data for addfriend() method
-     * @param name
-     * @param value
-     * @param name2
-     * @param value2
+     * Test data for addfriend() method.
+     * @param name Name of the friend
+     * @param value The value fot the pie chart
+     * @param name2 Name of the second friend
+     * @param value2 The value of the second friend
      */
-    @FXML public void generate(String name, int value, String name2, int value2){
+    @FXML public void generate(String name, int value, String name2, int value2) {
         ObservableList<PieChart.Data> friendData
                 = FXCollections.observableArrayList(
                 new PieChart.Data(name, value),
@@ -61,9 +61,9 @@ public class StatsController implements Initializable {
     }
 
     /**
-     * Test data to see if displaying data tied to menu item 1 works
+     * Test data to see if displaying data tied to menu item 1 works.
      */
-    @FXML public void showFriendData(){
+    @FXML public void showFriendData() {
         ObservableList<PieChart.Data> friendPieChartData
                 = FXCollections.observableArrayList(
                 new PieChart.Data("VegMeal", 120),
@@ -354,20 +354,20 @@ public class StatsController implements Initializable {
         go("VegMeal");
     }
 
-    /** Go to the Personal settings screen
+    /** Go to the Personal settings screen.
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-    public void goPersonal(ActionEvent actionEvent) throws IOException{
+    public void goPersonal(ActionEvent actionEvent) throws IOException {
         go("PersonalSettings");
     }
 
     /**
-     * Go to the Achievements screen
+     * Go to the Achievements screen.
      * @param actionEvent The click of the button
      * @throws IOException Throws if file is missing/corrupted/incomplete
      */
-    public void goAchievements(ActionEvent actionEvent) throws IOException{
+    public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
     }
 }

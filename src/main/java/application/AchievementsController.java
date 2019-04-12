@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
