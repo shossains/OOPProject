@@ -388,11 +388,11 @@ public class SolarPanelController implements Initializable {
     }
 
     /**
-     * Go to the Stats screen
+     * Go to the Stats screen.
      * @param actionEvent The click of the button
      * @throws IOException Throws if file is missing/corrupted/incomplete
      */
-    public void goStats(ActionEvent actionEvent) throws IOException{
+    public void goStats(ActionEvent actionEvent) throws IOException {
         go("StatsPiechart");
     }
 }
