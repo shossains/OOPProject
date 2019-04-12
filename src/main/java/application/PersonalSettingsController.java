@@ -1,8 +1,10 @@
 package application;
 
-import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +54,7 @@ public class PersonalSettingsController implements Initializable {
         username.setText(User.getUsername());
 
     }
+
     /**
      * Change the users current password.
      */
