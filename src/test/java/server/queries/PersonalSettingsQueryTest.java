@@ -17,7 +17,7 @@ public class PersonalSettingsQueryTest {
     @Test
     public void emailco2Test() {
         String[] queries = new String[1];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = '"
+        queries[0] = "UPDATE points SET co2 = 0 WHERE username = '"
                 + testUserRow + "'";
         Query.runQueries(queries);
         //reset db
