@@ -7,6 +7,8 @@ import org.junit.Test;
 import server.Request;
 import server.db.Query;
 
+import java.util.Arrays;
+
 public class SolarPanelQueryTest {
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
@@ -60,7 +62,7 @@ public class SolarPanelQueryTest {
     @Test
     public void addPanelFalsePrint(){
         String[] queries = new String[4];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = " + testUserRow + "'";
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "';";
         queries[1] = "DELETE FROM solar WHERE username = '" + testUserRow + "';";
         queries[2] = "INSERT INTO solar VALUES ('testUser',20,150,'2019-03-29 00:00:00',2)";
         queries[3] = "INSERT INTO solar VALUES ('testUser',30,200,'2019-03-29 00:00:00',3)";

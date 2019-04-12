@@ -14,7 +14,6 @@ public class VegMealQueryTest {
     static final String testUserRow = "testUser";
     static final String testUserPass = "hunter2";
 
-
     /**
      * initializes variables, clean up test entry in users
      */

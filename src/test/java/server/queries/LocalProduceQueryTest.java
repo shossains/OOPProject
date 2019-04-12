@@ -39,10 +39,10 @@ public class LocalProduceQueryTest {
 
         String testString = "{'type' : 'LocalProduce', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addLocal' : true, 'weight' : 1500}";
+                + "'addLocal' : true, 'weight' : 0}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals("{'points' : 49 , 'added' : 49 , 'co2' : 0.49}", request.execute());
+        Assert.assertEquals("{'points' : 0 , 'added' : 0 , 'co2' : 0.0}", request.execute());
     }
 
     /**
