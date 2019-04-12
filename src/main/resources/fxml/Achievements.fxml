@@ -4,6 +4,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AchievementsController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AchievementsController">
     <children>
         <AnchorPane prefHeight="480.0" prefWidth="720.0">
             <children>
@@ -115,95 +116,149 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="154.0">
+                <ImageView fx:id="vegTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="154.0">
                     <image>
-                        <Image url="@../trophybronze.png" />
+                        <Image fx:id="vegImg1" url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="154.0">
+                <ImageView fx:id="vegTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="154.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="154.0">
+                <ImageView fx:id="vegTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="154.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="154.0">
+                <ImageView fx:id="locProdTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="154.0">
                     <image>
                         <Image url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="154.0">
+                <ImageView fx:id="locProdTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="154.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="154.0">
+                <ImageView fx:id="locProdTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="154.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="249.0">
+                <ImageView fx:id="bikeTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="249.0">
+                <ImageView fx:id="bikeTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="249.0">
+                <ImageView fx:id="bikeTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="249.0">
+                <ImageView fx:id="pubTransTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="249.0">
+                <ImageView fx:id="pubTransTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="249.0">
+                <ImageView fx:id="pubTransTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="249.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="352.0">
+                <ImageView fx:id="tempTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="55.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="352.0">
+                <ImageView fx:id="tempTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="135.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="352.0">
+                <ImageView fx:id="tempTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="215.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="352.0">
+                <ImageView fx:id="solarTrophy0" fitHeight="66.0" fitWidth="60.0" layoutX="346.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophybronze.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="352.0">
+                <ImageView fx:id="solarTrophy1" fitHeight="66.0" fitWidth="60.0" layoutX="426.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophysilver.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
-                <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="352.0">
+                <ImageView fx:id="solarTrophy2" fitHeight="66.0" fitWidth="60.0" layoutX="506.0" layoutY="352.0">
                     <image>
                         <Image url="@../trophygold.png" />
                     </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
                 </ImageView>
             </children>
         </AnchorPane>

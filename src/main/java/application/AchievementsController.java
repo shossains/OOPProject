@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -19,29 +21,29 @@ import java.util.ResourceBundle;
 public class AchievementsController implements Initializable {
     @FXML ToolBar myToolbar;
 
-    @FXML Circle vegCircle0;
-    @FXML Circle vegCircle1;
-    @FXML Circle vegCircle2;
+    @FXML ImageView vegTrophy0;
+    @FXML ImageView vegTrophy1;
+    @FXML ImageView vegTrophy2;
 
-    @FXML Circle locProdCircle0;
-    @FXML Circle locProdCircle1;
-    @FXML Circle locProdCircle2;
+    @FXML ImageView locProdTrophy0;
+    @FXML ImageView locProdTrophy1;
+    @FXML ImageView locProdTrophy2;
 
-    @FXML Circle bikeCircle0;
-    @FXML Circle bikeCircle1;
-    @FXML Circle bikeCircle2;
+    @FXML ImageView bikeTrophy0;
+    @FXML ImageView bikeTrophy1;
+    @FXML ImageView bikeTrophy2;
 
-    @FXML Circle pubTransCircle0;
-    @FXML Circle pubTransCircle1;
-    @FXML Circle pubTransCircle2;
+    @FXML ImageView pubTransTrophy0;
+    @FXML ImageView pubTransTrophy1;
+    @FXML ImageView pubTransTrophy2;
 
-    @FXML Circle tempCircle0;
-    @FXML Circle tempCircle1;
-    @FXML Circle tempCircle2;
+    @FXML ImageView tempTrophy0;
+    @FXML ImageView tempTrophy1;
+    @FXML ImageView tempTrophy2;
 
-    @FXML Circle solarCircle0;
-    @FXML Circle solarCircle1;
-    @FXML Circle solarCircle2;
+    @FXML ImageView solarTrophy0;
+    @FXML ImageView solarTrophy1;
+    @FXML ImageView solarTrophy2;
 
 
     boolean veg0 = false;
@@ -81,34 +83,36 @@ public class AchievementsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       /* vegAchieve0();
-        vegAchieve1();
-        vegAchieve2();
-        locProdAchieve0();
-        locProdAchieve1();
-        locProdAchieve2();
-        bikeAchieve0();
-        bikeAchieve1();
-        bikeAchieve2();
-        pubTransAchieve0();
-        pubTransAchieve1();
-        pubTransAchieve2();
-        tempAchieve0();
-        tempAchieve1();
-        tempAchieve2();
-        solarAchieve0();
-        solarAchieve1();
-        solarAchieve2();*/
+        ColorAdjust enable = new ColorAdjust();
+        enable.setBrightness(0);
+
+        vegAchieve0(enable);
+        vegAchieve1(enable);
+        vegAchieve2(enable);
+        locProdAchieve0(enable);
+        locProdAchieve1(enable);
+        locProdAchieve2(enable);
+        bikeAchieve0(enable);
+        bikeAchieve1(enable);
+        bikeAchieve2(enable);
+        pubTransAchieve0(enable);
+        pubTransAchieve1(enable);
+        pubTransAchieve2(enable);
+        tempAchieve0(enable);
+        tempAchieve1(enable);
+        tempAchieve2(enable);
+        solarAchieve0(enable);
+        solarAchieve1(enable);
+        solarAchieve2(enable);
     }
 
     /**
      * Checks whether the first vegetarian achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void vegAchieve0() {
-        if (vegPoints > 0 && veg0 == false) {
-            System.out.println("Getting started"); //TODO: delete
-            vegCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void vegAchieve0(ColorAdjust colorAdjust) {
+        if (vegPoints >= 100 && veg0 == false) {
+            vegTrophy0.setEffect(colorAdjust);
             veg0 = true;
         }
     }
@@ -117,10 +121,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second vegetarian achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void vegAchieve1() {
+    public void vegAchieve1(ColorAdjust colorAdjust) {
         if (vegPoints >= 1000 && veg1 == false) {
-            System.out.println("Achievement 1"); //TODO: delete
-            vegCircle1.setFill(Paint.valueOf("#d0d0d0"));
+            vegTrophy1.setEffect(colorAdjust);
             veg1 = true;
         }
     }
@@ -129,10 +132,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third vegetarian achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void vegAchieve2() {
+    public void vegAchieve2(ColorAdjust colorAdjust) {
         if (vegPoints >= 10000 && veg2 == false) {
-            System.out.println("Earned 1000 points"); //TODO: delete
-            vegCircle2.setFill(Paint.valueOf("#ecec09"));
+            vegTrophy2.setEffect(colorAdjust);
             veg2 = true;
         }
     }
@@ -141,9 +143,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the first local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void locProdAchieve0() {
-        if (locProdPoints >= 33 && locProd0 == false) {
-            locProdCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void locProdAchieve0(ColorAdjust colorAdjust) {
+        if (locProdPoints >= 100 && locProd0 == false) {
+            locProdTrophy0.setEffect(colorAdjust);
             locProd0 = true;
         }
     }
@@ -152,9 +154,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void locProdAchieve1() {
-        if (locProdPoints >= 32800 && locProd1 == false) {
-            locProdCircle1.setFill(Paint.valueOf("#d0d0d0"));
+    public void locProdAchieve1(ColorAdjust colorAdjust) {
+        if (locProdPoints >= 1000 && locProd1 == false) {
+            locProdTrophy1.setEffect(colorAdjust);
             locProd1 = true;
         }
     }
@@ -163,9 +165,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third local produce achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void locProdAchieve2() {
-        if (locProdPoints >= 1000 && locProd2 == false) {
-            locProdCircle2.setFill(Paint.valueOf("#ecec09"));
+    public void locProdAchieve2(ColorAdjust colorAdjust) {
+        if (locProdPoints >= 10000 && locProd2 == false) {
+            locProdTrophy2.setEffect(colorAdjust);
             locProd2 = true;
         }
     }
@@ -174,9 +176,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the first bike achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void bikeAchieve0() {
-        if (bikePoints >= 13 && bike0 == false) {
-            bikeCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void bikeAchieve0(ColorAdjust colorAdjust) {
+        if (bikePoints >= 100 && bike0 == false) {
+            bikeTrophy0.setEffect(colorAdjust);
             bike0 = true;
         }
     }
@@ -185,9 +187,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second bike achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void bikeAchieve1() {
-        if (bikePoints >= 13377 && bike1 == false) {
-            bikeCircle1.setFill(Paint.valueOf("#d0d0d0"));
+    public void bikeAchieve1(ColorAdjust colorAdjust) {
+        if (bikePoints >= 1000 && bike1 == false) {
+            bikeTrophy1.setEffect(colorAdjust);
             bike1 = true;
         }
     }
@@ -196,9 +198,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third bike achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void bikeAchieve2() {
-        if (bikePoints >= 1000 && bike2 == false) {
-            bikeCircle2.setFill(Paint.valueOf("#ecec09"));
+    public void bikeAchieve2(ColorAdjust colorAdjust) {
+        if (bikePoints >= 10000 && bike2 == false) {
+            bikeTrophy2.setEffect(colorAdjust);
             bike2 = true;
         }
     }
@@ -207,9 +209,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the first public transport achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void pubTransAchieve0() {
-        if (pubTransPoints >= 1 && pubTrans0 == false) {
-            pubTransCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void pubTransAchieve0(ColorAdjust colorAdjust) {
+        if (pubTransPoints >= 100 && pubTrans0 == false) {
+            pubTransTrophy0.setEffect(colorAdjust);
             pubTrans0 = true;
         }
     }
@@ -218,9 +220,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second public transport achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void pubTransAchieve1() {
-        if (pubTransPoints >= 126 && pubTrans1 == false) {
-            pubTransCircle1.setFill(Paint.valueOf("#d0d0d0"));
+    public void pubTransAchieve1(ColorAdjust colorAdjust) {
+        if (pubTransPoints >= 1000 && pubTrans1 == false) {
+            pubTransTrophy1.setEffect(colorAdjust);
             pubTrans1 = true;
         }
     }
@@ -229,9 +231,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third public transport achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void pubTransAchieve2() {
-        if (pubTransPoints >= 1000 && pubTrans2 == false) {
-            pubTransCircle2.setFill(Paint.valueOf("#ecec09"));
+    public void pubTransAchieve2(ColorAdjust colorAdjust) {
+        if (pubTransPoints >= 10000 && pubTrans2 == false) {
+            pubTransTrophy2.setEffect(colorAdjust);
             pubTrans2 = true;
         }
     }
@@ -240,9 +242,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the first temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void tempAchieve0() {
-        if (tempPoints >= 10 && temp0 == false) {
-            tempCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void tempAchieve0(ColorAdjust colorAdjust) {
+        if (tempPoints >= 100 && temp0 == false) {
+            tempTrophy0.setEffect(colorAdjust);
             temp0 = true;
         }
     }
@@ -251,9 +253,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void tempAchieve1() {
-        if (tempPoints >= 100 && temp1 == false) {
-            tempCircle1.setFill(Paint.valueOf("#d0d0d0"));
+    public void tempAchieve1(ColorAdjust colorAdjust) {
+        if (tempPoints >= 1000 && temp1 == false) {
+            tempTrophy1.setEffect(colorAdjust);
             temp1 = true;
         }
     }
@@ -262,9 +264,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third temperature achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void tempAchieve2() {
-        if (tempPoints >= 1000 && temp2 == false) {
-            tempCircle2.setFill(Paint.valueOf("#ecec09"));
+    public void tempAchieve2(ColorAdjust colorAdjust) {
+        if (tempPoints >= 10000 && temp2 == false) {
+            tempTrophy2.setEffect(colorAdjust);
             temp2 = true;
         }
     }
@@ -273,9 +275,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the first solar panel achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void solarAchieve0() {
-        if (solarPoints >= 10 && solar0 == false) {
-            solarCircle0.setFill(Paint.valueOf("#ca784b"));
+    public void solarAchieve0(ColorAdjust colorAdjust) {
+        if (solarPoints >= 100 && solar0 == false) {
+            solarTrophy0.setEffect(colorAdjust);
             solar0 = true;
         }
     }
@@ -284,9 +286,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the second solar panel achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void solarAchieve1() {
-        if (solarPoints >= 100 && solar1 == false) {
-            solarCircle1.setFill(Paint.valueOf("#d0d0d0"));
+    public void solarAchieve1(ColorAdjust colorAdjust) {
+        if (solarPoints >= 1000 && solar1 == false) {
+            solarTrophy1.setEffect(colorAdjust);
             solar1 = true;
         }
     }
@@ -295,9 +297,9 @@ public class AchievementsController implements Initializable {
      * Checks whether the third solar panel achievement has been achieved.
      * Sets the achievement true/false.
      */
-    public void solarAchieve2() {
+    public void solarAchieve2(ColorAdjust colorAdjust) {
         if (solarPoints >= 1000 && solar2 == false) {
-            solarCircle2.setFill(Paint.valueOf("#ecec09"));
+            solarTrophy2.setEffect(colorAdjust);
             solar2 = true;
         }
     }
