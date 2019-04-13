@@ -86,6 +86,8 @@ public class Request {
                 return temp();
             case "Solar":
                 return solar();
+            case "Combined":
+                return combined();
             case "Settings":
                 return personalSetting();
             default:
@@ -130,6 +132,11 @@ public class Request {
     private String solar() {
         SolarQuery solarQuery = buildGson(rawQuery, SolarQuery.class);
         return solarQuery.runQuery();
+    }
+
+    private String combined() {
+        CombinedQuery combinedQuery = buildGson(rawQuery, CombinedQuery.class);
+        return combinedQuery.runQuery();
     }
 
     private String personalSetting() {
