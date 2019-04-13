@@ -38,7 +38,7 @@ public class Main extends Application {
         Server server;
         String serverpassword = "password";
         try {
-            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
+            server = new Server(3000, new FileInputStream(new File("C:\\Users\\lucas\\Desktop\\OOPP\\testkey.jks")),
                     serverpassword.toCharArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -53,7 +53,5 @@ public class Main extends Application {
         } else {
             System.out.println("URL invalid");
         }
-        User.setUsername("testUser");
-        User.setPassword("hunter2");
     }
 }
