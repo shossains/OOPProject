@@ -74,6 +74,8 @@ public class Request {
                 return buildGson(rawQuery, TestQuery.class).runQuery();
             case "register":
                 return registerUser();
+            case "Login":
+                return buildGson(rawQuery, LoginQuery.class).runQuery();
             case "VegMeal":
                 return vegMeal();
             case "LocalProduce":

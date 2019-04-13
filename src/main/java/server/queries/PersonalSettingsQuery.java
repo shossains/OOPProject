@@ -29,7 +29,7 @@ public class PersonalSettingsQuery extends ServerQuery {
             }
             while (rs2.next()) {
                 co2 = rs2.getDouble(1);
-                co2 = Math.round(co2* 100.0) / 100.0;
+                co2 = Math.round(co2 * 100.0) / 100.0;
             }
 
             rs.close();
