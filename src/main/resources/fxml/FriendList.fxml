@@ -22,7 +22,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../css/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
+                  <MenuButton maxWidth="-Infinity" mnemonicParsing="false" prefWidth="47.0" stylesheets="@../CSS/choiceboxcsstest.css" text="User" textFill="WHITE" translateX="75.0">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#goPersonal" text="Personal Settings" />
                         <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
@@ -33,7 +33,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </MenuButton>
-                  <MenuButton fx:id="mb" mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
+                  <MenuButton fx:id="mb" mnemonicParsing="false" stylesheets="@../CSS/choiceboxcsstest.css" text="Food" textFill="WHITE" translateX="125.0">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Add a Vegetarian Meal" />
                         <MenuItem mnemonicParsing="false" onAction="#goLocal" text="Add Local Produce" />
@@ -42,7 +42,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </MenuButton>
-                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
+                  <MenuButton mnemonicParsing="false" stylesheets="@../CSS/choiceboxcsstest.css" text="Transportation" textFill="WHITE" translateX="175.0">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#goBike" text="Add Bike Ride" />
                         <MenuItem mnemonicParsing="false" onAction="#goPublic" text="Add Public Transport Ride" />
@@ -51,7 +51,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </MenuButton>
-                  <MenuButton mnemonicParsing="false" stylesheets="@../css/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
+                  <MenuButton mnemonicParsing="false" stylesheets="@../CSS/choiceboxcsstest.css" text="Energy" textFill="WHITE" translateX="225.0">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#goTemp" text="Add Temperature Adjustment" />
                         <MenuItem mnemonicParsing="false" onAction="#goSolar" text="Add Solar Panels" />

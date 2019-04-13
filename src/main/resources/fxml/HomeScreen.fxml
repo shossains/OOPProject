@@ -20,7 +20,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="133.0" layoutY="373.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/LoginButton.css" text="SIGN IN" textFill="WHITE">
+            <Button layoutX="133.0" layoutY="373.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="39.0" prefWidth="119.0" stylesheets="@../CSS/LoginButton.css" text="SIGN IN" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -31,7 +31,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button cache="true" layoutX="461.0" layoutY="267.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="39.0" prefWidth="119.0" stylesheets="@../css/RegisterButton.css" text="REGISTER" textFill="WHITE">
+            <Button cache="true" layoutX="461.0" layoutY="267.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="39.0" prefWidth="119.0" stylesheets="@../CSS/RegisterButton.css" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
