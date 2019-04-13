@@ -20,7 +20,7 @@ public class PublicTransportQueryTest {
         String[] queries = new String[1];
         queries[0] = "UPDATE points SET points = 0 WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
     }
 
     /**
@@ -28,6 +28,11 @@ public class PublicTransportQueryTest {
      */
     @Test
     public void BusDistance(){
+        String[] queries = new String[2];
+        queries[0] = "DELETE FROM publictransport WHERE username = '" + testUserRow + "';";
+        queries[1] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "'";
+        Query.runQueries(queries);
+
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addPublic' : true, 'distance' : 0, 'vehicle' : 'bus'}";
@@ -41,6 +46,11 @@ public class PublicTransportQueryTest {
      */
     @Test
     public void TrainDistance(){
+        String[] queries = new String[2];
+        queries[0] = "DELETE FROM publictransport WHERE username = '" + testUserRow + "';";
+        queries[1] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "'";
+        Query.runQueries(queries);
+
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
                 + "'addPublic' : true, 'distance' : 0, 'vehicle' : 'train'}";
@@ -58,7 +68,7 @@ public class PublicTransportQueryTest {
         String[] queries = new String[1];
         queries[0] = "DELETE FROM publictransport WHERE username = '"
                 + testUserRow + "'";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
@@ -73,11 +83,12 @@ public class PublicTransportQueryTest {
      */
     @Test
     public void addPublicFalsePrint(){
-        String[] queries = new String[3];
-        queries[0] = "DELETE FROM publictransport WHERE username = '" + testUserRow + "';";
-        queries[1] = "INSERT INTO publictransport VALUES ('testUser',20,'train',10,'2019-03-29 00:00:00',1)";
+        String[] queries = new String[4];
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "';";
+        queries[1] = "DELETE FROM publictransport WHERE username = '" + testUserRow + "';";
         queries[2] = "INSERT INTO publictransport VALUES ('testUser',30,'bus',15,'2019-03-29 00:00:00',1)";
-        Query.runQueries(queries, testUserRow, testUserPass);
+        queries[3] = "INSERT INTO publictransport VALUES ('testUser',30,'bus',15,'2019-03-29 00:00:00',1)";
+        Query.runQueries(queries);
 
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "',"
@@ -86,6 +97,6 @@ public class PublicTransportQueryTest {
         request.setRaw(testString);
         request.execute();
 
-        Assert.assertEquals("[{'points' : 20,'distance' : 10,'datetime' : '2019-03-29 00:00:00'}, {'points' : 30,'distance' : 15,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
+        Assert.assertEquals("[{'points' : 30,'distance' : 15,'datetime' : '2019-03-29 00:00:00'}, {'points' : 30,'distance' : 15,'datetime' : '2019-03-29 00:00:00'}]", request.execute());
     }
 }

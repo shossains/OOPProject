@@ -6,12 +6,14 @@ import com.google.gson.GsonBuilder;
 import server.queries.*;
 import server.queries.BikeRideQuery;
 import server.queries.LocalProduceQuery;
+import server.queries.PersonalSettingsQuery;
 import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;
 import server.queries.SolarQuery;
 import server.queries.TemperatureQuery;
 import server.queries.TestQuery;
 import server.queries.VegMealQuery;
+
 
 /**
  * Class for parsing requests using Gson.
@@ -86,6 +88,8 @@ public class Request {
                 return solar();
             case "Combined":
                 return combined();
+            case "Settings":
+                return personalSetting();
             default:
                 return "{'error' : true, 'reason' : 'Unknown type'}";
         }
@@ -133,6 +137,11 @@ public class Request {
     private String combined() {
         CombinedQuery combinedQuery = buildGson(rawQuery, CombinedQuery.class);
         return combinedQuery.runQuery();
+    }
+
+    private String personalSetting() {
+        PersonalSettingsQuery personalQuery = buildGson(rawQuery, PersonalSettingsQuery.class);
+        return personalQuery.runQuery();
     }
 
     /**
