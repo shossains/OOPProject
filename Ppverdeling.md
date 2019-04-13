@@ -1,11 +1,11 @@
-Introduction + Tools:
-Lucas
+**Introduction + Tools:**
+<br>Lucas</br>
 
-Application homescreen and food, transport and energy categories:
-Vanessa
+**Application homescreen and food, transport and energy categories:**
+<br>Vanessa</br>
 
-User features:
-Lucas
+**User features:**
+<br>Lucas</br>
 
-Reflection:
-Vanessa
+**Reflection:**
+<br>Vanessa</br>
