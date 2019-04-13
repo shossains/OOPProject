@@ -88,7 +88,7 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows latest dates of when s bike ride was added and points awarded" textFill="#0000007b" />
+            <Label alignment="CENTER" layoutX="60.0" layoutY="252.0" prefHeight="18.0" prefWidth="402.0" text="Shows last time the temperature was adjusted and points awarded" textFill="#0000007b" />
             <TableView fx:id="tableView" layoutX="80.0" layoutY="276.0" prefHeight="184.0" prefWidth="329.0">
                <columns>
                   <TableColumn fx:id="pointsColumn" prefWidth="100.0" text="Points" />
