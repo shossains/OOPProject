@@ -84,7 +84,7 @@ public class PublicTransportQueryTest {
     @Test
     public void addPublicFalsePrint(){
         String[] queries = new String[4];
-        queries[0] = "UPDATE points SET points = 0 WHERE username = '";
+        queries[0] = "UPDATE points SET points = 0 WHERE username = '" + testUserRow + "';";
         queries[1] = "DELETE FROM publictransport WHERE username = '" + testUserRow + "';";
         queries[2] = "INSERT INTO publictransport VALUES ('testUser',30,'bus',15,'2019-03-29 00:00:00',1)";
         queries[3] = "INSERT INTO publictransport VALUES ('testUser',30,'bus',15,'2019-03-29 00:00:00',1)";
