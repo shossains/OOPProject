@@ -13,8 +13,3 @@ Then last, but certainly not least, we used a JavaFX builder to create our graph
 We have a lot of user features in this application, but most of them are quite standard. Instead, I would like to talk about what we did to go beyond those standard features. 
 
 The first feature I would like to talk about is security. Everyone loves security, right? We definitely do. So what we did in our application to improve security is: //examples
-
-The second feature I would like to discuss is more UI oriented. //?
-To make things easier for the user we implemented an immediate feedback system. Whenever the user takes an action that saves CO2, we immediately relay back to the user how much CO2 they have saved. I will show this on the following slides. Here, for example, the user has eaten a vegetarian meal and clicks the button to add a vegetarian meal. Then in this rectangle over here (if laser pointer) | in the green rectangle in the upper corner, the user will immediately know how much CO2 they have saved by eating one vegetarian meal.
-
-Another user feature we have implemented is this handy table, which shows the user how many points they have earned and when exactly they have earned these points. This makes it easy for the user to keep track of the number of points they have scored.
