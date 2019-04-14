@@ -1,5 +1,8 @@
 package application;
 
+import client.SecureClientNetworking;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import server.db.Query;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,24 +34,35 @@ public class RegController {
 
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
+     *
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException, SQLException {
-        if (proceed()) {
-            Query db = new Query();
-            db.connect();
-            /*db.insertClient(username.getText(), firstName.getText(), lastName.getText(),
-                    email.getText(), phone.getText(), pass.getText());*/
-            statusText = "To be implemented... soon ish";
-            status.setText(statusText);
-            db.disconnect();
+        if (valid()) {
 
-            Parent tableViewParent = FXMLLoader.load(
-                    getClass().getResource("/fxml/VegMeal.fxml"));
-            Scene tableViewScene = new Scene(tableViewParent);
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(tableViewScene);
-            window.show();
+            //build request
+            String requestString = "{'type' : 'Register', 'username' : '" + username.getText()
+                    + "', 'password' : '" + pass.getText() + "', "
+                    + "'fname' : '" + firstName.getText() + "', 'lname' : '"
+                    + lastName.getText() + "', "
+                    + "'email' : '" + email.getText() + "', 'phone' : '" + phone.getText() + "'}";
+
+            //send, process request, show on gui
+            SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
+            System.out.println("Sending request");
+            String response = parseJson(scn.sendPostRequest(requestString));
+            if(response.equals("Username already exists")) {
+                status.setText(response);
+                status.setStyle("-fx-text-fill: #a12020;");
+            } else {
+                //fxml stuff
+                Parent tableViewParent = FXMLLoader.load(
+                        getClass().getResource("/fxml/VegMeal.fxml"));
+                Scene tableViewScene = new Scene(tableViewParent);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(tableViewScene);
+                window.show();
+            }
         } else {
             status.setText(statusText);
             status.setStyle("-fx-text-fill: #a12020;");
@@ -60,7 +73,7 @@ public class RegController {
      * Do all input validation at once and finally check if username is taken.
      * @return return true if all holds else return false
      */
-    public boolean proceed() {
+    public boolean valid() {
         boolean username = emptyUsername();
         boolean firstName = invalidFirstName();
         boolean lastName = invalidLastName();
@@ -69,8 +82,7 @@ public class RegController {
         boolean pass = emptyPass();
 
         if (!username && !firstName && !lastName && !email && !phone && !pass) {
-            return false;
-            //return !checkAccount();
+            return true;
         } else {
             return false;
         }
@@ -177,27 +189,8 @@ public class RegController {
     }
 
     /**
-     * Check whether username is already used in database.
-     * @return true is username is already used
-     * DEPRECATED - TODO: Rewrite with the new DB query system
-     */
-    /*public boolean checkAccount() {
-        Query db = new Query();
-        db.connect();
-
-        if (db.checkExistence(username.getText())) {
-            statusText = "Username is already taken";
-            db.disconnect();
-            return true;
-        } else {
-            statusText = "";
-            db.disconnect();
-            return false;
-        }
-    }*/
-
-    /**
      * Check whether input is an integer.
+     *
      * @param input the input that needs to be checked
      * @return True or false
      */
@@ -238,5 +231,28 @@ public class RegController {
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
+    }
+
+    /**
+     * This class parses json so it can be further manipulated.
+     *
+     * @param input json to be parsed
+     * @return status string for the main function
+     */
+    private String parseJson(String input) {
+        JsonObject json = null;
+        json = new JsonParser().parse(input).getAsJsonObject();
+
+        boolean error = json.get("error").getAsBoolean();
+
+        if (error) {
+            System.out.println("error");
+            String reason = json.get("reason").getAsString();
+            return reason;
+        } else {
+            System.out.println("success");
+            return "Success!";
+        }
+
     }
 }
