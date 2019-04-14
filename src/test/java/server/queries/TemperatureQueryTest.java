@@ -44,8 +44,7 @@ public class TemperatureQueryTest {
     public void addTempFalseEmpty(){
         //reset db
         String[] queries = new String[1];
-        queries[0] = "DELETE FROM temperature WHERE username = '"
-                + testUserRow + "'";
+        queries[0] = "DELETE FROM temperature WHERE username = '" + testUserRow + "';";
         Query.runQueries(queries);
 
         String testString = "{'type' : 'Temp', 'username' : '"
