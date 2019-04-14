@@ -6,9 +6,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import static org.junit.Assert.assertTrue;
@@ -28,11 +25,9 @@ public class ServerTest {
     @BeforeClass
     public static void init() {
         //setup server
-        try {
-            server = new Server(3000, new FileInputStream("testkey.jks"), serverpassword.toCharArray());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
+        server = new Server(3000, Thread.currentThread().getContextClassLoader().getResourceAsStream("testkey.jks"), serverpassword.toCharArray());
+
 
         //setup client
         try {
@@ -72,18 +67,14 @@ public class ServerTest {
 
     @Test
     public void keyStoreExists() {
-        assertTrue(new File("testkey.jks").exists());
+        assertTrue(Thread.currentThread().getContextClassLoader().getResource("testkey.jks") != null);
     }
 
-    @Test
-    public void keyStoreIsReadable() {
-        assertTrue(new File("testkey.jks").canRead());
-    }
 
     @After
     public void after() {
         try {
-//giving thread some well-deserved sleep time so you can manually test the server using external tools
+//giving thread some well-deserved sleep time so you can manually test the server using external tools if you need to
             Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();

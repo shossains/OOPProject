@@ -8,9 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import server.Server;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -37,12 +34,10 @@ public class Main extends Application {
         //setup server
         Server server;
         String serverpassword = "password";
-        try {
-            server = new Server(3000, new FileInputStream(new File("testkey.jks")),
-                    serverpassword.toCharArray());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        server = new Server(3000, Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream("testkey.jks"),
+                serverpassword.toCharArray());
+
 
         launch(args);
     }

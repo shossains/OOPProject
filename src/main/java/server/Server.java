@@ -4,8 +4,8 @@ import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsParameters;
 import com.sun.net.httpserver.HttpsServer;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -25,7 +25,7 @@ import javax.net.ssl.TrustManagerFactory;
 public class Server {
     private final int port;
     private final char[] password;
-    private final FileInputStream keyStream;
+    private final InputStream keyStream;
     private HttpsServer httpsServer;
 
     /**
@@ -33,10 +33,10 @@ public class Server {
      * object and the threads and request handling will all be done on their own.
      *
      * @param serverPort The port on which the server listens
-     * @param keystream    The FileInputStream for the keystore
+     * @param keystream    The InputStream for the keystore
      * @param pass       The password to the keystore
      */
-    public Server(int serverPort, FileInputStream keystream, char[] pass) {
+    public Server(int serverPort, InputStream keystream, char[] pass) {
         port = serverPort;
         password = pass;
         keyStream = keystream;
