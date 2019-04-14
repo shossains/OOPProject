@@ -8,7 +8,7 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 
 #### Option 1: Excecute .jar file
 - The most convient way of running the application is by excecuting the GoGreen.jar file. <br/>
-- This file can be found in the main directory of the repository or it can be downloaded from here <a href='#'>ToDo</a>
+- This file can be found in the main directory of the repository or it can be downloaded from <a href='https://drive.google.com/file/d/1IUwbA0R-r-1zWdMdMiQXI1aw8EolhpRx/view?usp=sharing'>`here`</a>
 
 #### Option 2: Cloning repository
 If for some reason _Option 1_ is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
