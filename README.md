@@ -12,7 +12,7 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 
 #### Option 2: Cloning repository
 If for some reason _Option 1_ is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
-1. Clone the repository from the following link: `https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template.git`
+1. Clone the repository from the following [link](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template.git)
 2. Use your prefered IDE and run the Main.class which can be found at `src/main/java/application/Main.class` 
 
 ## Overview
