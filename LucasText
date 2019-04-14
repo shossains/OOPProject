@@ -1,0 +1,20 @@
+-Introduction
+Good afternoon everyone and welcome. My name is Lucas and this is Vanessa and we're here to talk about our GoGreen application. I will start off this presentation by talking about the tools we used and then Vanessa will take over and tell you more about the application itself. Then we will show you a live demo, and afterward, I will go more in depth about our user features. Then Vanessa will wrap this presentation up by reflecting on our process and end product. 
+But now first, our tools. //wording
+
+-Tools
+We have used a total of five different tools to build our application, all of which were vital. I will only briefly mention them now, but you are more than welcome to ask more in-depth questions later during our Q&A.
+Now, our first tool is Postgresql, which we used for our database. Then we used our second tool, Heroku, to connect the database to a server.
+The third tool we used is JSON, and subsequently GSON, for client-server communication. Our fourth tool is the API from BrighterPlanet.com, which provided us with accurate CO2 emission calculations, which we used for calculating the user's saved CO2 amount. //wording
+Then last, but certainly not least, we used a JavaFX builder to create our graphical user interface.
+
+-User features
+(Use screenshots to illustrate every feature except security)
+We have a lot of user features in this application, but most of them are quite standard. Instead, I would like to talk about what we did to go beyond those standard features. 
+
+The first feature I would like to talk about is security. Everyone loves security, right? We definitely do. So what we did in our application to improve security is: //examples
+
+The second feature I would like to discuss is more UI oriented. //?
+To make things easier for the user we implemented an immediate feedback system. Whenever the user takes an action that saves CO2, we immediately relay back to the user how much CO2 they have saved. I will show this on the following slides. Here, for example, the user has eaten a vegetarian meal and clicks the button to add a vegetarian meal. Then in this rectangle over here (if laser pointer) | in the green rectangle in the upper corner, the user will immediately know how much CO2 they have saved by eating one vegetarian meal.
+
+Another user feature we have implemented is this handy table, which shows the user how many points they have earned and when exactly they have earned these points. This makes it easy for the user to keep track of the number of points they have scored.
