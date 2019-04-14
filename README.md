@@ -4,10 +4,10 @@
 # The #GoGreen project
 Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't it be great if those Sahara-hot summers and those deadly polar vortexes were no more? Well, say no more! With our java application, project #GoGreen, this might just be possible! How, you ask? Well, read more and you'll find out.  
 
-## How to run the GoGreen application
+## How to run the GoGreen application 
 
 #### Option 1: Excecute .jar file
-- The most convient way of running the application is by excecuting the GoGreen.jar file. <br/>
+- The most convient way of running the application is by excecuting the <a href="GoGreen.jar" download>GoGreen</a> file. <br/>
 - This file can be found in the main directory of the repository or it can be downloaded from here <a href='#'>ToDo</a>
 
 #### Option 2: Cloning repository
