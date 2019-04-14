@@ -307,7 +307,7 @@ public class PublicTransportController implements Initializable {
 
         }
 
-        if (!isInt(distance.getText())) {
+        if (!isInt(distance.getText()) || Integer.parseInt(distance.getText()) >= 100) {
             invalidDistance.setText("Please enter a valid number");
             return true;
         } else {

@@ -292,6 +292,11 @@ public class TemperatureController implements Initializable {
             invalidThigh.setText("Please enter a valid number");
             return true;
         } else {
+            if (Integer.parseInt(thigh.getText()) <= Integer.parseInt(tlow.getText())) {
+                invalidThigh.setText("This value must be higher");
+                invalidTlow.setText("This value must be lower");
+                return true;
+            }
             invalidThigh.setText("");
             return false;
         }
@@ -305,13 +310,17 @@ public class TemperatureController implements Initializable {
         if (tlow.getText().equals("")) {
             invalidTlow.setText("Please enter a valid number");
             return true;
-
         }
 
         if (!isInt(tlow.getText())) {
             invalidTlow.setText("Please enter a valid number");
             return true;
         } else {
+            if (Integer.parseInt(thigh.getText()) <= Integer.parseInt(tlow.getText())) {
+                invalidThigh.setText("This value must be higher");
+                invalidTlow.setText("This value must be lower");
+                return true;
+            }
             invalidTlow.setText("");
             return false;
         }
