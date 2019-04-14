@@ -35,8 +35,8 @@ please consult with your TA
 * [x] Using public transport instead of car (0.1)
 * [x] Lowering the temperature of your home (0.2)
 * [x] Installing solar panels (0.2)
-* [ ] Track the CO2 that you save and compare to your friends (0.2)
-* [ ] Provide badges, achievements & other stimuli (0.2)
+* [x] Track the CO2 that you save and compare to your friends (0.2)
+* [x] Provide badges, achievements & other stimuli (0.2)
 
 
 ## Bonus features (0-1.0)
@@ -68,8 +68,8 @@ When code of the features is not tested, only a maximum of 0.2 can be achieved.
 * [x] 4 of the 6 minimal features from Food, Transportation and Energy have been implemented (0.4)
 
 The full workflow for "Track the CO2 that you save and compare to your friends" is implemented
-* [ ] You are able to have an overview of the CO2 that you have saved. (0.2)
-* [ ] You are able to have an overview of the CO2 that others have saved. (0.2)
+* [x] You are able to have an overview of the CO2 that you have saved. (0.2)
+* [x] You are able to have an overview of the CO2 that others have saved. (0.2)
 
 ## Scrum: (1.6 points)
 
@@ -86,8 +86,8 @@ Every week there is a meeting with the TA
     * [x] While meeting-notes are being made and committed to git (0.1)
     * [x] Where every week someone else is chair (0.1)
     * [x] Where everyone is asked what they did and if they have blocking issues. (0.1)
-* [ ]  Every week a sprint plan is made in GitLab on which they explain what they will be doing this week. (0.3)
-* [ ]  Every week a sprint review is held, to see what can be done better, which is committed to git (0.2)
+* [x]  Every week a sprint plan is made in GitLab on which they explain what they will be doing this week. (0.3)
+* [x]  Every week a sprint review is held, to see what can be done better, which is committed to git (0.2)
     * [ ]  They reflect if in the past proposed improvements have been implemented correctly. (0.1)
 
 ## Code: (1.5 points with 0.5 bonus points)
@@ -100,7 +100,7 @@ Every week there is a meeting with the TA
 * [x] *Checkstyle is being used perfectly (less than 5 warnings and every suppressed warning has a good reason) (0.2)*
 
 ### Testing
-* [ ] More than 80% of the code is covered for non-GUI parts (0.4)
+* [x] More than 80% of the code is covered for non-GUI parts (0.4)
 * [ ] More than 95% of the code is covered for non-GUI parts (0.2)
 * [ ] *Mockito is being used for at least 5 different test classes (0.3)*
 

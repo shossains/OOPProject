@@ -8,10 +8,7 @@ import java.sql.SQLException;
 
 public class CombinedQuery extends ServerQuery {
     /**
-     * Connects to the database and executes the query to add a vegetarian meal.
-     * TODO: Cleanup, add helper functions to make it more readable.
-     * TODO: Figure out how new points can be queried in log
-     *
+     * Connects to the database and executes the query to add ...
      * @return json-format string of the amount of points of the username
      */
 

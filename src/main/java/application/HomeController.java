@@ -79,29 +79,11 @@ public class HomeController {
      */
     public boolean emptyField() {
         if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
-            invalidLogin.setText("Field can't be empty");
+            invalidLogin.setText("Field(s) can't be empty");
             return true;
         } else {
             invalidLogin.setText("");
             return false;
         }
-    }
-
-    /**
-     * //TODO DELETE ON RELEASE
-     * Skip to main program without logging in.
-     * @param event The click of the button
-     * @throws IOException Throw exception if file does not exists
-     */
-    public void skip(ActionEvent event) throws IOException {
-        User.setUsername("testUser");
-        User.setPassword("hunter2");
-
-        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
-        Scene hmScene = new Scene(hmParent);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(hmScene);
-        window.show();
     }
 }
