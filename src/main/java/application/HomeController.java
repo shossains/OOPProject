@@ -79,7 +79,7 @@ public class HomeController {
      */
     public boolean emptyField() {
         if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
-            invalidLogin.setText("Field can't be empty");
+            invalidLogin.setText("Field(s) can't be empty");
             return true;
         } else {
             invalidLogin.setText("");
