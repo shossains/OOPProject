@@ -74,7 +74,7 @@
                     </items>
                 </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21ff5900" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: green;" width="182.0" />
-                <TextField fx:id="kwh" layoutX="79.0" layoutY="192.0" promptText="Insert amount in kwh" />
+                <TextField fx:id="kwh" layoutX="79.0" layoutY="192.0" onAction="#proceed" promptText="Insert amount in kwh" />
                 <Label layoutX="41.0" layoutY="66.0" text="Solar Panels">
                     <font>
                         <Font size="18.0" />
