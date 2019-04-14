@@ -307,7 +307,7 @@ public class PublicTransportController implements Initializable {
 
         }
 
-        if (!isInt(distance.getText())) {
+        if (!isInt(distance.getText()) || Integer.parseInt(distance.getText()) >= 100) {
             invalidDistance.setText("Please enter a valid number");
             return true;
         } else {
@@ -414,5 +414,14 @@ public class PublicTransportController implements Initializable {
      */
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
+    }
+
+    /**
+     * Go back to the Home screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        go("HomeScreen");
     }
 }

@@ -287,7 +287,7 @@ public class SolarPanelController implements Initializable {
 
         }
 
-        if (!isInt(kwh.getText())) {
+        if (!isInt(kwh.getText()) || Integer.parseInt(kwh.getText()) >= 1000) {
             invalidKwh.setText("Please enter a valid number");
             return true;
         } else {
@@ -394,5 +394,14 @@ public class SolarPanelController implements Initializable {
      */
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
+    }
+
+    /**
+     * Go back to the Home screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        go("HomeScreen");
     }
 }

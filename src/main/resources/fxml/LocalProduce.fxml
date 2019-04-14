@@ -32,6 +32,7 @@
                                 <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                                 <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="13.0" />
@@ -89,7 +90,7 @@
                </font>
             </Button>
             <Label alignment="CENTER" layoutX="79.0" layoutY="136.0" prefHeight="49.0" prefWidth="175.0" text="Enter the amount of gram of local groceries you have bought" textFill="#0000007b" wrapText="true" />
-            <TextField fx:id="weight" layoutX="79.0" layoutY="192.0" />
+            <TextField fx:id="weight" layoutX="79.0" layoutY="192.0" onAction="#proceed" />
             <Label fx:id="invalidWeight" layoutX="79.0" layoutY="217.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
             <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.70703125">
                <font>

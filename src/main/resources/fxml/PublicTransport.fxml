@@ -34,6 +34,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                         <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                      </items>
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -83,7 +84,7 @@
             <RadioButton fx:id="train" layoutX="103.0" layoutY="156.0" mnemonicParsing="false" text="Train" toggleGroup="$ov" />
             <Label fx:id="invalidRadio" layoutX="170.0" layoutY="140.0" prefHeight="17.0" prefWidth="169.0" textFill="#a12020" />
             <Label layoutX="79.0" layoutY="184.0" text="Distance Traveled:" />
-                <TextField fx:id="distance" layoutX="79.0" layoutY="204.0" prefHeight="27.0" prefWidth="170.0" promptText="Insert distance traveled in km" />
+                <TextField fx:id="distance" layoutX="79.0" layoutY="204.0" onAction="#proceed" prefHeight="27.0" prefWidth="170.0" promptText="Insert distance traveled in km" />
                 <Button layoutX="261.0" layoutY="204.0" mnemonicParsing="false" onAction="#proceed" prefHeight="28.0" prefWidth="60.0" stylesheets="@../CSS/RegisterButton.css" text="Submit" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />

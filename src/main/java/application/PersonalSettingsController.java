@@ -183,4 +183,12 @@ public class PersonalSettingsController implements Initializable {
         go("Achievements");
     }
 
+    /**
+     * Go back to the Home screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        go("HomeScreen");
+    }
 }

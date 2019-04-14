@@ -32,6 +32,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                         <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                      </items>
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -88,7 +89,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <TextField fx:id="distance" layoutX="79.0" layoutY="192.0" />
+            <TextField fx:id="distance" layoutX="79.0" layoutY="192.0" onAction="#proceed" />
             <Label fx:id="invalidDistance" layoutX="79.0" layoutY="216.0" prefHeight="17.0" prefWidth="149.0" textFill="#a12020" />
             <Text fx:id="saved" fontSmoothingType="LCD" layoutX="496.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.70703125">
                <font>

@@ -32,6 +32,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                         <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                      </items>
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -67,8 +68,8 @@
                </items>
             </ToolBar>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21ff5900" height="274.0" layoutX="489.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: green;" width="182.0" />
-                <TextField fx:id="thigh" layoutX="92.0" layoutY="120.0" prefHeight="27.0" prefWidth="182.0" promptText="Insert temperature in celsius" />
-            <TextField fx:id="tlow" layoutX="92.0" layoutY="174.0" prefHeight="27.0" prefWidth="182.0" promptText="Insert temperature in celsius" />
+                <TextField fx:id="thigh" layoutX="92.0" layoutY="120.0" onAction="#proceed" prefHeight="27.0" prefWidth="182.0" promptText="Insert temperature in celsius" />
+            <TextField fx:id="tlow" layoutX="92.0" layoutY="174.0" onAction="#proceed" prefHeight="27.0" prefWidth="182.0" promptText="Insert temperature in celsius" />
                 <Label layoutX="41.0" layoutY="66.0" text="Temperature adjustment">
                     <font>
                         <Font size="18.0" />

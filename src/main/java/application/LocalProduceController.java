@@ -280,7 +280,7 @@ public class LocalProduceController implements Initializable {
 
         }
 
-        if (!isInt(weight.getText())) {
+        if (!isInt(weight.getText()) || Integer.parseInt(weight.getText()) >= 30000) {
             invalidWeight.setText("Please enter a valid number");
             return true;
         } else {
@@ -387,5 +387,14 @@ public class LocalProduceController implements Initializable {
      */
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
+    }
+
+    /**
+     * Go back to the Home screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        go("HomeScreen");
     }
 }

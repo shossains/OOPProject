@@ -292,6 +292,11 @@ public class TemperatureController implements Initializable {
             invalidThigh.setText("Please enter a valid number");
             return true;
         } else {
+            if (Integer.parseInt(thigh.getText()) <= Integer.parseInt(tlow.getText())) {
+                invalidThigh.setText("This value must be higher");
+                invalidTlow.setText("This value must be lower");
+                return true;
+            }
             invalidThigh.setText("");
             return false;
         }
@@ -305,13 +310,17 @@ public class TemperatureController implements Initializable {
         if (tlow.getText().equals("")) {
             invalidTlow.setText("Please enter a valid number");
             return true;
-
         }
 
         if (!isInt(tlow.getText())) {
             invalidTlow.setText("Please enter a valid number");
             return true;
         } else {
+            if (Integer.parseInt(thigh.getText()) <= Integer.parseInt(tlow.getText())) {
+                invalidThigh.setText("This value must be higher");
+                invalidTlow.setText("This value must be lower");
+                return true;
+            }
             invalidTlow.setText("");
             return false;
         }
@@ -415,5 +424,14 @@ public class TemperatureController implements Initializable {
      */
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
+    }
+
+    /**
+     * Go back to the Home screen.
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is missing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        go("HomeScreen");
     }
 }
