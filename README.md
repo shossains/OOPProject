@@ -7,8 +7,7 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 ## How to run the GoGreen application 
 
 #### Option 1: Excecute .jar file
-- The most convient way of running the application is by excecuting this <a href="#" download>GoGreen</a> file. <br/>
-- This file can be found in the main directory of the repository or it can be downloaded from <a href='#' download>`here`</a>
+The most convient way of running the application is by excecuting this [GoGreen.jar](#) file. <br/>
 
 #### Option 2: Cloning repository
 If for some reason _Option 1_ is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
