@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class RegController {
     public TextField usernameField;
@@ -33,20 +32,18 @@ public class RegController {
     public Label invalidPass;
     public String statusText = "";
 
-    private String username = usernameField.getText();
-    private String password = passwordField.getText();
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      *
      * @param actionEvent The click of the button
      */
-    public void button(ActionEvent actionEvent) throws IOException, SQLException {
+    public void button(ActionEvent actionEvent) throws IOException {
 
         if (valid()) {
 
             //build request
-            String requestString = "{'type' : 'Register', 'username' : '" + username
-                    + "', 'password' : '" + password + "', "
+            String requestString = "{'type' : 'Register', 'username' : '" + usernameField.getText()
+                    + "', 'password' : '" + passwordField.getText() + "', "
                     + "'fname' : '" + firstName.getText() + "', 'lname' : '"
                     + lastName.getText() + "', "
                     + "'email' : '" + email.getText() + "', 'phone' : '" + phone.getText() + "'}";
@@ -60,8 +57,8 @@ public class RegController {
                 status.setStyle("-fx-text-fill: #a12020;");
             } else {
                 //fxml stuff
-                User.setUsername(username);
-                User.setPassword(password);
+                User.setUsername(usernameField.getText());
+                User.setPassword(passwordField.getText());
                 Parent tableViewParent = FXMLLoader.load(
                         getClass().getResource("/fxml/StatsPiechart.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);
@@ -99,7 +96,7 @@ public class RegController {
      * @return true if empty
      */
     public boolean emptyUsername() {
-        if (username.equals("")) {
+        if (usernameField.getText().equals("")) {
             invalidUsername.setText("Username can't be empty");
             return true;
         } else {
@@ -185,7 +182,7 @@ public class RegController {
      * @return true if empty
      */
     public boolean emptyPass() {
-        if (password.equals("")) {
+        if (passwordField.getText().equals("")) {
             invalidPass.setText("Password can't be empty");
             return true;
         } else {
@@ -259,6 +256,5 @@ public class RegController {
             System.out.println("success");
             return "Success!";
         }
-
     }
 }
