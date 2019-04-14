@@ -29,6 +29,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                         <MenuItem mnemonicParsing="false" text="Friend List" />
                         <MenuItem mnemonicParsing="false" onAction="#goAchievements" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                      </items>
                      <font>
                         <Font name="System Bold" size="13.0" />
