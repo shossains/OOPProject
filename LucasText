@@ -1,15 +1,24 @@
 -Introduction
-Good afternoon everyone and welcome. My name is Lucas and this is Vanessa and we're here to talk about our GoGreen application. I will start off this presentation by talking about the tools we used and then Vanessa will take over and tell you more about the application itself. Then we will show you a live demo, and afterward, I will go more in depth about our user features. Then Vanessa will wrap this presentation up by reflecting on our process and end product. 
-But now first, our tools. //wording
+Good afternoon and welcome everyone. My name is Lucas and this is Vanessa and we're here to talk about our GoGreen application. I will start off this presentation by talking about the tools we used. Then Vanessa will take over and tell you more about the application itself. Afterward, I will go more into detail about some of our user features and I'll also talk about security. Then Vanessa will wrap up by reflecting on our process and end product.
+Now, onto our first subject: the tools.
 
 -Tools
-We have used a total of five different tools to build our application, all of which were vital. I will only briefly mention them now, but you are more than welcome to ask more in-depth questions later during our Q&A.
-Now, our first tool is Postgresql, which we used for our database. Then we used our second tool, Heroku, to connect the database to a server.
-The third tool we used is JSON, and subsequently GSON, for client-server communication. Our fourth tool is the API from BrighterPlanet.com, which provided us with accurate CO2 emission calculations, which we used for calculating the user's saved CO2 amount. //wording
-Then last, but certainly not least, we used a JavaFX builder to create our graphical user interface.
+We have used a total of five different tools to build our application. I will only briefly mention them now, but you are more than welcome to ask more in-depth questions later during our Q&A.
+Our first tool is Postgresql, which we used for our database. Then we used Heroku to connect the database to a server. We used JSON and GSON, for client-server communication. Our fourth tool is the API from BrighterPlanet.com, which we used to calculate the user's saved amount of CO2 emissions. Then last, but certainly not least, we used the JavaFX scene builder to create our graphical user interface.
 
 -User features
-(Use screenshots to illustrate every feature except security)
-We have a lot of user features in this application, but most of them are quite standard. Instead, I would like to talk about what we did to go beyond those standard features. 
+By now you have got a fairly good overview of our application, but this is not everything we have to offer. Next to the standard features of the application, we also have some interesting user features, namely:
+*The statistics screen
+*Achievements
+*Personal settings
 
-The first feature I would like to talk about is security. Everyone loves security, right? We definitely do. So what we did in our application to improve security is: //examples
+I'll start off with the statistics screen. This screen gives the user a quick overview of the points they've saved per category, put together neatly into a pie chart. The user is also able to compare their score to the score of their friends, here on the left side.
+
+Next up is achievements. We have three achievements for every category, ranging from fairly easy to obtain to very hard, which really challenges the user. Right now all the trophies are locked, but when the user passes the requirements for an achievement - for example, when they gain a hundred points by biking - the trophy gets unlocked, which will be shown on this screen.
+
+Now onto personal settings. Here the user gets an overview of their account, including the total amount of CO2 they have saved. They are also able to change their password, which takes me to the next topic: security.
+
+Everyone loves security, right? We certainly do. So there are a few things we've implemented to improve security. For example:
+*We used Bcrypt to hash passwords, so now we only store hashed passwords instead of plain text.
+*We also make use of prepared statements to prevent SQL injections.
+*And we also use input validation.
