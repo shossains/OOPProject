@@ -396,7 +396,7 @@ public class BikeController implements Initializable {
     }
 
     /**
-     * Go back to the Home screen
+     * Go back to the Home screen.
      * @param actionEvent The click of the button
      * @throws IOException Throws if file is mssing/corrupted/incomplete
      */
