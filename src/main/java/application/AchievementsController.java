@@ -391,7 +391,7 @@ public class AchievementsController implements Initializable {
      * @param actionEvent The click of the button
      * @throws IOException Throw if file is missing/corrupted/incomplete
      */
-    public void goHome(ActionEvent actionEvent) throws IOException{
+    public void goHome(ActionEvent actionEvent) throws IOException {
         go("HomeScreen");
     }
 
