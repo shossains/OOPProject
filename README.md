@@ -4,14 +4,14 @@
 # The #GoGreen project
 Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't it be great if those Sahara-hot summers and those deadly polar vortexes were no more? Well, say no more! With our java application, project #GoGreen, this might just be possible! How, you ask? Well, read more and you'll find out.  
 
-## How to run the application
+## How to run the GoGreen application
 
-#### option 1: Excecute .jar file
-The most convient way of running our application is by excecuting the GoGreen.jar file. <br/>
-This file can be found in the main directory of our repository or it can be downloaded from here <a href='#'>ToDo</a>
+#### Option 1: Excecute .jar file
+- The most convient way of running the application is by excecuting the GoGreen.jar file. <br/>
+- This file can be found in the main directory of the repository or it can be downloaded from here <a href='#'>ToDo</a>
 
-#### option 2: Cloning repository
-If for some reason the .jar file the application is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
+#### Option 2: Cloning repository
+If for some reason _Option 1_ is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
 1. Clone the repository from the following link: `https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template.git`
 2. Use your prefered IDE and run the Main.class which can be found at `src/main/java/application/Main.class` 
 
