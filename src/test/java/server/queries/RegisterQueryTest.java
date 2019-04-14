@@ -42,10 +42,20 @@ public class RegisterQueryTest {
     }
 
     @Test
-    public void userNameExistsTest(){
+    public void userNameNotExistsTest(){
         Assert.assertTrue(testRegQuery.usernameExists());
         testRegQuery.username = "aklsfja;klfdj;ljk";
         Assert.assertFalse(testRegQuery.usernameExists());
+    }
+
+    @Test
+    public void userNameExistsTest(){
+        String json = "{'type': 'register', 'username' : 'testUser', 'password' : 'sickPassword'," +
+                " 'fname' : 'Test', 'lname' : 'User', 'email' : 'fraud@tudelft.nl', 'phone' : '12345678'}";
+
+        RegisterQuery registerQuery = new GsonBuilder().create().fromJson(json, RegisterQuery.class);
+
+        Assert.assertEquals("{'error': true, 'reason' : 'Username already exists'}", registerQuery.runQuery());
     }
 
     @Test
