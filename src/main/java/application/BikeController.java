@@ -394,4 +394,13 @@ public class BikeController implements Initializable {
     public void goAchievements(ActionEvent actionEvent) throws IOException {
         go("Achievements");
     }
+
+    /**
+     * Go back to the Home screen
+     * @param actionEvent The click of the button
+     * @throws IOException Throws if file is mssing/corrupted/incomplete
+     */
+    public void goHome(ActionEvent actionEvent) throws IOException{
+        go("HomeScreen");
+    }
 }

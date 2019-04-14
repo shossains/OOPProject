@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AchievementsController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AchievementsController">
     <children>
         <AnchorPane prefHeight="480.0" prefWidth="720.0">
             <children>
@@ -29,6 +29,7 @@
                                 <MenuItem mnemonicParsing="false" onAction="#goStats" text="Stats" />
                                 <MenuItem mnemonicParsing="false" text="Friend List" />
                                 <MenuItem disable="true" mnemonicParsing="false" text="Achievements" />
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Logout" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="13.0" />
