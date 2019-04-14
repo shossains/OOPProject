@@ -18,12 +18,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class RegController {
-    public TextField username;
+    public TextField usernameField;
     public TextField firstName;
     public TextField lastName;
     public TextField email;
     public TextField phone;
-    public PasswordField pass;
+    public PasswordField passwordField;
     public Label status;
     public Label invalidUsername;
     public Label invalidFirstName;
@@ -33,17 +33,20 @@ public class RegController {
     public Label invalidPass;
     public String statusText = "";
 
+    private String username = usernameField.getText();
+    private String password = passwordField.getText();
     /**
      * Send the request to register to the db after clicking the button and go to veg meal page.
      *
      * @param actionEvent The click of the button
      */
     public void button(ActionEvent actionEvent) throws IOException, SQLException {
+
         if (valid()) {
 
             //build request
-            String requestString = "{'type' : 'Register', 'username' : '" + username.getText()
-                    + "', 'password' : '" + pass.getText() + "', "
+            String requestString = "{'type' : 'Register', 'username' : '" + username
+                    + "', 'password' : '" + password + "', "
                     + "'fname' : '" + firstName.getText() + "', 'lname' : '"
                     + lastName.getText() + "', "
                     + "'email' : '" + email.getText() + "', 'phone' : '" + phone.getText() + "'}";
@@ -57,8 +60,10 @@ public class RegController {
                 status.setStyle("-fx-text-fill: #a12020;");
             } else {
                 //fxml stuff
+                User.setUsername(username);
+                User.setPassword(password);
                 Parent tableViewParent = FXMLLoader.load(
-                        getClass().getResource("/fxml/VegMeal.fxml"));
+                        getClass().getResource("/fxml/StatsPiechart.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);
                 Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 window.setScene(tableViewScene);
@@ -94,7 +99,7 @@ public class RegController {
      * @return true if empty
      */
     public boolean emptyUsername() {
-        if (username.getText().equals("")) {
+        if (username.equals("")) {
             invalidUsername.setText("Username can't be empty");
             return true;
         } else {
@@ -180,7 +185,7 @@ public class RegController {
      * @return true if empty
      */
     public boolean emptyPass() {
-        if (pass.getText().equals("")) {
+        if (password.equals("")) {
             invalidPass.setText("Password can't be empty");
             return true;
         } else {
