@@ -286,7 +286,7 @@ public class BikeController implements Initializable {
 
         }
 
-        if (!isInt(distance.getText())) {
+        if (!isInt(distance.getText()) || Integer.parseInt(distance.getText()) >= 25000) {
             invalidDistance.setText("Please enter a valid number");
             return true;
         } else {

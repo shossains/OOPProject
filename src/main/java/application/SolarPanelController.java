@@ -287,7 +287,7 @@ public class SolarPanelController implements Initializable {
 
         }
 
-        if (!isInt(kwh.getText())) {
+        if (!isInt(kwh.getText()) || Integer.parseInt(kwh.getText()) >= 1000) {
             invalidKwh.setText("Please enter a valid number");
             return true;
         } else {

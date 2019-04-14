@@ -280,7 +280,7 @@ public class LocalProduceController implements Initializable {
 
         }
 
-        if (!isInt(weight.getText())) {
+        if (!isInt(weight.getText()) || Integer.parseInt(weight.getText()) >= 30000) {
             invalidWeight.setText("Please enter a valid number");
             return true;
         } else {
