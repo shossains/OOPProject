@@ -3,9 +3,10 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.*;
 import server.queries.BikeRideQuery;
+import server.queries.CombinedQuery;
 import server.queries.LocalProduceQuery;
+import server.queries.LoginQuery;
 import server.queries.PersonalSettingsQuery;
 import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;

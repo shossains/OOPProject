@@ -1,8 +1,9 @@
 package application;
 
-import client.SecureClientNetworking;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import client.SecureClientNetworking;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -51,7 +52,7 @@ public class RegController {
             SecureClientNetworking scn = new SecureClientNetworking(User.getServerUrl());
             System.out.println("Sending request");
             String response = parseJson(scn.sendPostRequest(requestString));
-            if(response.equals("Username already exists")) {
+            if (response.equals("Username already exists")) {
                 status.setText(response);
                 status.setStyle("-fx-text-fill: #a12020;");
             } else {
