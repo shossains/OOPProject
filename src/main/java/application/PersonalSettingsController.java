@@ -191,5 +191,4 @@ public class PersonalSettingsController implements Initializable {
     public void goHome(ActionEvent actionEvent) throws IOException {
         go("HomeScreen");
     }
-
 }
