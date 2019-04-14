@@ -3,9 +3,10 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import server.queries.*;
 import server.queries.BikeRideQuery;
+import server.queries.CombinedQuery;
 import server.queries.LocalProduceQuery;
+import server.queries.LoginQuery;
 import server.queries.PersonalSettingsQuery;
 import server.queries.PublicTransportQuery;
 import server.queries.RegisterQuery;
@@ -72,7 +73,7 @@ public class Request {
         switch (type) {
             case "TestRequest":
                 return buildGson(rawQuery, TestQuery.class).runQuery();
-            case "register":
+            case "Register":
                 return registerUser();
             case "Login":
                 return buildGson(rawQuery, LoginQuery.class).runQuery();
