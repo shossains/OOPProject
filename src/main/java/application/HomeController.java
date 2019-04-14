@@ -86,22 +86,4 @@ public class HomeController {
             return false;
         }
     }
-
-    /**
-     * //TODO DELETE ON RELEASE
-     * Skip to main program without logging in.
-     * @param event The click of the button
-     * @throws IOException Throw exception if file does not exists
-     */
-    public void skip(ActionEvent event) throws IOException {
-        User.setUsername("testUser");
-        User.setPassword("hunter2");
-
-        Parent hmParent = FXMLLoader.load(getClass().getResource("/fxml/StatsPiechart.fxml"));
-        Scene hmScene = new Scene(hmParent);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(hmScene);
-        window.show();
-    }
 }
