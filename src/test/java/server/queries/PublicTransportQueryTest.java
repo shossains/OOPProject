@@ -72,10 +72,10 @@ public class PublicTransportQueryTest {
 
         String testString = "{'type' : 'PublicTransport', 'username' : '"
                 + testUserRow + "', 'password' : '" + testUserPass + "', "
-                + "'addPublic' : false, 'distance' : 0, 'vehicle' : 'bus'}";
+                + "'addPublic' : false}";
         Request request = new GsonBuilder().create().fromJson(testString, Request.class);
         request.setRaw(testString);
-        Assert.assertEquals(null, request.execute());
+        Assert.assertEquals(null,request.execute());
     }
 
     /**
