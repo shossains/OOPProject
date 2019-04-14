@@ -8,15 +8,14 @@ Wouldn't it be amazing if we were finally able to solve climate change? Wouldn't
 
 #### option 1: Excecute .jar file
 The most convient way of running our application is by excecuting the GoGreen.jar file. <br/>
-This file can be found in the main directory of our repository or it can be downloaded from here <a href='#'>ToDo</a>
+This file can be found in the main directory of our repository or it can be downloaded from <a href='https://drive.google.com/file/d/1IUwbA0R-r-1zWdMdMiQXI1aw8EolhpRx/view?usp=sharing'>`here`</a>
 
 #### option 2: Cloning repository
 If for some reason the .jar file the application is not functioning properly or you prefer monitering what is happening in the back-end you can always clone out repo.
 1. Clone the repository from the following link: `https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-83/template.git`
-2. Use your prefered IDE and run the Main.class which can be found at `src/main/java/application/Main.class` 
+2. Use your prefered IDE and run the Main.class which can be found at `src/main/java/application/Main.class`
 
 ## Overview
-
 The #GoGreen project is a java application that stimulates it's users to go greener. By asking the user questions about their lifestyle, the application is able to determine how much CO2 they emit. By comparing the user's score to others', as well as rewarding the user with achievements, the application stimulates the user to become "greener", which brings us closer to our end goal, namely reducing our carbon footprint.  
 
 ## Technologies used
